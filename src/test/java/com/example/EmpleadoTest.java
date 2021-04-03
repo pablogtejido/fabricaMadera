@@ -1,8 +1,10 @@
-package objetosDeDominio;
+package com.example;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.example.Empleado;
 
 import java.util.Date;
 import org.junit.After;
