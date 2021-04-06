@@ -8,6 +8,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
+import com.example.db.DBManager;
+
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -42,6 +44,17 @@ public class EmpleadosResource {
 		int dias = (int) ((fechaActual.getTime() - inicio.getTime()) / 86400000);
 		
 		return dias;
+		
+	}
+	public void eliminarEmpleado() {
+		List<Empleado> empleados = DBManager.getInstance().getEmpleados();
+		
+		for (Empleado empleado : empleados) {
+			DBManager.getInstance().delete(empleado);
+		}	
+		
+	}
+	public void modificarEmpleado() {
 		
 	}
 	/*
