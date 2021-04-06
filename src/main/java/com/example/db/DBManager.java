@@ -1,4 +1,4 @@
-package com.example;
+package com.example.db;
 
 import java.util.Date;
 import java.util.List;
@@ -8,19 +8,37 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
+import com.example.Empleado;
+
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("empleados")
-public class EmpleadosResource {
+public class DBManager {
+    private static DBManager instance = null;
+    private PersistenceManagerFactory pmf = null;
 
-	@GET
+    private DBManager() {
+        pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+    }
+
+    public static DBManager getInstance() {
+        if (instance == null) {
+            instance = new DBManager();
+            instance.initializeData();
+        }
+
+        return instance;
+    }
+
+    private void initializeData() {
+        // TODO: Inicializar los datos
+    }
+
+    @GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Empleado> getEmpleados() {
 		
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		PersistenceManager pm = pmf.getPersistenceManager();
 		
 		Query<Empleado> q = pm.newQuery(Empleado.class);
@@ -44,11 +62,4 @@ public class EmpleadosResource {
 		return dias;
 		
 	}
-	/*
-	 * getEmpleados()
-	 * eliminarEmpleado()
-	 * crearEmpleado()
-	 * modificarEmpleado()
-	 * 
-	 */
 }
