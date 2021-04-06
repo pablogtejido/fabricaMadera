@@ -1,5 +1,6 @@
 package com.example;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -46,6 +47,7 @@ public class EmpleadosResource {
 		return dias;
 		
 	}
+	
 	public void eliminarEmpleado() {
 		List<Empleado> empleados = DBManager.getInstance().getEmpleados();
 		
@@ -54,9 +56,23 @@ public class EmpleadosResource {
 		}	
 		
 	}
+	
+	
+	public void almacenarEmpleado() {
+		List<Empleado> empleados = DBManager.getInstance().getEmpleados();
+		
+		for (Empleado empleado : empleados) {
+			DBManager.getInstance().store(empleado);
+		}	
+				
+	}
+	
+	
 	public void modificarEmpleado() {
 		
 	}
+	
+
 	/*
 	 * getEmpleados()
 	 * eliminarEmpleado()
