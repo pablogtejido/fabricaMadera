@@ -39,15 +39,6 @@ public class ProductoResource {
 		return productos;
 	}
 
-	public void eliminarProducto() {
-		List<Producto> productos = DBManager.getInstance().getProductos();
-
-		for (Producto producto : productos) {
-			DBManager.getInstance().delete(producto);
-		}
-
-	}
-
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
