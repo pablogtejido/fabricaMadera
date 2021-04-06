@@ -120,13 +120,7 @@ public class DBManager {
         DBManager.getInstance().deleteObjectFromDB(producto);
     }
 
-    
-    
-    
-    
-    
-
-    public Empleado getUser(String DNI) {
+    public Empleado getEmpleado(String DNI) {
  		PersistenceManager pm = pmf.getPersistenceManager();
  		Transaction tran = pm.currentTransaction();
  		
