@@ -37,6 +37,5 @@ public class ProductoResource {
 	 * modificarProducto()
 	 * eliminarProducto()
 	 * 
-	 * 
 	 */
 }
