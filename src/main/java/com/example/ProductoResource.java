@@ -7,6 +7,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
+import com.example.db.DBManager;
+
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -30,6 +32,15 @@ public class ProductoResource {
 		pm.close();
 		
 		return productos;
+	}
+	
+	public void eliminarProducto() {
+		List<Producto> productos = DBManager.getInstance().getProductos();
+		
+		for (Producto producto : productos) {
+			DBManager.getInstance().delete(producto);
+		}	
+		
 	}
 	
 	/*

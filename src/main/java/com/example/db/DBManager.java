@@ -155,5 +155,37 @@ public class DBManager {
 
         return empleados;
     }
+    
+    
+    public List<Producto> getProductos() {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        List<Producto> productos = new ArrayList<Producto>();
+
+        try {
+            System.out.println("  * Querying all users");
+            tx.begin();
+
+            Extent<Producto> productoExtent = pm.getExtent(Producto.class, true);
+
+            for (Producto producto : productoExtent) {
+            	productos.add(producto);
+            }
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("  $ Error querying all users: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+		return productos;
+      
+    }
 
 }
