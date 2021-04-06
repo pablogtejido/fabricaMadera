@@ -1,5 +1,9 @@
 package com.example.db;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -112,6 +116,42 @@ public class DBManager {
      */
     public void delete(Producto producto) {
         DBManager.getInstance().deleteObjectFromDB(producto);
+    }
+
+    /**
+     * Get empleados de la DB
+     * 
+     * @return lista de empleados
+     */
+    public List<Empleado> getEmpleados() {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        List<Empleado> empleados = new ArrayList<Empleado>();
+
+        try {
+            System.out.println("  * Querying all users");
+            tx.begin();
+
+            Extent<Empleado> empleadoExtent = pm.getExtent(Empleado.class, true);
+
+            for (Empleado empleado : empleadoExtent) {
+                empleados.add(empleado);
+            }
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("  $ Error querying all users: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+
+        return empleados;
     }
 
 }
