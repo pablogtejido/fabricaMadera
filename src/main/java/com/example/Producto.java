@@ -1,6 +1,7 @@
 package com.example;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -71,6 +72,21 @@ public class Producto {
 
 	public int getId() {
 		return this.id;
+	}
+
+	public Producto() {
+		super();
+	}
+
+	public Producto(int id, double precio, double peso, int cantidad, double medida, double grosor, boolean anyadidos) {
+		super();
+		this.id = id;
+		this.precio = precio;
+		this.peso = peso;
+		this.cantidad = cantidad;
+		this.medida = medida;
+		this.grosor = grosor;
+		this.anyadidos = anyadidos;
 	}
 
 }
