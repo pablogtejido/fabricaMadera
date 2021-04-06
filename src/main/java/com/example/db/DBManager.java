@@ -1,19 +1,12 @@
 package com.example.db;
 
-import java.util.Date;
-import java.util.List;
-
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Query;
 import javax.jdo.Transaction;
 
 import com.example.Empleado;
-
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import com.example.Producto;
 
 public class DBManager {
     private static DBManager instance = null;
@@ -34,34 +27,6 @@ public class DBManager {
 
     private void initializeData() {
         // TODO: Inicializar los datos
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Empleado> getEmpleados() {
-
-        PersistenceManager pm = pmf.getPersistenceManager();
-
-        Query<Empleado> q = pm.newQuery(Empleado.class);
-        q.setOrdering("nombre desc");
-
-        List<Empleado> empleados = q.executeList();
-
-        pm.close();
-
-        return empleados;
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public int diasEnEmpresa(Empleado empleado) {
-        Date fechaActual = new Date();
-        Date inicio = empleado.getFcha_empleado();
-
-        int dias = (int) ((fechaActual.getTime() - inicio.getTime()) / 86400000);
-
-        return dias;
-
     }
 
     /**
@@ -91,4 +56,44 @@ public class DBManager {
             pm.close();
         }
     }
+
+    public void storeObjectInDB(Object object) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        try {
+            tx.begin();
+            System.out.println("  * Storing an object: " + object);
+            pm.makePersistent(object);
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("  $ Error storing an object: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+    }
+
+    /**
+     * Guardar un empleado en la DB
+     * 
+     * @param empleado
+     */
+    public void store(Empleado empleado) {
+        DBManager.getInstance().storeObjectInDB(empleado);
+    }
+
+    /**
+     * Guardar un producto en la DB
+     * 
+     * @param producto
+     */
+    public void store(Producto producto) {
+        DBManager.getInstance().storeObjectInDB(producto);
+    }
+
 }
