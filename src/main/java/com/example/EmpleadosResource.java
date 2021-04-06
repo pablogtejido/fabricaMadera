@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
@@ -32,6 +33,17 @@ public class EmpleadosResource {
 		return empleados;
 	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public int diasEnEmpresa(Empleado empleado) {
+		Date fechaActual = new Date();
+		Date inicio = empleado.getFcha_empleado();
+		
+		int dias = (int) ((fechaActual.getTime() - inicio.getTime()) / 86400000);
+		
+		return dias;
+		
+	}
 	/*
 	 * getEmpleados()
 	 * eliminarEmpleado()
