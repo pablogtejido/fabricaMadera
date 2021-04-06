@@ -42,7 +42,7 @@ public class Main {
         // Lanzar el servidor si se ejecuta desde la consola
 
         if (args.length == 1 && args[0].equals("--server")) {
-
+            // Para ejecturar el servidor " mvn exec:java -Dexec.args="--server" "
             // Si args esta vacio lanzamos el servidor
 
             final HttpServer server = startServer();
