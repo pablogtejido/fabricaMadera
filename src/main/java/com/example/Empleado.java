@@ -1,7 +1,6 @@
 package com.example;
 
 import java.util.Date;
-
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -19,6 +18,7 @@ public class Empleado {
 	private Date fcha_nacimiento;
 	private Date fcha_empleado;
 	private double sueldo;
+	
 	public String getDni() {
 		return dni;
 	}
