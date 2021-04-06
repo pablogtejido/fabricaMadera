@@ -43,6 +43,7 @@ public class Main {
 
         if (args.length == 1 && args[0].equals("--server")) {
             // Para ejecturar el servidor " mvn exec:java -Dexec.args="--server" "
+            // En power shell es " mvn exec:java "-Dexec.args='--server'" "
             // Si args esta vacio lanzamos el servidor
 
             final HttpServer server = startServer();
@@ -54,8 +55,5 @@ public class Main {
         } else {
             // TODO: Crear las ventanas
         }
-
-        System.out.println(args.length);
-
     }
 }
