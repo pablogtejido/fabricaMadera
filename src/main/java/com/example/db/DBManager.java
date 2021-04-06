@@ -62,4 +62,18 @@ public class DBManager {
 		return dias;
 		
 	}
+	public Empleado eliminarEmpleado() {
+		
+		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+		
+		Query<Empleado> q = pm.newQuery(Empleado.class);
+		
+		Empleado empleado = q.executeUnique();
+		pm.deletePersistent(empleado);
+		
+		pm.close();
+		
+		return empleado;
+	}
 }
