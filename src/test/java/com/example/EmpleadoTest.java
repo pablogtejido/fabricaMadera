@@ -175,11 +175,11 @@ public class EmpleadoTest {
     public void testGetPuesto() {
         System.out.println("getPuesto");
         Empleado instance = new Empleado();
-        instance.setPuesto("");
-        String expResult = "";
-        String result = instance.getPuesto();
+        instance.setPuesto(EnumPuestoEmpleados.LEGAL);
+        EnumPuestoEmpleados expResult = EnumPuestoEmpleados.LEGAL;
+        EnumPuestoEmpleados result = instance.getPuesto();
         assertEquals(expResult, result);
-  
+       
     }
 
     /**
@@ -188,10 +188,10 @@ public class EmpleadoTest {
     @Test
     public void testSetPuesto() {
         System.out.println("setPuesto");
-        String puesto = "";
+        EnumPuestoEmpleados puesto = null;
         Empleado instance = new Empleado();
         instance.setPuesto(puesto);
- 
+        
     }
 
     /**

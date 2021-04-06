@@ -14,7 +14,7 @@ public class Empleado {
 	private String direccion;
 	private String email;
 	private String telefono;
-	private String puesto;
+	private EnumPuestoEmpleados puesto;
 	private Date fcha_nacimiento;
 	private Date fcha_empleado;
 	private double sueldo;
@@ -49,10 +49,10 @@ public class Empleado {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public String getPuesto() {
+	public EnumPuestoEmpleados getPuesto() {
 		return puesto;
 	}
-	public void setPuesto(String puesto) {
+	public void setPuesto(EnumPuestoEmpleados puesto) {
 		this.puesto = puesto;
 	}
 	public Date getFcha_nacimiento() {
