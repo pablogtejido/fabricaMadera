@@ -43,6 +43,15 @@ public class ProductoResource {
 		
 	}
 	
+	public void almacenarProducto() {
+		List<Producto> productos = DBManager.getInstance().getProductos();
+		
+		for (Producto producto : productos) {
+			DBManager.getInstance().store(producto);
+		}	
+				
+	}
+	
 	/*
 	 * crearProducto()
 	 * modificarProducto()
