@@ -9,53 +9,55 @@ import javax.jdo.Query;
 
 import com.example.db.DBManager;
 
+import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("producto")
+@Path("/producto")
 public class ProductoResource {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Producto> getProductos() {
-		
+
 		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 		PersistenceManager pm = pmf.getPersistenceManager();
-		
+
 		Query<Producto> q = pm.newQuery(Producto.class);
 		q.setOrdering("peso asc");
-		
+
 		List<Producto> productos = q.executeList();
 
 		pm.close();
-		
+
 		return productos;
 	}
-	
+
 	public void eliminarProducto() {
 		List<Producto> productos = DBManager.getInstance().getProductos();
-		
+
 		for (Producto producto : productos) {
 			DBManager.getInstance().delete(producto);
-		}	
-		
+		}
+
 	}
-	
-	public void almacenarProducto() {
-		List<Producto> productos = DBManager.getInstance().getProductos();
-		
-		for (Producto producto : productos) {
-			DBManager.getInstance().store(producto);
-		}	
-				
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String modificarProducto(Producto producto) {
+		Producto TMP = DBManager.getInstance().getProducto(producto.getId());
+		DBManager.getInstance().delete(TMP);
+		DBManager.getInstance().store(producto);
+		return "Got it";
+
 	}
-	
+
 	/*
-	 * crearProducto()
-	 * modificarProducto()
-	 * eliminarProducto()
+	 * crearProducto() modificarProducto() eliminarProducto()
 	 * 
 	 */
 }

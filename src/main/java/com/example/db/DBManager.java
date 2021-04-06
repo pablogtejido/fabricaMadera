@@ -60,8 +60,6 @@ public class DBManager {
             pm.close();
         }
     }
-    
-    
 
     public void storeObjectInDB(Object object) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -121,36 +119,73 @@ public class DBManager {
     }
 
     public Empleado getEmpleado(String DNI) {
- 		PersistenceManager pm = pmf.getPersistenceManager();
- 		Transaction tran = pm.currentTransaction();
- 		
- 		Empleado empleado = null;
- 		try {
- 			System.out.println("Cogiendo usuario con DNI: " + DNI);
- 			tran.begin();
- 			
- 			Extent<Empleado> extension = pm.getExtent(Empleado.class, true);
- 			for (Empleado empleadoEXT : extension) {
- 				if(empleadoEXT.getDni().equals(DNI)) {
- 					empleado = new Empleado(empleado.getDni(), empleado.getNombre(), empleado.getDireccion(), empleado.getEmail(), 
- 							empleado.getTelefono(),empleado.getPuesto(), empleado.getFcha_nacimiento(),
- 							empleado.getFcha_empleado(), empleado.getSueldo());
- 				}
- 			}
- 			
- 			tran.commit();
- 		} catch (Exception ex) {
- 			System.out.println(" Error obteniendo empleado: " + ex.getMessage());
- 		} finally {
- 			if (tran != null && tran.isActive()) {
- 				tran.rollback();
- 			}
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tran = pm.currentTransaction();
 
- 			pm.close();
- 		}
+        Empleado empleado = null;
+        try {
+            System.out.println("Cogiendo usuario con DNI: " + DNI);
+            tran.begin();
 
- 		return empleado;
- 	}
+            Extent<Empleado> extension = pm.getExtent(Empleado.class, true);
+            for (Empleado empleadoEXT : extension) {
+                if (empleadoEXT.getDni().equals(DNI)) {
+                    empleado = new Empleado(empleado.getDni(), empleado.getNombre(), empleado.getDireccion(),
+                            empleado.getEmail(), empleado.getTelefono(), empleado.getPuesto(),
+                            empleado.getFcha_nacimiento(), empleado.getFcha_empleado(), empleado.getSueldo());
+                }
+            }
+
+            tran.commit();
+        } catch (Exception ex) {
+            System.out.println(" Error obteniendo empleado: " + ex.getMessage());
+        } finally {
+            if (tran != null && tran.isActive()) {
+                tran.rollback();
+            }
+
+            pm.close();
+        }
+
+        return empleado;
+    }
+
+    /**
+     * Obtener un producto en base a su id
+     * 
+     * @param id
+     * @return
+     */
+    public Producto getProducto(int id) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tran = pm.currentTransaction();
+
+        Producto producto = null;
+        try {
+            System.out.println("Cogiendo producto con id: " + id);
+            tran.begin();
+
+            Extent<Producto> productos = pm.getExtent(Producto.class, true);
+            for (Producto productoEXT : productos) {
+                if (productoEXT.getId() == id) {
+                    producto = productoEXT;
+                }
+            }
+
+            tran.commit();
+        } catch (Exception ex) {
+            System.out.println(" Error obteniendo empleado: " + ex.getMessage());
+        } finally {
+            if (tran != null && tran.isActive()) {
+                tran.rollback();
+            }
+
+            pm.close();
+        }
+
+        return producto;
+    }
+
     /**
      * Get empleados de la DB
      * 
@@ -186,8 +221,7 @@ public class DBManager {
 
         return empleados;
     }
-    
-    
+
     public List<Producto> getProductos() {
         PersistenceManager pm = pmf.getPersistenceManager();
         pm.getFetchPlan().setMaxFetchDepth(4);
@@ -202,7 +236,7 @@ public class DBManager {
             Extent<Producto> productoExtent = pm.getExtent(Producto.class, true);
 
             for (Producto producto : productoExtent) {
-            	productos.add(producto);
+                productos.add(producto);
             }
 
             tx.commit();
@@ -215,8 +249,8 @@ public class DBManager {
 
             pm.close();
         }
-		return productos;
-      
+        return productos;
+
     }
 
 }
