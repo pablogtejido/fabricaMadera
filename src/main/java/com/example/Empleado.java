@@ -19,6 +19,21 @@ public class Empleado {
 	private Date fcha_empleado;
 	private double sueldo;
 	
+	
+	public Empleado(String dni, String nombre, String direccion, String email, String telefono, EnumPuestoEmpleados puesto,
+			Date fcha_nacimiento, Date fcha_empleado, double sueldo) {
+		super();
+		this.dni = dni;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.email = email;
+		this.telefono = telefono;
+		this.puesto = puesto;
+		this.fcha_nacimiento = fcha_nacimiento;
+		this.fcha_empleado = fcha_empleado;
+		this.sueldo = sueldo;
+	}
+	
 	public String getDni() {
 		return dni;
 	}

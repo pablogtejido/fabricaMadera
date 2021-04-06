@@ -120,6 +120,43 @@ public class DBManager {
         DBManager.getInstance().deleteObjectFromDB(producto);
     }
 
+    
+    
+    
+    
+    
+
+    public Empleado getUser(String DNI) {
+ 		PersistenceManager pm = pmf.getPersistenceManager();
+ 		Transaction tran = pm.currentTransaction();
+ 		
+ 		Empleado empleado = null;
+ 		try {
+ 			System.out.println("Cogiendo usuario con DNI: " + DNI);
+ 			tran.begin();
+ 			
+ 			Extent<Empleado> extension = pm.getExtent(Empleado.class, true);
+ 			for (Empleado empleadoEXT : extension) {
+ 				if(empleadoEXT.getDni().equals(DNI)) {
+ 					empleado = new Empleado(empleado.getDni(), empleado.getNombre(), empleado.getDireccion(), empleado.getEmail(), 
+ 							empleado.getTelefono(),empleado.getPuesto(), empleado.getFcha_nacimiento(),
+ 							empleado.getFcha_empleado(), empleado.getSueldo());
+ 				}
+ 			}
+ 			
+ 			tran.commit();
+ 		} catch (Exception ex) {
+ 			System.out.println(" Error obteniendo empleado: " + ex.getMessage());
+ 		} finally {
+ 			if (tran != null && tran.isActive()) {
+ 				tran.rollback();
+ 			}
+
+ 			pm.close();
+ 		}
+
+ 		return empleado;
+ 	}
     /**
      * Get empleados de la DB
      * 
