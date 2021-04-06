@@ -20,6 +20,12 @@ public class Empleado {
 	private double sueldo;
 	
 	
+	
+	public Empleado() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Empleado(String dni, String nombre, String direccion, String email, String telefono, EnumPuestoEmpleados puesto,
 			Date fcha_nacimiento, Date fcha_empleado, double sueldo) {
 		super();
