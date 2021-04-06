@@ -60,6 +60,8 @@ public class DBManager {
             pm.close();
         }
     }
+    
+    
 
     public void storeObjectInDB(Object object) {
         PersistenceManager pm = pmf.getPersistenceManager();
