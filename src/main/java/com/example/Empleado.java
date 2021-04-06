@@ -112,4 +112,12 @@ public class Empleado {
 		this.sueldo = sueldo;
 	}
 
+	@Override
+	public String toString() {
+		return "{" + " dni='" + getDni() + "'" + ", nombre='" + getNombre() + "'" + ", direccion='" + getDireccion()
+				+ "'" + ", email='" + getEmail() + "'" + ", telefono='" + getTelefono() + "'" + ", puesto='"
+				+ getPuesto() + "'" + ", fcha_nacimiento='" + getFcha_nacimiento() + "'" + ", fcha_empleado='"
+				+ getFcha_empleado() + "'" + ", sueldo='" + getSueldo() + "'" + "}";
+	}
+
 }

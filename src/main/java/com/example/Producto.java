@@ -8,13 +8,13 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable
+@PersistenceCapable(detachable = "true")
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Producto {
 
 	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
-	private int id;
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
+	private Long id;
 	private double precio;
 	private double peso;
 	private int cantidad;
@@ -70,15 +70,20 @@ public class Producto {
 		this.anyadidos = anyadidos;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return this.id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Producto() {
 		super();
 	}
 
-	public Producto(int id, double precio, double peso, int cantidad, double medida, double grosor, boolean anyadidos) {
+	public Producto(Long id, double precio, double peso, int cantidad, double medida, double grosor,
+			boolean anyadidos) {
 		super();
 		this.id = id;
 		this.precio = precio;
@@ -87,6 +92,13 @@ public class Producto {
 		this.medida = medida;
 		this.grosor = grosor;
 		this.anyadidos = anyadidos;
+	}
+
+	@Override
+	public String toString() {
+		return "{" + " id='" + getId() + "'" + ", precio='" + getPrecio() + "'" + ", peso='" + getPeso() + "'"
+				+ ", cantidad='" + getCantidad() + "'" + ", medida='" + getMedida() + "'" + ", grosor='" + getGrosor()
+				+ "'" + ", anyadidos='" + isAnyadidos() + "'" + "}";
 	}
 
 }
