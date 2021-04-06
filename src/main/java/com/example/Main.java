@@ -16,7 +16,9 @@ public class Main {
     public static final String BASE_URI = "http://localhost:8080/myapp/";
 
     /**
-     * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
+     * Starts Grizzly HTTP server exposing JAX-RS resources defined in this
+     * application.
+     * 
      * @return Grizzly HTTP server.
      */
     public static HttpServer startServer() {
@@ -31,15 +33,29 @@ public class Main {
 
     /**
      * Main method.
+     * 
      * @param args
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        final HttpServer server = startServer();
-        System.out.println(String.format("Jersey app started with WADL available at "
-                + "%sapplication.wadl\nHit enter to stop it...", BASE_URI));
-        System.in.read();
-        server.stop();
+        // Lanzar la ventana si se ejecuta desde el jar normal
+        // Lanzar el servidor si se ejecuta desde la consola
+
+        if (args.length == 1 && args[0].equals("--server")) {
+
+            // Si args esta vacio lanzamos el servidor
+
+            final HttpServer server = startServer();
+            System.out.println(String.format(
+                    "Jersey app started with WADL available at " + "%sapplication.wadl\n Hit enter to stop it...",
+                    BASE_URI));
+            System.in.read();
+            server.stop();
+        } else {
+            // TODO: Crear las ventanas
+        }
+
+        System.out.println(args.length);
+
     }
 }
-
