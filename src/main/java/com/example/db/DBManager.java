@@ -96,4 +96,22 @@ public class DBManager {
         DBManager.getInstance().storeObjectInDB(producto);
     }
 
+    /**
+     * Borrar un empleado de la DB
+     * 
+     * @param empleado
+     */
+    public void delete(Empleado empleado) {
+        DBManager.getInstance().deleteObjectFromDB(empleado);
+    }
+
+    /**
+     * Borrar un producto de la DB
+     * 
+     * @param empleado
+     */
+    public void delete(Producto producto) {
+        DBManager.getInstance().deleteObjectFromDB(producto);
+    }
+
 }
