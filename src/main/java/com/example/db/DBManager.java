@@ -7,6 +7,7 @@ import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
+import javax.jdo.Transaction;
 
 import com.example.Empleado;
 
@@ -36,44 +37,58 @@ public class DBManager {
     }
 
     @GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Empleado> getEmpleados() {
-		
-		PersistenceManager pm = pmf.getPersistenceManager();
-		
-		Query<Empleado> q = pm.newQuery(Empleado.class);
-		q.setOrdering("nombre desc");
-		
-		List<Empleado> empleados = q.executeList();
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Empleado> getEmpleados() {
 
-		pm.close();
-		
-		return empleados;
-	}
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public int diasEnEmpresa(Empleado empleado) {
-		Date fechaActual = new Date();
-		Date inicio = empleado.getFcha_empleado();
-		
-		int dias = (int) ((fechaActual.getTime() - inicio.getTime()) / 86400000);
-		
-		return dias;
-		
-	}
-	public Empleado eliminarEmpleado() {
-		
-		PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-		PersistenceManager pm = pmf.getPersistenceManager();
-		
-		Query<Empleado> q = pm.newQuery(Empleado.class);
-		
-		Empleado empleado = q.executeUnique();
-		pm.deletePersistent(empleado);
-		
-		pm.close();
-		
-		return empleado;
-	}
+        PersistenceManager pm = pmf.getPersistenceManager();
+
+        Query<Empleado> q = pm.newQuery(Empleado.class);
+        q.setOrdering("nombre desc");
+
+        List<Empleado> empleados = q.executeList();
+
+        pm.close();
+
+        return empleados;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public int diasEnEmpresa(Empleado empleado) {
+        Date fechaActual = new Date();
+        Date inicio = empleado.getFcha_empleado();
+
+        int dias = (int) ((fechaActual.getTime() - inicio.getTime()) / 86400000);
+
+        return dias;
+
+    }
+
+    /**
+     * Borra un objeto de la DB
+     * 
+     * @param object
+     */
+    public void deleteObjectFromDB(Object object) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        try {
+            tx.begin();
+            System.out.println(" * Delete an object: " + object);
+
+            pm.deletePersistent(object);
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println(" $ Error deleting an object: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+    }
 }
