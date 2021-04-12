@@ -42,7 +42,7 @@ public class ProductoResource {
 
 	@DELETE
 	@Path("/ids/{productId}") // HTTP DELETE no acepta un cuerpo aunque la MDN dice que si.
-	@Produces(MediaType.TEXT_PLAIN) // Asi que hay que poner una ruta distita para poder difereciarlo del resto.
+	@Produces(MediaType.TEXT_PLAIN) // Asi que hay que poner una ruta distinta para poder difereciarlo del resto.
 	public String eliminarProducto(@PathParam("productId") Long id) {
 		DBManager.getInstance().deleteProductoById(id);
 		return "Done";
