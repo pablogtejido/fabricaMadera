@@ -55,7 +55,7 @@ mvn exec:java "-Dexec.args='--server'"
 cmd/bash
 
 ```bash
-mvn exec:java "-Dexec.args='--server'"
+mvn exec:java -Dexec.args="--server"
 ```
 
 > -Dexec.args='--server' Sirve para poder ejecturar el servidor.
