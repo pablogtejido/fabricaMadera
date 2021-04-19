@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class Login extends JFrame {
 
@@ -54,16 +55,18 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(72, 61, 139));
 		panel.setForeground(new Color(0, 128, 128));
-		panel.setBounds(0, 21, 615, 43);
+		panel.setBounds(0, 0, 615, 57);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("LOGIN");
-		lblNewLabel.setBounds(268, 11, 77, 32);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(0, 11, 615, 32);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(SystemColor.text);
 		panel.add(lblNewLabel);
@@ -83,10 +86,10 @@ public class Login extends JFrame {
 		lblContrasena.setBounds(107, 144, 72, 31);
 		contentPane.add(lblContrasena);
 
-		JButton btnNewButton = new JButton("Iniciar");
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(0, 0, 128));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnlogin = new JButton("Iniciar");
+		btnlogin.setForeground(new Color(255, 255, 255));
+		btnlogin.setBackground(new Color(0, 0, 128));
+		btnlogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DBManager db = new DBManager();
 
@@ -125,7 +128,34 @@ public class Login extends JFrame {
 			}
 		});
 
-		btnNewButton.setBounds(265, 202, 89, 23);
-		contentPane.add(btnNewButton);
+		btnlogin.setBounds(247, 189, 121, 31);
+		contentPane.add(btnlogin);
+		
+		JButton cerrar = new JButton("Cerrar");
+		cerrar.setForeground(Color.WHITE);
+		cerrar.setBackground(new Color(0, 0, 128));
+		cerrar.setBounds(525, 219, 80, 31);
+		contentPane.add(cerrar);
+		cerrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
+		
+		JButton registrarse = new JButton("Registrarse");
+		registrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Registrarse rg = new Registrarse();
+				rg.setVisible(true);
+				setVisible(false);
+			}
+		});
+		registrarse.setForeground(Color.WHITE);
+		registrarse.setBackground(new Color(0, 0, 128));
+		registrarse.setBounds(10, 219, 103, 31);
+		contentPane.add(registrarse);
 	}
 }
