@@ -5,10 +5,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.example.data.Empleado;
-import com.example.data.EmpleadoConectado;
-import com.example.db.DBException;
-import com.example.db.DBManager;
+import com.atenea.data.Empleado;
+import com.atenea.data.EmpleadoConectado;
+import com.atenea.db.DBException;
+import com.atenea.db.DBManager;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

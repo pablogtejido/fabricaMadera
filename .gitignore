@@ -14,3 +14,4 @@ log/
 
 # VSCode cache
 .vscode
+/bin/
