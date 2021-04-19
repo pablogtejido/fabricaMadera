@@ -13,6 +13,7 @@ import javax.jdo.Transaction;
 
 import com.example.Empleado;
 import com.example.EnumPuestoEmpleados;
+import com.example.Factura;
 import com.example.Producto;
 
 public class DBManager {
@@ -120,6 +121,15 @@ public class DBManager {
      */
     public void store(Producto producto) {
         DBManager.getInstance().storeObjectInDB(producto);
+    }
+
+    /**
+     * Guardar un factura en la DB
+     * 
+     * @param factura
+     */
+    public void store(Factura factura) {
+        DBManager.getInstance().storeObjectInDB(factura);
     }
 
     /**

@@ -4,33 +4,40 @@ import java.util.Date;
 import java.util.List;
 
 import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.Inheritance;
+import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+@PersistenceCapable(detachable = "true")
+@Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Factura {
 
     @PrimaryKey
+    @Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
     private long id;
     @ForeignKey
-    private String empleado_dni;
+    private Empleado empleado;
     @ForeignKey
-    private String cliente_dni;
+    private Cliente cliente;
     @ForeignKey
-    private List<Long> id_producto;
-    private float precio;
+    private List<Producto> productos;
+    private Double precio;
     private Date fcha_factura;
 
-    public Factura(long id, String empleado_dni, String cliente_dni, List<Long> id_producto, float precio,
+    public Factura(long id, Empleado empleado, Cliente cliente, List<Producto> productos, Double precio,
             Date fcha_factura) {
         this.id = id;
-        this.empleado_dni = empleado_dni;
-        this.cliente_dni = cliente_dni;
-        this.id_producto = id_producto;
+        this.empleado = empleado;
+        this.cliente = cliente;
+        this.productos = productos;
         this.precio = precio;
         this.fcha_factura = fcha_factura;
     }
 
     public Factura() {
-
     }
 
     public long getId() {
@@ -41,35 +48,35 @@ public class Factura {
         this.id = id;
     }
 
-    public String getEmpleado_dni() {
-        return this.empleado_dni;
+    public Empleado getEmpleado() {
+        return this.empleado;
     }
 
-    public void setEmpleado_dni(String empleado_dni) {
-        this.empleado_dni = empleado_dni;
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 
-    public String getCliente_dni() {
-        return this.cliente_dni;
+    public Cliente getCliente() {
+        return this.cliente;
     }
 
-    public void setCliente_dni(String cliente_dni) {
-        this.cliente_dni = cliente_dni;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public List<Long> getId_producto() {
-        return this.id_producto;
+    public List<Producto> getProducto() {
+        return this.productos;
     }
 
-    public void setId_producto(List<Long> id_producto) {
-        this.id_producto = id_producto;
+    public void setProducto(List<Producto> productos) {
+        this.productos = productos;
     }
 
-    public float getPrecio() {
+    public Double getPrecio() {
         return this.precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
