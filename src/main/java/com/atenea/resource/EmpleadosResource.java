@@ -31,18 +31,18 @@ public class EmpleadosResource {
 		return empleados;
 	}
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public int diasEnEmpresa(Empleado empleado) {
-		// FIXME: Arreglar el error con diferenciación de metodos
-		Date fechaActual = new Date();
-		Date inicio = empleado.getFcha_empleado();
-
-		int dias = (int) ((fechaActual.getTime() - inicio.getTime()) / 86400000);
-
-		return dias;
-
-	}
+	// FIXME: @GET
+	/*
+	 * @Produces(MediaType.APPLICATION_JSON) public int diasEnEmpresa(Empleado
+	 * empleado) { // FIXME: Arreglar el error con diferenciación de metodos Date
+	 * fechaActual = new Date(); Date inicio = empleado.getFcha_empleado();
+	 * 
+	 * int dias = (int) ((fechaActual.getTime() - inicio.getTime()) / 86400000);
+	 * 
+	 * return dias;
+	 * 
+	 * }
+	 */
 
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
