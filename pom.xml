@@ -98,7 +98,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.example.Main</mainClass>
+					<mainClass>com.atene.Main</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -139,7 +139,7 @@
 							</execution>
 						</executions>
 						<configuration>
-							<mainClass>com.example.ClientApp</mainClass>
+							<mainClass>com.atenea.ClientApp</mainClass>
 						</configuration>
 					</plugin>
 				</plugins>
@@ -161,7 +161,7 @@
 							</execution>
 						</executions>
 						<configuration>
-							<mainClass>com.example.util.PrepareData</mainClass>
+							<mainClass>com.atenea.util.PrepareData</mainClass>
 						</configuration>
 					</plugin>
 				</plugins>
