@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.jdo.Extent;
-import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
@@ -19,15 +18,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-
-
-
 public class DBManager {
     private static DBManager instance = null;
     private PersistenceManagerFactory pmf = null;
     private static Connection conn;
-	private final static Logger LOGGER = Logger.getLogger(DBManager.class.getName());
-
+    private final static Logger LOGGER = Logger.getLogger(DBManager.class.getName());
 
     public static DBManager getInstance() {
         if (instance == null) {
@@ -37,48 +32,47 @@ public class DBManager {
         return instance;
     }
 
-	public void connect() throws DBException{
-		 try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String jdbc = "jdbc:mysql://localhost:3306/fabricaMaderaDB";
-			conn = DriverManager.getConnection(jdbc, "spq", "spq");
-			System.out.println("Connection" + conn);
-			LOGGER.info("Se ha conectado a la base de datos");
-		} catch (ClassNotFoundException e) {
-			throw new DBException("No se pudo cargar el driver.", e);
-		} catch (SQLException e) {
-			throw new DBException("No se pudo conectar con la BD.", e);
-		}
-	}
-	
-	public void disconnect() throws DBException{
-		if(conn != null) {
-			try {
-				conn.close();
-				LOGGER.info("Se ha desconectado de la DB");
-			} catch (SQLException e) {
-				throw new DBException("No se ha podido cerrar la conexiï¿½n a ala BD", e);
-			}
-		}
-	}
-	
-	public Empleado getEmpleadoPorEmail(String email) throws DBException{
-		Empleado userEmpleado = null;
-		String sql = "SELECT DNI, NOMBRE, DIRECCION, EMAIL, TELEFONO, PUESTO, FCHA_NACIMIENTO, FCHA_EMPLEADO, SUELDO, CONTRASENA FROM EMPLEADO WHERE EMAIL = ?";
+    public void connect() throws DBException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String jdbc = "jdbc:mysql://localhost:3306/fabricaMaderaDB";
+            conn = DriverManager.getConnection(jdbc, "spq", "spq");
+            System.out.println("Connection" + conn);
+            LOGGER.info("Se ha conectado a la base de datos");
+        } catch (ClassNotFoundException e) {
+            throw new DBException("No se pudo cargar el driver.", e);
+        } catch (SQLException e) {
+            throw new DBException("No se pudo conectar con la BD.", e);
+        }
+    }
 
-		try(PreparedStatement pstmt = conn.prepareStatement(sql)){
-			pstmt.setString(1, email);
+    public void disconnect() throws DBException {
+        if (conn != null) {
+            try {
+                conn.close();
+                LOGGER.info("Se ha desconectado de la DB");
+            } catch (SQLException e) {
+                throw new DBException("No se ha podido cerrar la conexiï¿½n a ala BD", e);
+            }
+        }
+    }
 
-			ResultSet rs = pstmt.executeQuery();
-			userEmpleado = EmpleadoRSH.toUser(rs);
-		} catch (SQLException e) {
+    public Empleado getEmpleadoPorEmail(String email) throws DBException {
+        Empleado userEmpleado = null;
+        String sql = "SELECT DNI, NOMBRE, DIRECCION, EMAIL, TELEFONO, PUESTO, FCHA_NACIMIENTO, FCHA_EMPLEADO, SUELDO, CONTRASENA FROM EMPLEADO WHERE EMAIL = ?";
 
-			throw new DBException("No se ha podido obtener el usuario", e);
-		}
-		LOGGER.info("Se ha obtenido el usuario de la BD");
-		return userEmpleado;
-	}
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, email);
 
+            ResultSet rs = pstmt.executeQuery();
+            userEmpleado = EmpleadoRSH.toUser(rs);
+        } catch (SQLException e) {
+
+            throw new DBException("No se ha podido obtener el usuario", e);
+        }
+        LOGGER.info("Se ha obtenido el usuario de la BD");
+        return userEmpleado;
+    }
 
     /**
      * Borra un objeto de la DB
@@ -188,7 +182,8 @@ public class DBManager {
                 if (empleadoEXT.getDni().equals(DNI)) {
                     empleado = new Empleado(empleado.getDni(), empleado.getNombre(), empleado.getDireccion(),
                             empleado.getEmail(), empleado.getTelefono(), empleado.getPuesto(),
-                            empleado.getFcha_nacimiento(), empleado.getFcha_empleado(), empleado.getSueldo(), empleado.getContrasena());
+                            empleado.getFcha_nacimiento(), empleado.getFcha_empleado(), empleado.getSueldo(),
+                            empleado.getContrasena());
                 }
             }
 
@@ -465,8 +460,8 @@ public class DBManager {
         try {
             System.out.println("* Viendo todos facturas");
             tx.begin();
-            Extent e = pm.getExtent(Factura.class, true);
-            Iterator iter = e.iterator();
+            Extent<Factura> e = pm.getExtent(Factura.class, true);
+            Iterator<Factura> iter = e.iterator();
             while (iter.hasNext()) {
                 Factura f = (Factura) iter.next();
                 // This is just plain dump.
@@ -496,6 +491,76 @@ public class DBManager {
             pm.close();
         }
         return facturas;
+    }
+
+    /**
+     * Actualizar una factura existente
+     * 
+     * @param producto
+     */
+    public void updateFactura(Factura factura) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        try {
+            tx.begin();
+
+            Extent<Factura> e = pm.getExtent(Factura.class, true);
+            Iterator<Factura> iter = e.iterator();
+            while (iter.hasNext()) {
+                Factura factura_a_cambiar = (Factura) iter.next();
+                if (factura_a_cambiar.getId() == factura.getId()) {
+                    System.out.println("* Updating: " + factura_a_cambiar + "\n* To: " + factura);
+                    factura_a_cambiar.setCliente(factura.getCliente());
+                    factura_a_cambiar.setEmpleado(factura.getEmpleado());
+                    factura_a_cambiar.setFcha_factura(factura.getFcha_factura());
+                    factura_a_cambiar.setPrecio(factura.getPrecio());
+                    factura_a_cambiar.setProducto(factura.getProductos());
+                }
+            }
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("$ Error updating: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+    }
+
+    /**
+     * Borrar una factura por su id
+     * 
+     * @param id
+     */
+    public void deleteFacturaById(long id) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            System.out.println("Eliminando factura con id: " + id);
+            tx.begin();
+
+            Extent<Factura> e = pm.getExtent(Factura.class, true);
+            Iterator<Factura> iter = e.iterator();
+            while (iter.hasNext()) {
+                Factura factura = (Factura) iter.next();
+                if (factura.getId() == id) {
+                    pm.deletePersistent(factura);
+                }
+            }
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("Error obteniendo factura: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
     }
 
 }
