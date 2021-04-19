@@ -64,7 +64,7 @@ public class Factura {
         this.cliente = cliente;
     }
 
-    public List<Producto> getProducto() {
+    public List<Producto> getProductos() {
         return this.productos;
     }
 
@@ -86,6 +86,13 @@ public class Factura {
 
     public void setFcha_factura(Date fcha_factura) {
         this.fcha_factura = fcha_factura;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + " id='" + getId() + "'" + ", empleado='" + getEmpleado() + "'" + ", cliente='" + getCliente() + "'"
+                + ", productos='" + getProductos() + "'" + ", precio='" + getPrecio() + "'" + ", fcha_factura='"
+                + getFcha_factura() + "'" + "}";
     }
 
 }

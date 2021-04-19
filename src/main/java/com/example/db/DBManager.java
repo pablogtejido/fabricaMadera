@@ -431,4 +431,47 @@ public class DBManager {
         }
     }
 
+    public List<Factura> getFacturas() {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        List<Factura> facturas = new ArrayList<Factura>();
+
+        try {
+            System.out.println("* Viendo todos facturas");
+            tx.begin();
+            Extent e = pm.getExtent(Factura.class, true);
+            Iterator iter = e.iterator();
+            while (iter.hasNext()) {
+                Factura f = (Factura) iter.next();
+                // This is just plain dump.
+                /*
+                 * Tienes que convertir cada elmento en transistenete. Si no se quedan a null.
+                 * Si no haces un for y utilizas el makeTransientAll() da error. Un poco mas de
+                 * documentación por parte de JDO tampoco vendria mal.
+                 * 
+                 * time_spent = 3H
+                 */
+                pm.makeTransient(f.getCliente());
+                pm.makeTransient(f.getEmpleado());
+                for (Producto p : f.getProductos()) { // Ugh.
+                    pm.makeTransient(p);
+                }
+                pm.makeTransient(f); // 😐
+                facturas.add(f);
+            }
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("$ Error viendo todos facturas: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+        return facturas;
+    }
+
 }
