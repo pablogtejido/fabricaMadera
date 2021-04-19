@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.net.URI;
 
 import com.atenea.gui.Login;
+import com.atenea.resource.EmpleadosResource;
+import com.atenea.resource.FacturaResource;
+import com.atenea.resource.ProductoResource;
 
 import java.awt.EventQueue;
 
@@ -28,7 +31,7 @@ public class Main {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in com.example package
-        final ResourceConfig rc = new ResourceConfig().packages("com.atenea.resource");
+        final ResourceConfig rc = new ResourceConfig().packages(true, "com", "com.atenea", "com.atenea.resource");
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI

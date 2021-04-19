@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.jdo.Extent;
+import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
@@ -32,6 +33,10 @@ public class DBManager {
         }
 
         return instance;
+    }
+
+    private DBManager() {
+        pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     }
 
     public void connect() throws DBException {

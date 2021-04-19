@@ -74,7 +74,7 @@ public class Login extends JFrame {
 		btniniciar.setBackground(new Color(0, 0, 128));
 		btniniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DBManager db = new DBManager();
+				DBManager db = DBManager.getInstance();
 
 				try {
 					db.connect();
