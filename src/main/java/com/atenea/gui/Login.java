@@ -131,7 +131,7 @@ public class Login extends JFrame {
 		JButton registrarse = new JButton("Registrarse");
 		registrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Registrarse rg = new Registrarse();
+				Registro rg = new Registro();
 				rg.setVisible(true);
 				setVisible(false);
 			}

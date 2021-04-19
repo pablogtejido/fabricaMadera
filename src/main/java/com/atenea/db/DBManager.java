@@ -19,6 +19,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Logger;
 
 public class DBManager {
@@ -63,6 +64,7 @@ public class DBManager {
             }
         }
     }
+    
 
     public Empleado getEmpleadoPorEmail(String email) throws DBException {
         Empleado userEmpleado = null;
@@ -80,6 +82,27 @@ public class DBManager {
         LOGGER.info("Se ha obtenido el usuario de la BD");
         return userEmpleado;
     }
+    
+    public Empleado insertEmpleado(Empleado e) throws DBException{
+		String sql = "INSERT INTO EMPLEADO (DNI, NOMBRE, DIRECCION, EMAIL, TELEFONO, CONTRASENA) VALUES (?, ?, ?, ?, ?, ?)";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)){
+			pstmt.setString(1, e.getDni());
+			pstmt.setString(2, e.getNombre());
+			pstmt.setString(3, e.getDireccion());
+			pstmt.setString(4, e.getEmail());
+			pstmt.setString(5, e.getTelefono());
+			pstmt.setString(6, e.getContrasena());
+			pstmt.executeUpdate();
+
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if(rs.next())
+				
+			LOGGER.info("Se ha añadido el usuario: " + e);
+			return e;
+		} catch (SQLException e1) {
+			throw new DBException("No se pudo crear el usuario.", e1);
+		}
+	}
 
     /**
      * Borra un objeto de la DB
