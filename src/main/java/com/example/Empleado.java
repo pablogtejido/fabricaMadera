@@ -20,6 +20,7 @@ public class Empleado {
 	private Date fcha_nacimiento;
 	private Date fcha_empleado;
 	private double sueldo;
+	private String contrasena;
 
 	public Empleado() {
 		super();
@@ -27,7 +28,7 @@ public class Empleado {
 	}
 
 	public Empleado(String dni, String nombre, String direccion, String email, String telefono,
-			EnumPuestoEmpleados puesto, Date fcha_nacimiento, Date fcha_empleado, double sueldo) {
+			EnumPuestoEmpleados puesto, Date fcha_nacimiento, Date fcha_empleado, double sueldo, String contrasena) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
@@ -38,6 +39,7 @@ public class Empleado {
 		this.fcha_nacimiento = fcha_nacimiento;
 		this.fcha_empleado = fcha_empleado;
 		this.sueldo = sueldo;
+		this.contrasena = contrasena;
 	}
 
 	public String getDni() {
@@ -112,12 +114,22 @@ public class Empleado {
 		this.sueldo = sueldo;
 	}
 
-	@Override
-	public String toString() {
-		return "{" + " dni='" + getDni() + "'" + ", nombre='" + getNombre() + "'" + ", direccion='" + getDireccion()
-				+ "'" + ", email='" + getEmail() + "'" + ", telefono='" + getTelefono() + "'" + ", puesto='"
-				+ getPuesto() + "'" + ", fcha_nacimiento='" + getFcha_nacimiento() + "'" + ", fcha_empleado='"
-				+ getFcha_empleado() + "'" + ", sueldo='" + getSueldo() + "'" + "}";
+	public String getContrasena() {
+		return contrasena;
 	}
 
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+	@Override
+	public String toString() {
+		return "Empleado [dni=" + dni + ", nombre=" + nombre + ", direccion=" + direccion + ", email=" + email
+				+ ", telefono=" + telefono + ", puesto=" + puesto + ", fcha_nacimiento=" + fcha_nacimiento
+				+ ", fcha_empleado=" + fcha_empleado + ", sueldo=" + sueldo + ", contrasena=" + contrasena + "]";
+	}
+
+
+
 }
+

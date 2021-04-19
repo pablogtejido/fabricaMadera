@@ -34,7 +34,7 @@ public class DBManager {
     }
 
     private void initializeData() {
-        // TODO: Inicializar los datos
+ /*       // TODO: Inicializar los datos
         // new Date(anyo, mes, dia)
         // Anyo de la fecha 1900 + int = anyo que queremos
         Empleado empleado1 = new Empleado("78432155O", "Paco Lopez", "Calle Ave del Paraiso, 13, 4Izq",
@@ -53,7 +53,7 @@ public class DBManager {
                 new Date(120, 03, 01), 4300);
         Empleado empleado6 = new Empleado("24586533T", "Francisco Perez", "Calle Gran Via, 88, 6Drcha",
                 "franperez@abogados.com", "717654313", EnumPuestoEmpleados.LEGAL, new Date(62, 12, 12),
-                new Date(120, 03, 01), 4300);
+                new Date(120, 03, 01), 4300);*/
     }
 
     /**
@@ -164,7 +164,7 @@ public class DBManager {
                 if (empleadoEXT.getDni().equals(DNI)) {
                     empleado = new Empleado(empleado.getDni(), empleado.getNombre(), empleado.getDireccion(),
                             empleado.getEmail(), empleado.getTelefono(), empleado.getPuesto(),
-                            empleado.getFcha_nacimiento(), empleado.getFcha_empleado(), empleado.getSueldo());
+                            empleado.getFcha_nacimiento(), empleado.getFcha_empleado(), empleado.getSueldo(), empleado.getContrasena());
                 }
             }
 
