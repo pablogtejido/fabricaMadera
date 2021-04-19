@@ -98,7 +98,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>com.atene.Main</mainClass>
+					<mainClass>com.atenea.Main</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
