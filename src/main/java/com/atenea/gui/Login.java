@@ -39,6 +39,7 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(72, 61, 139));
@@ -47,11 +48,11 @@ public class Login extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("LOGIN");
-		lblNewLabel.setBounds(268, 11, 77, 32);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(SystemColor.text);
-		panel.add(lblNewLabel);
+		JLabel login = new JLabel("LOGIN");
+		login.setBounds(268, 11, 77, 32);
+		login.setHorizontalAlignment(SwingConstants.CENTER);
+		login.setForeground(SystemColor.text);
+		panel.add(login);
 
 		JLabel lblEmpleado = new JLabel("Email empleado:");
 		lblEmpleado.setBounds(107, 107, 103, 14);
@@ -68,10 +69,10 @@ public class Login extends JFrame {
 		lblContrasena.setBounds(107, 144, 72, 31);
 		contentPane.add(lblContrasena);
 
-		JButton btnNewButton = new JButton("Iniciar");
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(0, 0, 128));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btniniciar = new JButton("Iniciar");
+		btniniciar.setForeground(new Color(255, 255, 255));
+		btniniciar.setBackground(new Color(0, 0, 128));
+		btniniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DBManager db = new DBManager();
 
@@ -110,7 +111,34 @@ public class Login extends JFrame {
 			}
 		});
 
-		btnNewButton.setBounds(265, 202, 89, 23);
-		contentPane.add(btnNewButton);
+		btniniciar.setBounds(265, 202, 89, 23);
+		contentPane.add(btniniciar);
+
+		JButton cerrar = new JButton("Cerrar");
+		cerrar.setForeground(Color.WHITE);
+		cerrar.setBackground(new Color(0, 0, 128));
+		cerrar.setBounds(525, 219, 80, 31);
+		contentPane.add(cerrar);
+		cerrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
+
+		JButton registrarse = new JButton("Registrarse");
+		registrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Registrarse rg = new Registrarse();
+				rg.setVisible(true);
+				setVisible(false);
+			}
+		});
+		registrarse.setForeground(Color.WHITE);
+		registrarse.setBackground(new Color(0, 0, 128));
+		registrarse.setBounds(10, 219, 103, 31);
+		contentPane.add(registrarse);
 	}
 }
