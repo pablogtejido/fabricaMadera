@@ -1,10 +1,13 @@
-package com.example;
+package com.example.gui;
 
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.example.Empleado;
+import com.example.EmpleadoConectado;
 import com.example.db.DBException;
 import com.example.db.DBManager;
 import java.awt.SystemColor;
