@@ -1,4 +1,4 @@
-package com.example.resource;
+package com.atenea.resource;
 
 import java.util.Date;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
-import com.example.data.Empleado;
-import com.example.db.DBManager;
+import com.atenea.data.Empleado;
+import com.atenea.db.DBManager;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;

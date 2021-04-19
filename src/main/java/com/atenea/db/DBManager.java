@@ -1,4 +1,4 @@
-package com.example.db;
+package com.atenea.db;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,10 +8,10 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
-import com.example.data.Empleado;
-import com.example.data.EmpleadoRSH;
-import com.example.data.Factura;
-import com.example.data.Producto;
+import com.atenea.data.Empleado;
+import com.atenea.data.EmpleadoRSH;
+import com.atenea.data.Factura;
+import com.atenea.data.Producto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

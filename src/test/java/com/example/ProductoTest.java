@@ -7,7 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import com.example.data.Producto;
+import com.atenea.data.Producto;
 
 public class ProductoTest {
 

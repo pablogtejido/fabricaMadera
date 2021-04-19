@@ -1,4 +1,4 @@
-package com.example;
+package com.atenea;
 
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
@@ -7,7 +7,8 @@ import org.glassfish.jersey.server.ResourceConfig;
 import java.io.IOException;
 import java.net.URI;
 
-import com.example.gui.Login;
+import com.atenea.gui.Login;
+
 import java.awt.EventQueue;
 
 /**

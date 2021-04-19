@@ -1,9 +1,9 @@
-package com.example.resource;
+package com.atenea.resource;
 
 import java.util.List;
 
-import com.example.data.Producto;
-import com.example.db.DBManager;
+import com.atenea.data.Producto;
+import com.atenea.db.DBManager;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
