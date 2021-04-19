@@ -46,4 +46,10 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
+	@Override
+	public String toString() {
+		return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + "]";
+	}
+
+
 }
