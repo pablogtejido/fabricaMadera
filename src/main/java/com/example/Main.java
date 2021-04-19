@@ -7,6 +7,9 @@ import org.glassfish.jersey.server.ResourceConfig;
 import java.io.IOException;
 import java.net.URI;
 
+import com.example.gui.Login;
+import java.awt.EventQueue;
+
 /**
  * Main class.
  *
@@ -53,7 +56,16 @@ public class Main {
             System.in.read();
             server.shutdownNow();
         } else {
-            // TODO: Crear las ventanas
+            EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    try {
+                        Login frame = new Login();
+                        frame.setVisible(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
 }
