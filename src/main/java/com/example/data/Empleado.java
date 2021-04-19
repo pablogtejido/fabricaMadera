@@ -1,4 +1,4 @@
-package com.example;
+package com.example.data;
 
 import java.util.Date;
 import javax.jdo.annotations.Inheritance;
@@ -129,7 +129,4 @@ public class Empleado {
 				+ ", fcha_empleado=" + fcha_empleado + ", sueldo=" + sueldo + ", contrasena=" + contrasena + "]";
 	}
 
-
-
 }
-

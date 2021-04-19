@@ -8,7 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
-import com.example.Empleado;
+import com.example.data.Empleado;
 import com.example.db.DBManager;
 
 import jakarta.ws.rs.Consumes;

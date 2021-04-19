@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.example.Factura;
+import com.example.data.Factura;
 import com.example.db.DBManager;
 
 import jakarta.ws.rs.Consumes;

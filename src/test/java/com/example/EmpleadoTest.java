@@ -4,9 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.example.Empleado;
-
 import java.util.Date;
+
+import com.example.data.Empleado;
+import com.example.data.EnumPuestoEmpleados;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,22 +17,22 @@ import org.junit.BeforeClass;
 import static org.junit.Assert.*;
 
 public class EmpleadoTest {
-    
+
     public EmpleadoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -46,7 +48,7 @@ public class EmpleadoTest {
         String expResult = "";
         String result = instance.getDni();
         assertEquals(expResult, result);
-       
+
     }
 
     /**
@@ -58,10 +60,8 @@ public class EmpleadoTest {
         String dni = "";
         Empleado instance = new Empleado();
         instance.setDni(dni);
-       
-    }
-    
 
+    }
 
     /**
      * Test of getNombre method, of class Empleado.
@@ -74,7 +74,7 @@ public class EmpleadoTest {
         String expResult = "";
         String result = instance.getNombre();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -86,7 +86,7 @@ public class EmpleadoTest {
         String nombre = "";
         Empleado instance = new Empleado();
         instance.setNombre(nombre);
-        
+
     }
 
     /**
@@ -100,7 +100,7 @@ public class EmpleadoTest {
         String expResult = "";
         String result = instance.getDireccion();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -112,7 +112,7 @@ public class EmpleadoTest {
         String direccion = "";
         Empleado instance = new Empleado();
         instance.setDireccion(direccion);
-        
+
     }
 
     /**
@@ -126,7 +126,7 @@ public class EmpleadoTest {
         String expResult = "";
         String result = instance.getEmail();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -138,7 +138,7 @@ public class EmpleadoTest {
         String email = "";
         Empleado instance = new Empleado();
         instance.setEmail(email);
-        
+
     }
 
     /**
@@ -165,7 +165,7 @@ public class EmpleadoTest {
         Empleado instance = new Empleado();
         instance.setTelefono(telefono);
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        // fail("The test case is a prototype.");
     }
 
     /**
@@ -179,7 +179,7 @@ public class EmpleadoTest {
         EnumPuestoEmpleados expResult = EnumPuestoEmpleados.LEGAL;
         EnumPuestoEmpleados result = instance.getPuesto();
         assertEquals(expResult, result);
-       
+
     }
 
     /**
@@ -191,7 +191,7 @@ public class EmpleadoTest {
         EnumPuestoEmpleados puesto = null;
         Empleado instance = new Empleado();
         instance.setPuesto(puesto);
-        
+
     }
 
     /**
@@ -204,7 +204,7 @@ public class EmpleadoTest {
         Date expResult = null;
         Date result = instance.getFcha_nacimiento();
         assertEquals(expResult, result);
-  
+
     }
 
     /**
@@ -216,7 +216,7 @@ public class EmpleadoTest {
         Date fcha_nacimiento = null;
         Empleado instance = new Empleado();
         instance.setFcha_nacimiento(fcha_nacimiento);
-       
+
     }
 
     /**
@@ -229,7 +229,7 @@ public class EmpleadoTest {
         Date expResult = null;
         Date result = instance.getFcha_empleado();
         assertEquals(expResult, result);
-       
+
     }
 
     /**
@@ -241,7 +241,7 @@ public class EmpleadoTest {
         Date fcha_empleado = null;
         Empleado instance = new Empleado();
         instance.setFcha_empleado(fcha_empleado);
-        
+
     }
 
     /**
@@ -255,7 +255,7 @@ public class EmpleadoTest {
         double expResult = 0.0;
         double result = instance.getSueldo();
         assertEquals(expResult, result, 0.0);
-   
+
     }
 
     /**
@@ -267,7 +267,7 @@ public class EmpleadoTest {
         double sueldo = 0.0;
         Empleado instance = new Empleado();
         instance.setSueldo(sueldo);
-  
+
     }
-    
+
 }

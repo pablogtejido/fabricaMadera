@@ -1,6 +1,5 @@
 package com.example.util;
 
-
 import java.util.Date;
 
 import javax.jdo.JDOHelper;
@@ -8,8 +7,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
-import com.example.Empleado;
-import com.example.EnumPuestoEmpleados;
+import com.example.data.Empleado;
+import com.example.data.EnumPuestoEmpleados;
 
 public class PrepareData {
 
@@ -21,26 +20,29 @@ public class PrepareData {
 		try {
 			tx.begin();
 			Empleado empleado1 = new Empleado("68432155O", "Paco Lopez", "Calle Ave del Paraiso, 13, 4Izq",
-	                "pacolopez@gmail.com", "654321789", EnumPuestoEmpleados.OPERARIO,  new Date("12/04/1990 15:30:35"),  new Date("08/07/2020 00:00:00"), 1200.50, "1234");
+					"pacolopez@gmail.com", "654321789", EnumPuestoEmpleados.OPERARIO, new Date("12/04/1990 15:30:35"),
+					new Date("08/07/2020 00:00:00"), 1200.50, "1234");
 			pm.makePersistent(empleado1);
-			
-	        Empleado empleado2 = new Empleado("35661232P", "Aitor Ruiz Garcia", "Calle Zorroza, 11, 1B",
-	                "aitoruiz@gmail.com", "621852478", EnumPuestoEmpleados.DIRECTIVA, new Date("10/01/1970 01:09:07"),  new Date("30/06/2000 18:00:35"),  4300, "1234");
-	        pm.makePersistent(empleado2);
-	        
-	        Empleado empleado3 = new Empleado("22396365I", "Pablo Gonzalez Tejido", "Calle Leioa, 42, 3B",
-	                "pablogtejido@gmail.com", "753123258", EnumPuestoEmpleados.DIRECTIVA,new Date("25/12/1983 08:56:21"),  new Date("27/02/2005 11:12:45"),   4300, "1234");
-	        pm.makePersistent(empleado3);
-	        
-	        Empleado empleado4 = new Empleado("42134567U", "Koldo Moya", "Calle Sestao, 2, 1B", "koldo.moya@gmail.com",
-	                "673258014", EnumPuestoEmpleados.DIRECTIVA,new Date("27/10/1974 05:04:00"),  new Date("29/01/2007 12:00:00"),   4300, "1234");
-	        pm.makePersistent(empleado4);
-	        
-	        Empleado empleado5 = new Empleado("75420903Y", "Nerea Diez Landin", "Calle Portu, 57, 2B",
-	                "nereadiez@gmail.com", "658007220", EnumPuestoEmpleados.DIRECTIVA, new Date("14/05/1988 19:27:31"),  new Date("11/09/2012 10:14:11"),  4300, "1234");
-	        pm.makePersistent(empleado5);
-	        
-	    
+
+			Empleado empleado2 = new Empleado("35661232P", "Aitor Ruiz Garcia", "Calle Zorroza, 11, 1B",
+					"aitoruiz@gmail.com", "621852478", EnumPuestoEmpleados.DIRECTIVA, new Date("10/01/1970 01:09:07"),
+					new Date("30/06/2000 18:00:35"), 4300, "1234");
+			pm.makePersistent(empleado2);
+
+			Empleado empleado3 = new Empleado("22396365I", "Pablo Gonzalez Tejido", "Calle Leioa, 42, 3B",
+					"pablogtejido@gmail.com", "753123258", EnumPuestoEmpleados.DIRECTIVA,
+					new Date("25/12/1983 08:56:21"), new Date("27/02/2005 11:12:45"), 4300, "1234");
+			pm.makePersistent(empleado3);
+
+			Empleado empleado4 = new Empleado("42134567U", "Koldo Moya", "Calle Sestao, 2, 1B", "koldo.moya@gmail.com",
+					"673258014", EnumPuestoEmpleados.DIRECTIVA, new Date("27/10/1974 05:04:00"),
+					new Date("29/01/2007 12:00:00"), 4300, "1234");
+			pm.makePersistent(empleado4);
+
+			Empleado empleado5 = new Empleado("75420903Y", "Nerea Diez Landin", "Calle Portu, 57, 2B",
+					"nereadiez@gmail.com", "658007220", EnumPuestoEmpleados.DIRECTIVA, new Date("14/05/1988 19:27:31"),
+					new Date("11/09/2012 10:14:11"), 4300, "1234");
+			pm.makePersistent(empleado5);
 
 			tx.commit();
 		} finally {

@@ -7,24 +7,25 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import com.example.data.Producto;
 
 public class ProductoTest {
-    
+
     public ProductoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -40,7 +41,7 @@ public class ProductoTest {
         double expResult = 0.0;
         double result = instance.getPrecio();
         assertEquals(expResult, result, 0.0);
-       
+
     }
 
     /**
@@ -52,7 +53,7 @@ public class ProductoTest {
         double precio = 0.0;
         Producto instance = new Producto();
         instance.setPrecio(precio);
-      
+
     }
 
     /**
@@ -66,7 +67,7 @@ public class ProductoTest {
         double expResult = 0.0;
         double result = instance.getPeso();
         assertEquals(expResult, result, 0.0);
-        
+
     }
 
     /**
@@ -78,7 +79,7 @@ public class ProductoTest {
         double peso = 0.0;
         Producto instance = new Producto();
         instance.setPeso(peso);
-        
+
     }
 
     /**
@@ -92,7 +93,7 @@ public class ProductoTest {
         int expResult = 0;
         int result = instance.getCantidad();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -104,7 +105,7 @@ public class ProductoTest {
         int cantidad = 0;
         Producto instance = new Producto();
         instance.setCantidad(cantidad);
-        
+
     }
 
     /**
@@ -118,7 +119,7 @@ public class ProductoTest {
         double expResult = 0.0;
         double result = instance.getMedida();
         assertEquals(expResult, result, 0.0);
-        
+
     }
 
     /**
@@ -130,7 +131,7 @@ public class ProductoTest {
         double medida = 0.0;
         Producto instance = new Producto();
         instance.setMedida(medida);
-        
+
     }
 
     /**
@@ -143,7 +144,7 @@ public class ProductoTest {
         double expResult = 0.0;
         double result = instance.getGrosor();
         assertEquals(expResult, result, 0.0);
-        
+
     }
 
     /**
@@ -155,7 +156,7 @@ public class ProductoTest {
         double grosor = 0.0;
         Producto instance = new Producto();
         instance.setGrosor(grosor);
-        
+
     }
 
     /**
@@ -169,7 +170,7 @@ public class ProductoTest {
         boolean expResult = false;
         boolean result = instance.isAnyadidos();
         assertEquals(expResult, result);
-        
+
     }
 
     /**
@@ -181,8 +182,7 @@ public class ProductoTest {
         boolean anyadidos = false;
         Producto instance = new Producto();
         instance.setAnyadidos(anyadidos);
-        
-    }
-    
-}
 
+    }
+
+}

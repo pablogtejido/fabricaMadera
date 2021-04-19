@@ -1,4 +1,4 @@
-package com.example;
+package com.example.data;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
@@ -46,10 +46,9 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
-	@Override
-	public String toString() {
-		return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + "]";
-	}
-
+    @Override
+    public String toString() {
+        return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + "]";
+    }
 
 }

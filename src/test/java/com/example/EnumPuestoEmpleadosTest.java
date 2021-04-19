@@ -7,24 +7,25 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import com.example.data.EnumPuestoEmpleados;
 
 public class EnumPuestoEmpleadosTest {
-    
+
     public EnumPuestoEmpleadosTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -35,10 +36,11 @@ public class EnumPuestoEmpleadosTest {
     @Test
     public void testValues() {
         System.out.println("values");
-        EnumPuestoEmpleados[] expResult = {EnumPuestoEmpleados.DIRECTIVA, EnumPuestoEmpleados.LEGAL, EnumPuestoEmpleados.OPERARIO};
+        EnumPuestoEmpleados[] expResult = { EnumPuestoEmpleados.DIRECTIVA, EnumPuestoEmpleados.LEGAL,
+                EnumPuestoEmpleados.OPERARIO };
         EnumPuestoEmpleados[] result = EnumPuestoEmpleados.values();
         assertArrayEquals(expResult, result);
-        
+
     }
 
     /**
@@ -51,7 +53,7 @@ public class EnumPuestoEmpleadosTest {
         EnumPuestoEmpleados expResult = EnumPuestoEmpleados.LEGAL;
         EnumPuestoEmpleados result = EnumPuestoEmpleados.valueOf(name);
         assertEquals(expResult, result);
-        
+
     }
-    
+
 }

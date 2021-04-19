@@ -7,10 +7,12 @@ import javax.jdo.Extent;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
-import com.example.Empleado;
-import com.example.EmpleadoRSH;
-import com.example.Factura;
-import com.example.Producto;
+
+import com.example.data.Empleado;
+import com.example.data.EmpleadoRSH;
+import com.example.data.Factura;
+import com.example.data.Producto;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

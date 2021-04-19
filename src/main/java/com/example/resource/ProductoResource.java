@@ -2,7 +2,7 @@ package com.example.resource;
 
 import java.util.List;
 
-import com.example.Producto;
+import com.example.data.Producto;
 import com.example.db.DBManager;
 
 import jakarta.ws.rs.Consumes;

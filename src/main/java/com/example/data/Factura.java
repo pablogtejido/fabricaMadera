@@ -1,4 +1,4 @@
-package com.example;
+package com.example.data;
 
 import java.util.Date;
 import java.util.List;
