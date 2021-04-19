@@ -1,28 +1,33 @@
 package com.example.db;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
-
 import com.example.Empleado;
-import com.example.EnumPuestoEmpleados;
+import com.example.EmpleadoRSH;
 import com.example.Factura;
 import com.example.Producto;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
+
+
 
 public class DBManager {
     private static DBManager instance = null;
     private PersistenceManagerFactory pmf = null;
+    private static Connection conn;
+	private final static Logger LOGGER = Logger.getLogger(DBManager.class.getName());
 
-    private DBManager() {
-        pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
-    }
 
     public static DBManager getInstance() {
         if (instance == null) {
@@ -31,6 +36,48 @@ public class DBManager {
 
         return instance;
     }
+
+	public void connect() throws DBException{
+		 try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String jdbc = "jdbc:mysql://localhost:3306/fabricaMaderaDB";
+			conn = DriverManager.getConnection(jdbc, "spq", "spq");
+			System.out.println("Connection" + conn);
+			LOGGER.info("Se ha conectado a la base de datos");
+		} catch (ClassNotFoundException e) {
+			throw new DBException("No se pudo cargar el driver.", e);
+		} catch (SQLException e) {
+			throw new DBException("No se pudo conectar con la BD.", e);
+		}
+	}
+	
+	public void disconnect() throws DBException{
+		if(conn != null) {
+			try {
+				conn.close();
+				LOGGER.info("Se ha desconectado de la DB");
+			} catch (SQLException e) {
+				throw new DBException("No se ha podido cerrar la conexiï¿½n a ala BD", e);
+			}
+		}
+	}
+	
+	public Empleado getEmpleadoPorEmail(String email) throws DBException{
+		Empleado userEmpleado = null;
+		String sql = "SELECT DNI, NOMBRE, DIRECCION, EMAIL, TELEFONO, PUESTO, FCHA_NACIMIENTO, FCHA_EMPLEADO, SUELDO, CONTRASENA FROM EMPLEADO WHERE EMAIL = ?";
+
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)){
+			pstmt.setString(1, email);
+
+			ResultSet rs = pstmt.executeQuery();
+			userEmpleado = EmpleadoRSH.toUser(rs);
+		} catch (SQLException e) {
+
+			throw new DBException("No se ha podido obtener el usuario", e);
+		}
+		LOGGER.info("Se ha obtenido el usuario de la BD");
+		return userEmpleado;
+	}
 
 
     /**
