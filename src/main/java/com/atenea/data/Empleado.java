@@ -129,4 +129,6 @@ public class Empleado {
 				+ ", fcha_empleado=" + fcha_empleado + ", sueldo=" + sueldo + ", contrasena=" + contrasena + "]";
 	}
 
+	
+
 }
