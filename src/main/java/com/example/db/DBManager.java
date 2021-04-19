@@ -27,34 +27,11 @@ public class DBManager {
     public static DBManager getInstance() {
         if (instance == null) {
             instance = new DBManager();
-            instance.initializeData();
         }
 
         return instance;
     }
 
-    private void initializeData() {
- /*       // TODO: Inicializar los datos
-        // new Date(anyo, mes, dia)
-        // Anyo de la fecha 1900 + int = anyo que queremos
-        Empleado empleado1 = new Empleado("78432155O", "Paco Lopez", "Calle Ave del Paraiso, 13, 4Izq",
-                "pacolopez@gmail.com", "654321789", EnumPuestoEmpleados.OPERARIO, new Date(98, 11, 13),
-                new Date(121, 04, 06), 1200.50);
-        Empleado empleado2 = new Empleado("45661232P", "Aitor Ruiz Garcia", "Calle Zorroza, 11, 1B",
-                "aitoruiz@gmail.com", "621852478", EnumPuestoEmpleados.DIRECTIVA, new Date(100, 8, 13),
-                new Date(120, 03, 01), 4300);
-        Empleado empleado3 = new Empleado("12396365I", "Pablo Gonzalez Tejido", "Calle Leioa, 42, 3B",
-                "pablogtejido@gmail.com", "753123258", EnumPuestoEmpleados.DIRECTIVA, new Date(100, 10, 15),
-                new Date(120, 03, 01), 4300);
-        Empleado empleado4 = new Empleado("52134567U", "Koldo Moya", "Calle Sestao, 2, 1B", "koldo.moya@gmail.com",
-                "673258014", EnumPuestoEmpleados.DIRECTIVA, new Date(100, 12, 13), new Date(120, 03, 01), 4300);
-        Empleado empleado5 = new Empleado("85420903Y", "Nerea Diez Landin", "Calle Portu, 57, 2B",
-                "nereadiez@gmail.com", "658007220", EnumPuestoEmpleados.DIRECTIVA, new Date(100, 7, 10),
-                new Date(120, 03, 01), 4300);
-        Empleado empleado6 = new Empleado("24586533T", "Francisco Perez", "Calle Gran Via, 88, 6Drcha",
-                "franperez@abogados.com", "717654313", EnumPuestoEmpleados.LEGAL, new Date(62, 12, 12),
-                new Date(120, 03, 01), 4300);*/
-    }
 
     /**
      * Borra un objeto de la DB
