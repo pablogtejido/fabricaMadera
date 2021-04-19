@@ -1,4 +1,4 @@
-package com.example.data;
+package com.atenea.data;
 
 public enum EnumPuestoEmpleados {
 

@@ -11,3 +11,6 @@ nbactions.xml
 
 # Log de log4j
 log/
+
+# VSCode cache
+.vscode

@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import java.util.Date;
 
-import com.example.data.Empleado;
-import com.example.data.EnumPuestoEmpleados;
+import com.atenea.data.Empleado;
+import com.atenea.data.EnumPuestoEmpleados;
 
 import org.junit.After;
 import org.junit.AfterClass;

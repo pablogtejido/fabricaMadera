@@ -1,11 +1,11 @@
-package com.example.resource;
+package com.atenea.resource;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.example.data.Factura;
-import com.example.db.DBManager;
+import com.atenea.data.Factura;
+import com.atenea.db.DBManager;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;

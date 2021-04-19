@@ -1,4 +1,4 @@
-package com.example.util;
+package com.atenea.util;
 
 import java.util.Date;
 
@@ -7,8 +7,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
-import com.example.data.Empleado;
-import com.example.data.EnumPuestoEmpleados;
+import com.atenea.data.Empleado;
+import com.atenea.data.EnumPuestoEmpleados;
 
 public class PrepareData {
 
