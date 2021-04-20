@@ -21,8 +21,16 @@ Las credenciales son:
 
 > spq
 
-### Crear esquema
+### Compilar
+```
+mvn compile
+```
 
+
+### Crear esquema
+```
+mvn datanucleus:schema-create
+```
 Seguir el fichero [dataBase.sql](https://github.com/pablogtejido/fabricaMadera/blob/master/src/main/resources/dataBase.sql).
 
 Para la primera creacion no serán necesarias las primeras dos lineas. Siendo solamente necesarias ejecutar:
@@ -34,6 +42,16 @@ CREATE SCHEMA fabricaMaderaDB;
 CREATE USER 'usuario'@'%' IDENTIFIED BY 'usuario';
 /* GRANT FULL ACCESS TO THE DATABASE FOR THE USER 'products_user1' AT LOCAL SERVER*/
 GRANT ALL ON fabricaMaderaDB.* TO 'usuario'@'%';
+```
+
+### Eliminar esquema
+```
+mvn datanucleus:schema-delete
+```
+
+### Lanzamiento profile
+```
+mvn exec:java 
 ```
 
 ### Verificar el proyecto

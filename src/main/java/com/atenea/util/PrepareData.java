@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.EnumPuestoEmpleados;
 
@@ -43,6 +44,28 @@ public class PrepareData {
 					"nereadiez@gmail.com", "658007220", EnumPuestoEmpleados.DIRECTIVA, new Date("14/05/1988 19:27:31"),
 					new Date("11/09/2012 10:14:11"), 4300, "1234");
 			pm.makePersistent(empleado5);
+			
+			
+			
+			Cliente cliente1 = new Cliente("58441139A", "Juan", "Lopez");
+			pm.makePersistent(cliente1);
+			
+
+			Cliente cliente2 = new Cliente("36957841K", "Silvia", "Montejo");
+			pm.makePersistent(cliente2);
+			
+
+			Cliente cliente3 = new Cliente("79845211T", "Luis", "Alonso");
+			pm.makePersistent(cliente3);
+			
+			
+			Cliente cliente4 = new Cliente("66558842G", "Silvia", "Montejo");
+			pm.makePersistent(cliente4);
+			
+
+			Cliente cliente5= new Cliente("45548696P", "Luis", "Alonso");
+			pm.makePersistent(cliente5);
+			
 
 			tx.commit();
 		} finally {
