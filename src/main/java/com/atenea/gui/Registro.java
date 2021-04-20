@@ -19,9 +19,9 @@ import com.atenea.db.DBManager;
 
 
 import javax.swing.JPasswordField;
-import com.toedter.calendar.JDayChooser;
-import com.toedter.calendar.JDateChooser;
+
 import java.awt.Label;
+import com.toedter.calendar.JDateChooser;
 
 public class Registro extends JFrame{
 	private static final String EnumPuestoEmpleados = null;
@@ -212,6 +212,14 @@ public class Registro extends JFrame{
 		JDateChooser dateChooser_1 = new JDateChooser();
 		dateChooser_1.setBounds(268, 398, 162, 20);
 		getContentPane().add(dateChooser_1);
+		
+		JDateChooser dateChooserFechaNac = new JDateChooser();
+		dateChooserFechaNac.setBounds(267, 362, 163, 20);
+		getContentPane().add(dateChooserFechaNac);
+		
+		JDateChooser dateChooserFechaEmpleado = new JDateChooser();
+		dateChooserFechaEmpleado.setBounds(267, 404, 163, 20);
+		getContentPane().add(dateChooserFechaEmpleado);
 		volver.addActionListener(new ActionListener() {
 
 			@Override
@@ -253,8 +261,5 @@ public class Registro extends JFrame{
 				}
 			}
 
-			private Object typeof(String enumpuestoempleados2) {
-				// TODO Auto-generated method stub
-				return null;
-			}
+		
 }
