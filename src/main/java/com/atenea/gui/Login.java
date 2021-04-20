@@ -1,15 +1,12 @@
 package com.atenea.gui;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import com.atenea.data.Empleado;
 import com.atenea.data.EmpleadoConectado;
 import com.atenea.db.DBException;
 import com.atenea.db.DBManager;
-
 import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,6 +30,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		this.setTitle("Iniciar sesión");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 631, 300);
 		contentPane = new JPanel();
@@ -123,7 +121,6 @@ public class Login extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				System.exit(0);
 			}
 		});

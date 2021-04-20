@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
 import com.atenea.data.Empleado;
 import com.atenea.db.DBException;
 import java.awt.Font;
@@ -16,6 +15,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.atenea.db.DBManager;
+
+
 import javax.swing.JPasswordField;
 
 public class Registro extends JFrame{
@@ -26,7 +27,7 @@ public class Registro extends JFrame{
 	private JTextField textFieldDni;
 	private JTextField textFieldNombre;
 	private JTextField textFieldEmail;
-	private JTextField textFieldContrasena;
+	private JPasswordField textFieldContrasena;
 
 
 	/**
@@ -56,6 +57,7 @@ public class Registro extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		this.setTitle("Registro");
 		setBounds(100, 100, 610, 679);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -80,16 +82,18 @@ public class Registro extends JFrame{
 				
 				try {
 					
-					addUserEmpleado();
-
-					JOptionPane.showMessageDialog(null, "Usuario creado");
+					addUserEmpleado();		
+								
+					Login log = new Login();
+					log.setVisible(true);
+					setVisible(false);
 					
-									
+					
 				} catch (DBException e1) {
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Ya existe un usuario con este email");
+					JOptionPane.showMessageDialog(null, "Ya existe un empleado con este DNI");
 				}
-			
+				
 			}
 
 		
@@ -108,7 +112,6 @@ public class Registro extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				System.exit(0);
 			}
 		});
@@ -120,15 +123,15 @@ public class Registro extends JFrame{
 		getContentPane().add(volver);
 		
 		JLabel lblPuesto = new JLabel("Puesto:");
-		lblPuesto.setBounds(10, 370, 46, 14);
+		lblPuesto.setBounds(10, 280, 46, 14);
 		getContentPane().add(lblPuesto);
 		
 		JLabel lblContrasena = new JLabel("Contraseña:");
-		lblContrasena.setBounds(10, 313, 63, 14);
+		lblContrasena.setBounds(10, 249, 80, 14);
 		getContentPane().add(lblContrasena);
 		
 		JLabel lblDni = new JLabel("Dni:");
-		lblDni.setBounds(10, 87, 46, 14);
+		lblDni.setBounds(10, 90, 46, 14);
 		getContentPane().add(lblDni);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -137,53 +140,52 @@ public class Registro extends JFrame{
 		getContentPane().add(lblNombre);
 		
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(10, 259, 46, 14);
+		lblEmail.setBounds(10, 218, 46, 14);
 		getContentPane().add(lblEmail);
 		
 		textFieldPu = new JTextField();
-		textFieldPu.setBounds(83, 367, 164, 20);
+		textFieldPu.setBounds(94, 277, 164, 20);
 		getContentPane().add(textFieldPu);
 		textFieldPu.setColumns(10);
 		
 		JLabel lblDireccion = new JLabel("Direccion:");
 		lblDireccion.setHorizontalAlignment(SwingConstants.LEFT);
-		lblDireccion.setBounds(10, 172, 63, 14);
+		lblDireccion.setBounds(10, 155, 63, 14);
 		getContentPane().add(lblDireccion);
 		
 		textFieldDireccion = new JTextField();
-		textFieldDireccion.setBounds(83, 169, 164, 20);
+		textFieldDireccion.setBounds(94, 152, 164, 20);
 		getContentPane().add(textFieldDireccion);
 		textFieldDireccion.setColumns(10);
 		
 		JLabel lblTelefono = new JLabel("Telefono:");
-		lblTelefono.setBounds(10, 217, 46, 14);
+		lblTelefono.setBounds(10, 186, 46, 14);
 		getContentPane().add(lblTelefono);
 		
 		textFieldTelefono = new JTextField();
-		textFieldTelefono.setBounds(82, 214, 165, 20);
+		textFieldTelefono.setBounds(93, 183, 165, 20);
 		getContentPane().add(textFieldTelefono);
 		textFieldTelefono.setColumns(10);
 		
 		textFieldDni = new JTextField();
-		textFieldDni.setBounds(83, 87, 164, 20);
+		textFieldDni.setBounds(94, 87, 164, 20);
 		getContentPane().add(textFieldDni);
 		textFieldDni.setColumns(10);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(83, 121, 164, 20);
+		textFieldNombre.setBounds(94, 121, 164, 20);
 		getContentPane().add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		textFieldEmail = new JTextField();
-		textFieldEmail.setBounds(83, 256, 164, 20);
+		textFieldEmail.setBounds(94, 215, 164, 20);
 		getContentPane().add(textFieldEmail);
 		textFieldEmail.setColumns(10);
-		
-		textFieldContrasena = new JTextField();
-		textFieldContrasena.setBounds(83, 310, 164, 20);
-		getContentPane().add(textFieldContrasena);
-		textFieldContrasena.setColumns(10);
 		textFieldTelefono.setColumns(10);
+		
+		textFieldContrasena = new JPasswordField();
+		textFieldContrasena.setBounds(94, 246, 164, 20);
+		getContentPane().add(textFieldContrasena);
 		volver.addActionListener(new ActionListener() {
 
 			@Override
