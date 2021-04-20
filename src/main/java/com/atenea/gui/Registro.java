@@ -1,6 +1,7 @@
 package com.atenea.gui;
 
 import java.awt.Color;
+import com.atenea.data.EnumPuestoEmpleados;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,8 +19,12 @@ import com.atenea.db.DBManager;
 
 
 import javax.swing.JPasswordField;
+import com.toedter.calendar.JDayChooser;
+import com.toedter.calendar.JDateChooser;
+import java.awt.Label;
 
 public class Registro extends JFrame{
+	private static final String EnumPuestoEmpleados = null;
 	private JTextField textFieldPuesto;
 	private JTextField textFieldPu;
 	private JTextField textFieldDireccion;
@@ -28,6 +33,7 @@ public class Registro extends JFrame{
 	private JTextField textFieldNombre;
 	private JTextField textFieldEmail;
 	private JPasswordField textFieldContrasena;
+	private JDateChooser dateChooser;
 
 
 	/**
@@ -100,13 +106,13 @@ public class Registro extends JFrame{
 		});
 		btnregistrar.setForeground(Color.WHITE);
 		btnregistrar.setBackground(new Color(0, 0, 128));
-		btnregistrar.setBounds(231, 526, 134, 36);
+		btnregistrar.setBounds(231, 497, 134, 36);
 		getContentPane().add(btnregistrar);
 
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.setForeground(Color.WHITE);
 		cerrar.setBackground(new Color(0, 0, 128));
-		cerrar.setBounds(504, 584, 80, 31);
+		cerrar.setBounds(504, 555, 80, 31);
 		getContentPane().add(cerrar);
 		cerrar.addActionListener(new ActionListener() {
 
@@ -119,73 +125,93 @@ public class Registro extends JFrame{
 		JButton volver = new JButton("Volver");
 		volver.setForeground(Color.WHITE);
 		volver.setBackground(new Color(0, 0, 128));
-		volver.setBounds(10, 584, 80, 31);
+		volver.setBounds(10, 555, 80, 31);
 		getContentPane().add(volver);
 		
 		JLabel lblPuesto = new JLabel("Puesto:");
-		lblPuesto.setBounds(10, 280, 46, 14);
+		lblPuesto.setBounds(149, 322, 46, 14);
 		getContentPane().add(lblPuesto);
 		
 		JLabel lblContrasena = new JLabel("Contraseña:");
-		lblContrasena.setBounds(10, 249, 80, 14);
+		lblContrasena.setBounds(149, 291, 80, 14);
 		getContentPane().add(lblContrasena);
 		
 		JLabel lblDni = new JLabel("Dni:");
-		lblDni.setBounds(10, 90, 46, 14);
+		lblDni.setBounds(149, 138, 46, 14);
 		getContentPane().add(lblDni);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNombre.setBounds(10, 124, 46, 14);
+		lblNombre.setBounds(149, 169, 46, 14);
 		getContentPane().add(lblNombre);
 		
 		JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(10, 218, 46, 14);
+		lblEmail.setBounds(149, 260, 46, 14);
 		getContentPane().add(lblEmail);
 		
 		textFieldPu = new JTextField();
-		textFieldPu.setBounds(94, 277, 164, 20);
+		textFieldPu.setBounds(266, 319, 164, 20);
 		getContentPane().add(textFieldPu);
 		textFieldPu.setColumns(10);
 		
 		JLabel lblDireccion = new JLabel("Direccion:");
 		lblDireccion.setHorizontalAlignment(SwingConstants.LEFT);
-		lblDireccion.setBounds(10, 155, 63, 14);
+		lblDireccion.setBounds(149, 200, 63, 14);
 		getContentPane().add(lblDireccion);
 		
 		textFieldDireccion = new JTextField();
-		textFieldDireccion.setBounds(94, 152, 164, 20);
+		textFieldDireccion.setBounds(266, 197, 164, 20);
 		getContentPane().add(textFieldDireccion);
 		textFieldDireccion.setColumns(10);
 		
 		JLabel lblTelefono = new JLabel("Telefono:");
-		lblTelefono.setBounds(10, 186, 46, 14);
+		lblTelefono.setBounds(149, 228, 46, 14);
 		getContentPane().add(lblTelefono);
 		
 		textFieldTelefono = new JTextField();
-		textFieldTelefono.setBounds(93, 183, 165, 20);
+		textFieldTelefono.setBounds(265, 225, 165, 20);
 		getContentPane().add(textFieldTelefono);
 		textFieldTelefono.setColumns(10);
 		
 		textFieldDni = new JTextField();
-		textFieldDni.setBounds(94, 87, 164, 20);
+		textFieldDni.setBounds(266, 135, 164, 20);
 		getContentPane().add(textFieldDni);
 		textFieldDni.setColumns(10);
 		
 		textFieldNombre = new JTextField();
-		textFieldNombre.setBounds(94, 121, 164, 20);
+		textFieldNombre.setBounds(266, 166, 164, 20);
 		getContentPane().add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
 		textFieldEmail = new JTextField();
-		textFieldEmail.setBounds(94, 215, 164, 20);
+		textFieldEmail.setBounds(266, 257, 164, 20);
 		getContentPane().add(textFieldEmail);
 		textFieldEmail.setColumns(10);
 		textFieldTelefono.setColumns(10);
 		
 		textFieldContrasena = new JPasswordField();
-		textFieldContrasena.setBounds(94, 246, 164, 20);
+		textFieldContrasena.setBounds(266, 288, 164, 20);
 		getContentPane().add(textFieldContrasena);
+		
+		dateChooser = new JDateChooser();
+		dateChooser.getCalendarButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		dateChooser.setBounds(268, 362, 162, 20);
+		getContentPane().add(dateChooser);
+		
+		JLabel lblFechaNac = new JLabel("Fecha nacimiento:");
+		lblFechaNac.setBounds(149, 368, 109, 14);
+		getContentPane().add(lblFechaNac);
+		
+		JLabel lblFechaEmpl = new JLabel("Fecha empleado:");
+		lblFechaEmpl.setBounds(149, 404, 109, 14);
+		getContentPane().add(lblFechaEmpl);
+		
+		JDateChooser dateChooser_1 = new JDateChooser();
+		dateChooser_1.setBounds(268, 398, 162, 20);
+		getContentPane().add(dateChooser_1);
 		volver.addActionListener(new ActionListener() {
 
 			@Override
@@ -199,8 +225,11 @@ public class Registro extends JFrame{
 		
 	}
 
-		
-	
+
+   // EnumPuestoEmpleados empl = Enum.Parse(typeof(EnumPuestoEmpleados), textFieldPuesto.getText());
+
+
+    
 			private void addUserEmpleado() throws DBException {
 				DBManager manager = DBManager.getInstance();
 				try {
@@ -212,7 +241,7 @@ public class Registro extends JFrame{
 							textFieldDireccion.getText(),
 							textFieldEmail.getText(),
 							textFieldTelefono.getText(),
-							String.valueOf(textFieldContrasena.getText())
+							String.valueOf(textFieldContrasena.getText())					
 						
 					);
 					System.out.println(e);
@@ -222,5 +251,10 @@ public class Registro extends JFrame{
 					manager.disconnect();
 					throw de;
 				}
+			}
+
+			private Object typeof(String enumpuestoempleados2) {
+				// TODO Auto-generated method stub
+				return null;
 			}
 }
