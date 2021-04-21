@@ -9,6 +9,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import com.atenea.data.Cliente;
+import com.atenea.data.ClienteRSH;
 import com.atenea.data.Empleado;
 import com.atenea.data.EmpleadoRSH;
 import com.atenea.data.Factura;
@@ -83,6 +85,24 @@ public class DBManager {
         return userEmpleado;
     }
     
+    public Cliente getClientePorDNI(String dni) throws DBException {
+		Cliente userCliente = null;
+		String sql = "SELECT DNI, NOMBRE, APELLIDOS FROM CLIENTE WHERE DNI = ?";
+    	
+		try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, dni);
+
+            ResultSet rs = pstmt.executeQuery();
+            userCliente = ClienteRSH.toUser(rs);
+        } catch (SQLException e) {
+
+            throw new DBException("No se ha podido obtener el usuario", e);
+        }
+        LOGGER.info("Se ha obtenido el usuario de la BD");
+        return userCliente;
+    	
+    }
+    
     /**
      * Borra un objeto de la DB
      * 
@@ -141,6 +161,14 @@ public class DBManager {
         DBManager.getInstance().storeObjectInDB(empleado);
     }
 
+    /**
+     * Guardar un cliente en la DB
+     * 
+     * @param cliente
+     */
+    public void store(Cliente cliente) {
+    	DBManager.getInstance().storeObjectInDB(cliente);
+    }
     /**
      * Guardar un producto en la DB
      * 
