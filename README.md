@@ -9,28 +9,8 @@ git clone https://github.com/pablogtejido/fabricaMadera.git
 cd fabricaMadera
 ```
 
-### Crear credenciales en el panel de control de mysql
+### Crear esquema y usuario
 
-Las credenciales son:
-
-- Usuario
-
-> spq
-
-- Contraseña
-
-> spq
-
-### Compilar
-```
-mvn compile
-```
-
-
-### Crear esquema
-```
-mvn datanucleus:schema-create
-```
 Seguir el fichero [dataBase.sql](https://github.com/pablogtejido/fabricaMadera/blob/master/src/main/resources/dataBase.sql).
 
 Para la primera creacion no serán necesarias las primeras dos lineas. Siendo solamente necesarias ejecutar:
@@ -39,19 +19,15 @@ Para la primera creacion no serán necesarias las primeras dos lineas. Siendo so
 /* CREATE ''fabricaMaderaDB' DATABASE */
 CREATE SCHEMA fabricaMaderaDB;
 /* CREATE THE USER 'products_user1' AT LOCAL SERVER WITH PASSWORD 'password' */
-CREATE USER 'usuario'@'%' IDENTIFIED BY 'usuario';
+CREATE USER 'spq'@'%' IDENTIFIED BY 'spq';
 /* GRANT FULL ACCESS TO THE DATABASE FOR THE USER 'products_user1' AT LOCAL SERVER*/
-GRANT ALL ON fabricaMaderaDB.* TO 'usuario'@'%';
+GRANT ALL ON fabricaMaderaDB.* TO 'spq'@'%';
 ```
 
-### Eliminar esquema
-```
-mvn datanucleus:schema-delete
-```
+### Compilar
 
-### Lanzamiento profile
 ```
-mvn exec:java 
+mvn compile
 ```
 
 ### Verificar el proyecto
@@ -60,7 +36,7 @@ mvn exec:java
 mvn verify
 ```
 
-### Ejecutar el proyecto
+## Ejecutar el proyecto
 
 Power Shell
 
@@ -77,4 +53,8 @@ mvn exec:java -Dexec.args="--server"
 ```
 
 > -Dexec.args='--server' Sirve para poder ejecturar el servidor.
-> Sin eso simplemente ejecutas el GUI
+> Sin eso simplemente ejecutas el GUI, es decir
+
+```bash
+mvn exec:java
+```
