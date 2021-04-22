@@ -10,6 +10,7 @@ import javax.jdo.Transaction;
 import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.EnumPuestoEmpleados;
+import com.atenea.data.Producto;
 
 public class PrepareData {
 
@@ -60,6 +61,23 @@ public class PrepareData {
 			Cliente cliente5= new Cliente("45548696P", "Luis", "Alonso", "1234");
 			pm.makePersistent(cliente5);
 			
+
+			long id1 = 1561521;
+			long id2 = 1561522;
+			long id3 = 1561523;
+			long id4 = 1561524;
+			
+			Producto p1 = new Producto(id1, "Tablero madera", 12.70, 32, 1, 24, 4, true);
+			pm.makePersistent(p1);
+			
+			Producto p2 = new Producto(id2,"Listón madera", 7.50, 21, 1, 30, 9, false);
+			pm.makePersistent(p2);
+			
+			Producto p3 = new Producto(id3, "Revestimiento madera", 21.60, 8, 1, 50, 2, true);
+			pm.makePersistent(p3);
+			
+			Producto p4 = new Producto(id4,"Celosía madera", 40, 2, 1, 220, 80, false);
+			pm.makePersistent(p4);
 
 			tx.commit();
 		} finally {

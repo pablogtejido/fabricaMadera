@@ -92,10 +92,17 @@ public class Producto {
 		super();
 	}
 
-	public Producto(Long id, double precio, double peso, int cantidad, double medida, double grosor,
+	@Override
+	public String toString() {
+		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", peso=" + peso + ", cantidad="
+				+ cantidad + ", medida=" + medida + ", grosor=" + grosor + ", anyadidos=" + anyadidos + "]";
+	}
+
+	public Producto(Long id, String nombre, double precio, double peso, int cantidad, double medida, double grosor,
 			boolean anyadidos) {
 		super();
 		this.id = id;
+		this.nombre = nombre;
 		this.precio = precio;
 		this.peso = peso;
 		this.cantidad = cantidad;
@@ -104,12 +111,7 @@ public class Producto {
 		this.anyadidos = anyadidos;
 	}
 
-	@Override
-	public String toString() {
-		return "Producto [getNombre()=" + getNombre() + ", getPrecio()=" + getPrecio() + ", getPeso()=" + getPeso()
-				+ ", getCantidad()=" + getCantidad() + ", getMedida()=" + getMedida() + ", getGrosor()=" + getGrosor()
-				+ ", isAnyadidos()=" + isAnyadidos() + ", getId()=" + getId() + "]";
-	}
+	
 
 	
 
