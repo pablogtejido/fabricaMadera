@@ -109,7 +109,7 @@ public class FacturasEmpleado extends JFrame {
 		DBManager manager = DBManager.getInstance();
 		List<Factura> facturas = manager.getFacturas();
 		String [] fila = new String[6];
-		
+		 
 		for (Factura factura : facturas) {
 			
 			fila[0] = factura.getCliente().getNombre();
@@ -125,11 +125,8 @@ public class FacturasEmpleado extends JFrame {
 			
 			modelo.addRow(fila);
 			
-			/*for (int i = 0; i < table.getHeight(); i++) {
-				for (int j = 0; j < table.getWidth(); j++) {
-					
-				}
-			}*/
+			
+			}
 		}
 		
 		
