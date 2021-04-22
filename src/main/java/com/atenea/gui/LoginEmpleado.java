@@ -37,7 +37,7 @@ public class LoginEmpleado extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginCliente frame = new LoginCliente();
+					LoginEmpleado frame = new LoginEmpleado();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +59,7 @@ public class LoginEmpleado extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(72, 61, 139));
 		panel.setForeground(new Color(0, 128, 128));
-		panel.setBounds(0, 21, 615, 43);
+		panel.setBounds(0, 0, 615, 43);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -124,7 +124,7 @@ public class LoginEmpleado extends JFrame {
 			}
 		});
 
-		btniniciar.setBounds(265, 202, 89, 23);
+		btniniciar.setBounds(253, 188, 103, 37);
 		contentPane.add(btniniciar);
 
 		JButton cerrar = new JButton("Cerrar");

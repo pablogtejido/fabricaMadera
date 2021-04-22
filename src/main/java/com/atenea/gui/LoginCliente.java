@@ -34,7 +34,18 @@ public class LoginCliente extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginCliente frame = new LoginCliente();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
@@ -43,6 +54,8 @@ public class LoginCliente extends JFrame {
 		this.setTitle("Iniciar sesión Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 623, 300);
+		setLocationRelativeTo(null);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -52,7 +65,7 @@ public class LoginCliente extends JFrame {
 		panel.setLayout(null);
 		panel.setForeground(new Color(0, 128, 128));
 		panel.setBackground(new Color(72, 61, 139));
-		panel.setBounds(0, 31, 605, 43);
+		panel.setBounds(0, 0, 607, 43);
 		contentPane.add(panel);
 		
 		JLabel login = new JLabel("LOGIN");
@@ -62,25 +75,25 @@ public class LoginCliente extends JFrame {
 		panel.add(login);
 		
 		JLabel lblDni = new JLabel("DNI:");
-		lblDni.setBounds(229, 109, 46, 14);
+		lblDni.setBounds(170, 88, 63, 20);
 		contentPane.add(lblDni);
 		
 		textDni = new JTextField();
-		textDni.setBounds(290, 109, 104, 20);
+		textDni.setBounds(251, 88, 141, 20);
 		contentPane.add(textDni);
 		textDni.setColumns(10);
 		
 		JLabel lblContrasena = new JLabel("Contraseña:");
-		lblContrasena.setBounds(214, 151, 66, 14);
+		lblContrasena.setBounds(170, 127, 80, 20);
 		contentPane.add(lblContrasena);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(290, 148, 104, 20);
+		passwordField.setBounds(251, 127, 141, 20);
 		contentPane.add(passwordField);
 		
 		JButton registrarse = new JButton("Registrarse");
 		registrarse.setForeground(Color.WHITE);
-		registrarse.setBackground(new Color(0, 0, 128));
+		registrarse.setBackground(new Color(72, 61, 139));
 		registrarse.setBounds(10, 219, 103, 31);
 		contentPane.add(registrarse);
 		
@@ -93,8 +106,8 @@ public class LoginCliente extends JFrame {
 		});
 		JButton btniniciar = new JButton("Iniciar");
 		btniniciar.setForeground(Color.WHITE);
-		btniniciar.setBackground(new Color(0, 0, 128));
-		btniniciar.setBounds(292, 197, 89, 23);
+		btniniciar.setBackground(new Color(72, 61, 139));
+		btniniciar.setBounds(263, 174, 104, 37);
 		contentPane.add(btniniciar);
 		btniniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -134,7 +147,7 @@ public class LoginCliente extends JFrame {
 		});
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.setForeground(Color.WHITE);
-		cerrar.setBackground(new Color(0, 0, 128));
+		cerrar.setBackground(new Color(72, 61, 139));
 		cerrar.setBounds(517, 219, 80, 31);
 		contentPane.add(cerrar);
 		
