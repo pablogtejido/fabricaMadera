@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import com.atenea.data.Administrador;
 import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.EnumPuestoEmpleados;
@@ -42,43 +43,48 @@ public class PrepareData {
 	                "nereadiez@gmail.com", "658007220", EnumPuestoEmpleados.DIRECTIVA, new Date("14/05/1988 19:27:31"),  new Date("11/09/2012 10:14:11"),  4300, "1234");
 	        pm.makePersistent(empleado5);
 			
-			Cliente cliente1 = new Cliente("58441139A", "Juan", "Lopez", "1234");
-			pm.makePersistent(cliente1);
 			
+	        Cliente cliente1 = new Cliente("58441139A", "Juan", "Lopez", "1234");
+			pm.makePersistent(cliente1);
 
 			Cliente cliente2 = new Cliente("36957841K", "Silvia", "Montejo", "1234");
 			pm.makePersistent(cliente2);
-			
 
 			Cliente cliente3 = new Cliente("79845211T", "Luis", "Alonso" ,"1234");
 			pm.makePersistent(cliente3);
 			
-			
 			Cliente cliente4 = new Cliente("66558842G", "Silvia", "Montejo" , "1234");
 			pm.makePersistent(cliente4);
-			
 
 			Cliente cliente5= new Cliente("45548696P", "Luis", "Alonso", "1234");
 			pm.makePersistent(cliente5);
-			
 
-			long id1 = 1561521;
-			long id2 = 1561522;
-			long id3 = 1561523;
-			long id4 = 1561524;
-			
-			Producto p1 = new Producto(id1, "Tablero madera", 12.70, 32, 1, 24, 4, true);
+				
+			Producto p1 = new Producto("Tablero madera", 12.70, 32, 1, 24, 4, true);
 			pm.makePersistent(p1);
 			
-			Producto p2 = new Producto(id2,"Listón madera", 7.50, 21, 1, 30, 9, false);
+			Producto p2 = new Producto("Listón madera", 7.50, 21, 1, 30, 9, false);
 			pm.makePersistent(p2);
 			
-			Producto p3 = new Producto(id3, "Revestimiento madera", 21.60, 8, 1, 50, 2, true);
+			Producto p3 = new Producto("Revestimiento madera", 21.60, 8, 1, 50, 2, true);
 			pm.makePersistent(p3);
 			
-			Producto p4 = new Producto(id4,"Celosía madera", 40, 2, 1, 220, 80, false);
+			Producto p4 = new Producto("Celosía madera", 40, 2, 1, 220, 80, false);
 			pm.makePersistent(p4);
-
+			
+			Producto p5 = new Producto("Celosía madera", 40, 2, 1, 220, 80, false);
+			pm.makePersistent(p5);
+			
+			
+			Administrador a1=new Administrador("1234", "Paco", "Salas","pacosalas@gmail.com", "682548111");
+			pm.makePersistent(a1);
+			
+			Administrador a2=new Administrador("1234", "Ane", "Casas","anetxu303@gmail.com", "685455236");
+			pm.makePersistent(a2);
+			
+			Administrador a3=new Administrador("1234", "Ainhoa", "Velasco","ainhoa585@gmail.com", "699958457");
+			pm.makePersistent(a3);
+			
 			tx.commit();
 		} finally {
 			if (tx.isActive()) {

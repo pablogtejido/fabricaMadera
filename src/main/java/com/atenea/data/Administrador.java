@@ -1,8 +1,10 @@
 package com.atenea.data;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
@@ -10,6 +12,7 @@ import javax.jdo.annotations.PrimaryKey;
 public class Administrador {
 	
 	@PrimaryKey
+	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
 	private int id;
 	private String contrasena;
 	private String nombre;
@@ -54,9 +57,8 @@ public class Administrador {
 		this.telefono = telefono;
 	}
 	
-	public Administrador(int id, String contrasena, String nombre, String apellido, String email, String telefono) {
+	public Administrador(String contrasena, String nombre, String apellido, String email, String telefono) {
 		super();
-		this.id = id;
 		this.contrasena = contrasena;
 		this.nombre = nombre;
 		this.apellido = apellido;
