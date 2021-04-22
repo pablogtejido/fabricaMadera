@@ -1,7 +1,9 @@
-package com.atenea.data;
+package com.atenea.rsh;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.atenea.data.Cliente;
 
 public class ClienteRSH {
 	public static Cliente toUser(ResultSet rs) {

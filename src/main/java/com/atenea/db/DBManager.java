@@ -11,11 +11,11 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
 import com.atenea.data.Cliente;
-import com.atenea.data.ClienteRSH;
 import com.atenea.data.Empleado;
-import com.atenea.data.EmpleadoRSH;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
+import com.atenea.rsh.ClienteRSH;
+import com.atenea.rsh.EmpleadoRSH;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
