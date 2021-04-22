@@ -2,34 +2,27 @@ package com.atenea.gui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import com.atenea.data.Factura;
+import com.atenea.data.Cliente;
 import com.atenea.db.DBManager;
 
-import java.awt.Font;
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+public class ClientesEmpleado extends JFrame{
 
-import javax.swing.JToolBar;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
-public class FacturasEmpleado extends JFrame {
 	private JTable table;
 	private DefaultTableModel modelo;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -37,7 +30,7 @@ public class FacturasEmpleado extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FacturasEmpleado window = new FacturasEmpleado();
+					ClientesEmpleado window = new ClientesEmpleado();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,18 +38,16 @@ public class FacturasEmpleado extends JFrame {
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the application.
 	 */
-	public FacturasEmpleado() {
+	public ClientesEmpleado() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
+		
 		setBounds(100, 100, 827, 461);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -67,7 +58,7 @@ public class FacturasEmpleado extends JFrame {
 		getContentPane().add(titulopanel);
 		titulopanel.setLayout(null);
 		
-		JLabel titulo = new JLabel("FACTURAS");
+		JLabel titulo = new JLabel("CLIENTES");
 		titulo.setForeground(Color.WHITE);
 		titulo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -82,13 +73,9 @@ public class FacturasEmpleado extends JFrame {
 		modelo = new DefaultTableModel();
 		table.setModel(modelo);
 		
-		modelo.addColumn("Nombre Cliente");
-		modelo.addColumn("Apellido Cliente");
-		modelo.addColumn("Nombre Empleado");
-		modelo.addColumn("Id");
-		modelo.addColumn("Productos");
-		modelo.addColumn("Precio");
-		modelo.addColumn("Fecha");
+		modelo.addColumn("DNI");
+		modelo.addColumn("Nombre");
+		modelo.addColumn("Apellidos");
 		table.getTableHeader().setReorderingAllowed(false);
 		
 		scrollPane.setViewportView(table);
@@ -105,31 +92,26 @@ public class FacturasEmpleado extends JFrame {
 		JMenu mnNewMenu_2 = new JMenu("New menu");
 		menuBar.add(mnNewMenu_2);
 	}
-	private void FacturasJtable() {
+	
+	public void ClientesJTable() {
 		DBManager manager = DBManager.getInstance();
-		List<Factura> facturas = manager.getFacturas();
-		String [] fila = new String[6];
-		 
-		for (Factura factura : facturas) {
+		List<Cliente> clientes = manager.getClientes();
+		String[] fila = new String [3];
+		
+		for (Cliente cliente : clientes) {
 			
-			fila[0] = factura.getCliente().getNombre();
-			fila[1] = factura.getCliente().getApellidos();
-			fila[2] = factura.getEmpleado().getNombre();
-			long id = factura.getId();
-			fila[3] = String.valueOf(id);
-			fila[4] = factura.toStringProductos();
-			Double precio = factura.getPrecio();
-			fila[5] = precio.toString();
-			Date fecha = factura.getFcha_factura();
-			fila[6]  = fecha.toString();
+			fila[0] = cliente.getDni();
+			fila[1] = cliente.getNombre();
+			fila[2] = cliente.getApellidos();
 			
 			modelo.addRow(fila);
 			
-			
-			}
 		}
-		
+				
+	}
+	
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}
+	
 }
