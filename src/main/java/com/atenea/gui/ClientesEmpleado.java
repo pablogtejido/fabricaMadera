@@ -3,12 +3,15 @@ package com.atenea.gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -86,12 +89,26 @@ public class ClientesEmpleado extends JFrame{
 		JMenu menuFacturas = new JMenu("Facturas");
 		menuBar.add(menuFacturas);
 		
-		JMenu mnNewMenu_1 = new JMenu("Clientes");
-		menuBar.add(mnNewMenu_1);
+		JMenu menuClientes = new JMenu("Clientes");
+		menuBar.add(menuClientes);
 		
 		JMenu mnNewMenu_2 = new JMenu("New menu");
 		menuBar.add(mnNewMenu_2);
+		
+		JMenuItem verFacturas = new JMenuItem("Ver Facturas");
+		menuFacturas.add(verFacturas);
+		
+		verFacturas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				FacturasEmpleado window2 = new FacturasEmpleado();
+				window2.setVisible(true);
+			}
+		});
 	}
+	
 	
 	public void ClientesJTable() {
 		DBManager manager = DBManager.getInstance();

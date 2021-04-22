@@ -13,6 +13,8 @@ import com.atenea.data.Factura;
 import com.atenea.db.DBManager;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,6 +24,7 @@ import java.util.ListIterator;
 
 import javax.swing.JToolBar;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -99,11 +102,24 @@ public class FacturasEmpleado extends JFrame {
 		JMenu menuFacturas = new JMenu("Facturas");
 		menuBar.add(menuFacturas);
 		
-		JMenu mnNewMenu_1 = new JMenu("Clientes");
-		menuBar.add(mnNewMenu_1);
+		JMenu menuClientes = new JMenu("Clientes");
+		menuBar.add(menuClientes);
 		
 		JMenu mnNewMenu_2 = new JMenu("New menu");
 		menuBar.add(mnNewMenu_2);
+		
+		JMenuItem verClientes = new JMenuItem("Ver Clientes");
+		menuClientes.add(verClientes);
+		
+		verClientes.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ClientesEmpleado window2 = new ClientesEmpleado();
+				window2.setVisible(true);
+			}
+		});
 	}
 	private void FacturasJtable() {
 		DBManager manager = DBManager.getInstance();
