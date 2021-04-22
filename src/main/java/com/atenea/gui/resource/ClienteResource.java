@@ -9,7 +9,7 @@ import com.atenea.db.DBManager;
 
 public class ClienteResource {
 
-	public static void registro(String dni, String nombre, String apellidos) {
+	public static void registro(String dni, String nombre, String apellidos, String contrasena) {
 		DBManager db = DBManager.getInstance();
 		
 		try {
@@ -17,7 +17,7 @@ public class ClienteResource {
 			Cliente userCliente = db.getClientePorDNI(dni);
 			System.out.println(userCliente);
 			if(userCliente == null) {
-				Cliente newCliente = new Cliente(dni, nombre, apellidos);
+				Cliente newCliente = new Cliente(dni, nombre, apellidos, contrasena);
 				db.store(newCliente);
 			} else {
 				JOptionPane.showMessageDialog(null, "Cliente ya existente");

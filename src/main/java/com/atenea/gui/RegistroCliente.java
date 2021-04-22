@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JList;
+import javax.swing.JPasswordField;
 
 public class RegistroCliente extends JFrame{
 	
@@ -25,6 +26,7 @@ public class RegistroCliente extends JFrame{
 	private JTextField textFieldDNI;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellidos;
+	private JPasswordField passwordField;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -64,35 +66,43 @@ public class RegistroCliente extends JFrame{
 		panel.add(lblcliente);
 		
 		textFieldDNI = new JTextField();
-		textFieldDNI.setBounds(98, 82, 96, 19);
+		textFieldDNI.setBounds(285, 82, 96, 19);
 		contentPane.add(textFieldDNI);
 		textFieldDNI.setColumns(10);
 		
 		JLabel lblDNI = new JLabel("DNI:");
-		lblDNI.setBounds(21, 85, 57, 13);
+		lblDNI.setBounds(208, 85, 57, 13);
 		contentPane.add(lblDNI);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(21, 116, 57, 13);
+		lblNombre.setBounds(208, 116, 57, 13);
 		contentPane.add(lblNombre);
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setColumns(10);
-		textFieldNombre.setBounds(98, 113, 96, 19);
+		textFieldNombre.setBounds(285, 113, 96, 19);
 		contentPane.add(textFieldNombre);
 		
 		JLabel lblApellidos = new JLabel("Apellidos:");
-		lblApellidos.setBounds(21, 145, 57, 13);
+		lblApellidos.setBounds(208, 145, 57, 13);
 		contentPane.add(lblApellidos);
 		
 		textFieldApellidos = new JTextField();
 		textFieldApellidos.setColumns(10);
-		textFieldApellidos.setBounds(98, 142, 96, 19);
+		textFieldApellidos.setBounds(285, 142, 96, 19);
 		contentPane.add(textFieldApellidos);
 		
 		JButton btnRegistrar = new JButton("Registrar Cliente");
-		btnRegistrar.setBounds(49, 199, 135, 21);
+		btnRegistrar.setBounds(238, 229, 135, 21);
 		contentPane.add(btnRegistrar);
+		
+		JLabel lblContrasena = new JLabel("Contraseña:");
+		lblContrasena.setBounds(208, 169, 76, 14);
+		contentPane.add(lblContrasena);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(285, 172, 96, 20);
+		contentPane.add(passwordField);
 		
 		btnRegistrar.addActionListener(new ActionListener() {
 
@@ -102,8 +112,9 @@ public class RegistroCliente extends JFrame{
 				String dni = textFieldDNI.getText();
 				String nombre = textFieldNombre.getText();
 				String apellidos = textFieldApellidos.getText();
+				String contrasena = passwordField.getText();
 				
-				ClienteResource.registro(dni, nombre, apellidos);
+				ClienteResource.registro(dni, nombre, apellidos, contrasena);
 				
 			}
 			
