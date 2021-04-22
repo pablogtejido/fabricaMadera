@@ -36,7 +36,7 @@ public class FacturaResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Factura crearFactura(Factura factura) {
         DBManager.getInstance().store(factura);
         return factura;
