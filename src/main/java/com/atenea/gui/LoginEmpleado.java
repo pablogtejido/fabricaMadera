@@ -92,7 +92,6 @@ public class LoginEmpleado extends JFrame {
 				DBManager db = DBManager.getInstance();
 
 				try {
-					db.connect();
 					Empleado userEmpleado = db.getEmpleadoPorEmail(textEmpleado.getText());
 					System.out.println(userEmpleado);
 				
