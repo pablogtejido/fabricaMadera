@@ -27,9 +27,8 @@ public class Factura {
     private Double precio;
     private Date fcha_factura;
 
-    public Factura(long id, Empleado empleado, Cliente cliente, List<Producto> productos, Double precio,
+    public Factura(Empleado empleado, Cliente cliente, List<Producto> productos, Double precio,
             Date fcha_factura) {
-        this.id = id;
         this.empleado = empleado;
         this.cliente = cliente;
         this.productos = productos;

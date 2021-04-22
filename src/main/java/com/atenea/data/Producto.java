@@ -98,10 +98,9 @@ public class Producto {
 				+ cantidad + ", medida=" + medida + ", grosor=" + grosor + ", anyadidos=" + anyadidos + "]";
 	}
 
-	public Producto(Long id, String nombre, double precio, double peso, int cantidad, double medida, double grosor,
+	public Producto(String nombre, double precio, double peso, int cantidad, double medida, double grosor,
 			boolean anyadidos) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.peso = peso;
