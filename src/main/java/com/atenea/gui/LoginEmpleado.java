@@ -71,7 +71,7 @@ public class LoginEmpleado extends JFrame {
 
 		JButton btniniciar = new JButton("Iniciar");
 		btniniciar.setForeground(new Color(255, 255, 255));
-		btniniciar.setBackground(new Color(0, 0, 128));
+		btniniciar.setBackground(new Color(72, 61, 139));
 		btniniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DBManager db = DBManager.getInstance();
@@ -115,7 +115,7 @@ public class LoginEmpleado extends JFrame {
 
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.setForeground(Color.WHITE);
-		cerrar.setBackground(new Color(0, 0, 128));
+		cerrar.setBackground(new Color(72, 61, 139));
 		cerrar.setBounds(525, 219, 80, 31);
 		contentPane.add(cerrar);
 		cerrar.addActionListener(new ActionListener() {
@@ -135,7 +135,7 @@ public class LoginEmpleado extends JFrame {
 			}
 		});
 		registrarse.setForeground(Color.WHITE);
-		registrarse.setBackground(new Color(0, 0, 128));
+		registrarse.setBackground(new Color(72, 61, 139));;
 		registrarse.setBounds(10, 219, 103, 31);
 		contentPane.add(registrarse);
 	}
