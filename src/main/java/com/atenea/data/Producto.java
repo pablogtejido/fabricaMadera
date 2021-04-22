@@ -15,12 +15,22 @@ public class Producto {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
 	private Long id;
+	private String nombre;
 	private double precio;
 	private double peso;
 	private int cantidad;
 	private double medida;
 	private double grosor;
 	private boolean anyadidos;
+
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public double getPrecio() {
 		return precio;
@@ -96,9 +106,11 @@ public class Producto {
 
 	@Override
 	public String toString() {
-		return "{" + " id='" + getId() + "'" + ", precio='" + getPrecio() + "'" + ", peso='" + getPeso() + "'"
-				+ ", cantidad='" + getCantidad() + "'" + ", medida='" + getMedida() + "'" + ", grosor='" + getGrosor()
-				+ "'" + ", anyadidos='" + isAnyadidos() + "'" + "}";
+		return "Producto [getNombre()=" + getNombre() + ", getPrecio()=" + getPrecio() + ", getPeso()=" + getPeso()
+				+ ", getCantidad()=" + getCantidad() + ", getMedida()=" + getMedida() + ", getGrosor()=" + getGrosor()
+				+ ", isAnyadidos()=" + isAnyadidos() + ", getId()=" + getId() + "]";
 	}
+
+	
 
 }

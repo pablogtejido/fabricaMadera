@@ -94,5 +94,14 @@ public class Factura {
                 + ", productos='" + getProductos() + "'" + ", precio='" + getPrecio() + "'" + ", fcha_factura='"
                 + getFcha_factura() + "'" + "}";
     }
+    public String toStringProductos() {
+    	String nombreprod = "";
+    	
+    	for (Producto producto : productos) {
+			nombreprod = nombreprod + ", " + producto.getNombre();
+			
+		}
+    	return nombreprod;
+    }
 
 }

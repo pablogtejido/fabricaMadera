@@ -7,16 +7,28 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
+import com.atenea.data.Factura;
+import com.atenea.db.DBManager;
+
 import java.awt.Font;
+import java.util.Date;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import javax.swing.JToolBar;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class FacturasCliente extends JFrame {
+public class FacturasEmpleado extends JFrame {
 	private JTable table;
-
+	private DefaultTableModel modelo;
 
 	/**
 	 * Launch the application.
@@ -25,7 +37,7 @@ public class FacturasCliente extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FacturasCliente window = new FacturasCliente();
+					FacturasEmpleado window = new FacturasEmpleado();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +49,7 @@ public class FacturasCliente extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public FacturasCliente() {
+	public FacturasEmpleado() {
 		initialize();
 	}
 
@@ -67,6 +79,18 @@ public class FacturasCliente extends JFrame {
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
+		modelo = new DefaultTableModel();
+		table.setModel(modelo);
+		
+		modelo.addColumn("Nombre Cliente");
+		modelo.addColumn("Apellido Cliente");
+		modelo.addColumn("Nombre Empleado");
+		modelo.addColumn("Id");
+		modelo.addColumn("Productos");
+		modelo.addColumn("Precio");
+		modelo.addColumn("Fecha");
+		table.getTableHeader().setReorderingAllowed(false);
+		
 		scrollPane.setViewportView(table);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -80,5 +104,37 @@ public class FacturasCliente extends JFrame {
 		
 		JMenu mnNewMenu_2 = new JMenu("New menu");
 		menuBar.add(mnNewMenu_2);
+	}
+	private void FacturasJtable() {
+		DBManager manager = DBManager.getInstance();
+		List<Factura> facturas = manager.getFacturas();
+		String [] fila = new String[6];
+		
+		for (Factura factura : facturas) {
+			
+			fila[0] = factura.getCliente().getNombre();
+			fila[1] = factura.getCliente().getApellidos();
+			fila[2] = factura.getEmpleado().getNombre();
+			long id = factura.getId();
+			fila[3] = String.valueOf(id);
+			fila[4] = factura.toStringProductos();
+			Double precio = factura.getPrecio();
+			fila[5] = precio.toString();
+			Date fecha = factura.getFcha_factura();
+			fila[6]  = fecha.toString();
+			
+			modelo.addRow(fila);
+			
+			/*for (int i = 0; i < table.getHeight(); i++) {
+				for (int j = 0; j < table.getWidth(); j++) {
+					
+				}
+			}*/
+		}
+		
+		
+	}
+	public boolean isCellEditable(int row, int column) {
+		return false;
 	}
 }
