@@ -1,6 +1,7 @@
 package com.atenea.db;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.List;
 import javax.jdo.Extent;
@@ -15,6 +16,8 @@ import com.atenea.data.Empleado;
 import com.atenea.data.EmpleadoRSH;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
+
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -41,32 +44,22 @@ public class DBManager {
     private DBManager() {
         pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     }
-
-    public void connect() throws DBException {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String jdbc = "jdbc:mysql://localhost:3306/fabricaMaderaDB";
-            conn = DriverManager.getConnection(jdbc, "spq", "spq");
-            System.out.println("Connection" + conn);
-            LOGGER.info("Se ha conectado a la base de datos");
-        } catch (ClassNotFoundException e) {
-            throw new DBException("No se pudo cargar el driver.", e);
-        } catch (SQLException e) {
-            throw new DBException("No se pudo conectar con la BD.", e);
-        }
-    }
-
-    public void disconnect() throws DBException {
-        if (conn != null) {
-            try {
-                conn.close();
-                LOGGER.info("Se ha desconectado de la DB");
-            } catch (SQLException e) {
-                throw new DBException("No se ha podido cerrar la conexiï¿½n a ala BD", e);
-            }
-        }
-    }
     
+	public void connect() throws DBException{
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String jdbc = "jdbc:mysql://localhost:3306/fabricaMaderaDB";
+			conn = DriverManager.getConnection(jdbc, "spq", "spq");
+			System.out.println("Connection" + conn);
+			LOGGER.info("Se ha conectado a la base de datos");
+		} catch (ClassNotFoundException e) {
+			throw new DBException("No se pudo cargar el driver.", e);
+		} catch (SQLException e) {
+			throw new DBException("No se pudo conectar con la BD.", e);
+		}
+	}
+	
+ 
 
     public Empleado getEmpleadoPorEmail(String email) throws DBException {
         Empleado userEmpleado = null;

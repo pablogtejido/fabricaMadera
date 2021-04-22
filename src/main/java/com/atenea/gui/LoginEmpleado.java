@@ -14,6 +14,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.jdo.JDOHelper;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
@@ -29,8 +30,9 @@ public class LoginEmpleado extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	    
 	public LoginEmpleado() {
-		this.setTitle("Iniciar sesión");
+		this.setTitle("Iniciar sesión Empleado");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 631, 300);
 		contentPane = new JPanel();
@@ -78,8 +80,7 @@ public class LoginEmpleado extends JFrame {
 					db.connect();
 					Empleado userEmpleado = db.getEmpleadoPorEmail(textEmpleado.getText());
 					System.out.println(userEmpleado);
-					db.disconnect();
-
+				
 					if (userEmpleado == null)
 						JOptionPane.showMessageDialog(null, "Empleado no encontrado");
 					else {

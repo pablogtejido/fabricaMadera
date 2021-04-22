@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.net.URI;
 
 import com.atenea.gui.LoginEmpleado;
-import com.atenea.gui.LoginCliente;
+import com.atenea.gui.RegistroCliente;
 import com.atenea.resource.EmpleadosResource;
 import com.atenea.resource.FacturaResource;
 import com.atenea.resource.ProductoResource;

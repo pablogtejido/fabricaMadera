@@ -64,7 +64,7 @@ public class RegistroEmpleado extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		this.setTitle("Registro");
+		this.setTitle("Registro Empleado");
 		setBounds(100, 100, 625, 530);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -192,26 +192,12 @@ public class RegistroEmpleado extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				try {
-					if(empleadoExistente() == true) {
-						JOptionPane.showMessageDialog(null, "El empleado con el DNI introducido ya tiene una cuenta creada", "ERROR.", JOptionPane.ERROR_MESSAGE);
-					}else if(dnitxt.getText().length() == 0 || nombretxt.getText().length() == 0 
-							|| direcciontxt.getText().length() == 0 || telefonotxt.getText().length() == 0 
-							|| puestotxt.getText().length() == 0 || mailtxt.getText().length() == 0
-							|| contratxt.getPassword().length == 0 || repetirContratxt.getPassword().length == 0
-							|| fechaNaci.getDate() == null) {
-						
-						JOptionPane.showMessageDialog(null, "Debe rellenar todos los campos obligatorios para crear la cuenta", "Error", JOptionPane.ERROR_MESSAGE);
-						lblDni.setForeground(Color.RED); lblNombre.setForeground(Color.RED); lblEmail.setForeground(Color.RED); lblContrasena.setForeground(Color.RED); 
-						lblrepetircontra.setForeground(Color.RED); lblDireccion.setForeground(Color.RED); lblPuesto.setForeground(Color.RED); lblTelefono.setForeground(Color.RED);
-						lblFechaNac.setForeground(Color.RED); lblFechaEmpl.setForeground(Color.RED);
-						
-					}else {
 						addUserEmpleado();		
 						
 						LoginEmpleado log = new LoginEmpleado();
 						log.setVisible(true);
 						setVisible(false);
-					}					
+									
 				} catch (DBException e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, "Ya existe un empleado con este DNI");
@@ -261,7 +247,6 @@ public class RegistroEmpleado extends JFrame{
 				DBManager manager = DBManager.getInstance();
 				List<Empleado> empleados = manager.getEmpleados();
 				try {
-					manager.connect();
 					for (Empleado empleado : empleados) {
 						if(empleado.getDni() == dnitxt.getText()) {
 							return true;
@@ -278,7 +263,7 @@ public class RegistroEmpleado extends JFrame{
 			private void addUserEmpleado() throws DBException {
 				DBManager manager = DBManager.getInstance();
 				try {
-					manager.connect();
+			
 					
 					Empleado e = new Empleado(
 							dnitxt.getText(),
@@ -291,9 +276,8 @@ public class RegistroEmpleado extends JFrame{
 					);
 					System.out.println(e);
 					manager.store(e);
-					manager.disconnect();
-				}catch (DBException de) {
-					manager.disconnect();
+				
+				}catch (Exception de) {
 					throw de;
 				}
 			}

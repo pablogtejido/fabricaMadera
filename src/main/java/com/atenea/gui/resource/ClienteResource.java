@@ -16,8 +16,6 @@ public class ClienteResource {
 			db.connect();
 			Cliente userCliente = db.getClientePorDNI(dni);
 			System.out.println(userCliente);
-			db.disconnect();
-			
 			if(userCliente == null) {
 				Cliente newCliente = new Cliente(dni, nombre, apellidos);
 				db.store(newCliente);
@@ -25,7 +23,6 @@ public class ClienteResource {
 				JOptionPane.showMessageDialog(null, "Cliente ya existente");
 			}
 		} catch (DBException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

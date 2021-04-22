@@ -19,7 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JList;
 
-public class LoginCliente extends JFrame{
+public class RegistroCliente extends JFrame{
 	
 	private JPanel contentPane;
 	private JTextField textFieldDNI;
@@ -30,7 +30,7 @@ public class LoginCliente extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginCliente window = new LoginCliente();
+					RegistroCliente window = new RegistroCliente();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,9 +38,9 @@ public class LoginCliente extends JFrame{
 			}
 		});
 	}
-	public LoginCliente() {
+	public RegistroCliente() {
 		
-		setTitle("Cliente");
+		setTitle("Registro Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 631, 300);
 		contentPane = new JPanel();
