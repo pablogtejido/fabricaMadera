@@ -78,39 +78,6 @@ public class DBManager {
         return empleado;
     }
     
-       
-    public Cliente getClientePorDNI(String dni) throws DBException {
-    	PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tran = pm.currentTransaction();
-
-        Cliente cliente = null;
-
-        try {
-            System.out.println("Cogiendo Cliente con DNI: " + dni);
-            tran.begin();
-
-            Extent<Cliente> extension = pm.getExtent(Cliente.class, true);
-            for (Cliente clienteEXT : extension) {
-                if (clienteEXT.getDni().equals(dni)) {
-                    cliente = new Cliente(clienteEXT.getDni(), clienteEXT.getNombre(), clienteEXT.getApellidos(),
-                    		clienteEXT.getContrasena());
-                }
-            }
-
-            tran.commit();
-        } catch (Exception ex) {
-            System.out.println("Error obteniendo empleado: " + ex.getMessage());
-        } finally {
-            if (tran != null && tran.isActive()) {
-                tran.rollback();
-            }
-
-            pm.close();
-        }
-
-        return cliente;
-    }
-    
     /**
      * Borra un objeto de la DB
      * 
@@ -207,12 +174,27 @@ public class DBManager {
     /**
      * Borrar un producto de la DB
      * 
-     * @param empleado
+     * @param cliente
      */
     public void delete(Producto producto) {
         DBManager.getInstance().deleteObjectFromDB(producto);
     }
-
+    
+    /**
+     * Borrar un cliente de la DB
+     * 
+     * @param cliente
+     */
+    public void delete(Cliente cliente) {
+    	DBManager.getInstance().deleteObjectFromDB(cliente);
+    }
+    
+    /**
+     * Obtener un empleado en base a su dni
+     * 
+     * @param dni
+     * @return
+     */
     public Empleado getEmpleado(String DNI) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tran = pm.currentTransaction();
@@ -244,6 +226,44 @@ public class DBManager {
         }
 
         return empleado;
+    }
+    
+    /**
+     * Obtener un cliente en base a su dni
+     * 
+     * @param dni
+     * @return
+     */
+    public Cliente getCliente(String dni) throws DBException {
+    	PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tran = pm.currentTransaction();
+
+        Cliente cliente = null;
+
+        try {
+            System.out.println("Cogiendo Cliente con DNI: " + dni);
+            tran.begin();
+
+            Extent<Cliente> extension = pm.getExtent(Cliente.class, true);
+            for (Cliente clienteEXT : extension) {
+                if (clienteEXT.getDni().equals(dni)) {
+                    cliente = new Cliente(clienteEXT.getDni(), clienteEXT.getNombre(), clienteEXT.getApellidos(),
+                    		clienteEXT.getContrasena());
+                }
+            }
+
+            tran.commit();
+        } catch (Exception ex) {
+            System.out.println("Error obteniendo empleado: " + ex.getMessage());
+        } finally {
+            if (tran != null && tran.isActive()) {
+                tran.rollback();
+            }
+
+            pm.close();
+        }
+
+        return cliente;
     }
 
     /**
@@ -390,7 +410,11 @@ public class DBManager {
 
         return empleados;
     }
-
+    /**
+     * Get productos de la DB
+     * 
+     * @return lista de productos
+     */
     public List<Producto> getProductos() {
         PersistenceManager pm = pmf.getPersistenceManager();
         pm.getFetchPlan().setMaxFetchDepth(4);
@@ -421,7 +445,7 @@ public class DBManager {
         return productos;
 
     }
-
+    
     /**
      * Actualizar un empleado existente
      * 
@@ -607,5 +631,106 @@ public class DBManager {
             pm.close();
         }
     }
+    
+    /**
+     * Get clientes de la DB
+     * 
+     * @return lista de clientes
+     */
+    public List<Cliente> getClientes() {
+    	PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
 
+        List<Cliente> clientes = new ArrayList<Cliente>();
+
+        try {
+            System.out.println("* Viendo todos clientes");
+            tx.begin();
+
+            Extent<Cliente> clienteExtent = pm.getExtent(Cliente.class, true);
+
+            for (Cliente cliente : clienteExtent) {
+                clientes.add(cliente);
+            }
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("$ Error viendo todos clientes: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+        return clientes;
+
+    }
+    /**
+     * Actualizar un cliente existente
+     * 
+     * @param cliente
+     */
+    public void updateCliente(Cliente cliente) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        try {
+            tx.begin();
+
+            Extent<Cliente> e = pm.getExtent(Cliente.class, true);
+            Iterator<Cliente> iter = e.iterator();
+            while (iter.hasNext()) {
+                Cliente cliente_a_cambiar = (Cliente) iter.next();
+                if (cliente_a_cambiar.getDni() == cliente.getDni()) {
+                    System.out.println("* Updating: " + cliente_a_cambiar + "\n* To: " + cliente);
+                    cliente_a_cambiar.setNombre(cliente.getNombre());
+                    cliente_a_cambiar.setApellidos(cliente.getApellidos());
+                }
+            }
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("$ Error updating: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+    }
+
+    /**
+     * Borrar una cliente por su dni
+     * 
+     * @param dni
+     */
+    public void deleteClienteByDNI(String dni) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            System.out.println("Eliminando cliente con dni: " + dni);
+            tx.begin();
+
+            Extent<Cliente> e = pm.getExtent(Cliente.class, true);
+            Iterator<Cliente> iter = e.iterator();
+            while (iter.hasNext()) {
+                Cliente cliente = (Cliente) iter.next();
+                if (cliente.getDni() == dni) {
+                    pm.deletePersistent(cliente);
+                }
+            }
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("Error obteniendo cliente: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
 }

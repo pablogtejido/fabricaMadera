@@ -5,7 +5,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import com.atenea.gui.resource.ClienteResource;
+import com.atenea.gui.resource.RegistroClienteResource;
 
 import javax.swing.JLabel;
 
@@ -145,7 +145,7 @@ public class RegistroCliente extends JFrame{
 				String apellidos = textFieldApellidos.getText();
 				String contrasena = passwordField.getText();
 				
-				ClienteResource.registro(dni, nombre, apellidos, contrasena);
+				RegistroClienteResource.registro(dni, nombre, apellidos, contrasena);
 				
 			}
 			

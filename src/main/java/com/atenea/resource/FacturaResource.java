@@ -29,7 +29,7 @@ public class FacturaResource {
     @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Factura modificarProducto(Factura factura) {
+    public Factura modificarFactura(Factura factura) {
         DBManager.getInstance().updateFactura(factura);
         return factura;
     }
@@ -37,7 +37,7 @@ public class FacturaResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public Factura crearProducto(Factura factura) {
+    public Factura crearFactura(Factura factura) {
         DBManager.getInstance().store(factura);
         return factura;
     }

@@ -7,13 +7,13 @@ import com.atenea.db.DBException;
 import com.atenea.db.DBManager;
 
 
-public class ClienteResource {
+public class RegistroClienteResource {
 
 	public static void registro(String dni, String nombre, String apellidos, String contrasena) {
 		DBManager db = DBManager.getInstance();
 		
 		try {
-			Cliente userCliente = db.getClientePorDNI(dni);
+			Cliente userCliente = db.getCliente(dni);
 			System.out.println(userCliente);
 			if(userCliente == null) {
 				Cliente newCliente = new Cliente(dni, nombre, apellidos, contrasena);

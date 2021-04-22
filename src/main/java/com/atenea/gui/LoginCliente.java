@@ -114,7 +114,7 @@ public class LoginCliente extends JFrame {
 				DBManager db = DBManager.getInstance();
 
 				try {
-					Cliente userCliente = db.getClientePorDNI(textDni.getText());
+					Cliente userCliente = db.getCliente(textDni.getText());
 					System.out.println(userCliente);
 				
 					if (userCliente == null)

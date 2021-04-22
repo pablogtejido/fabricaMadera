@@ -55,7 +55,7 @@ public class EmpleadosResource {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String crearProducto(Empleado empleado) {
+	public String crearEmpleado(Empleado empleado) {
 		DBManager.getInstance().store(empleado);
 		return "Done";
 	}
@@ -63,7 +63,7 @@ public class EmpleadosResource {
 	@DELETE
 	@Path("/ids/{empleadoId}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String eliminarProducto(@PathParam("empleadoId") String id) {
+	public String eliminarEmpleado(@PathParam("empleadoId") String id) {
 		DBManager.getInstance().deleteEmpleadoById(id);
 		return "Done";
 	}
