@@ -13,7 +13,6 @@ public class ClienteResource {
 		DBManager db = DBManager.getInstance();
 		
 		try {
-			db.connect();
 			Cliente userCliente = db.getClientePorDNI(dni);
 			System.out.println(userCliente);
 			if(userCliente == null) {

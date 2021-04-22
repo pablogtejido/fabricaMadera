@@ -43,53 +43,72 @@ public class DBManager {
         pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     }
     
-    public void connect() throws DBException{
-		 try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String jdbc = "jdbc:mysql://localhost:3306/fabricaMaderaDB";
-			conn = DriverManager.getConnection(jdbc, "spq", "spq");
-			System.out.println("Connection" + conn);
-			LOGGER.info("Se ha conectado a la base de datos");
-		} catch (ClassNotFoundException e) {
-			throw new DBException("No se pudo cargar el driver.", e);
-		} catch (SQLException e) {
-			throw new DBException("No se pudo conectar con la BD.", e);
-		}
-	}
 
     public Empleado getEmpleadoPorEmail(String email) throws DBException {
-        Empleado userEmpleado = null;
-        String sql = "SELECT DNI, NOMBRE, DIRECCION, EMAIL, TELEFONO, PUESTO, FCHA_NACIMIENTO, FCHA_EMPLEADO, SUELDO, CONTRASENA FROM EMPLEADO WHERE EMAIL = ?";
+    	PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tran = pm.currentTransaction();
 
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, email);
+        Empleado empleado = null;
 
-            ResultSet rs = pstmt.executeQuery();
-            userEmpleado = EmpleadoRSH.toUser(rs);
-        } catch (SQLException e) {
+        try {
+            System.out.println("Cogiendo Empleado con EMAIL: " + email);
+            tran.begin();
 
-            throw new DBException("No se ha podido obtener el Empleado", e);
+            Extent<Empleado> extension = pm.getExtent(Empleado.class, true);
+            for (Empleado empleadoEXT : extension) {
+                if (empleadoEXT.getEmail().equals(email)) {
+                    empleado = new Empleado(empleadoEXT.getDni(), empleadoEXT.getNombre(), empleadoEXT.getDireccion(),
+                    		empleadoEXT.getEmail(), empleadoEXT.getTelefono(), empleadoEXT.getPuesto(),
+                    		empleadoEXT.getFcha_nacimiento(), empleadoEXT.getFcha_empleado(), empleadoEXT.getSueldo(),
+                    		empleadoEXT.getContrasena());
+                }
+            }
+
+            tran.commit();
+        } catch (Exception ex) {
+            System.out.println("Error obteniendo empleado: " + ex.getMessage());
+        } finally {
+            if (tran != null && tran.isActive()) {
+                tran.rollback();
+            }
+
+            pm.close();
         }
-        LOGGER.info("Se ha obtenido el Empleado de la BD");
-        return userEmpleado;
+
+        return empleado;
     }
     
+       
     public Cliente getClientePorDNI(String dni) throws DBException {
-		Cliente userCliente = null;
-		String sql = "SELECT DNI, NOMBRE, APELLIDOS FROM CLIENTE WHERE DNI = ?";
-    	
-		try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, dni);
+    	PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tran = pm.currentTransaction();
 
-            ResultSet rs = pstmt.executeQuery();
-            userCliente = ClienteRSH.toUser(rs);
-        } catch (SQLException e) {
+        Cliente cliente = null;
 
-            throw new DBException("No se ha podido obtener el Cliente", e);
+        try {
+            System.out.println("Cogiendo Cliente con DNI: " + dni);
+            tran.begin();
+
+            Extent<Cliente> extension = pm.getExtent(Cliente.class, true);
+            for (Cliente clienteEXT : extension) {
+                if (clienteEXT.getDni().equals(dni)) {
+                    cliente = new Cliente(clienteEXT.getDni(), clienteEXT.getNombre(), clienteEXT.getApellidos(),
+                    		clienteEXT.getContrasena());
+                }
+            }
+
+            tran.commit();
+        } catch (Exception ex) {
+            System.out.println("Error obteniendo empleado: " + ex.getMessage());
+        } finally {
+            if (tran != null && tran.isActive()) {
+                tran.rollback();
+            }
+
+            pm.close();
         }
-        LOGGER.info("Se ha obtenido el Cliente de la BD");
-        return userCliente;
-    	
+
+        return cliente;
     }
     
     /**
