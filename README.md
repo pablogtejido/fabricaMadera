@@ -30,6 +30,12 @@ GRANT ALL ON fabricaMaderaDB.* TO 'spq'@'%';
 mvn compile
 ```
 
+### Crear las tablas
+```
+mvn datanucleus:schema-create
+```
+
+
 ### Verificar el proyecto
 
 ```bash
