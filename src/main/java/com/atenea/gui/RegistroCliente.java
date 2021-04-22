@@ -44,7 +44,7 @@ public class RegistroCliente extends JFrame{
 		
 		setTitle("Registro Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 631, 300);
+		setBounds(100, 100, 631, 375);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -91,11 +91,7 @@ public class RegistroCliente extends JFrame{
 		textFieldApellidos.setColumns(10);
 		textFieldApellidos.setBounds(285, 142, 96, 19);
 		contentPane.add(textFieldApellidos);
-		
-		JButton btnRegistrar = new JButton("Registrar Cliente");
-		btnRegistrar.setBounds(238, 229, 135, 21);
-		contentPane.add(btnRegistrar);
-		
+	
 		JLabel lblContrasena = new JLabel("Contraseña:");
 		lblContrasena.setBounds(208, 169, 76, 14);
 		contentPane.add(lblContrasena);
@@ -104,7 +100,42 @@ public class RegistroCliente extends JFrame{
 		passwordField.setBounds(285, 172, 96, 20);
 		contentPane.add(passwordField);
 		
-		btnRegistrar.addActionListener(new ActionListener() {
+		JButton volver = new JButton("Volver");
+		volver.setForeground(Color.WHITE);
+		volver.setBackground(new Color(72, 61, 139));
+		volver.setBounds(10, 294, 80, 31);
+		contentPane.add(volver);
+		volver.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				LoginCliente log = new LoginCliente();
+				log.setVisible(true);
+				setVisible(false);
+			}
+		});
+		
+		JButton btnregistrar = new JButton("Registrarse");
+		btnregistrar.setForeground(Color.WHITE);
+		btnregistrar.setBackground(new Color(72, 61, 139));
+		btnregistrar.setBounds(235, 230, 141, 36);
+		contentPane.add(btnregistrar);
+		
+		JButton cerrar = new JButton("Cerrar");
+		cerrar.setForeground(Color.WHITE);
+		cerrar.setBackground(new Color(72, 61, 139));
+		cerrar.setBounds(517, 294, 80, 31);
+		contentPane.add(cerrar);
+		cerrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		btnregistrar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {

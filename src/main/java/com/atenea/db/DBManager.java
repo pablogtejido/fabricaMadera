@@ -17,8 +17,6 @@ import com.atenea.data.EmpleadoRSH;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
 
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,8 +43,8 @@ public class DBManager {
         pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     }
     
-	public void connect() throws DBException{
-		try {
+    public void connect() throws DBException{
+		 try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String jdbc = "jdbc:mysql://localhost:3306/fabricaMaderaDB";
 			conn = DriverManager.getConnection(jdbc, "spq", "spq");
@@ -58,8 +56,6 @@ public class DBManager {
 			throw new DBException("No se pudo conectar con la BD.", e);
 		}
 	}
-	
- 
 
     public Empleado getEmpleadoPorEmail(String email) throws DBException {
         Empleado userEmpleado = null;
@@ -72,9 +68,9 @@ public class DBManager {
             userEmpleado = EmpleadoRSH.toUser(rs);
         } catch (SQLException e) {
 
-            throw new DBException("No se ha podido obtener el usuario", e);
+            throw new DBException("No se ha podido obtener el Empleado", e);
         }
-        LOGGER.info("Se ha obtenido el usuario de la BD");
+        LOGGER.info("Se ha obtenido el Empleado de la BD");
         return userEmpleado;
     }
     
@@ -89,9 +85,9 @@ public class DBManager {
             userCliente = ClienteRSH.toUser(rs);
         } catch (SQLException e) {
 
-            throw new DBException("No se ha podido obtener el usuario", e);
+            throw new DBException("No se ha podido obtener el Cliente", e);
         }
-        LOGGER.info("Se ha obtenido el usuario de la BD");
+        LOGGER.info("Se ha obtenido el Cliente de la BD");
         return userCliente;
     	
     }

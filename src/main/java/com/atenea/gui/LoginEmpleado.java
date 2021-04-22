@@ -11,6 +11,8 @@ import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.awt.EventQueue;
+
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -30,6 +32,19 @@ public class LoginEmpleado extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginCliente frame = new LoginCliente();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	    
 	public LoginEmpleado() {
 		this.setTitle("Iniciar sesión Empleado");
