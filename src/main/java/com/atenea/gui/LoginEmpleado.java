@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
-public class Login extends JFrame {
+public class LoginEmpleado extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textEmpleado;
@@ -29,7 +29,7 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public LoginEmpleado() {
 		this.setTitle("Iniciar sesión");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 631, 300);
@@ -128,7 +128,7 @@ public class Login extends JFrame {
 		JButton registrarse = new JButton("Registrarse");
 		registrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Registro rg = new Registro();
+				RegistroEmpleado rg = new RegistroEmpleado();
 				rg.setVisible(true);
 				setVisible(false);
 			}

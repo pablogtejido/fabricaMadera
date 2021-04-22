@@ -24,7 +24,7 @@ import javax.swing.JPasswordField;
 import java.awt.Label;
 import com.toedter.calendar.JDateChooser;
 
-public class Registro extends JFrame{
+public class RegistroEmpleado extends JFrame{
 	private static final String EnumPuestoEmpleados = null;
 	private JTextField puestotxt;
 	private JTextField direcciontxt;
@@ -44,7 +44,7 @@ public class Registro extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Registro window = new Registro();
+					RegistroEmpleado window = new RegistroEmpleado();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +56,7 @@ public class Registro extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public Registro() {
+	public RegistroEmpleado() {
 		initialize();
 	}
 
@@ -208,7 +208,7 @@ public class Registro extends JFrame{
 					}else {
 						addUserEmpleado();		
 						
-						Login log = new Login();
+						LoginEmpleado log = new LoginEmpleado();
 						log.setVisible(true);
 						setVisible(false);
 					}					
@@ -242,7 +242,7 @@ public class Registro extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Login log = new Login();
+				LoginEmpleado log = new LoginEmpleado();
 				log.setVisible(true);
 				setVisible(false);
 			}

@@ -10,6 +10,7 @@ import com.atenea.gui.resource.ClienteResource;
 import javax.swing.JLabel;
 
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,14 +19,26 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JList;
 
-public class VentanaCliente extends JFrame{
+public class LoginCliente extends JFrame{
 	
 	private JPanel contentPane;
 	private JTextField textFieldDNI;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellidos;
 	
-	public VentanaCliente() {
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginCliente window = new LoginCliente();
+					window.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	public LoginCliente() {
 		
 		setTitle("Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

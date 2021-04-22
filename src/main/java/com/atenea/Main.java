@@ -7,8 +7,8 @@ import org.glassfish.jersey.server.ResourceConfig;
 import java.io.IOException;
 import java.net.URI;
 
-import com.atenea.gui.Login;
-import com.atenea.gui.VentanaCliente;
+import com.atenea.gui.LoginEmpleado;
+import com.atenea.gui.LoginCliente;
 import com.atenea.resource.EmpleadosResource;
 import com.atenea.resource.FacturaResource;
 import com.atenea.resource.ProductoResource;
@@ -65,7 +65,7 @@ public class Main {
                 public void run() {
                     try {
                     	//VentanaCliente frame = new VentanaCliente();
-                        Login frame = new Login();
+                        LoginEmpleado frame = new LoginEmpleado();
                         frame.setVisible(true);
                     } catch (Exception e) {
                         e.printStackTrace();
