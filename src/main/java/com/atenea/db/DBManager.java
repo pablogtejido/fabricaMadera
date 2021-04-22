@@ -10,6 +10,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import com.atenea.data.Administrador;
 import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
@@ -733,4 +734,97 @@ public class DBManager {
             pm.close();
         }
     }
+    
+    public List<Administrador> getAdministrador() {
+    	PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        List<Administrador> administradores = new ArrayList<Administrador>();
+
+        try {
+            System.out.println("* Viendo todos administradores");
+            tx.begin();
+
+            Extent<Administrador> administradorExtent = pm.getExtent(Administrador.class, true);
+
+            for (Administrador admin : administradorExtent) {
+            	administradores.add(admin);
+            }
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("$ Error viendo todos administradores: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+        
+        return administradores;
+
+    }
+    
+    public void updateAdministrador(Administrador administadror) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        try {
+            tx.begin();
+
+            Extent<Administrador> e = pm.getExtent(Administrador.class, true);
+            Iterator<Administrador> iter = e.iterator();
+            while (iter.hasNext()) {
+            	Administrador administrador_a_cambiar = (Administrador) iter.next();
+                if (administrador_a_cambiar.getId() == administadror.getId()) {
+                    System.out.println("* Updating: " + administrador_a_cambiar + "\n* To: " + administadror);
+                    administrador_a_cambiar.setEmail(administadror.getContrasena());
+                    administrador_a_cambiar.setNombre(administadror.getNombre());
+                    administrador_a_cambiar.setNombre(administadror.getApellido());
+                    administrador_a_cambiar.setEmail(administadror.getEmail());        
+                    administrador_a_cambiar.setTelefono(administadror.getTelefono());
+                }
+            }
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("$ Error updating: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
+    }
+    
+    public void deleteAdministradorById(int id) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            System.out.println("Eliminando administrador con id: " + id);
+            tx.begin();
+
+            Extent<Administrador> e = pm.getExtent(Administrador.class, true);
+            Iterator<Administrador> iter = e.iterator();
+            while (iter.hasNext()) {
+            	Administrador administrador = (Administrador) iter.next();
+            	 if (administrador.getId() == id) {
+                     pm.deletePersistent(administrador);
+                 }
+            }
+
+            tx.commit();
+        } catch (Exception ex) {
+            System.out.println("Error obteniendo Administrador: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
 }
