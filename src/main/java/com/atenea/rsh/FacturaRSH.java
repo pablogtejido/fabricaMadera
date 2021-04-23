@@ -47,14 +47,25 @@ public class FacturaRSH {
     /**
      * Hacer una petición PUT al servidor para guardar la factura.
      * 
-     * @param factura Factura a guardar.
+     * @param <Code>Factura</Code> Factura a guardar.
      * @return <Code>Factura</Code> Factura con el id ya guardado en la DB.
      */
     public Factura guardarFactura(Factura factura) {
-        // TODO: Hacer una petición PUT http al servidor
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
         Response response = ib.put(Entity.entity(factura, MediaType.APPLICATION_JSON));
         Factura facturaConID = response.readEntity(Factura.class);
         return facturaConID;
+    }
+
+    /**
+     * Borrar una factura de la BD.
+     * 
+     * @param <Code>Factura</Code> Factura a borrar.
+     */
+    public void borrarFactura(Factura factura) {
+        // TODO: Verificar esto
+        Invocation.Builder ib = target.path("ids/" + factura.getId()).request();
+        Response response = ib.delete();
+        System.out.println(response.toString());
     }
 }
