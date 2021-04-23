@@ -781,9 +781,9 @@ public class DBManager {
             	Administrador administrador_a_cambiar = (Administrador) iter.next();
                 if (administrador_a_cambiar.getId() == administadror.getId()) {
                     System.out.println("* Updating: " + administrador_a_cambiar + "\n* To: " + administadror);
-                    administrador_a_cambiar.setEmail(administadror.getContrasena());
+                    administrador_a_cambiar.setContrasena(administadror.getContrasena());
                     administrador_a_cambiar.setNombre(administadror.getNombre());
-                    administrador_a_cambiar.setNombre(administadror.getApellido());
+                    administrador_a_cambiar.setApellido(administadror.getApellido());
                     administrador_a_cambiar.setEmail(administadror.getEmail());        
                     administrador_a_cambiar.setTelefono(administadror.getTelefono());
                 }
