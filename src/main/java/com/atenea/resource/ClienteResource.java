@@ -17,7 +17,7 @@ import jakarta.ws.rs.core.MediaType;
 
 
 
-@Path("clientes")
+@Path("cliente")
 public class ClienteResource {
 
 	@GET
@@ -28,16 +28,16 @@ public class ClienteResource {
 	}
 	
 	@PATCH
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
 	public String modificarCliente(Cliente cliente) {
 		DBManager.getInstance().updateCliente(cliente);
 		return "Done updateCliente";
 	}
 	
 	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
 	public String crearCliente(Cliente cliente) {
 		DBManager.getInstance().store(cliente);
 		return "Done store(cliente)";	
