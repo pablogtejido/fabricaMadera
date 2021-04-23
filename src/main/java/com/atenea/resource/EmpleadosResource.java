@@ -1,16 +1,8 @@
 package com.atenea.resource;
 
-import java.util.Date;
 import java.util.List;
-
-import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Query;
-
 import com.atenea.data.Empleado;
 import com.atenea.db.DBManager;
-
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -30,19 +22,6 @@ public class EmpleadosResource {
 		List<Empleado> empleados = DBManager.getInstance().getEmpleados();
 		return empleados;
 	}
-
-	// FIXME: @GET
-	/*
-	 * @Produces(MediaType.APPLICATION_JSON) public int diasEnEmpresa(Empleado
-	 * empleado) { // FIXME: Arreglar el error con diferenciación de metodos Date
-	 * fechaActual = new Date(); Date inicio = empleado.getFcha_empleado();
-	 * 
-	 * int dias = (int) ((fechaActual.getTime() - inicio.getTime()) / 86400000);
-	 * 
-	 * return dias;
-	 * 
-	 * }
-	 */
 
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)

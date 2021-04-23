@@ -48,9 +48,9 @@ public class ClienteRSH {
     }
     
     /**
-     * Hacer una petición PUT al servidor para guardar la factura.
+     * Hacer una petición PUT al servidor para guardar el cliente.
      * 
-     * @param factura Cliente a guardar.
+     * @param Cliente a guardar.
      * @return <Code>Cliente</Code> Cliente con el dni ya guardado en la DB.
      */
     public Cliente guardarCliente(Cliente cliente) {
