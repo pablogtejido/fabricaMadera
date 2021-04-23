@@ -35,12 +35,11 @@ public class AdministradorResource {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String modificalAdministrador(Administrador admin) {
-		DBManager.getInstance().updateAdministrador(admin);
+	public String crearAdministrador(Administrador admin) {
+		DBManager.getInstance().store(admin);
 		return "Done";
 	}
-	
-	
+		
 	@DELETE
 	@Path("/ids/{administradorId}")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -49,6 +48,5 @@ public class AdministradorResource {
 		return "Done";
 	}
 	
-
 
 }

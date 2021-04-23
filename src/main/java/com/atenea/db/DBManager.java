@@ -162,6 +162,17 @@ public class DBManager {
     public void store(Factura factura) {
         DBManager.getInstance().storeObjectInDB(factura);
     }
+    
+    /**
+     * Guardar un administrador en la DB
+     * 
+     * @param factura
+     */
+    
+    public void store(Administrador admin) {
+        DBManager.getInstance().storeObjectInDB(admin);
+    }
+
 
     /**
      * Borrar un empleado de la DB
