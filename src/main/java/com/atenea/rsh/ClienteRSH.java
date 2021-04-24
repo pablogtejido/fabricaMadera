@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.atenea.data.Cliente;
-import com.atenea.data.Factura;
 
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -58,6 +57,20 @@ public class ClienteRSH {
         Response response = ib.put(Entity.entity(cliente, MediaType.APPLICATION_JSON));
         Cliente clienteConDni = response.readEntity(Cliente.class);
         return clienteConDni;
+    }
+    
+    /**
+     * Modificar el cliente en el servidor
+     * 
+     * @param <Code>Cliente</Code> Cliente a modificar
+     * @return <Code>Cliente</Code> Cliente con el dni ya guardado en la BD
+     */
+    public Cliente modificarCliente(Cliente cliente) {
+    	Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
+    	Response response = ib.build("PATH", Entity.json(cliente)).invoke();
+    	
+    	Cliente clienteConDni = response.readEntity(Cliente.class);
+    	return clienteConDni;
     }
     
     /**

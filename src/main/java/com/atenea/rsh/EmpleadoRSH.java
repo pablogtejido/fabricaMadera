@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 
 import jakarta.ws.rs.client.Client;
@@ -60,6 +59,20 @@ public class EmpleadoRSH {
         Empleado empleadoConId = response.readEntity(Empleado.class);
         return empleadoConId;
      }
+    
+    /**
+     * Modificar el empleado en el servidor
+     * 
+     * @param <Code>Empleado</Code> Empleado a modificar
+     * @return <Code>Empleado</Code> Empleaco con el dni ya guardado en la BD
+     */
+    public Empleado modificarEmpleado(Empleado empleado) {
+    	Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
+    	Response response = ib.build("PATH", Entity.json(empleado)).invoke();
+    	
+    	Empleado empleadoConDni = response.readEntity(Empleado.class);
+    	return empleadoConDni;
+    }
     
     /**
      * Borrar un empleado de la BD
