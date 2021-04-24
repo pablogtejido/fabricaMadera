@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -83,6 +84,16 @@ public class ClientesEmpleado extends JFrame{
 		
 		scrollPane.setViewportView(table);
 		
+		JPanel panelBoton = new JPanel();
+		panelBoton.setBounds(316, 346, 172, 43);
+		getContentPane().add(panelBoton);
+		
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setForeground(Color.WHITE);
+		btnModificar.setBackground(new Color(72, 61, 139));
+		btnModificar.setBounds(235, 230, 141, 36);
+		panelBoton.add(btnModificar);
+		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
@@ -107,6 +118,17 @@ public class ClientesEmpleado extends JFrame{
 				window2.setVisible(true);
 			}
 		});
+		
+		btnModificar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+
 	}
 	
 	
@@ -130,5 +152,4 @@ public class ClientesEmpleado extends JFrame{
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}
-	
 }
