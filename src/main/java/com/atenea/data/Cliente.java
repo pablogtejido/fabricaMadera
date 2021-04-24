@@ -8,14 +8,14 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable(detachable = "true")
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Cliente {
-    @PrimaryKey
-    private String dni;
-    private String nombre;
-    private String apellidos;
-    private String contrasena;
+	@PrimaryKey
+	private String dni;
+	private String nombre;
+	private String apellidos;
+	private String contrasena;
 
-    public Cliente() {
-    }
+	public Cliente() {
+	}
 
 	public String getDni() {
 		return dni;
@@ -62,7 +62,5 @@ public class Cliente {
 		this.apellidos = apellidos;
 		this.contrasena = contrasena;
 	}
-
-
 
 }

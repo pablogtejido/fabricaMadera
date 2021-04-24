@@ -58,13 +58,13 @@ public class Main {
             server.shutdownNow();
         } else {
             EventQueue.invokeLater(new Runnable() {
+                @Override
                 public void run() {
                     try {
                         // VentanaCliente frame = new VentanaCliente();
                         LoginEmpleado frame = new LoginEmpleado();
                         frame.setVisible(true);
                     } catch (Exception e) {
-                        e.printStackTrace();
                     }
                 }
             });
