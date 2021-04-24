@@ -1,35 +1,74 @@
 package com.atenea.rsh;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
+import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.Invocation;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
 public class EmpleadoRSH {
-	public static Empleado toUser(ResultSet rs) {
-		Empleado userEmpleado = null;
 
-		try {
-			if (rs.next()) {
-				userEmpleado = new Empleado();
-
-				userEmpleado.setDni(rs.getString("DNI"));
-				userEmpleado.setNombre(rs.getString("NOMBRE"));
-				userEmpleado.setDireccion(rs.getString("DIRECCION"));
-				userEmpleado.setEmail(rs.getString("EMAIL"));
-				userEmpleado.setTelefono(rs.getString("TELEFONO"));
-				/*
-				 * userEmpleado.setPuesto(); userEmpleado.setFcha_nacimiento();
-				 * userEmpleado.setFcha_empleado();
-				 */
-				userEmpleado.setSueldo(rs.getDouble("SUELDO"));
-				userEmpleado.setContrasena(rs.getString("CONTRASENA"));
-
-			}
-		} catch (SQLException se) {
-			System.out.println("No se ha podido encontrar al usuario");
-		}
-
-		return userEmpleado;
+	static EmpleadoRSH instance = null;
+	Client client;
+	WebTarget target;
+	
+	public static EmpleadoRSH getInstance() {
+		if (instance == null) {
+            instance = new EmpleadoRSH();
+        }
+        return instance;
 	}
+	
+	public EmpleadoRSH() {
+		client = ClientBuilder.newClient();
+        target = client.target("http://localhost:8080/myapp").path("empleados"); // http://localhost:8080/myapp/empleados
+	}
+	
+	/**
+     * Ver todas los empleado del servidor.
+     * 
+     * @return <Code>List<Empleados></Code> Lista con empleados
+     */
+    public List<Empleado> verEmpleados() {
+        Invocation.Builder ib = target.request(); // Construir la petición
+        Response response = ib.get(); // Realizar una petición GET
+        List<Empleado> empleados = response.readEntity(new GenericType<List<Empleado>>() { // Crear una lista de empleados
+        });
+        return empleados;
+    }
+    
+    /**
+     * Hacer una petición PUT al servidor para guardar el empleado.
+     * 
+     * @param Empleado a guardar.
+     * @return <Code>Empleado</Code> Empleado con el dni ya guardado en la DB.
+     */
+    public Empleado guardarEmpleado(Empleado empleado) {
+        Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
+        Response response = ib.put(Entity.entity(empleado, MediaType.APPLICATION_JSON));
+        Empleado empleadoConId = response.readEntity(Empleado.class);
+        return empleadoConId;
+     }
+    
+    /**
+     * Borrar un empleado de la BD
+     * 
+     * @param <Code>Empleado</Code> Empleado a borrar
+     */
+    public void borrarCliente(Empleado empleado) {
+    	Invocation.Builder ib = target.path("/ids" + empleado.getDni()).request();
+    	Response response = ib.delete();
+    	System.out.println(response.toString());
+    }
 }

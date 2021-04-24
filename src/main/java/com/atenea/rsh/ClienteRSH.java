@@ -54,11 +54,21 @@ public class ClienteRSH {
      * @return <Code>Cliente</Code> Cliente con el dni ya guardado en la DB.
      */
     public Cliente guardarCliente(Cliente cliente) {
-        // TODO: Hacer una petición PUT http al servidor
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
         Response response = ib.put(Entity.entity(cliente, MediaType.APPLICATION_JSON));
         Cliente clienteConDni = response.readEntity(Cliente.class);
         return clienteConDni;
+    }
+    
+    /**
+     * Borrar un cliente de la BD
+     * 
+     * @param <Code>Cliente</Code> Cliente a borrar
+     */
+    public void borrarCliente(Cliente cliente) {
+    	Invocation.Builder ib = target.path("/ids" + cliente.getDni()).request();
+    	Response response = ib.delete();
+    	System.out.println(response.toString());
     }
 
 }
