@@ -1,8 +1,5 @@
 package com.atenea.gui;
 
-
-
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -15,7 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 
 public class VentanaInicio extends JFrame {
@@ -41,16 +37,16 @@ public class VentanaInicio extends JFrame {
 	}
 
 	public VentanaInicio() {
-		
+
 		initialize();
 		frame.setVisible(true);
-		
+
 	}
-	
+
 	/**
 	 * Create the frame.
 	 */
-	
+
 	public void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Inicio Fabrica Maderas");
@@ -63,27 +59,26 @@ public class VentanaInicio extends JFrame {
 		contentPane.setBackground(new Color(135, 206, 250));
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		//JButton para Iniciar SesiÃ³n
+
+		// JButton para Iniciar SesiÃ³n
 		JButton btnLogInEmpleado = new JButton("Iniciar sesion como empleado");
 		btnLogInEmpleado.setForeground(Color.WHITE);
 		btnLogInEmpleado.setFont(new Font("Showcard Gothic", Font.PLAIN, 16));
 		btnLogInEmpleado.setBackground(new Color(72, 61, 139));
 		btnLogInEmpleado.setBounds(198, 266, 381, 29);
 		contentPane.add(btnLogInEmpleado);
-		
+
 		btnLogInEmpleado.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				LoginEmpleado em = new LoginEmpleado();
 				em.setVisible(true);
-				
+
 			}
-			
+
 		});
-		
-	
+
 		btnCliente = new JButton("Iniciar sesion como cliente");
 		btnCliente.setForeground(Color.WHITE);
 		btnCliente.setFont(new Font("Showcard Gothic", Font.PLAIN, 16));
@@ -96,23 +91,18 @@ public class VentanaInicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				LoginCliente cl = new LoginCliente();
 				cl.setVisible(true);
-				
+
 			}
-			
+
 		});
-		
-		//lblBackground
+
+		// lblBackground
 		JLabel lblBackground = new JLabel("");
 		Image imgBackground = new ImageIcon("images/madera.jpeg").getImage();
 		ImageIcon imgBackgroundScaled = new ImageIcon(imgBackground.getScaledInstance(775, 440, Image.SCALE_SMOOTH));
 		lblBackground.setIcon(imgBackgroundScaled);
 		lblBackground.setBounds(0, 0, 775, 440);
 		contentPane.add(lblBackground);
-		
-		
-		
-	
-		
-		
+
 	}
 }

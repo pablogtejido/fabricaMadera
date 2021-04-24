@@ -15,22 +15,10 @@ import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
-import com.atenea.rsh.ClienteRSH;
-import com.atenea.rsh.EmpleadoRSH;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Logger;
 
 public class DBManager {
     private static DBManager instance = null;
     private PersistenceManagerFactory pmf = null;
-    private static Connection conn;
-    private final static Logger LOGGER = Logger.getLogger(DBManager.class.getName());
 
     public static DBManager getInstance() {
         if (instance == null) {
@@ -43,10 +31,9 @@ public class DBManager {
     private DBManager() {
         pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     }
-    
 
     public Empleado getEmpleadoPorEmail(String email) throws DBException {
-    	PersistenceManager pm = pmf.getPersistenceManager();
+        PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tran = pm.currentTransaction();
 
         Empleado empleado = null;
@@ -59,9 +46,9 @@ public class DBManager {
             for (Empleado empleadoEXT : extension) {
                 if (empleadoEXT.getEmail().equals(email)) {
                     empleado = new Empleado(empleadoEXT.getDni(), empleadoEXT.getNombre(), empleadoEXT.getDireccion(),
-                    		empleadoEXT.getEmail(), empleadoEXT.getTelefono(), empleadoEXT.getPuesto(),
-                    		empleadoEXT.getFcha_nacimiento(), empleadoEXT.getFcha_empleado(), empleadoEXT.getSueldo(),
-                    		empleadoEXT.getContrasena());
+                            empleadoEXT.getEmail(), empleadoEXT.getTelefono(), empleadoEXT.getPuesto(),
+                            empleadoEXT.getFcha_nacimiento(), empleadoEXT.getFcha_empleado(), empleadoEXT.getSueldo(),
+                            empleadoEXT.getContrasena());
                 }
             }
 
@@ -78,7 +65,7 @@ public class DBManager {
 
         return empleado;
     }
-    
+
     /**
      * Borra un objeto de la DB
      * 
@@ -143,8 +130,9 @@ public class DBManager {
      * @param cliente
      */
     public void store(Cliente cliente) {
-    	DBManager.getInstance().storeObjectInDB(cliente);
+        DBManager.getInstance().storeObjectInDB(cliente);
     }
+
     /**
      * Guardar un producto en la DB
      * 
@@ -162,17 +150,16 @@ public class DBManager {
     public void store(Factura factura) {
         DBManager.getInstance().storeObjectInDB(factura);
     }
-    
+
     /**
      * Guardar un administrador en la DB
      * 
      * @param factura
      */
-    
+
     public void store(Administrador admin) {
         DBManager.getInstance().storeObjectInDB(admin);
     }
-
 
     /**
      * Borrar un empleado de la DB
@@ -191,16 +178,16 @@ public class DBManager {
     public void delete(Producto producto) {
         DBManager.getInstance().deleteObjectFromDB(producto);
     }
-    
+
     /**
      * Borrar un cliente de la DB
      * 
      * @param cliente
      */
     public void delete(Cliente cliente) {
-    	DBManager.getInstance().deleteObjectFromDB(cliente);
+        DBManager.getInstance().deleteObjectFromDB(cliente);
     }
-    
+
     /**
      * Obtener un empleado en base a su dni
      * 
@@ -239,7 +226,7 @@ public class DBManager {
 
         return empleado;
     }
-    
+
     /**
      * Obtener un cliente en base a su dni
      * 
@@ -247,7 +234,7 @@ public class DBManager {
      * @return
      */
     public Cliente getCliente(String dni) throws DBException {
-    	PersistenceManager pm = pmf.getPersistenceManager();
+        PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tran = pm.currentTransaction();
 
         Cliente cliente = null;
@@ -260,7 +247,7 @@ public class DBManager {
             for (Cliente clienteEXT : extension) {
                 if (clienteEXT.getDni().equals(dni)) {
                     cliente = new Cliente(clienteEXT.getDni(), clienteEXT.getNombre(), clienteEXT.getApellidos(),
-                    		clienteEXT.getContrasena());
+                            clienteEXT.getContrasena());
                 }
             }
 
@@ -422,6 +409,7 @@ public class DBManager {
 
         return empleados;
     }
+
     /**
      * Get productos de la DB
      * 
@@ -457,7 +445,7 @@ public class DBManager {
         return productos;
 
     }
-    
+
     /**
      * Actualizar un empleado existente
      * 
@@ -643,14 +631,14 @@ public class DBManager {
             pm.close();
         }
     }
-    
+
     /**
      * Get clientes de la DB
      * 
      * @return lista de clientes
      */
     public List<Cliente> getClientes() {
-    	PersistenceManager pm = pmf.getPersistenceManager();
+        PersistenceManager pm = pmf.getPersistenceManager();
         pm.getFetchPlan().setMaxFetchDepth(4);
         Transaction tx = pm.currentTransaction();
 
@@ -679,6 +667,7 @@ public class DBManager {
         return clientes;
 
     }
+
     /**
      * Actualizar un cliente existente
      * 
@@ -745,9 +734,9 @@ public class DBManager {
             pm.close();
         }
     }
-    
+
     public List<Administrador> getAdministrador() {
-    	PersistenceManager pm = pmf.getPersistenceManager();
+        PersistenceManager pm = pmf.getPersistenceManager();
         pm.getFetchPlan().setMaxFetchDepth(4);
         Transaction tx = pm.currentTransaction();
 
@@ -760,7 +749,7 @@ public class DBManager {
             Extent<Administrador> administradorExtent = pm.getExtent(Administrador.class, true);
 
             for (Administrador admin : administradorExtent) {
-            	administradores.add(admin);
+                administradores.add(admin);
             }
 
             tx.commit();
@@ -773,11 +762,11 @@ public class DBManager {
 
             pm.close();
         }
-        
+
         return administradores;
 
     }
-    
+
     public void updateAdministrador(Administrador administadror) {
         PersistenceManager pm = pmf.getPersistenceManager();
         pm.getFetchPlan().setMaxFetchDepth(4);
@@ -789,13 +778,13 @@ public class DBManager {
             Extent<Administrador> e = pm.getExtent(Administrador.class, true);
             Iterator<Administrador> iter = e.iterator();
             while (iter.hasNext()) {
-            	Administrador administrador_a_cambiar = (Administrador) iter.next();
+                Administrador administrador_a_cambiar = (Administrador) iter.next();
                 if (administrador_a_cambiar.getId() == administadror.getId()) {
                     System.out.println("* Updating: " + administrador_a_cambiar + "\n* To: " + administadror);
                     administrador_a_cambiar.setContrasena(administadror.getContrasena());
                     administrador_a_cambiar.setNombre(administadror.getNombre());
                     administrador_a_cambiar.setApellido(administadror.getApellido());
-                    administrador_a_cambiar.setEmail(administadror.getEmail());        
+                    administrador_a_cambiar.setEmail(administadror.getEmail());
                     administrador_a_cambiar.setTelefono(administadror.getTelefono());
                 }
             }
@@ -810,7 +799,7 @@ public class DBManager {
             pm.close();
         }
     }
-    
+
     public void deleteAdministradorById(int id) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -821,10 +810,10 @@ public class DBManager {
             Extent<Administrador> e = pm.getExtent(Administrador.class, true);
             Iterator<Administrador> iter = e.iterator();
             while (iter.hasNext()) {
-            	Administrador administrador = (Administrador) iter.next();
-            	 if (administrador.getId() == id) {
-                     pm.deletePersistent(administrador);
-                 }
+                Administrador administrador = (Administrador) iter.next();
+                if (administrador.getId() == id) {
+                    pm.deletePersistent(administrador);
+                }
             }
 
             tx.commit();

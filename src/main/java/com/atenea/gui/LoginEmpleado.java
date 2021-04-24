@@ -16,7 +16,6 @@ import java.awt.EventQueue;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import javax.jdo.JDOHelper;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
@@ -32,7 +31,7 @@ public class LoginEmpleado extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -45,7 +44,7 @@ public class LoginEmpleado extends JFrame {
 			}
 		});
 	}
-	    
+
 	public LoginEmpleado() {
 		this.setTitle("Iniciar sesión Empleado");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,7 +93,7 @@ public class LoginEmpleado extends JFrame {
 				try {
 					Empleado userEmpleado = db.getEmpleadoPorEmail(textEmpleado.getText());
 					System.out.println(userEmpleado);
-				
+
 					if (userEmpleado == null)
 						JOptionPane.showMessageDialog(null, "Empleado no encontrado");
 					else {
@@ -149,7 +148,8 @@ public class LoginEmpleado extends JFrame {
 			}
 		});
 		registrarse.setForeground(Color.WHITE);
-		registrarse.setBackground(new Color(72, 61, 139));;
+		registrarse.setBackground(new Color(72, 61, 139));
+		;
 		registrarse.setBounds(10, 219, 103, 31);
 		contentPane.add(registrarse);
 	}

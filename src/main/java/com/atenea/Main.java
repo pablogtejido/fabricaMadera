@@ -8,10 +8,6 @@ import java.io.IOException;
 import java.net.URI;
 
 import com.atenea.gui.LoginEmpleado;
-import com.atenea.gui.RegistroCliente;
-import com.atenea.resource.EmpleadosResource;
-import com.atenea.resource.FacturaResource;
-import com.atenea.resource.ProductoResource;
 
 import java.awt.EventQueue;
 
@@ -64,7 +60,7 @@ public class Main {
             EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     try {
-                    	//VentanaCliente frame = new VentanaCliente();
+                        // VentanaCliente frame = new VentanaCliente();
                         LoginEmpleado frame = new LoginEmpleado();
                         frame.setVisible(true);
                     } catch (Exception e) {

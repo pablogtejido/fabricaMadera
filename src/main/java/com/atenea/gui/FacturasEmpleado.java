@@ -16,13 +16,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
-import javax.swing.JToolBar;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
@@ -63,28 +58,28 @@ public class FacturasEmpleado extends JFrame {
 		setBounds(100, 100, 827, 461);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		
+
 		JPanel titulopanel = new JPanel();
 		titulopanel.setBounds(0, 0, 811, 58);
 		titulopanel.setBackground(new Color(72, 61, 139));
 		getContentPane().add(titulopanel);
 		titulopanel.setLayout(null);
-		
+
 		JLabel titulo = new JLabel("FACTURAS");
 		titulo.setForeground(Color.WHITE);
 		titulo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		titulo.setBounds(0, 11, 811, 36);
 		titulopanel.add(titulo);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(30, 69, 751, 266);
 		getContentPane().add(scrollPane);
-		
+
 		table = new JTable();
 		modelo = new DefaultTableModel();
 		table.setModel(modelo);
-		
+
 		modelo.addColumn("Nombre Cliente");
 		modelo.addColumn("Apellido Cliente");
 		modelo.addColumn("Nombre Empleado");
@@ -93,24 +88,24 @@ public class FacturasEmpleado extends JFrame {
 		modelo.addColumn("Precio");
 		modelo.addColumn("Fecha");
 		table.getTableHeader().setReorderingAllowed(false);
-		
+
 		scrollPane.setViewportView(table);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
+
 		JMenu menuFacturas = new JMenu("Facturas");
 		menuBar.add(menuFacturas);
-		
+
 		JMenu menuClientes = new JMenu("Clientes");
 		menuBar.add(menuClientes);
-		
+
 		JMenu mnNewMenu_2 = new JMenu("New menu");
 		menuBar.add(mnNewMenu_2);
-		
+
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
-		
+
 		verClientes.addActionListener(new ActionListener() {
 
 			@Override
@@ -121,13 +116,14 @@ public class FacturasEmpleado extends JFrame {
 			}
 		});
 	}
+
 	private void FacturasJtable() {
 		DBManager manager = DBManager.getInstance();
 		List<Factura> facturas = manager.getFacturas();
-		String [] fila = new String[6];
-		 
+		String[] fila = new String[6];
+
 		for (Factura factura : facturas) {
-			
+
 			fila[0] = factura.getCliente().getNombre();
 			fila[1] = factura.getCliente().getApellidos();
 			fila[2] = factura.getEmpleado().getNombre();
@@ -137,14 +133,13 @@ public class FacturasEmpleado extends JFrame {
 			Double precio = factura.getPrecio();
 			fila[5] = precio.toString();
 			Date fecha = factura.getFcha_factura();
-			fila[6]  = fecha.toString();
-			
+			fila[6] = fecha.toString();
+
 			modelo.addRow(fila);
-			
-			
-			}
+
 		}
-		
+	}
+
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}
