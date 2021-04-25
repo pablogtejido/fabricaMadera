@@ -1,4 +1,4 @@
-package com.example;
+package com.atenea.data;
 
 import static org.junit.Assert.*;
 

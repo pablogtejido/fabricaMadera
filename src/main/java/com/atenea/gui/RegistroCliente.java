@@ -5,7 +5,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import com.atenea.gui.resource.RegistroClienteResource;
+import com.atenea.data.Cliente;
+import com.atenea.rsh.ClienteRSH;
 
 import javax.swing.JLabel;
 
@@ -143,8 +144,10 @@ public class RegistroCliente extends JFrame {
 				String nombre = textFieldNombre.getText();
 				String apellidos = textFieldApellidos.getText();
 				String contrasena = passwordField.getText(); // FIXME: Hay que arreglar esto.
+				
+				Cliente cliente = new Cliente(dni, nombre, apellidos, contrasena);
 
-				RegistroClienteResource.registro(dni, nombre, apellidos, contrasena);
+				ClienteRSH.getInstance().guardarCliente(cliente);
 
 			}
 

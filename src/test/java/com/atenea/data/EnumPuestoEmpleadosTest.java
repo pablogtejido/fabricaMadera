@@ -1,4 +1,4 @@
-package com.example;
+package com.atenea.data;
 
 import org.junit.After;
 import org.junit.AfterClass;
