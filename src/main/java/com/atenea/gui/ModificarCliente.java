@@ -16,6 +16,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.atenea.data.Cliente;
+import com.atenea.db.DBException;
+import com.atenea.db.DBManager;
+import com.atenea.gui.resource.ModificarClienteResource;
 import com.atenea.gui.resource.RegistroClienteResource;
 
 public class ModificarCliente extends JFrame{
@@ -76,6 +79,7 @@ public class ModificarCliente extends JFrame{
 		contentPane.add(textFieldDNI);
 		textFieldDNI.setColumns(10);
 		textFieldDNI.setText(cliente.getDni());
+		textFieldDNI.setEditable(false);
 
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(208, 116, 57, 13);
@@ -151,11 +155,8 @@ public class ModificarCliente extends JFrame{
 				String nombre = textFieldNombre.getText();
 				String apellidos = textFieldApellidos.getText();
 				String contrasena = passwordField.getText(); // FIXME: Hay que arreglar esto.
-				
-				cliente.setDni(dni);
-				cliente.setNombre(nombre);
-				cliente.setApellidos(apellidos);
-				cliente.setContrasena(contrasena);
+
+				ModificarClienteResource.modificar(dni, nombre, apellidos, contrasena);
 
 			}
 

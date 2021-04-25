@@ -85,14 +85,21 @@ public class ClientesEmpleado extends JFrame{
 		scrollPane.setViewportView(table);
 		
 		JPanel panelBoton = new JPanel();
-		panelBoton.setBounds(316, 346, 172, 43);
+		panelBoton.setBounds(270, 346, 247, 43);
 		getContentPane().add(panelBoton);
+		panelBoton.setLayout(null);
 		
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setForeground(Color.WHITE);
 		btnModificar.setBackground(new Color(72, 61, 139));
-		btnModificar.setBounds(235, 230, 141, 36);
+		btnModificar.setBounds(36, 11, 75, 23);
 		panelBoton.add(btnModificar);
+		
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setForeground(Color.WHITE);
+		btnEliminar.setBackground(new Color(72, 61, 139));
+		btnEliminar.setBounds(162, 11, 75, 23);
+		panelBoton.add(btnEliminar);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -123,7 +130,18 @@ public class ClientesEmpleado extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				Cliente clienteSeleccionado = (Cliente) modelo.getValueAt(table.getSelectedRow(), 0);
+				ModificarCliente frameModificar = new ModificarCliente(clienteSeleccionado);
+				
+			}
+			
+		});
+		btnEliminar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Cliente clienteSeleccionado = (Cliente) modelo.getValueAt(table.getSelectedRow(), 0);
+				DBManager.getInstance().delete(clienteSeleccionado);
 				
 			}
 			
