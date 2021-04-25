@@ -20,7 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import com.atenea.data.Cliente;
-import com.atenea.db.DBManager;
+import com.atenea.rsh.ClienteRSH;
 
 public class ClientesEmpleado extends JFrame{
 
@@ -92,13 +92,13 @@ public class ClientesEmpleado extends JFrame{
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setForeground(Color.WHITE);
 		btnModificar.setBackground(new Color(72, 61, 139));
-		btnModificar.setBounds(36, 11, 75, 23);
+		btnModificar.setBounds(37, 11, 95, 23);
 		panelBoton.add(btnModificar);
 		
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setForeground(Color.WHITE);
 		btnEliminar.setBackground(new Color(72, 61, 139));
-		btnEliminar.setBounds(162, 11, 75, 23);
+		btnEliminar.setBounds(142, 11, 95, 23);
 		panelBoton.add(btnEliminar);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -141,7 +141,7 @@ public class ClientesEmpleado extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Cliente clienteSeleccionado = (Cliente) modelo.getValueAt(table.getSelectedRow(), 0);
-				DBManager.getInstance().delete(clienteSeleccionado);
+				ClienteRSH.getInstance().borrarCliente(clienteSeleccionado);
 				
 			}
 			
@@ -151,8 +151,8 @@ public class ClientesEmpleado extends JFrame{
 	
 	
 	public void ClientesJTable() {
-		DBManager manager = DBManager.getInstance();
-		List<Cliente> clientes = manager.getClientes();
+		ClienteRSH rsh = ClienteRSH.getInstance();
+		List<Cliente> clientes = rsh.verClientes();
 		String[] fila = new String [3];
 		
 		for (Cliente cliente : clientes) {

@@ -3,6 +3,7 @@ package com.atenea.gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -10,7 +11,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import com.atenea.data.Factura;
-import com.atenea.db.DBManager;
+import com.atenea.rsh.FacturaRSH;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -75,6 +76,23 @@ public class FacturasEmpleado extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(30, 69, 751, 266);
 		getContentPane().add(scrollPane);
+		
+		JPanel panelBoton = new JPanel();
+		panelBoton.setBounds(270, 346, 247, 43);
+		getContentPane().add(panelBoton);
+		panelBoton.setLayout(null);
+		
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setForeground(Color.WHITE);
+		btnModificar.setBackground(new Color(72, 61, 139));
+		btnModificar.setBounds(37, 11, 95, 23);
+		panelBoton.add(btnModificar);
+		
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setForeground(Color.WHITE);
+		btnEliminar.setBackground(new Color(72, 61, 139));
+		btnEliminar.setBounds(142, 11, 95, 23);
+		panelBoton.add(btnEliminar);
 
 		table = new JTable();
 		modelo = new DefaultTableModel();
@@ -115,11 +133,22 @@ public class FacturasEmpleado extends JFrame {
 				window2.setVisible(true);
 			}
 		});
+		
+		btnEliminar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Factura facturaSeleccionada = (Factura) modelo.getValueAt(table.getSelectedRow(), 0);
+				FacturaRSH.getInstance().borrarFactura(facturaSeleccionada);
+				
+			}
+			
+		});
 	}
 
 	private void FacturasJtable() {
-		DBManager manager = DBManager.getInstance();
-		List<Factura> facturas = manager.getFacturas();
+		FacturaRSH rsh = FacturaRSH.getInstance();
+		List<Factura> facturas = rsh.verFacturas();
 		String[] fila = new String[6];
 
 		for (Factura factura : facturas) {

@@ -1,7 +1,6 @@
 package com.atenea.gui;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,10 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.atenea.data.Cliente;
-import com.atenea.db.DBException;
-import com.atenea.db.DBManager;
-import com.atenea.gui.resource.ModificarClienteResource;
-import com.atenea.gui.resource.RegistroClienteResource;
+import com.atenea.rsh.ClienteRSH;
 
 public class ModificarCliente extends JFrame{
 	
@@ -151,12 +147,15 @@ public class ModificarCliente extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				String dni = textFieldDNI.getText();
 				String nombre = textFieldNombre.getText();
 				String apellidos = textFieldApellidos.getText();
 				String contrasena = passwordField.getText(); // FIXME: Hay que arreglar esto.
-
-				ModificarClienteResource.modificar(dni, nombre, apellidos, contrasena);
+				
+				cliente.setNombre(nombre);
+				cliente.setApellidos(apellidos);
+				cliente.setContrasena(contrasena);
+				
+				ClienteRSH.getInstance().modificarCliente(cliente);
 
 			}
 
