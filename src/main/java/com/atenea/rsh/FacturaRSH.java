@@ -78,7 +78,6 @@ public class FacturaRSH {
      */
     public void borrarFactura(Factura factura) {
         Invocation.Builder ib = target.path("ids/" + factura.getId()).request();
-        Response response = ib.delete();
-        System.out.println(response.toString());
+        ib.delete();
     }
 }

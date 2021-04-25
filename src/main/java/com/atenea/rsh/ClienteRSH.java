@@ -1,7 +1,5 @@
 package com.atenea.rsh;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import com.atenea.data.Cliente;
@@ -17,23 +15,23 @@ import jakarta.ws.rs.core.Response;
 
 public class ClienteRSH {
 
-	static ClienteRSH instance = null;
-	Client client;
-	WebTarget target;
-	
-	public static ClienteRSH getInstance() {
-		if (instance == null) {
+    static ClienteRSH instance = null;
+    Client client;
+    WebTarget target;
+
+    public static ClienteRSH getInstance() {
+        if (instance == null) {
             instance = new ClienteRSH();
         }
         return instance;
-	}
-	
-	public ClienteRSH() {
-		client = ClientBuilder.newClient();
+    }
+
+    public ClienteRSH() {
+        client = ClientBuilder.newClient();
         target = client.target("http://localhost:8080/myapp").path("cliente"); // http://localhost:8080/myapp/cliente
-	}
-	
-	/**
+    }
+
+    /**
      * Ver todas los clientes del servidor.
      * 
      * @return <Code>List<Cliente></Code> Lista con clientes
@@ -45,7 +43,7 @@ public class ClienteRSH {
         });
         return clientes;
     }
-    
+
     /**
      * Hacer una petición PUT al servidor para guardar el cliente.
      * 
@@ -58,7 +56,7 @@ public class ClienteRSH {
         Cliente clienteConDni = response.readEntity(Cliente.class);
         return clienteConDni;
     }
-    
+
     /**
      * Modificar el cliente en el servidor
      * 
@@ -66,22 +64,21 @@ public class ClienteRSH {
      * @return <Code>Cliente</Code> Cliente con el dni ya guardado en la BD
      */
     public Cliente modificarCliente(Cliente cliente) {
-    	Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
-    	Response response = ib.build("PATH", Entity.json(cliente)).invoke();
-    	
-    	Cliente clienteConDni = response.readEntity(Cliente.class);
-    	return clienteConDni;
+        Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
+        Response response = ib.build("PATH", Entity.json(cliente)).invoke();
+
+        Cliente clienteConDni = response.readEntity(Cliente.class);
+        return clienteConDni;
     }
-    
+
     /**
      * Borrar un cliente de la BD
      * 
      * @param <Code>Cliente</Code> Cliente a borrar
      */
     public void borrarCliente(Cliente cliente) {
-    	Invocation.Builder ib = target.path("/ids" + cliente.getDni()).request();
-    	Response response = ib.delete();
-    	System.out.println(response.toString());
+        Invocation.Builder ib = target.path("/ids" + cliente.getDni()).request();
+        ib.delete();
     }
 
 }
