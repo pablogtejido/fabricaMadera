@@ -1,11 +1,14 @@
 package com.atenea.util;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.atenea.data.Administrador;
 import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.EnumPuestoEmpleados;
+import com.atenea.data.Factura;
 import com.atenea.data.Producto;
 import com.atenea.db.DBManager;
 
@@ -76,6 +79,12 @@ public class PrepareData {
 
 		Administrador a3 = new Administrador("1234", "Ainhoa", "Velasco", "ainhoa585@gmail.com", "699958457");
 		DBManager.getInstance().store(a3);
-
+		
+		/*List<Producto> lista1 = new ArrayList<Producto>();
+		lista1.add(p1);
+		lista1.add(p2);
+		
+		Factura f1 = new Factura(empleado1, cliente1, lista1, new Date("27/10/1974 05:04:00"));
+		DBManager.getInstance().store(f1);*/
 	}
 }

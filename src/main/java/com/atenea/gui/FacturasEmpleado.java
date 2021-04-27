@@ -144,12 +144,14 @@ public class FacturasEmpleado extends JFrame {
 			}
 			
 		});
+		FacturasJTable();
 	}
 
-	private void FacturasJtable() {
+	private void FacturasJTable() {
 		FacturaRSH rsh = FacturaRSH.getInstance();
 		List<Factura> facturas = rsh.verFacturas();
 		String[] fila = new String[6];
+		System.out.println(facturas);
 
 		for (Factura factura : facturas) {
 

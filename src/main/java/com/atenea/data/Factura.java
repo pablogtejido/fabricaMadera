@@ -27,12 +27,11 @@ public class Factura {
     private Double precio;
     private Date fcha_factura;
 
-    public Factura(Empleado empleado, Cliente cliente, List<Producto> productos, Double precio,
+    public Factura(Empleado empleado, Cliente cliente, List<Producto> productos,
             Date fcha_factura) {
         this.empleado = empleado;
         this.cliente = cliente;
         this.productos = productos;
-        this.precio = precio;
         this.fcha_factura = fcha_factura;
     }
 
@@ -70,13 +69,17 @@ public class Factura {
     public void setProducto(List<Producto> productos) {
         this.productos = productos;
     }
-
+    //Calcular el precio del listado de productos en vez de meterlo a mano
     public Double getPrecio() {
-        return this.precio;
-    }
-
+    	
+        for (Producto producto : productos) {
+        	this.precio += producto.getPrecio();
+		}
+    	return this.precio;
+    } 
+    
     public void setPrecio(Double precio) {
-        this.precio = precio;
+    	this.precio = precio;
     }
 
     public Date getFcha_factura() {

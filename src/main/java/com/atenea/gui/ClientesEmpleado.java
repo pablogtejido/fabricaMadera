@@ -146,6 +146,7 @@ public class ClientesEmpleado extends JFrame{
 			}
 			
 		});
+		ClientesJTable();
 
 	}
 	
