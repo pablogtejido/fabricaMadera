@@ -71,10 +71,11 @@ public class Factura {
     }
     //Calcular el precio del listado de productos en vez de meterlo a mano
     public Double getPrecio() {
-    	
-        for (Producto producto : productos) {
-        	this.precio += producto.getPrecio();
+    	this.precio = 0.0;
+        for (Producto producto : this.productos) {
+        	this.precio = this.precio + producto.getPrecio();
 		}
+		
     	return this.precio;
     } 
     
