@@ -15,6 +15,7 @@ import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
+import java.util.Objects;
 
 public class DBManager {
     private static DBManager instance = null;
@@ -320,7 +321,7 @@ public class DBManager {
             Iterator<Producto> iter = e.iterator();
             while (iter.hasNext()) {
                 Producto producto_a_cambiar = (Producto) iter.next();
-                if (producto_a_cambiar.getId() == producto.getId()) {
+                if (Objects.equals(producto_a_cambiar.getId(), producto.getId())) {
                     System.out.println("* Updating: " + producto_a_cambiar + "\n* To: " + producto);
                     producto_a_cambiar.setAnyadidos(producto.isAnyadidos());
                     producto_a_cambiar.setCantidad(producto.getCantidad());
@@ -358,7 +359,7 @@ public class DBManager {
             Iterator<Producto> iter = e.iterator();
             while (iter.hasNext()) {
                 Producto producto = (Producto) iter.next();
-                if (producto.getId() == id) {
+                if (Objects.equals(producto.getId(), id)) {
                     pm.deletePersistent(producto);
                 }
             }
@@ -384,7 +385,7 @@ public class DBManager {
         pm.getFetchPlan().setMaxFetchDepth(4);
         Transaction tx = pm.currentTransaction();
 
-        List<Empleado> empleados = new ArrayList<Empleado>();
+        List<Empleado> empleados = new ArrayList<>();
 
         try {
             System.out.println("* Querying all users");
@@ -393,6 +394,7 @@ public class DBManager {
             Extent<Empleado> empleadoExtent = pm.getExtent(Empleado.class, true);
 
             for (Empleado empleado : empleadoExtent) {
+                pm.makeTransient(empleado);
                 empleados.add(empleado);
             }
 
@@ -420,7 +422,7 @@ public class DBManager {
         pm.getFetchPlan().setMaxFetchDepth(4);
         Transaction tx = pm.currentTransaction();
 
-        List<Producto> productos = new ArrayList<Producto>();
+        List<Producto> productos = new ArrayList<>();
 
         try {
             System.out.println("* Viendo todos productos");
@@ -429,6 +431,7 @@ public class DBManager {
             Extent<Producto> productoExtent = pm.getExtent(Producto.class, true);
 
             for (Producto producto : productoExtent) {
+                pm.makeTransient(producto);
                 productos.add(producto);
             }
 
@@ -463,7 +466,8 @@ public class DBManager {
             Iterator<Empleado> iter = e.iterator();
             while (iter.hasNext()) {
                 Empleado empleado_a_cambiar = (Empleado) iter.next();
-                if (empleado_a_cambiar.getDni() == empleado.getDni()) {
+                if (empleado_a_cambiar.getDni() == null ? empleado.getDni() == null
+                        : empleado_a_cambiar.getDni().equals(empleado.getDni())) {
                     System.out.println("* Updating: " + empleado_a_cambiar + "\n* To: " + empleado);
                     empleado_a_cambiar.setDireccion(empleado.getDireccion());
                     empleado_a_cambiar.setEmail(empleado.getEmail());
@@ -524,7 +528,7 @@ public class DBManager {
         pm.getFetchPlan().setMaxFetchDepth(4);
         Transaction tx = pm.currentTransaction();
 
-        List<Factura> facturas = new ArrayList<Factura>();
+        List<Factura> facturas = new ArrayList<>();
 
         try {
             System.out.println("* Viendo todos facturas");
@@ -642,7 +646,7 @@ public class DBManager {
         pm.getFetchPlan().setMaxFetchDepth(4);
         Transaction tx = pm.currentTransaction();
 
-        List<Cliente> clientes = new ArrayList<Cliente>();
+        List<Cliente> clientes = new ArrayList<>();
 
         try {
             System.out.println("* Viendo todos clientes");
@@ -651,6 +655,7 @@ public class DBManager {
             Extent<Cliente> clienteExtent = pm.getExtent(Cliente.class, true);
 
             for (Cliente cliente : clienteExtent) {
+                pm.makeTransient(cliente);
                 clientes.add(cliente);
             }
 
@@ -685,7 +690,8 @@ public class DBManager {
             Iterator<Cliente> iter = e.iterator();
             while (iter.hasNext()) {
                 Cliente cliente_a_cambiar = (Cliente) iter.next();
-                if (cliente_a_cambiar.getDni() == cliente.getDni()) {
+                if (cliente_a_cambiar.getDni() == null ? cliente.getDni() == null
+                        : cliente_a_cambiar.getDni().equals(cliente.getDni())) {
                     System.out.println("* Updating: " + cliente_a_cambiar + "\n* To: " + cliente);
                     cliente_a_cambiar.setNombre(cliente.getNombre());
                     cliente_a_cambiar.setApellidos(cliente.getApellidos());
@@ -719,7 +725,7 @@ public class DBManager {
             Iterator<Cliente> iter = e.iterator();
             while (iter.hasNext()) {
                 Cliente cliente = (Cliente) iter.next();
-                if (cliente.getDni() == dni) {
+                if (cliente.getDni() == null ? dni == null : cliente.getDni().equals(dni)) {
                     pm.deletePersistent(cliente);
                 }
             }
@@ -740,7 +746,7 @@ public class DBManager {
         pm.getFetchPlan().setMaxFetchDepth(4);
         Transaction tx = pm.currentTransaction();
 
-        List<Administrador> administradores = new ArrayList<Administrador>();
+        List<Administrador> administradores = new ArrayList<>();
 
         try {
             System.out.println("* Viendo todos administradores");
@@ -749,6 +755,7 @@ public class DBManager {
             Extent<Administrador> administradorExtent = pm.getExtent(Administrador.class, true);
 
             for (Administrador admin : administradorExtent) {
+                pm.makeTransient(admin);
                 administradores.add(admin);
             }
 

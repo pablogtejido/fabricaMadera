@@ -28,7 +28,7 @@ public class EmpleadoRSH {
 
     public EmpleadoRSH() {
         client = ClientBuilder.newClient();
-        target = client.target("http://localhost:8080/myapp").path("empleados"); // http://localhost:8080/myapp/empleados
+        target = client.target("http://localhost:8080/myapp").path("empleado"); // http://localhost:8080/myapp/empleado
     }
 
     /**
