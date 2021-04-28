@@ -66,7 +66,7 @@ public class EmpleadoRSH {
      */
     public Empleado modificarEmpleado(Empleado empleado) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
-        Response response = ib.build("PATH", Entity.json(empleado)).invoke();
+        Response response = ib.build("PATCH", Entity.json(empleado)).invoke();
 
         Empleado empleadoConDni = response.readEntity(Empleado.class);
         return empleadoConDni;

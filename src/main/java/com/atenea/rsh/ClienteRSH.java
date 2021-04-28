@@ -65,7 +65,7 @@ public class ClienteRSH {
      */
     public Cliente modificarCliente(Cliente cliente) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
-        Response response = ib.build("PATH", Entity.json(cliente)).invoke();
+        Response response = ib.build("PATCH", Entity.json(cliente)).invoke();
 
         Cliente clienteConDni = response.readEntity(Cliente.class);
         return clienteConDni;

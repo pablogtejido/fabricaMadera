@@ -65,8 +65,8 @@ public class FacturaRSH {
      */
     public Factura modificarFactura(Factura factura) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
-        Response response = ib.build("PATH", Entity.json(factura)).invoke(); // Invocation.Builder no tiene un metodo
-                                                                             // para patch. 😐.
+        Response response = ib.build("PATCH", Entity.json(factura)).invoke(); // Invocation.Builder no tiene un metodo
+                                                                              // para patch. 😐.
         Factura facturaConID = response.readEntity(Factura.class);
         return facturaConID;
     }

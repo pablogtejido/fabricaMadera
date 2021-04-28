@@ -66,7 +66,7 @@ public class ProductoRSH {
      */
     public Producto modificarFactura(Producto producto) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
-        Response response = ib.build("PATH", Entity.json(producto)).invoke();
+        Response response = ib.build("PATCH", Entity.json(producto)).invoke();
         Producto productoConID = response.readEntity(Producto.class);
         return productoConID;
     }
