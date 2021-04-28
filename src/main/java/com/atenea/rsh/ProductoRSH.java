@@ -77,7 +77,7 @@ public class ProductoRSH {
      * @param <Code>Factura</Code> Factura a borrar.
      */
     public void borrarFactura(Producto producto) {
-        Invocation.Builder ib = target.path("ids/" + producto.getId()).request();
+        Invocation.Builder ib = target.path("/ids/" + producto.getId()).request();
         ib.delete();
     }
 }
