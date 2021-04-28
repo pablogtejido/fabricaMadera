@@ -93,9 +93,9 @@ public class Factura {
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", empleado='" + getEmpleado() + "'" + ", cliente='" + getCliente() + "'"
-                + ", productos='" + getProductos() + "'" + ", precio='" + getPrecio() + "'" + ", fcha_factura='"
-                + getFcha_factura() + "'" + "}";
+        return "Factura {" + " id= " + id + ", empleado= " + empleado + ", cliente= " + cliente
+                + ", productos= " + productos  + ", precio= " + precio + ", fcha_factura= "
+                + fcha_factura + "}";
     }
     public String toStringProductos() {
     	String nombreprod = "";

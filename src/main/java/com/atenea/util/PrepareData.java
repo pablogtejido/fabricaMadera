@@ -26,7 +26,7 @@ public class PrepareData {
 				new Date("30/06/2000 18:00:35"), 4300, "1234");
 		DBManager.getInstance().store(empleado2);
 
-		Empleado empleado3 = new Empleado("22396365I", "Pablo Gonzalez Tejido", "Calle Leioa, 42, 3B",
+		/*Empleado empleado3 = new Empleado("22396365I", "Pablo Gonzalez Tejido", "Calle Leioa, 42, 3B",
 				"pablogtejido@gmail.com", "753123258", EnumPuestoEmpleados.DIRECTIVA, new Date("25/12/1983 08:56:21"),
 				new Date("27/02/2005 11:12:45"), 4300, "1234");
 		DBManager.getInstance().store(empleado3);
@@ -39,12 +39,12 @@ public class PrepareData {
 		Empleado empleado5 = new Empleado("75420903Y", "Nerea Diez Landin", "Calle Portu, 57, 2B",
 				"nereadiez@gmail.com", "658007220", EnumPuestoEmpleados.DIRECTIVA, new Date("14/05/1988 19:27:31"),
 				new Date("11/09/2012 10:14:11"), 4300, "1234");
-		DBManager.getInstance().store(empleado5);
+		DBManager.getInstance().store(empleado5);*/
 
 		Cliente cliente1 = new Cliente("58441139A", "Juan", "Lopez", "1234");
 		DBManager.getInstance().store(cliente1);
 
-		Cliente cliente2 = new Cliente("36957841K", "Silvia", "Montejo", "1234");
+	/*	Cliente cliente2 = new Cliente("36957841K", "Silvia", "Montejo", "1234");
 		DBManager.getInstance().store(cliente2);
 
 		Cliente cliente3 = new Cliente("79845211T", "Luis", "Alonso", "1234");
@@ -54,7 +54,7 @@ public class PrepareData {
 		DBManager.getInstance().store(cliente4);
 
 		Cliente cliente5 = new Cliente("45548696P", "Luis", "Alonso", "1234");
-		DBManager.getInstance().store(cliente5);
+		DBManager.getInstance().store(cliente5);*/
 
 		Producto p1 = new Producto("Tablero madera", 12.70, 32, 1, 24, 4, true);
 		DBManager.getInstance().store(p1);
@@ -62,7 +62,7 @@ public class PrepareData {
 		Producto p2 = new Producto("Listón madera", 7.50, 21, 1, 30, 9, false);
 		DBManager.getInstance().store(p2);
 
-		Producto p3 = new Producto("Revestimiento madera", 21.60, 8, 1, 50, 2, true);
+		/*Producto p3 = new Producto("Revestimiento madera", 21.60, 8, 1, 50, 2, true);
 		DBManager.getInstance().store(p3);
 
 		Producto p4 = new Producto("Celosía madera", 40, 2, 1, 220, 80, false);
@@ -78,13 +78,24 @@ public class PrepareData {
 		DBManager.getInstance().store(a2);
 
 		Administrador a3 = new Administrador("1234", "Ainhoa", "Velasco", "ainhoa585@gmail.com", "699958457");
-		DBManager.getInstance().store(a3);
+		DBManager.getInstance().store(a3);*/
 		
-		/*List<Producto> lista1 = new ArrayList<Producto>();
-		lista1.add(p1);
-		lista1.add(p2);
+		List<Producto> lista1 = new ArrayList<Producto>();
 		
-		Factura f1 = new Factura(empleado1, cliente1, lista1, new Date("27/10/1974 05:04:00"));
-		DBManager.getInstance().store(f1);*/
+		Producto p1Factura = new Producto("Tablero madera", 12.70, 32, 1, 24, 4, true);
+
+		Producto p2Factura = new Producto("Listón madera", 7.50, 21, 1, 30, 9, false);
+		
+		lista1.add(p1Factura);
+		lista1.add(p2Factura);
+		
+		Empleado empleadoFactura = new Empleado("68432155P", "Emilio Cansino", "Calle Ave del Paraiso, 13, 4Izq",
+				"emiliocansino@gmail.com", "654321789", EnumPuestoEmpleados.OPERARIO, new Date("12/04/1980 15:30:35"),
+				new Date("08/07/2020 00:00:00"), 1200.50, "1234");
+		
+		Cliente clienteFactura = new Cliente("58441139Q", "Paquita", "Salas", "1234");
+				
+		Factura f1 = new Factura(empleadoFactura, clienteFactura, lista1, new Date("27/10/1974 05:04:00"));
+		DBManager.getInstance().store(f1);
 	}
 }
