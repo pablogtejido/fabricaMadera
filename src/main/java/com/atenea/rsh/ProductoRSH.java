@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.atenea.data.Producto;
 
+import org.glassfish.jersey.client.HttpUrlConnectorProvider;
+
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
@@ -28,6 +30,7 @@ public class ProductoRSH {
 
     private ProductoRSH() {
         client = ClientBuilder.newClient();
+        client.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
         target = client.target("http://localhost:8080/myapp").path("producto"); // http://localhost:8080/myapp/producto
     }
 
