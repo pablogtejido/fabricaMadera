@@ -1,4 +1,4 @@
-package com.atenea.gui;
+package com.atenea.gui.modificar;
 
 import java.awt.Color;
 import java.awt.SystemColor;
@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.atenea.data.Cliente;
+import com.atenea.gui.tablas.VisualizarClientes;
 import com.atenea.rsh.ClienteRSH;
 
 public class ModificarCliente extends JFrame{
@@ -117,7 +118,7 @@ public class ModificarCliente extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ClientesEmpleado clientes = new ClientesEmpleado();
+				VisualizarClientes clientes = new VisualizarClientes();
 				clientes.setVisible(true);
 				setVisible(false);
 			}
