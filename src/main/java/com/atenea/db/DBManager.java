@@ -695,6 +695,7 @@ public class DBManager {
                     System.out.println("* Updating: " + cliente_a_cambiar + "\n* To: " + cliente);
                     cliente_a_cambiar.setNombre(cliente.getNombre());
                     cliente_a_cambiar.setApellidos(cliente.getApellidos());
+                    cliente_a_cambiar.setContrasena(cliente.getContrasena());
                 }
             }
             tx.commit();
