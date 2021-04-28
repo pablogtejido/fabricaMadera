@@ -16,30 +16,29 @@ import jakarta.ws.rs.core.MediaType;
 @Path("administrador")
 public class AdministradorResource {
 
-	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Administrador> getAdministrador() {
 		List<Administrador> administradores = DBManager.getInstance().getAdministrador();
 		return administradores;
 	}
-	
+
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String modificarAdministrador(Administrador admin) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public Administrador modificarAdministrador(Administrador admin) {
 		DBManager.getInstance().updateAdministrador(admin);
-		return "Done";
+		return admin;
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.TEXT_PLAIN)
-	public String crearAdministrador(Administrador admin) {
+	public Administrador crearAdministrador(Administrador admin) {
 		DBManager.getInstance().store(admin);
-		return "Done";
+		return admin;
 	}
-		
+
 	@DELETE
 	@Path("/ids/{administradorId}")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -47,6 +46,5 @@ public class AdministradorResource {
 		DBManager.getInstance().deleteAdministradorById(id);
 		return "Done";
 	}
-	
 
 }

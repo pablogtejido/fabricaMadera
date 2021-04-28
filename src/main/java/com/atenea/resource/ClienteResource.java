@@ -15,8 +15,6 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-
-
 @Path("cliente")
 public class ClienteResource {
 
@@ -26,27 +24,27 @@ public class ClienteResource {
 		List<Cliente> clientes = DBManager.getInstance().getClientes();
 		return clientes;
 	}
-	
+
 	@PATCH
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-	public String modificarCliente(Cliente cliente) {
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Cliente modificarCliente(Cliente cliente) {
 		DBManager.getInstance().updateCliente(cliente);
-		return "Done updateCliente";
+		return cliente;
 	}
-	
+
 	@PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-	public String crearCliente(Cliente cliente) {
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Cliente crearCliente(Cliente cliente) {
 		DBManager.getInstance().store(cliente);
-		return "Done store(cliente)";	
+		return cliente;
 	}
-	
+
 	@DELETE
-    @Path("/ids/{clienteDni}")
-    @Produces(MediaType.TEXT_PLAIN)
-	public String eliminarCliente(@PathParam("clienteDni")String dni) {
+	@Path("/ids/{clienteDni}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String eliminarCliente(@PathParam("clienteDni") String dni) {
 		DBManager.getInstance().deleteClienteByDNI(dni);
 		return "Done deleteCliente";
 	}

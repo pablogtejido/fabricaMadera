@@ -25,18 +25,18 @@ public class EmpleadosResource {
 
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String modificarEmpleado(Empleado empleado) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public Empleado modificarEmpleado(Empleado empleado) {
 		DBManager.getInstance().updateEmpleado(empleado);
-		return "Done";
+		return empleado;
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String crearEmpleado(Empleado empleado) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public Empleado crearEmpleado(Empleado empleado) {
 		DBManager.getInstance().store(empleado);
-		return "Done";
+		return empleado;
 	}
 
 	@DELETE

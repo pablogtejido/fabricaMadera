@@ -27,18 +27,18 @@ public class ProductoResource {
 
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String modificarProducto(Producto producto) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public Producto modificarProducto(Producto producto) {
 		DBManager.getInstance().updateProducto(producto);
-		return "Done";
+		return producto;
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
-	public String crearProducto(Producto producto) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public Producto crearProducto(Producto producto) {
 		DBManager.getInstance().store(producto);
-		return "Done";
+		return producto;
 	}
 
 	@DELETE
