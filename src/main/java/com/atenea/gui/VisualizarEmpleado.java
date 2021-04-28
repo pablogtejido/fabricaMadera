@@ -59,7 +59,7 @@ public class VisualizarEmpleado extends JFrame {
 	 */
 	private void initialize() {
 		this.setTitle("Visualizar Empleados");
-		
+
 		setBounds(100, 100, 827, 461);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -80,18 +80,18 @@ public class VisualizarEmpleado extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(38, 69, 751, 266);
 		getContentPane().add(scrollPane);
-		
+
 		JPanel panelBoton = new JPanel();
 		panelBoton.setBounds(270, 346, 247, 43);
 		getContentPane().add(panelBoton);
 		panelBoton.setLayout(null);
-		
+
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setForeground(Color.WHITE);
 		btnModificar.setBackground(new Color(72, 61, 139));
 		btnModificar.setBounds(37, 11, 95, 23);
 		panelBoton.add(btnModificar);
-		
+
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setForeground(Color.WHITE);
 		btnEliminar.setBackground(new Color(72, 61, 139));
@@ -108,11 +108,11 @@ public class VisualizarEmpleado extends JFrame {
 		modelo.addColumn("Email");
 		modelo.addColumn("Telefono");
 		modelo.addColumn("Puesto");
-		//modelo.addColumn("Fecha de nacimiento");
-		//modelo.addColumn("Fecha de empleado");
-		//modelo.addColumn("Sueldo");
-		//modelo.addColumn("Contraseña");
-		
+		// modelo.addColumn("Fecha de nacimiento");
+		// modelo.addColumn("Fecha de empleado");
+		// modelo.addColumn("Sueldo");
+		// modelo.addColumn("Contraseña");
+
 		table.getTableHeader().setReorderingAllowed(false);
 
 		scrollPane.setViewportView(table);
@@ -131,7 +131,7 @@ public class VisualizarEmpleado extends JFrame {
 
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
-		
+
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
 
@@ -143,16 +143,26 @@ public class VisualizarEmpleado extends JFrame {
 				window2.setVisible(true);
 			}
 		});
-		
+
 		btnEliminar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Empleado empleadoSeleccionado = (Empleado) modelo.getValueAt(table.getSelectedRow(), 0);
-				EmpleadoRSH.getInstance().borrarEmpleado(empleadoSeleccionado);
-				
+				String dni = (String) modelo.getValueAt(table.getSelectedRow(), 0);
+				Empleado fa = null;
+				EmpleadoRSH rs = EmpleadoRSH.getInstance();
+				for (Empleado f : rs.verEmpleados()) {
+					if (f.getDni().equals(dni)) {
+						System.out.println(f);
+						fa = f;
+					}
+				}
+				System.out.println("Borrando factura");
+				rs.borrarEmpleado(fa);
+				modelo.setRowCount(0);
+				EmpleadosJTable();
 			}
-			
+
 		});
 		EmpleadosJTable();
 	}
@@ -164,23 +174,24 @@ public class VisualizarEmpleado extends JFrame {
 		System.out.println(empleados);
 
 		for (Empleado empl : empleados) {
-			/*modelo.addColumn("Fecha de nacimiento");
-			modelo.addColumn("Fecha de empleado");
-			modelo.addColumn("Sueldo");
-			modelo.addColumn("Contraseña");*/
+			/*
+			 * modelo.addColumn("Fecha de nacimiento");
+			 * modelo.addColumn("Fecha de empleado"); modelo.addColumn("Sueldo");
+			 * modelo.addColumn("Contraseña");
+			 */
 			fila[0] = empl.getDni();
 			fila[1] = empl.getNombre();
 			fila[2] = empl.getDireccion();
 			fila[3] = empl.getEmail();
 			fila[4] = empl.getTelefono();
 			fila[5] = String.valueOf(empl.getPuesto());
-		/*	Date fecha = empl.getFcha_nacimiento();
-			System.out.println("/n");
-			System.out.println(fecha);
-			fila[6] = fecha.toString();
-			//fila[7] = String.valueOf(empl.getFcha_empleado());
-			//fila[8] = String.valueOf(empl.getSueldo());
-			//fila[9] = String.valueOf(empl.getContrasena());*/
+			/*
+			 * Date fecha = empl.getFcha_nacimiento(); System.out.println("/n");
+			 * System.out.println(fecha); fila[6] = fecha.toString(); //fila[7] =
+			 * String.valueOf(empl.getFcha_empleado()); //fila[8] =
+			 * String.valueOf(empl.getSueldo()); //fila[9] =
+			 * String.valueOf(empl.getContrasena());
+			 */
 			modelo.addRow(fila);
 
 		}

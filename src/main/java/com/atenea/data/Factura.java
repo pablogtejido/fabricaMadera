@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.jdo.annotations.ForeignKey;
+import javax.jdo.annotations.ForeignKeyAction;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
@@ -18,17 +19,16 @@ public class Factura {
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
     private long id;
-    @ForeignKey
+    @ForeignKey(deleteAction = ForeignKeyAction.CASCADE)
     private Empleado empleado;
-    @ForeignKey
+    @ForeignKey(deleteAction = ForeignKeyAction.CASCADE)
     private Cliente cliente;
-    @ForeignKey
+    @ForeignKey(deleteAction = ForeignKeyAction.CASCADE)
     private List<Producto> productos;
     private Double precio;
     private Date fcha_factura;
 
-    public Factura(Empleado empleado, Cliente cliente, List<Producto> productos,
-            Date fcha_factura) {
+    public Factura(Empleado empleado, Cliente cliente, List<Producto> productos, Date fcha_factura) {
         this.empleado = empleado;
         this.cliente = cliente;
         this.productos = productos;
@@ -69,18 +69,19 @@ public class Factura {
     public void setProducto(List<Producto> productos) {
         this.productos = productos;
     }
-    //Calcular el precio del listado de productos en vez de meterlo a mano
+
+    // Calcular el precio del listado de productos en vez de meterlo a mano
     public Double getPrecio() {
-    	this.precio = 0.0;
+        this.precio = 0.0;
         for (Producto producto : this.productos) {
-        	this.precio = this.precio + producto.getPrecio();
-		}
-		
-    	return this.precio;
-    } 
-    
+            this.precio = this.precio + producto.getPrecio();
+        }
+
+        return this.precio;
+    }
+
     public void setPrecio(Double precio) {
-    	this.precio = precio;
+        this.precio = precio;
     }
 
     public Date getFcha_factura() {
@@ -93,18 +94,18 @@ public class Factura {
 
     @Override
     public String toString() {
-        return "Factura {" + " id= " + id + ", empleado= " + empleado + ", cliente= " + cliente
-                + ", productos= " + productos  + ", precio= " + precio + ", fcha_factura= "
-                + fcha_factura + "}";
+        return "Factura {" + " id= " + id + ", empleado= " + empleado + ", cliente= " + cliente + ", productos= "
+                + productos + ", precio= " + precio + ", fcha_factura= " + fcha_factura + "}";
     }
+
     public String toStringProductos() {
-    	String nombreprod = "";
-    	
-    	for (Producto producto : productos) {
-			nombreprod = nombreprod + ", " + producto.getNombre();
-			
-		}
-    	return nombreprod;
+        String nombreprod = "";
+
+        for (Producto producto : productos) {
+            nombreprod = nombreprod + ", " + producto.getNombre();
+
+        }
+        return nombreprod;
     }
 
 }

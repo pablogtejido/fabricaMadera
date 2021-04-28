@@ -79,18 +79,18 @@ public class FacturasEmpleado extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(30, 69, 751, 266);
 		getContentPane().add(scrollPane);
-		
+
 		JPanel panelBoton = new JPanel();
 		panelBoton.setBounds(270, 346, 247, 43);
 		getContentPane().add(panelBoton);
 		panelBoton.setLayout(null);
-		
+
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setForeground(Color.WHITE);
 		btnModificar.setBackground(new Color(72, 61, 139));
 		btnModificar.setBounds(37, 11, 95, 23);
 		panelBoton.add(btnModificar);
-		
+
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setForeground(Color.WHITE);
 		btnEliminar.setBackground(new Color(72, 61, 139));
@@ -105,8 +105,8 @@ public class FacturasEmpleado extends JFrame {
 		modelo.addColumn("Nombre Cliente");
 		modelo.addColumn("Apellido Cliente");
 		modelo.addColumn("Nombre Empleado");
-		//modelo.addColumn("Productos");
-		//modelo.addColumn("Precio");
+		// modelo.addColumn("Productos");
+		// modelo.addColumn("Precio");
 		modelo.addColumn("Fecha");
 		table.getTableHeader().setReorderingAllowed(false);
 
@@ -123,10 +123,10 @@ public class FacturasEmpleado extends JFrame {
 
 		JMenu menuEmpleados = new JMenu("Empleado");
 		menuBar.add(menuEmpleados);
-		
+
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
-		
+
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
 
@@ -139,7 +139,7 @@ public class FacturasEmpleado extends JFrame {
 				window2.setVisible(true);
 			}
 		});
-		
+
 		verEmpleados.addActionListener(new ActionListener() {
 
 			@Override
@@ -149,13 +149,12 @@ public class FacturasEmpleado extends JFrame {
 				window2.setVisible(true);
 			}
 		});
-		
-		
+
 		btnModificar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Long id = (Long) modelo.getValueAt(table.getSelectedRow(), 0);
 				System.out.println(id);
 				Factura fa = null;
@@ -166,19 +165,19 @@ public class FacturasEmpleado extends JFrame {
 						fa = f;
 					}
 				}
-				//ModificarFactura frameModificar = new ModificarFactura(fa);
-				//frameModificar.setVisible(true);
-				//setVisible(false);
-			
+				// ModificarFactura frameModificar = new ModificarFactura(fa);
+				// frameModificar.setVisible(true);
+				// setVisible(false);
+
 			}
-			
+
 		});
-		
+
 		btnEliminar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Long id = (Long) modelo.getValueAt(table.getSelectedRow(), 0);
+				Long id = Long.parseLong((String) modelo.getValueAt(table.getSelectedRow(), 0));
 				System.out.println(id);
 				Factura fa = null;
 				FacturaRSH rs = FacturaRSH.getInstance();
@@ -188,11 +187,12 @@ public class FacturasEmpleado extends JFrame {
 						fa = f;
 					}
 				}
+				System.out.println("Borrando factura");
 				rs.borrarFactura(fa);
 				modelo.setRowCount(0);
 				FacturasJTable();
 			}
-			
+
 		});
 		FacturasJTable();
 	}
@@ -204,17 +204,17 @@ public class FacturasEmpleado extends JFrame {
 		System.out.println(facturas);
 
 		for (Factura factura : facturas) {
-			
+
 			long id = factura.getId();
 			fila[0] = String.valueOf(id);
 			fila[1] = factura.getCliente().getNombre();
 			fila[2] = factura.getCliente().getApellidos();
 			fila[3] = factura.getEmpleado().getNombre();
-			//fila[4] = factura.toStringProductos();
-			//Double precio = factura.getPrecio();
-			//fila[5] = precio.toString();
+			// fila[4] = factura.toStringProductos();
+			// Double precio = factura.getPrecio();
+			// fila[5] = precio.toString();
 			Date fecha = factura.getFcha_factura();
-			fila[4] = fecha.toString(); //cambiar a 6
+			fila[4] = fecha.toString(); // cambiar a 6
 
 			modelo.addRow(fila);
 
