@@ -56,6 +56,11 @@ public class Administrador {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+		
+	
+	public Administrador() {
+		super();
+	}
 	
 	public Administrador(String contrasena, String nombre, String apellido, String email, String telefono) {
 		super();
@@ -65,6 +70,7 @@ public class Administrador {
 		this.email = email;
 		this.telefono = telefono;
 	}
+	
 	@Override
 	public String toString() {
 		return "Administrador [id=" + id + ", contrasena=" + contrasena + ", nombre=" + nombre + ", apellido="

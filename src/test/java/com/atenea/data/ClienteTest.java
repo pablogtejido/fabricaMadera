@@ -6,10 +6,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import com.atenea.data.Cliente;
-import com.atenea.data.Empleado;
+
 
 public class ClienteTest {
+	
+	Cliente cl;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -21,6 +22,7 @@ public class ClienteTest {
 
 	@Before
 	public void setUp() throws Exception {
+		cl = new Cliente();
 	}
 
 	@After
@@ -32,10 +34,9 @@ public class ClienteTest {
 	@Test
 	public void testGetDni() {
 		  System.out.println("getDni");
-	      Cliente instanceCliente = new Cliente();
-	      instanceCliente.setDni("45894785Z");
+	      cl.setDni("45894785Z");
 	      String expResult = "45894785Z";
-	      String result = instanceCliente.getDni();
+	      String result = cl.getDni();
 	      assertEquals(expResult, result);
 
 	}
@@ -44,19 +45,17 @@ public class ClienteTest {
 	 @Test 
 	 public void testSetDni() {
 		  System.out.println("setDni");
-		  Empleado instanceCliente = new Empleado();
 	      String dni = "45748621W";
-	      instanceCliente.setDni(dni);
+	      cl.setDni(dni);
 		 
 	 }
 	 
 	@Test
 	public void testGetNombre() {
 		  System.out.println("getNombre");
-	      Cliente instanceCliente = new Cliente();
-	      instanceCliente.setNombre("Lucas");
+	      cl.setNombre("Lucas");
 	      String expResult = "Lucas";
-	      String result = instanceCliente.getNombre();
+	      String result = cl.getNombre();
 	      assertEquals(expResult, result);
 			
 	}
@@ -65,9 +64,8 @@ public class ClienteTest {
 	@Test 
 	public void testSetNombre() {
 		  System.out.println("setNombre");
-		  Cliente instanceCliente = new Cliente();
 	      String nombre = "Marcos";
-	      instanceCliente.setNombre(nombre);  
+	      cl.setNombre(nombre);  
 			 
 	}
 
@@ -75,10 +73,9 @@ public class ClienteTest {
 	@Test
 	public void testGetApellidos() {
 		  System.out.println("getApellido");
-	      Cliente instanceCliente = new Cliente();
-	      instanceCliente.setApellidos("Lopez");
+		  cl.setApellidos("Lopez");
 	      String expResult = "Lopez";
-	      String result = instanceCliente.getApellidos();
+	      String result = cl.getApellidos();
 	      assertEquals(expResult, result);
 			
 	}
@@ -87,9 +84,8 @@ public class ClienteTest {
 	@Test 
 	public void testSetApellidos() {
 		  System.out.println("setApellido");
-		  Cliente instanceCliente = new Cliente();
-	      String apellido = "Perez";
-	      instanceCliente.setApellidos(apellido);  
+		  String apellido = "Perez";
+		  cl.setApellidos(apellido);  
 			 
 	}
 
