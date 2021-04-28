@@ -58,6 +58,7 @@ public class FacturasEmpleado extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		this.setTitle("Visualizar Facturas");
 		setBounds(100, 100, 827, 461);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
@@ -120,11 +121,14 @@ public class FacturasEmpleado extends JFrame {
 		JMenu menuClientes = new JMenu("Clientes");
 		menuBar.add(menuClientes);
 
-		JMenu mnNewMenu_2 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_2);
-
+		JMenu menuEmpleados = new JMenu("Empleado");
+		menuBar.add(menuEmpleados);
+		
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
+		
+		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
+		menuEmpleados.add(verEmpleados);
 
 		verClientes.addActionListener(new ActionListener() {
 
@@ -135,6 +139,17 @@ public class FacturasEmpleado extends JFrame {
 				window2.setVisible(true);
 			}
 		});
+		
+		verEmpleados.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VisualizarEmpleado window2 = new VisualizarEmpleado();
+				window2.setVisible(true);
+			}
+		});
+		
 		
 		btnModificar.addActionListener(new ActionListener() {
 

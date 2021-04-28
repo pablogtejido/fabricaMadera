@@ -80,7 +80,7 @@ public class EmpleadoRSH {
      * 
      * @param <Code>Empleado</Code> Empleado a borrar
      */
-    public void borrarCliente(Empleado empleado) {
+    public void borrarEmpleado(Empleado empleado) {
         Invocation.Builder ib = target.path("/ids/" + empleado.getDni()).request();
         ib.delete();
     }
