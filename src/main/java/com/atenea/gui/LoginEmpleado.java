@@ -7,6 +7,8 @@ import com.atenea.data.Empleado;
 import com.atenea.data.EmpleadoConectado;
 import com.atenea.db.DBException;
 import com.atenea.db.DBManager;
+import com.atenea.rsh.EmpleadoRSH;
+
 import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,6 +21,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class LoginEmpleado extends JFrame {
@@ -88,41 +91,46 @@ public class LoginEmpleado extends JFrame {
 		btniniciar.setBackground(new Color(72, 61, 139));
 		btniniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DBManager db = DBManager.getInstance();
-
 				try {
-					Empleado userEmpleado = db.getEmpleadoPorEmail(textEmpleado.getText());
-					System.out.println(userEmpleado);
-
-					if (userEmpleado == null)
+					Empleado empleado = null;
+					boolean found = false;
+					List<Empleado> listadoEmpleado = EmpleadoRSH.getInstance().verEmpleados();	
+					for (Empleado emp : listadoEmpleado) {
+						if(emp.getDni().equals(textEmpleado.getText())) {
+							System.out.println(emp);
+							empleado = emp;
+							found = true;
+						}
+					}
+				
+					if (!found)
 						JOptionPane.showMessageDialog(null, "Empleado no encontrado");
 					else {
-						if (!Arrays.equals(userEmpleado.getContrasena().toCharArray(), contrasenaField.getPassword()))
+						if (!Arrays.equals(empleado.getContrasena().toCharArray(), contrasenaField.getPassword()))
 							JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
 						else {
 							if (EmpleadoConectado.getUserEmpleado().isEmpty()) {
-								EmpleadoConectado.getUserEmpleado().add(userEmpleado);
+								EmpleadoConectado.getUserEmpleado().add(empleado);
 
 							} else {
 								for (Empleado u : EmpleadoConectado.getUserEmpleado()) {
-									if (userEmpleado.equals(u)) {
+									if (empleado.equals(u)) {
 										JOptionPane.showMessageDialog(null, "Este empleado ya esta conectado");
 										textEmpleado.setText("");
 										contrasenaField.setText("");
 									} else {
-										EmpleadoConectado.getUserEmpleado().add(userEmpleado);
+										EmpleadoConectado.getUserEmpleado().add(empleado);
 
 									}
 								}
 							}
 						}
 					}
-				} catch (DBException e1) {
+				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}
 		});
-
 		btniniciar.setBounds(253, 188, 103, 37);
 		contentPane.add(btniniciar);
 
