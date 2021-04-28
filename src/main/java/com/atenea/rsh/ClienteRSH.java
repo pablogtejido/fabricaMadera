@@ -77,7 +77,7 @@ public class ClienteRSH {
      * @param <Code>Cliente</Code> Cliente a borrar
      */
     public void borrarCliente(Cliente cliente) {
-        Invocation.Builder ib = target.path("/ids" + cliente.getDni()).request();
+        Invocation.Builder ib = target.path("/ids/" + cliente.getDni()).request();
         ib.delete();
     }
 

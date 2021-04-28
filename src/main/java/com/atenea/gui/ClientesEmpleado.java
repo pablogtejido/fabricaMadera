@@ -130,9 +130,17 @@ public class ClientesEmpleado extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Cliente clienteSeleccionado = (Cliente) modelo.getValueAt(table.getSelectedRow(), 0);
-				ModificarCliente frameModificar = new ModificarCliente(clienteSeleccionado);
 				
+				String dni = (String) modelo.getValueAt(table.getSelectedRow(), 0);
+				Cliente cl = null;
+				ClienteRSH rs = ClienteRSH.getInstance();
+				for (Cliente c : rs.verClientes()) {
+					if (c.getDni().equals(dni)) {
+						cl = c;
+					}
+				}
+				ModificarCliente frameModificar = new ModificarCliente(cl);
+			
 			}
 			
 		});
@@ -140,9 +148,19 @@ public class ClientesEmpleado extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Cliente clienteSeleccionado = (Cliente) modelo.getValueAt(table.getSelectedRow(), 0);
-				ClienteRSH.getInstance().borrarCliente(clienteSeleccionado);
-				
+				String dni = (String) modelo.getValueAt(table.getSelectedRow(), 0);
+				System.out.println(dni);
+				Cliente cl = null;
+				ClienteRSH rs = ClienteRSH.getInstance();
+				for (Cliente c : rs.verClientes()) {
+					if (c.getDni().equals(dni)) {
+						System.out.println(c);
+						cl = c;
+					}
+				}
+				rs.borrarCliente(cl);
+				modelo.setRowCount(0);
+				ClientesJTable();
 			}
 			
 		});
