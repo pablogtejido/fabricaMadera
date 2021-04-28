@@ -19,11 +19,11 @@ public class Factura {
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
     private long id;
-    @ForeignKey(deleteAction = ForeignKeyAction.CASCADE)
+    @ForeignKey(deleteAction = ForeignKeyAction.NONE)
     private Empleado empleado;
-    @ForeignKey(deleteAction = ForeignKeyAction.CASCADE)
+    @ForeignKey(deleteAction = ForeignKeyAction.NONE)
     private Cliente cliente;
-    @ForeignKey(deleteAction = ForeignKeyAction.CASCADE)
+    @ForeignKey(deleteAction = ForeignKeyAction.NONE)
     private List<Producto> productos;
     private Double precio;
     private Date fcha_factura;
