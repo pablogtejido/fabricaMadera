@@ -10,7 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import com.atenea.data.Cliente;
 import com.atenea.data.Factura;
+import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.FacturaRSH;
 
 import java.awt.Font;
@@ -98,12 +100,12 @@ public class FacturasEmpleado extends JFrame {
 		modelo = new DefaultTableModel();
 		table.setModel(modelo);
 
+		modelo.addColumn("Id");
 		modelo.addColumn("Nombre Cliente");
 		modelo.addColumn("Apellido Cliente");
 		modelo.addColumn("Nombre Empleado");
-		modelo.addColumn("Id");
-		modelo.addColumn("Productos");
-		modelo.addColumn("Precio");
+		//modelo.addColumn("Productos");
+		//modelo.addColumn("Precio");
 		modelo.addColumn("Fecha");
 		table.getTableHeader().setReorderingAllowed(false);
 
@@ -134,13 +136,46 @@ public class FacturasEmpleado extends JFrame {
 			}
 		});
 		
+		btnModificar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				Long id = (Long) modelo.getValueAt(table.getSelectedRow(), 0);
+				System.out.println(id);
+				Factura fa = null;
+				FacturaRSH rs = FacturaRSH.getInstance();
+				for (Factura f : rs.verFacturas()) {
+					if (f.getId() == id) {
+						System.out.println(f);
+						fa = f;
+					}
+				}
+				//ModificarFactura frameModificar = new ModificarFactura(fa);
+				//frameModificar.setVisible(true);
+				//setVisible(false);
+			
+			}
+			
+		});
+		
 		btnEliminar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Factura facturaSeleccionada = (Factura) modelo.getValueAt(table.getSelectedRow(), 0);
-				FacturaRSH.getInstance().borrarFactura(facturaSeleccionada);
-				
+				Long id = (Long) modelo.getValueAt(table.getSelectedRow(), 0);
+				System.out.println(id);
+				Factura fa = null;
+				FacturaRSH rs = FacturaRSH.getInstance();
+				for (Factura f : rs.verFacturas()) {
+					if (f.getId() == id) {
+						System.out.println(f);
+						fa = f;
+					}
+				}
+				rs.borrarFactura(fa);
+				modelo.setRowCount(0);
+				FacturasJTable();
 			}
 			
 		});
@@ -154,17 +189,17 @@ public class FacturasEmpleado extends JFrame {
 		System.out.println(facturas);
 
 		for (Factura factura : facturas) {
-
-			fila[0] = factura.getCliente().getNombre();
-			fila[1] = factura.getCliente().getApellidos();
-			fila[2] = factura.getEmpleado().getNombre();
+			
 			long id = factura.getId();
-			fila[3] = String.valueOf(id);
-			fila[4] = factura.toStringProductos();
-			Double precio = factura.getPrecio();
-			fila[5] = precio.toString();
+			fila[0] = String.valueOf(id);
+			fila[1] = factura.getCliente().getNombre();
+			fila[2] = factura.getCliente().getApellidos();
+			fila[3] = factura.getEmpleado().getNombre();
+			//fila[4] = factura.toStringProductos();
+			//Double precio = factura.getPrecio();
+			//fila[5] = precio.toString();
 			Date fecha = factura.getFcha_factura();
-			fila[6] = fecha.toString();
+			fila[4] = fecha.toString(); //cambiar a 6
 
 			modelo.addRow(fila);
 

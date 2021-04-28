@@ -156,6 +156,7 @@ public class ModificarCliente extends JFrame{
 				cliente.setContrasena(contrasena);
 				
 				ClienteRSH.getInstance().modificarCliente(cliente);
+				System.out.println(cliente);
 
 			}
 

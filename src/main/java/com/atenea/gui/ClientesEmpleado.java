@@ -132,14 +132,18 @@ public class ClientesEmpleado extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				String dni = (String) modelo.getValueAt(table.getSelectedRow(), 0);
+				System.out.println(dni);
 				Cliente cl = null;
 				ClienteRSH rs = ClienteRSH.getInstance();
 				for (Cliente c : rs.verClientes()) {
 					if (c.getDni().equals(dni)) {
+						System.out.println(c);
 						cl = c;
 					}
 				}
 				ModificarCliente frameModificar = new ModificarCliente(cl);
+				frameModificar.setVisible(true);
+				setVisible(false);
 			
 			}
 			
