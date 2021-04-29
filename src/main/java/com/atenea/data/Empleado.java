@@ -28,17 +28,6 @@ public class Empleado {
 	}
 
 	public Empleado(String dni, String nombre, String direccion, String email, String telefono,
-			 String contrasena) {
-		super();
-		this.dni = dni;
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.email = email;
-		this.telefono = telefono;
-		this.contrasena = contrasena;
-	}
-	
-	public Empleado(String dni, String nombre, String direccion, String email, String telefono,
 			EnumPuestoEmpleados puesto, Date fcha_nacimiento, Date fcha_empleado, double sueldo, String contrasena) {
 		super();
 		this.dni = dni;

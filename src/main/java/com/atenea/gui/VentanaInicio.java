@@ -12,6 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.atenea.gui.tablas.VisualizarClientes;
+
 import javax.swing.JButton;
 
 public class VentanaInicio extends JFrame {
@@ -89,7 +92,7 @@ public class VentanaInicio extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				LoginCliente cl = new LoginCliente();
+				VisualizarClientes cl = new VisualizarClientes();
 				cl.setVisible(true);
 
 			}

@@ -6,6 +6,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.atenea.data.Cliente;
+import com.atenea.gui.tablas.VisualizarClientes;
 import com.atenea.rsh.ClienteRSH;
 
 import javax.swing.JLabel;
@@ -110,8 +111,8 @@ public class RegistroCliente extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				LoginCliente log = new LoginCliente();
-				log.setVisible(true);
+				VisualizarClientes ver = new VisualizarClientes();
+				ver.setVisible(true);
 				setVisible(false);
 			}
 		});

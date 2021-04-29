@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import com.atenea.data.Cliente;
+import com.atenea.gui.RegistroCliente;
 import com.atenea.gui.modificar.ModificarCliente;
 import com.atenea.rsh.ClienteRSH;
 
@@ -108,8 +109,11 @@ public class VisualizarClientes extends JFrame{
 		JMenu menuFacturas = new JMenu("Facturas");
 		menuBar.add(menuFacturas);
 					
-		JMenu menuEmpleados = new JMenu("Empleado");
+		JMenu menuEmpleados = new JMenu("Empleados");
 		menuBar.add(menuEmpleados);
+		
+		JMenu menuClientes = new JMenu("Clientes");
+		menuBar.add(menuClientes);
 		
 		JMenuItem verFacturas = new JMenuItem("Ver Facturas");
 		menuFacturas.add(verFacturas);
@@ -117,6 +121,8 @@ public class VisualizarClientes extends JFrame{
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
 		
+		JMenuItem registrarCliente = new JMenuItem("Registrar Cliente");
+		menuClientes.add(registrarCliente);	
 		
 		verFacturas.addActionListener(new ActionListener() {
 
@@ -135,6 +141,17 @@ public class VisualizarClientes extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				VisualizarEmpleado window2 = new VisualizarEmpleado();
+				window2.setVisible(true);
+				setVisible(false);
+			}
+		});
+		
+		registrarCliente.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				RegistroCliente window2 = new RegistroCliente();
 				window2.setVisible(true);
 				setVisible(false);
 			}

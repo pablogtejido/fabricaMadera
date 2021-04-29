@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import com.atenea.data.Empleado;
+import com.atenea.data.EnumPuestoEmpleados;
 import com.atenea.db.DBException;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -17,13 +18,14 @@ import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import com.atenea.db.DBManager;
+import com.atenea.rsh.EmpleadoRSH;
 
 import javax.swing.JPasswordField;
 
 import com.toedter.calendar.JDateChooser;
+import javax.swing.JComboBox;
 
 public class RegistroEmpleado extends JFrame {
-	private JTextField puestotxt;
 	private JTextField direcciontxt;
 	private JTextField telefonotxt;
 	private JTextField dnitxt;
@@ -31,7 +33,9 @@ public class RegistroEmpleado extends JFrame {
 	private JTextField mailtxt;
 	private JPasswordField contratxt;
 	private JDateChooser fechaNaci;
+	private JDateChooser fechaEmpleado;
 	private JTextField sueldotxt;
+	JComboBox<EnumPuestoEmpleados> comboBoxPuesto;
 
 	/**
 	 * Launch the application.
@@ -105,11 +109,6 @@ public class RegistroEmpleado extends JFrame {
 		lblDireccion.setBounds(19, 198, 80, 25);
 		getContentPane().add(lblDireccion);
 
-		puestotxt = new JTextField();
-		puestotxt.setBounds(149, 366, 327, 27);
-		getContentPane().add(puestotxt);
-		puestotxt.setColumns(10);
-
 		direcciontxt = new JTextField();
 		direcciontxt.setBounds(149, 198, 327, 25);
 		getContentPane().add(direcciontxt);
@@ -160,25 +159,52 @@ public class RegistroEmpleado extends JFrame {
 		lblFechaEmpl.setBounds(19, 483, 109, 25);
 		getContentPane().add(lblFechaEmpl);
 
-		JDateChooser fechaEmpleado = new JDateChooser();
+		fechaEmpleado = new JDateChooser();
 		fechaEmpleado.setBounds(149, 483, 327, 25);
 		getContentPane().add(fechaEmpleado);
+		
+		fechaEmpleado.getCalendarButton().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
+		JLabel lblSueldo = new JLabel("Sueldo:");
+		lblSueldo.setBounds(19, 543, 46, 14);
+		getContentPane().add(lblSueldo);
+		
+		sueldotxt = new JTextField();
+		sueldotxt.setBounds(149, 540, 327, 20);
+		getContentPane().add(sueldotxt);
+		sueldotxt.setColumns(10);
+		
+		comboBoxPuesto = new JComboBox<EnumPuestoEmpleados>();
+		comboBoxPuesto.setBounds(149, 368, 327, 22);
+		getContentPane().add(comboBoxPuesto);	
+		
+		for (EnumPuestoEmpleados puesto : EnumPuestoEmpleados.values()) {
+			comboBoxPuesto.addItem(puesto);
+		}
 
 		JButton btnregistrar = new JButton("Registrarse");
 		btnregistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				try {
-					addUserEmpleado();
-
-					LoginEmpleado log = new LoginEmpleado();
-					log.setVisible(true);
-					setVisible(false);
-
-				} catch (DBException e1) {
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Ya existe un empleado con este DNI");
+				
+				Empleado empleado = construirEmpleado();
+				EmpleadoRSH rsh = EmpleadoRSH.getInstance();
+				if(!empleadoExistente()) {
+					rsh.guardarEmpleado(empleado);
+					System.out.println(empleado);
+				} else {
+					JOptionPane.showMessageDialog(null, "Este Empleado ya existe");
+					System.out.println("ERROR");
 				}
+				
+				
 			}
 		});
 		btnregistrar.setForeground(Color.WHITE);
@@ -213,69 +239,37 @@ public class RegistroEmpleado extends JFrame {
 		volver.setForeground(Color.WHITE);
 		volver.setBackground(new Color(72, 61, 139));
 		volver.setBounds(10, 707, 80, 31);
-		getContentPane().add(volver);
-		
-		JLabel lblSueldo = new JLabel("Sueldo:");
-		lblSueldo.setBounds(19, 543, 46, 14);
-		getContentPane().add(lblSueldo);
-		
-		sueldotxt = new JTextField();
-		sueldotxt.setBounds(149, 540, 327, 20);
-		getContentPane().add(sueldotxt);
-		sueldotxt.setColumns(10);
-
+		getContentPane().add(volver);	
+						
 	}
 
-	// EnumPuestoEmpleados empl = Enum.Parse(typeof(EnumPuestoEmpleados),
-	// textFieldPuesto.getText());
-
 	private boolean empleadoExistente() {
-		DBManager manager = DBManager.getInstance();
-		List<Empleado> empleados = manager.getEmpleados();
-		try {
-			for (Empleado empleado : empleados) {
-				if (empleado.getDni() == dnitxt.getText()) {
-					return true;
-				}
+		
+		EmpleadoRSH rsh = EmpleadoRSH.getInstance();
+		List<Empleado> empleados = rsh.verEmpleados();
+		
+		for (Empleado empleado : empleados) {
+			if(!empleado.getDni().equals(dnitxt.getText())) {
+				return false;
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
 		}
-
-		return false;
+		
+		return true;
 
 	}
 	
-	/*
-	 	this.dni = dni;
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.email = email;
-		this.telefono = telefono;
-		this.puesto = puesto;
-		this.fcha_nacimiento = fcha_nacimiento;
-		this.fcha_empleado = fcha_empleado;
-		this.sueldo = sueldo;
-		this.contrasena = contrasena;
-	 */
-
-	private void addUserEmpleado() throws DBException {
-		DBManager manager = DBManager.getInstance();
-		try {
-			
-			Empleado e = new Empleado(dnitxt.getText(), 
-									nombretxt.getText(), 
-									direcciontxt.getText(),
-									mailtxt.getText(),
-									telefonotxt.getText(),
-									String.valueOf(contratxt.getText()));
-			
-				
-			System.out.println(e);
-			manager.store(e);
-
-		} catch (Exception de) {
-			throw de;
-		}
+	public Empleado construirEmpleado() {
+		 Empleado e = new Empleado(dnitxt.getText(), 
+				nombretxt.getText(), 
+				direcciontxt.getText(),
+				mailtxt.getText(),
+				telefonotxt.getText(),
+				(EnumPuestoEmpleados)comboBoxPuesto.getSelectedItem(),
+				fechaNaci.getDate(),
+				fechaEmpleado.getDate(),
+				Double.parseDouble(sueldotxt.getText()),
+				String.valueOf(contratxt.getText()));
+		 
+		 return e;
 	}
 }
