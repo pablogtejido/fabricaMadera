@@ -199,8 +199,16 @@ public class RegistroEmpleado extends JFrame {
 				if(!empleadoExistente()) {
 					rsh.guardarEmpleado(empleado);
 					System.out.println(empleado);
-				} else {
-					JOptionPane.showMessageDialog(null, "Este Empleado ya existe");
+				}else if(direcciontxt.getText().length() == 0 || telefonotxt.getText().length() == 0 || dnitxt.getText().length() == 0 ||
+						nombretxt.getText().length() == 0 || mailtxt.getText().length() == 0 || contratxt.getPassword().length == 0 ||
+						sueldotxt.getText().length() == 0){
+					
+						JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos para registrarse", "REGISTRO INCOMPLETO", JOptionPane.ERROR_MESSAGE);
+						System.out.println("ERROR");
+
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Este Empleado ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
 					System.out.println("ERROR");
 				}
 				
