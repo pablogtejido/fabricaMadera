@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import com.atenea.db.DBManager;
@@ -30,7 +31,7 @@ public class RegistroEmpleado extends JFrame {
 	private JTextField mailtxt;
 	private JPasswordField contratxt;
 	private JDateChooser fechaNaci;
-	private JPasswordField repetirContratxt;
+	private JTextField sueldotxt;
 
 	/**
 	 * Launch the application.
@@ -60,7 +61,7 @@ public class RegistroEmpleado extends JFrame {
 	 */
 	private void initialize() {
 		this.setTitle("Registro Empleado");
-		setBounds(100, 100, 625, 530);
+		setBounds(100, 100, 625, 824);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
@@ -71,7 +72,7 @@ public class RegistroEmpleado extends JFrame {
 		getContentPane().add(titulopanel);
 		titulopanel.setLayout(null);
 
-		JLabel titulo = new JLabel("REGISTRARSE");
+		JLabel titulo = new JLabel("REGISTRO");
 		titulo.setForeground(Color.WHITE);
 		titulo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		titulo.setBounds(0, 11, 607, 36);
@@ -79,11 +80,11 @@ public class RegistroEmpleado extends JFrame {
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
 		final JLabel lblPuesto = new JLabel("Puesto:");
-		lblPuesto.setBounds(19, 285, 46, 25);
+		lblPuesto.setBounds(19, 367, 46, 25);
 		getContentPane().add(lblPuesto);
 
 		final JLabel lblContrasena = new JLabel("Contraseña:");
-		lblContrasena.setBounds(18, 237, 72, 25);
+		lblContrasena.setBounds(19, 592, 72, 25);
 		getContentPane().add(lblContrasena);
 
 		final JLabel lblDni = new JLabel("Dni:");
@@ -92,55 +93,55 @@ public class RegistroEmpleado extends JFrame {
 
 		final JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNombre.setBounds(330, 97, 58, 17);
+		lblNombre.setBounds(19, 148, 58, 17);
 		getContentPane().add(lblNombre);
 
 		final JLabel lblEmail = new JLabel("Email:");
-		lblEmail.setBounds(18, 187, 58, 20);
+		lblEmail.setBounds(18, 258, 58, 20);
 		getContentPane().add(lblEmail);
 
 		final JLabel lblDireccion = new JLabel("Direccion:");
 		lblDireccion.setHorizontalAlignment(SwingConstants.LEFT);
-		lblDireccion.setBounds(20, 136, 80, 25);
+		lblDireccion.setBounds(19, 198, 80, 25);
 		getContentPane().add(lblDireccion);
 
 		puestotxt = new JTextField();
-		puestotxt.setBounds(93, 284, 164, 27);
+		puestotxt.setBounds(149, 366, 327, 27);
 		getContentPane().add(puestotxt);
 		puestotxt.setColumns(10);
 
 		direcciontxt = new JTextField();
-		direcciontxt.setBounds(93, 136, 355, 25);
+		direcciontxt.setBounds(149, 198, 327, 25);
 		getContentPane().add(direcciontxt);
 		direcciontxt.setColumns(10);
 
 		final JLabel lblTelefono = new JLabel("Telefono:");
-		lblTelefono.setBounds(340, 187, 58, 20);
+		lblTelefono.setBounds(19, 312, 58, 20);
 		getContentPane().add(lblTelefono);
 
 		telefonotxt = new JTextField();
-		telefonotxt.setBounds(397, 185, 187, 25);
+		telefonotxt.setBounds(149, 310, 327, 25);
 		getContentPane().add(telefonotxt);
 		telefonotxt.setColumns(10);
 
 		dnitxt = new JTextField();
-		dnitxt.setBounds(63, 93, 164, 25);
+		dnitxt.setBounds(149, 93, 327, 25);
 		getContentPane().add(dnitxt);
 		dnitxt.setColumns(10);
 
 		nombretxt = new JTextField();
-		nombretxt.setBounds(398, 92, 186, 25);
+		nombretxt.setBounds(149, 144, 327, 25);
 		getContentPane().add(nombretxt);
 		nombretxt.setColumns(10);
 
 		mailtxt = new JTextField();
-		mailtxt.setBounds(93, 185, 214, 25);
+		mailtxt.setBounds(149, 256, 327, 25);
 		getContentPane().add(mailtxt);
 		mailtxt.setColumns(10);
 		telefonotxt.setColumns(10);
 
 		contratxt = new JPasswordField();
-		contratxt.setBounds(93, 237, 165, 25);
+		contratxt.setBounds(149, 592, 327, 25);
 		getContentPane().add(contratxt);
 
 		fechaNaci = new JDateChooser();
@@ -148,36 +149,20 @@ public class RegistroEmpleado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		fechaNaci.setBounds(121, 333, 162, 25);
+		fechaNaci.setBounds(149, 426, 327, 25);
 		getContentPane().add(fechaNaci);
 
 		final JLabel lblFechaNac = new JLabel("Fecha nacimiento:");
-		lblFechaNac.setBounds(19, 333, 109, 25);
+		lblFechaNac.setBounds(19, 426, 109, 25);
 		getContentPane().add(lblFechaNac);
 
 		final JLabel lblFechaEmpl = new JLabel("Fecha empleado:");
-		lblFechaEmpl.setBounds(303, 333, 109, 25);
+		lblFechaEmpl.setBounds(19, 483, 109, 25);
 		getContentPane().add(lblFechaEmpl);
 
-		JDateChooser fechaContratado = new JDateChooser();
-		fechaContratado.setBounds(422, 333, 162, 25);
-		getContentPane().add(fechaContratado);
-
-		JDateChooser dateChooserFechaNac = new JDateChooser();
-		dateChooserFechaNac.setBounds(121, 333, 163, 25);
-		getContentPane().add(dateChooserFechaNac);
-
-		JDateChooser dateChooserFechaEmpleado = new JDateChooser();
-		dateChooserFechaEmpleado.setBounds(422, 333, 163, 25);
-		getContentPane().add(dateChooserFechaEmpleado);
-
-		final JLabel lblrepetircontra = new JLabel("Repetir contraseña:");
-		lblrepetircontra.setBounds(282, 237, 126, 25);
-		getContentPane().add(lblrepetircontra);
-
-		repetirContratxt = new JPasswordField();
-		repetirContratxt.setBounds(403, 237, 181, 25);
-		getContentPane().add(repetirContratxt);
+		JDateChooser fechaEmpleado = new JDateChooser();
+		fechaEmpleado.setBounds(149, 483, 327, 25);
+		getContentPane().add(fechaEmpleado);
 
 		JButton btnregistrar = new JButton("Registrarse");
 		btnregistrar.addActionListener(new ActionListener() {
@@ -198,13 +183,13 @@ public class RegistroEmpleado extends JFrame {
 		});
 		btnregistrar.setForeground(Color.WHITE);
 		btnregistrar.setBackground(new Color(72, 61, 139));
-		btnregistrar.setBounds(235, 385, 141, 36);
+		btnregistrar.setBounds(235, 643, 141, 36);
 		getContentPane().add(btnregistrar);
 
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.setForeground(Color.WHITE);
 		cerrar.setBackground(new Color(72, 61, 139));
-		cerrar.setBounds(517, 449, 80, 31);
+		cerrar.setBounds(517, 707, 80, 31);
 		getContentPane().add(cerrar);
 		cerrar.addActionListener(new ActionListener() {
 
@@ -227,8 +212,17 @@ public class RegistroEmpleado extends JFrame {
 		});
 		volver.setForeground(Color.WHITE);
 		volver.setBackground(new Color(72, 61, 139));
-		volver.setBounds(10, 449, 80, 31);
+		volver.setBounds(10, 707, 80, 31);
 		getContentPane().add(volver);
+		
+		JLabel lblSueldo = new JLabel("Sueldo:");
+		lblSueldo.setBounds(19, 543, 46, 14);
+		getContentPane().add(lblSueldo);
+		
+		sueldotxt = new JTextField();
+		sueldotxt.setBounds(149, 540, 327, 20);
+		getContentPane().add(sueldotxt);
+		sueldotxt.setColumns(10);
 
 	}
 
@@ -251,15 +245,32 @@ public class RegistroEmpleado extends JFrame {
 		return false;
 
 	}
+	
+	/*
+	 	this.dni = dni;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.email = email;
+		this.telefono = telefono;
+		this.puesto = puesto;
+		this.fcha_nacimiento = fcha_nacimiento;
+		this.fcha_empleado = fcha_empleado;
+		this.sueldo = sueldo;
+		this.contrasena = contrasena;
+	 */
 
 	private void addUserEmpleado() throws DBException {
 		DBManager manager = DBManager.getInstance();
 		try {
-
-			Empleado e = new Empleado(dnitxt.getText(), nombretxt.getText(), direcciontxt.getText(), mailtxt.getText(),
-					telefonotxt.getText(), String.valueOf(contratxt.getText())
-
-			);
+			
+			Empleado e = new Empleado(dnitxt.getText(), 
+									nombretxt.getText(), 
+									direcciontxt.getText(),
+									mailtxt.getText(),
+									telefonotxt.getText(),
+									String.valueOf(contratxt.getText()));
+			
+				
 			System.out.println(e);
 			manager.store(e);
 
