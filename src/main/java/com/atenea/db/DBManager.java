@@ -149,7 +149,97 @@ public class DBManager {
      * @param factura
      */
     public void store(Factura factura) {
-        DBManager.getInstance().storeObjectInDB(factura);
+        /**
+         * JDO puede llegar a tener una forma de meter un dato con ForeignKeys en la
+         * base de datos y comprobar si existe en la base de datos. Pero no se cual
+         * puede ser. Para eso lo que vamos a hacer es comprobar si existen Empleados,
+         * Clientes y productos iguales en la BD.
+         */
+        PersistenceManager pm = pmf.getPersistenceManager();
+        pm.getFetchPlan().setMaxFetchDepth(4);
+        Transaction tx = pm.currentTransaction();
+
+        try {
+            tx.begin();
+            System.out.println("* Storing an object: " + factura);
+
+            // Ver todos los clientes. Si existe usarlo, si no descartarlos y usar el
+            // cliente que viene con el propio objeto factura.
+            Cliente cl = factura.getCliente(); // Ponemos temporalmente el cliente del objeto factura.
+            Extent<Cliente> ex_cliente = pm.getExtent(Cliente.class, true);
+            Iterator<Cliente> iter_cliente = ex_cliente.iterator();
+            while (iter_cliente.hasNext()) {
+                Cliente cliente_temporal = (Cliente) iter_cliente.next();
+                if (cliente_temporal.getDni().equals(cl.getDni())) {
+                    System.out.println("* Found a client with the same DNI: " + cliente_temporal.getDni());
+                    cl = cliente_temporal; // Si existe simplemente usamos el que viene de la base de datos.
+                }
+            }
+            factura.setCliente(cl); // Hacer set del cliente
+
+            // Ver todos los empleados. Si existe usarlo, si no descartarlos y usar el
+            // empleado que viene con el propio objeto factura.
+            Empleado em = factura.getEmpleado(); // Ponemos temporalmente el cliente del objeto factura.
+            Extent<Empleado> ex_empleado = pm.getExtent(Empleado.class, true);
+            Iterator<Empleado> iter_empleado = ex_empleado.iterator();
+            while (iter_empleado.hasNext()) {
+                Empleado empleado_temporal = (Empleado) iter_empleado.next();
+                if (empleado_temporal.getDni().equals(em.getDni())) {
+                    System.out.println("* Found a employee with the same DNI: " + empleado_temporal.getDni());
+                    em = empleado_temporal; // Si existe simplemente usamos el que viene de la base de datos.
+                }
+            }
+            factura.setEmpleado(em); // Hacer set del empleado
+
+            /**
+             * Esto va a ser dificil. Hay que buscar diferentes productos en la BD. Si
+             * existe usar el de la DB. Si no existe crearlo. Creo que lo mejor para esta
+             * solucion es simplemente hacer una nueva lista. E ir guardando poco a poco.
+             * Estoy seguro que la eficiencia de esta solucion es mala. Pero no se me ocurre
+             * como mejorarla.
+             */
+
+            List<Producto> productos = factura.getProductos();
+            List<Producto> final_productos = new ArrayList<>();
+            Extent<Producto> ex_producto = pm.getExtent(Producto.class, true);
+            Iterator<Producto> iter = ex_producto.iterator();
+            Producto p = null;
+            for (Producto p_for : productos) {
+                boolean found = false;
+                while (iter.hasNext()) {
+                    Producto p_bd = (Producto) iter.next();
+                    if (p_bd.getId().equals(p_for.getId())) {
+                        found = true;
+                        p = p_bd;
+                    }
+                }
+                if (!found) {
+                    p = p_for;
+                }
+                final_productos.add(p);
+            }
+            factura.setProductos(final_productos); // Guardar el resultado final.
+            factura.setPrecio(factura.calcularPrecio()); // Acturalizar el precio para minimizar errores.
+            pm.makePersistent(factura); // Finalmente guardar la factura.
+            tx.commit();
+            /**
+             * Para comprender lo que hago aqui ve a la función: getFacturas()
+             */
+            pm.makeTransient(factura.getCliente());
+            pm.makeTransient(factura.getEmpleado());
+            for (Producto pr : factura.getProductos()) {
+                pm.makeTransient(pr);
+            }
+            pm.makeTransient(factura);
+        } catch (Exception ex) {
+            System.out.println("$ Error storing an object: " + ex.getMessage());
+        } finally {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+
+            pm.close();
+        }
     }
 
     /**
@@ -589,7 +679,7 @@ public class DBManager {
                     factura_a_cambiar.setEmpleado(factura.getEmpleado());
                     factura_a_cambiar.setFcha_factura(factura.getFcha_factura());
                     factura_a_cambiar.setPrecio(factura.getPrecio());
-                    factura_a_cambiar.setProducto(factura.getProductos());
+                    factura_a_cambiar.setProductos(factura.getProductos());
                 }
             }
             tx.commit();

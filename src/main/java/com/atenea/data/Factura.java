@@ -66,17 +66,12 @@ public class Factura {
         return this.productos;
     }
 
-    public void setProducto(List<Producto> productos) {
+    public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
 
     // Calcular el precio del listado de productos en vez de meterlo a mano
     public Double getPrecio() {
-        this.precio = 0.0;
-        for (Producto producto : this.productos) {
-            this.precio = this.precio + producto.getPrecio();
-        }
-
         return this.precio;
     }
 
@@ -108,4 +103,12 @@ public class Factura {
         return nombreprod;
     }
 
+    public Double calcularPrecio() {
+        Double precio_calculado = 0.0;
+        for (Producto producto : this.productos) {
+            precio_calculado += producto.getPrecio();
+        }
+
+        return precio_calculado;
+    }
 }
