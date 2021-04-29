@@ -199,9 +199,9 @@ public class RegistroEmpleado extends JFrame {
 				if(!empleadoExistente()) {
 					rsh.guardarEmpleado(empleado);
 					System.out.println(empleado);
-				}else if(direcciontxt.getText().length() == 0 || telefonotxt.getText().length() == 0 || dnitxt.getText().length() == 0 ||
-						nombretxt.getText().length() == 0 || mailtxt.getText().length() == 0 || contratxt.getPassword().length == 0 ||
-						sueldotxt.getText().length() == 0){
+				}else if(direcciontxt.getText().isEmpty() || telefonotxt.getText().isEmpty() || dnitxt.getText().isEmpty() ||
+						nombretxt.getText().isEmpty() || mailtxt.getText().isEmpty() || contratxt.getPassword().length == 0 ||
+						sueldotxt.getText().isEmpty()){
 					
 						JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos para registrarse", "REGISTRO INCOMPLETO", JOptionPane.ERROR_MESSAGE);
 						System.out.println("ERROR");
@@ -276,7 +276,7 @@ public class RegistroEmpleado extends JFrame {
 				fechaNaci.getDate(),
 				fechaEmpleado.getDate(),
 				Double.parseDouble(sueldotxt.getText()),
-				String.valueOf(contratxt.getText()));
+				String.valueOf(contratxt.getPassword()));
 		 
 		 return e;
 	}
