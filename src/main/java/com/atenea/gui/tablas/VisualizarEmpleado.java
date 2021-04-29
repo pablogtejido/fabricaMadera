@@ -10,8 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
+import com.atenea.gui.modificar.ModificarCliente;
+import com.atenea.gui.modificar.ModificarEmpleado;
+import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
 import com.atenea.rsh.FacturaRSH;
 
@@ -156,21 +160,45 @@ public class VisualizarEmpleado extends JFrame {
 			}
 		});
 
+		
+		btnModificar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String dni = (String) modelo.getValueAt(table.getSelectedRow(), 0);
+				System.out.println(dni);
+				Empleado empl = null;
+				EmpleadoRSH rs = EmpleadoRSH.getInstance();
+				for (Empleado em : rs.verEmpleados()) {
+					if (em.getDni().equals(dni)) {
+						System.out.println(em);
+						empl = em;
+					}
+				}
+				ModificarEmpleado frameModificar = new ModificarEmpleado(empl);
+				frameModificar.setVisible(true);
+				setVisible(false);
+			
+			}
+			
+		});
+
 		btnEliminar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String dni = (String) modelo.getValueAt(table.getSelectedRow(), 0);
-				Empleado fa = null;
+				Empleado eml = null;
 				EmpleadoRSH rs = EmpleadoRSH.getInstance();
-				for (Empleado f : rs.verEmpleados()) {
-					if (f.getDni().equals(dni)) {
-						System.out.println(f);
-						fa = f;
+				for (Empleado em : rs.verEmpleados()) {
+					if (em.getDni().equals(dni)) {
+						System.out.println(em);
+						eml = em;
 					}
 				}
-				System.out.println("Borrando factura");
-				rs.borrarEmpleado(fa);
+				System.out.println("Borrando Empleado");
+				rs.borrarEmpleado(eml);
 				modelo.setRowCount(0);
 				EmpleadosJTable();
 			}

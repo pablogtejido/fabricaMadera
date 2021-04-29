@@ -177,6 +177,7 @@ public class VisualizarClientes extends JFrame{
 						cl = c;
 					}
 				}
+				System.out.println("Borrando Cliente");
 				rs.borrarCliente(cl);
 				modelo.setRowCount(0);
 				ClientesJTable();
