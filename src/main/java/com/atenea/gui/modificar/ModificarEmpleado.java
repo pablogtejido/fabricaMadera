@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import com.atenea.data.Empleado;
 import com.atenea.data.EnumPuestoEmpleados;
 import com.atenea.gui.tablas.VisualizarClientes;
+import com.atenea.gui.tablas.VisualizarEmpleado;
 import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
 
@@ -101,8 +102,8 @@ public class ModificarEmpleado extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VisualizarClientes clientes = new VisualizarClientes();
-				clientes.setVisible(true);
+				VisualizarEmpleado empleados = new VisualizarEmpleado();
+				empleados.setVisible(true);
 				setVisible(false);
 			}
 		});

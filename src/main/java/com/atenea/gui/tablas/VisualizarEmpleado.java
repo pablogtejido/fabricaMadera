@@ -67,12 +67,12 @@ public class VisualizarEmpleado extends JFrame {
 	private void initialize() {
 		this.setTitle("Visualizar Empleados");
 
-		setBounds(100, 100, 827, 461);
+		setBounds(100, 100, 1028, 461);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		JPanel titulopanel = new JPanel();
-		titulopanel.setBounds(0, 0, 811, 58);
+		titulopanel.setBounds(0, 0, 1012, 58);
 		titulopanel.setBackground(new Color(72, 61, 139));
 		getContentPane().add(titulopanel);
 		titulopanel.setLayout(null);
@@ -81,15 +81,15 @@ public class VisualizarEmpleado extends JFrame {
 		titulo.setForeground(Color.WHITE);
 		titulo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		titulo.setBounds(0, 11, 811, 36);
+		titulo.setBounds(31, 11, 980, 36);
 		titulopanel.add(titulo);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(38, 69, 751, 266);
+		scrollPane.setBounds(10, 69, 992, 266);
 		getContentPane().add(scrollPane);
 
 		JPanel panelBoton = new JPanel();
-		panelBoton.setBounds(270, 346, 247, 43);
+		panelBoton.setBounds(388, 346, 247, 43);
 		getContentPane().add(panelBoton);
 		panelBoton.setLayout(null);
 
@@ -115,10 +115,9 @@ public class VisualizarEmpleado extends JFrame {
 		modelo.addColumn("Email");
 		modelo.addColumn("Telefono");
 		modelo.addColumn("Puesto");
-		// modelo.addColumn("Fecha de nacimiento");
-		// modelo.addColumn("Fecha de empleado");
-		// modelo.addColumn("Sueldo");
-		// modelo.addColumn("Contraseña");
+		modelo.addColumn("Fecha de nacimiento");
+		modelo.addColumn("Fecha de empleado");
+		modelo.addColumn("Sueldo");
 
 		table.getTableHeader().setReorderingAllowed(false);
 
@@ -210,41 +209,25 @@ public class VisualizarEmpleado extends JFrame {
 	private void EmpleadosJTable() {
 		EmpleadoRSH rsh = EmpleadoRSH.getInstance();
 		List<Empleado> empleados = rsh.verEmpleados();
-		String[] fila = new String[6];
+		String[] fila = new String[9];
 		System.out.println(empleados);
 	
 		for (Empleado empl : empleados) {
-			/*
-			 * modelo.addColumn("Fecha de nacimiento");
-			 * modelo.addColumn("Fecha de empleado"); modelo.addColumn("Sueldo");
-			 * modelo.addColumn("Contraseña");
-			 */
+			
 			fila[0] = empl.getDni();
 			fila[1] = empl.getNombre();
 			fila[2] = empl.getDireccion();
 			fila[3] = empl.getEmail();
 			fila[4] = empl.getTelefono();
 			fila[5] = String.valueOf(empl.getPuesto());
-			/*
-			 * Date fecha = empl.getFcha_nacimiento(); System.out.println("/n");
-			 * System.out.println(fecha); fila[6] = fecha.toString(); //fila[7] =
-			 * String.valueOf(empl.getFcha_empleado()); //fila[8] =
-			 * String.valueOf(empl.getSueldo()); //fila[9] =
-			 * String.valueOf(empl.getContrasena());
-			 */
-
-			fila[5] = String.valueOf(empl.getPuesto());	
+			fila[6] = String.valueOf(empl.getFcha_nacimiento()); 
+			fila[7] = String.valueOf(empl.getFcha_empleado());
+			fila[8] = String.valueOf(empl.getSueldo());
 			
-			//TODO meter campo timepo en empresa calculado
-			
-			/*Date fecha = empl.getFcha_nacimiento();
-			/*System.out.println("/n");
-			System.out.println(fecha);
-			fila[6] = fecha.toString();
-			//fila[7] = String.valueOf(empl.getFcha_empleado());
-			//fila[8] = String.valueOf(empl.getSueldo());
-			//fila[9] = String.valueOf(empl.getContrasena());*/
 
+			
+			//TODO meter campo tiempo en empresa calculado
+			
 			modelo.addRow(fila);
 
 		}
