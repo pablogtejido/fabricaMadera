@@ -7,7 +7,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import java.io.IOException;
 import java.net.URI;
 
-import com.atenea.gui.LoginEmpleado;
+import com.atenea.gui.VentanaInicio;
 
 import java.awt.EventQueue;
 
@@ -61,9 +61,7 @@ public class Main {
                 @Override
                 public void run() {
                     try {
-                        // VentanaCliente frame = new VentanaCliente();
-                        LoginEmpleado frame = new LoginEmpleado();
-                        frame.setVisible(true);
+                        new VentanaInicio().setVisible(true);
                     } catch (Exception e) {
                     }
                 }

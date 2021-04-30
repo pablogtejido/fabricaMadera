@@ -7,6 +7,7 @@ import com.atenea.data.Empleado;
 import com.atenea.data.EmpleadoConectado;
 import com.atenea.db.DBException;
 import com.atenea.db.DBManager;
+import com.atenea.gui.tablas.VisualizarFacturas;
 import com.atenea.rsh.EmpleadoRSH;
 
 import java.awt.SystemColor;
@@ -94,15 +95,15 @@ public class LoginEmpleado extends JFrame {
 				try {
 					Empleado empleado = null;
 					boolean found = false;
-					List<Empleado> listadoEmpleado = EmpleadoRSH.getInstance().verEmpleados();	
+					List<Empleado> listadoEmpleado = EmpleadoRSH.getInstance().verEmpleados();
 					for (Empleado emp : listadoEmpleado) {
-						if(emp.getDni().equals(textEmpleado.getText())) {
+						if (emp.getEmail().equals(textEmpleado.getText())) {
 							System.out.println(emp);
 							empleado = emp;
 							found = true;
 						}
 					}
-				
+
 					if (!found)
 						JOptionPane.showMessageDialog(null, "Empleado no encontrado");
 					else {
@@ -111,7 +112,8 @@ public class LoginEmpleado extends JFrame {
 						else {
 							if (EmpleadoConectado.getUserEmpleado().isEmpty()) {
 								EmpleadoConectado.getUserEmpleado().add(empleado);
-
+								setVisible(false);
+								new VisualizarFacturas().setVisible(true);
 							} else {
 								for (Empleado u : EmpleadoConectado.getUserEmpleado()) {
 									if (empleado.equals(u)) {
@@ -120,7 +122,8 @@ public class LoginEmpleado extends JFrame {
 										contrasenaField.setText("");
 									} else {
 										EmpleadoConectado.getUserEmpleado().add(empleado);
-
+										setVisible(false);
+										new VisualizarFacturas().setVisible(true);
 									}
 								}
 							}
