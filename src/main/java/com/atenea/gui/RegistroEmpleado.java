@@ -162,30 +162,30 @@ public class RegistroEmpleado extends JFrame {
 		fechaEmpleado = new JDateChooser();
 		fechaEmpleado.setBounds(149, 483, 327, 25);
 		getContentPane().add(fechaEmpleado);
-		
+
 		fechaEmpleado.getCalendarButton().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		});
-		
+
 		JLabel lblSueldo = new JLabel("Sueldo:");
 		lblSueldo.setBounds(19, 543, 46, 14);
 		getContentPane().add(lblSueldo);
-		
+
 		sueldotxt = new JTextField();
 		sueldotxt.setBounds(149, 540, 327, 20);
 		getContentPane().add(sueldotxt);
 		sueldotxt.setColumns(10);
-		
+
 		comboBoxPuesto = new JComboBox<EnumPuestoEmpleados>();
 		comboBoxPuesto.setBounds(149, 368, 327, 22);
-		getContentPane().add(comboBoxPuesto);	
-		
+		getContentPane().add(comboBoxPuesto);
+
 		for (EnumPuestoEmpleados puesto : EnumPuestoEmpleados.values()) {
 			comboBoxPuesto.addItem(puesto);
 		}
@@ -193,31 +193,31 @@ public class RegistroEmpleado extends JFrame {
 		JButton btnregistrar = new JButton("Registrarse");
 		btnregistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				Empleado empleado = construirEmpleado();
-				EmpleadoRSH rsh = EmpleadoRSH.getInstance();
-				if(!empleadoExistente()) {
+				if (direcciontxt.getText() == null || direcciontxt.getText().isEmpty()
+						|| telefonotxt.getText().isEmpty() || dnitxt.getText().isEmpty()
+						|| nombretxt.getText().isEmpty() || mailtxt.getText().isEmpty()
+						|| contratxt.getPassword().length == 0 || sueldotxt.getText().isEmpty()) {
+
+					JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos para registrarse",
+							"REGISTRO INCOMPLETO", JOptionPane.ERROR_MESSAGE);
+					System.out.println("ERROR");
+
+				} else if (!empleadoExistente()) {
+					Empleado empleado = construirEmpleado();
+					EmpleadoRSH rsh = EmpleadoRSH.getInstance();
 					rsh.guardarEmpleado(empleado);
 					System.out.println(empleado);
-				}else if(direcciontxt.getText().isEmpty() || telefonotxt.getText().isEmpty() || dnitxt.getText().isEmpty() ||
-						nombretxt.getText().isEmpty() || mailtxt.getText().isEmpty() || contratxt.getPassword().length == 0 ||
-						sueldotxt.getText().isEmpty()){
-					
-						JOptionPane.showMessageDialog(null, "Es necesario rellenar todos los campos para registrarse", "REGISTRO INCOMPLETO", JOptionPane.ERROR_MESSAGE);
-						System.out.println("ERROR");
-
-				}
-				else {
+				} else {
 					JOptionPane.showMessageDialog(null, "Este Empleado ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
 					System.out.println("ERROR");
 				}
-				
-				
+
 			}
 		});
 		btnregistrar.setForeground(Color.WHITE);
 		btnregistrar.setBackground(new Color(72, 61, 139));
 		btnregistrar.setBounds(235, 643, 141, 36);
+
 		getContentPane().add(btnregistrar);
 
 		JButton cerrar = new JButton("Cerrar");
@@ -247,37 +247,31 @@ public class RegistroEmpleado extends JFrame {
 		volver.setForeground(Color.WHITE);
 		volver.setBackground(new Color(72, 61, 139));
 		volver.setBounds(10, 707, 80, 31);
-		getContentPane().add(volver);	
-						
+		getContentPane().add(volver);
+
 	}
 
 	private boolean empleadoExistente() {
-		
+
 		EmpleadoRSH rsh = EmpleadoRSH.getInstance();
 		List<Empleado> empleados = rsh.verEmpleados();
-		
+
 		for (Empleado empleado : empleados) {
-			if(!empleado.getDni().equals(dnitxt.getText())) {
+			if (!empleado.getDni().equals(dnitxt.getText())) {
 				return false;
 			}
 		}
-		
+
 		return true;
 
 	}
-	
+
 	public Empleado construirEmpleado() {
-		 Empleado e = new Empleado(dnitxt.getText(), 
-				nombretxt.getText(), 
-				direcciontxt.getText(),
-				mailtxt.getText(),
-				telefonotxt.getText(),
-				(EnumPuestoEmpleados)comboBoxPuesto.getSelectedItem(),
-				fechaNaci.getDate(),
-				fechaEmpleado.getDate(),
-				Double.parseDouble(sueldotxt.getText()),
+		Empleado e = new Empleado(dnitxt.getText(), nombretxt.getText(), direcciontxt.getText(), mailtxt.getText(),
+				telefonotxt.getText(), (EnumPuestoEmpleados) comboBoxPuesto.getSelectedItem(), fechaNaci.getDate(),
+				fechaEmpleado.getDate(), Double.parseDouble(sueldotxt.getText()),
 				String.valueOf(contratxt.getPassword()));
-		 
-		 return e;
+
+		return e;
 	}
 }
