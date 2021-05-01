@@ -39,7 +39,7 @@ public class ProductoRSH {
      * 
      * @return <Code>List<Producto></Code> Lista con productos
      */
-    public List<Producto> verFacturas() {
+    public List<Producto> verProductos() {
         Invocation.Builder ib = target.request(); // Construir la petición
         Response response = ib.get(); // Realizar una petición GET
         List<Producto> productos = response.readEntity(new GenericType<List<Producto>>() { // Crear una lista de
@@ -54,7 +54,7 @@ public class ProductoRSH {
      * @param <Code>Producto</Code> Producto a guardar.
      * @return <Code>Producto</Code> Producto con el id ya guardado en la DB.
      */
-    public Producto guardarFactura(Producto producto) {
+    public Producto guardarProducto(Producto producto) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
         Response response = ib.put(Entity.entity(producto, MediaType.APPLICATION_JSON));
         Producto productoConID = response.readEntity(Producto.class);
@@ -67,7 +67,7 @@ public class ProductoRSH {
      * @param <Code>Factura</Code> Factura a modificar.
      * @return <Code>Factura</Code> Factura con el id ya guardado en la DB.
      */
-    public Producto modificarFactura(Producto producto) {
+    public Producto modificarProducto(Producto producto) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
         Response response = ib.build("PATCH", Entity.json(producto)).invoke();
         Producto productoConID = response.readEntity(Producto.class);
@@ -79,7 +79,7 @@ public class ProductoRSH {
      * 
      * @param <Code>Factura</Code> Factura a borrar.
      */
-    public void borrarFactura(Producto producto) {
+    public void borrarProducto(Producto producto) {
         Invocation.Builder ib = target.path("/ids/" + producto.getId()).request();
         ib.delete();
     }
