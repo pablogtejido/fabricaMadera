@@ -25,8 +25,8 @@ import org.databene.contiperf.junit.ContiPerfRule;
 @Category(IntegrationTest.class)
 public class EmpleadoResourcePerformanceTest {
 
-    // @Rule
-    // public ContiPerfRule i = new ContiPerfRule();
+    @Rule
+    public ContiPerfRule i = new ContiPerfRule();
 
     private static HttpServer server;
     private static EmpleadoRSH rsh;
@@ -64,14 +64,13 @@ public class EmpleadoResourcePerformanceTest {
     }
 
     @Test
-    @PerfTest(invocations = 1000, threads = 20)
+    @PerfTest(invocations = 500, threads = 10)
     public void testSubirEmpleadosPerformance() {
         /**
          * Crear un empleado de prueba para la bd. El primary key es el DNI. Por eso se
          * hace un UUID aleatorio en lugar del DNI.
          */
         String uuid = UUID.randomUUID().toString();
-        uuid = uuid.replace("-", "");
 
         Empleado empleado1 = new Empleado(uuid, "prueba", "prueba", "prueba@prueba.com", "prueba",
                 EnumPuestoEmpleados.OPERARIO, new Date("12/04/1990 15:30:35"), new Date("08/07/2020 00:00:00"), 1200.50,
@@ -89,7 +88,6 @@ public class EmpleadoResourcePerformanceTest {
             }
         }
         assertTrue(found_uuid);
-
     }
 
 }
