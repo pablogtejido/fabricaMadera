@@ -51,6 +51,10 @@ public class ClienteResourcePerformanceTest {
     public void PrepareData() {
         System.out.println(
                 "================================================Creating data ...================================================");
+        String uuid = UUID.randomUUID().toString();
+        Cliente cliente1 = new Cliente(uuid, "Prueba", "Prueba", "1234");
+        rsh.guardarCliente(cliente1);
+        rsh.borrarCliente(cliente1);
     }
 
     @After
@@ -64,7 +68,7 @@ public class ClienteResourcePerformanceTest {
     }
 
     @Test
-    @PerfTest(invocations = 500, threads = 10)
+    @PerfTest(invocations = 50, threads = 10)
     public void testSubirClientesPerformance() {
         /**
          * Crear un cliente de prueba para la bd. El primary key es el DNI. Por eso se
