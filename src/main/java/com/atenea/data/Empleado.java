@@ -1,6 +1,8 @@
 package com.atenea.data;
 
 import java.util.Date;
+import java.util.Objects;
+
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -129,6 +131,26 @@ public class Empleado {
 				+ ", fcha_empleado=" + fcha_empleado + ", sueldo=" + sueldo + ", contrasena=" + contrasena + "]";
 	}
 
-	
+	@Override
+	public boolean equals(Object o) {
+		if (o == this)
+			return true;
+		if (!(o instanceof Empleado)) {
+			return false;
+		}
+		Empleado empleado = (Empleado) o;
+		return Objects.equals(dni, empleado.dni) && Objects.equals(nombre, empleado.nombre)
+				&& Objects.equals(direccion, empleado.direccion) && Objects.equals(email, empleado.email)
+				&& Objects.equals(telefono, empleado.telefono) && Objects.equals(puesto, empleado.puesto)
+				&& Objects.equals(fcha_nacimiento, empleado.fcha_nacimiento)
+				&& Objects.equals(fcha_empleado, empleado.fcha_empleado) && sueldo == empleado.sueldo
+				&& Objects.equals(contrasena, empleado.contrasena);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni, nombre, direccion, email, telefono, puesto, fcha_nacimiento, fcha_empleado, sueldo,
+				contrasena);
+	}
 
 }

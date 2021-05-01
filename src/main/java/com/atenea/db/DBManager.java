@@ -194,7 +194,7 @@ public class DBManager {
             /**
              * Esto va a ser dificil. Hay que buscar diferentes productos en la BD. Si
              * existe usar el de la DB. Si no existe crearlo. Creo que lo mejor para esta
-             * solucion es simplemente hacer una nueva lista. E ir guardando poco a poco.
+             * solucion es simplemente hacer una nueva lista, e ir guardando poco a poco.
              * Estoy seguro que la eficiencia de esta solucion es mala. Pero no se me ocurre
              * como mejorarla.
              */
@@ -222,15 +222,17 @@ public class DBManager {
             factura.setPrecio(factura.calcularPrecio()); // Acturalizar el precio para minimizar errores.
             pm.makePersistent(factura); // Finalmente guardar la factura.
             tx.commit();
-            /**
-             * Para comprender lo que hago aqui ve a la función: getFacturas()
-             */
-            pm.makeTransient(factura.getCliente());
-            pm.makeTransient(factura.getEmpleado());
-            for (Producto pr : factura.getProductos()) {
-                pm.makeTransient(pr);
-            }
+
             pm.makeTransient(factura);
+
+            Factura ff = new Factura();
+            ff.setCliente(factura.getCliente());
+            ff.setEmpleado(factura.getEmpleado());
+            ff.setFcha_factura(factura.getFcha_factura());
+            ff.setId(factura.getId());
+            ff.setPrecio(factura.getPrecio());
+            ff.setProductos(factura.getProductos());
+            factura = ff;
         } catch (Exception ex) {
             System.out.println("$ Error storing an object: " + ex.getMessage());
         } finally {
