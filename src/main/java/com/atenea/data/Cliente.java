@@ -1,5 +1,7 @@
 package com.atenea.data;
 
+import java.util.Objects;
+
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -61,6 +63,23 @@ public class Cliente {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.contrasena = contrasena;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == this)
+			return true;
+		if (!(o instanceof Cliente)) {
+			return false;
+		}
+		Cliente cliente = (Cliente) o;
+		return Objects.equals(dni, cliente.dni) && Objects.equals(nombre, cliente.nombre)
+				&& Objects.equals(apellidos, cliente.apellidos) && Objects.equals(contrasena, cliente.contrasena);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni, nombre, apellidos, contrasena);
 	}
 
 }

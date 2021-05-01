@@ -1,5 +1,7 @@
 package com.atenea.data;
 
+import java.util.Objects;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
 
 import javax.jdo.annotations.Inheritance;
@@ -23,7 +25,6 @@ public class Producto {
 	private double grosor;
 	private boolean anyadidos;
 
-	
 	public String getNombre() {
 		return nombre;
 	}
@@ -110,8 +111,22 @@ public class Producto {
 		this.anyadidos = anyadidos;
 	}
 
-	
+	@Override
+	public boolean equals(Object o) {
+		if (o == this)
+			return true;
+		if (!(o instanceof Producto)) {
+			return false;
+		}
+		Producto producto = (Producto) o;
+		return Objects.equals(id, producto.id) && Objects.equals(nombre, producto.nombre) && precio == producto.precio
+				&& peso == producto.peso && cantidad == producto.cantidad && medida == producto.medida
+				&& grosor == producto.grosor && anyadidos == producto.anyadidos;
+	}
 
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, nombre, precio, peso, cantidad, medida, grosor, anyadidos);
+	}
 
 }

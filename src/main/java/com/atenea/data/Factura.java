@@ -2,6 +2,7 @@ package com.atenea.data;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.ForeignKeyAction;
@@ -111,4 +112,23 @@ public class Factura {
 
         return precio_calculado;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Factura)) {
+            return false;
+        }
+        Factura factura = (Factura) o;
+        return id == factura.id && Objects.equals(empleado, factura.empleado)
+                && Objects.equals(cliente, factura.cliente) && Objects.equals(productos, factura.productos)
+                && Objects.equals(precio, factura.precio) && Objects.equals(fcha_factura, factura.fcha_factura);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, empleado, cliente, productos, precio, fcha_factura);
+    }
+
 }
