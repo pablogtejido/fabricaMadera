@@ -299,10 +299,10 @@ public class DBManager {
             Extent<Empleado> extension = pm.getExtent(Empleado.class, true);
             for (Empleado empleadoEXT : extension) {
                 if (empleadoEXT.getDni().equals(DNI)) {
-                    empleado = new Empleado(empleado.getDni(), empleado.getNombre(), empleado.getDireccion(),
-                            empleado.getEmail(), empleado.getTelefono(), empleado.getPuesto(),
-                            empleado.getFcha_nacimiento(), empleado.getFcha_empleado(), empleado.getSueldo(),
-                            empleado.getContrasena());
+                    empleado = new Empleado(empleadoEXT.getDni(), empleadoEXT.getNombre(), empleadoEXT.getDireccion(),
+                            empleadoEXT.getEmail(), empleadoEXT.getTelefono(), empleadoEXT.getPuesto(),
+                            empleadoEXT.getFcha_nacimiento(), empleadoEXT.getFcha_empleado(), empleadoEXT.getSueldo(),
+                            empleadoEXT.getContrasena());
                 }
             }
 
