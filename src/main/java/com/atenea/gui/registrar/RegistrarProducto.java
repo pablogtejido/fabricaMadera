@@ -1,4 +1,4 @@
-package com.atenea.gui.añadir;
+package com.atenea.gui.registrar;
 
 import java.awt.EventQueue;
 
@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class AñadirProducto extends JFrame{
+public class RegistrarProducto extends JFrame{
 	private JTextField txtId;
 	private JTextField txtNombre;
 	private JTextField txtPrecio;
@@ -31,7 +31,7 @@ public class AñadirProducto extends JFrame{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AñadirProducto window = new AñadirProducto();
+					RegistrarProducto window = new RegistrarProducto();
 					window.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class AñadirProducto extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public AñadirProducto() {
+	public RegistrarProducto() {
 		initialize();
 	}
 

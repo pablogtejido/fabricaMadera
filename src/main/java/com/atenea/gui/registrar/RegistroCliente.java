@@ -1,4 +1,4 @@
-package com.atenea.gui;
+package com.atenea.gui.registrar;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;

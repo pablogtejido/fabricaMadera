@@ -20,8 +20,8 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import com.atenea.data.Cliente;
-import com.atenea.gui.RegistroCliente;
 import com.atenea.gui.modificar.ModificarCliente;
+import com.atenea.gui.registrar.RegistroCliente;
 import com.atenea.rsh.ClienteRSH;
 
 public class VisualizarClientes extends JFrame{

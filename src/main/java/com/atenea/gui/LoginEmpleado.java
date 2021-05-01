@@ -7,6 +7,7 @@ import com.atenea.data.Empleado;
 import com.atenea.data.EmpleadoConectado;
 import com.atenea.db.DBException;
 import com.atenea.db.DBManager;
+import com.atenea.gui.registrar.RegistroEmpleado;
 import com.atenea.gui.tablas.VisualizarFacturas;
 import com.atenea.rsh.EmpleadoRSH;
 
