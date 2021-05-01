@@ -1,7 +1,6 @@
 package com.atenea.resource;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.junit.ContiPerfRule;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,7 +19,6 @@ import org.junit.experimental.categories.Category;
 
 import categories.IntegrationTest;
 import java.util.UUID;
-import org.junit.Rule;
 
 @Category(IntegrationTest.class)
 public class EmpleadoResourcePerformanceTest {
