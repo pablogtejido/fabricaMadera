@@ -18,9 +18,9 @@ Para la primera creacion no serán necesarias las primeras dos lineas. Siendo so
 ```SQL
 /* CREATE ''fabricaMaderaDB' DATABASE */
 CREATE SCHEMA fabricaMaderaDB;
-/* CREATE THE USER 'products_user1' AT LOCAL SERVER WITH PASSWORD 'password' */
+/* CREATE THE USER 'spq' AT LOCAL SERVER WITH PASSWORD 'spq' */
 CREATE USER 'spq'@'%' IDENTIFIED BY 'spq';
-/* GRANT FULL ACCESS TO THE DATABASE FOR THE USER 'products_user1' AT LOCAL SERVER*/
+/* GRANT FULL ACCESS TO THE DATABASE FOR THE USER 'spq' AT LOCAL SERVER*/
 GRANT ALL ON fabricaMaderaDB.* TO 'spq'@'%';
 ```
 
@@ -31,10 +31,10 @@ mvn compile
 ```
 
 ### Crear las tablas
+
 ```
 mvn datanucleus:schema-create
 ```
-
 
 ### Verificar el proyecto
 
