@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import java.util.Date;
@@ -19,9 +20,13 @@ import org.junit.experimental.categories.Category;
 
 import categories.IntegrationTest;
 import java.util.UUID;
+import org.databene.contiperf.junit.ContiPerfRule;
 
 @Category(IntegrationTest.class)
 public class EmpleadoResourcePerformanceTest {
+
+    // @Rule
+    // public ContiPerfRule i = new ContiPerfRule();
 
     private static HttpServer server;
     private static EmpleadoRSH rsh;
@@ -59,7 +64,7 @@ public class EmpleadoResourcePerformanceTest {
     }
 
     @Test
-    @PerfTest(invocations = 1000, threads = 40)
+    @PerfTest(invocations = 1000, threads = 20)
     public void testSubirEmpleadosPerformance() {
         /**
          * Crear un empleado de prueba para la bd. El primary key es el DNI. Por eso se
