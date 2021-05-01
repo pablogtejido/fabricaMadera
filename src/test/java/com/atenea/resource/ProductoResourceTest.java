@@ -1,5 +1,6 @@
 package com.atenea.resource;
 
+import categories.IntegrationTest;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -11,7 +12,9 @@ import org.junit.Test;
 import com.atenea.Main;
 import com.atenea.data.Producto;
 import com.atenea.rsh.ProductoRSH;
+import org.junit.experimental.categories.Category;
 
+@Category(IntegrationTest.class)
 public class ProductoResourceTest {
 
 	private static HttpServer server;
