@@ -2,6 +2,8 @@ package com.atenea.resource;
 
 import categories.IntegrationTest;
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -16,7 +18,10 @@ import com.atenea.data.Empleado;
 import com.atenea.data.EnumPuestoEmpleados;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
+import com.atenea.rsh.ClienteRSH;
+import com.atenea.rsh.EmpleadoRSH;
 import com.atenea.rsh.FacturaRSH;
+import com.atenea.rsh.ProductoRSH;
 
 import org.junit.experimental.categories.Category;
 
@@ -52,10 +57,6 @@ public class FacturaResourceTest {
 
 	private List<Factura> facturasBD;
 	private static List<Producto> productos;
-
-	public FacturaResourceTest() {
-
-	}
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -97,6 +98,8 @@ public class FacturaResourceTest {
 		producto5 = new Producto("Mueble madera", 37, 38, 7, 180, 60, true);
 		producto6 = new Producto("Balda madera", 14, 21, 1, 150, 30, false);
 
+		productos = new ArrayList<>();
+
 		productos.add(producto1);
 		productos.add(producto2);
 		productos.add(producto3);
@@ -123,11 +126,11 @@ public class FacturaResourceTest {
 		// Store test
 		System.out.println(
 				"================================================Creating data ...================================================");
-		rsh.guardarFactura(factura1);
-		rsh.guardarFactura(factura2);
-		rsh.guardarFactura(factura3);
-		rsh.guardarFactura(factura4);
-		rsh.guardarFactura(factura5);
+		factura1.setId(rsh.guardarFactura(factura1).getId());
+		factura2.setId(rsh.guardarFactura(factura2).getId());
+		factura3.setId(rsh.guardarFactura(factura3).getId());
+		factura4.setId(rsh.guardarFactura(factura4).getId());
+		factura5.setId(rsh.guardarFactura(factura5).getId());
 	}
 
 	@After
@@ -138,6 +141,21 @@ public class FacturaResourceTest {
 		for (Factura fa : facturasBD) {
 			rsh.borrarFactura(fa);
 		}
+
+		// Al borrar una factura, los productos asociados no se borran, por lo cual hay
+		// que hacerlo a mano.
+		for (Producto p : ProductoRSH.getInstance().verProductos()) {
+			ProductoRSH.getInstance().borrarProducto(p);
+		}
+		// Ocurre lo mismo
+		for (Empleado e : EmpleadoRSH.getInstance().verEmpleados()) {
+			EmpleadoRSH.getInstance().borrarEmpleado(e);
+		}
+		// Ocurre lo mismo lo mismo
+		for (Cliente c : ClienteRSH.getInstance().verClientes()) {
+			ClienteRSH.getInstance().borrarCliente(c);
+		}
+
 	}
 
 	@Test
@@ -168,25 +186,28 @@ public class FacturaResourceTest {
 		}
 		assertTrue(factura1_found && factura2_found && factura3_found && factura4_found && factura5_found);
 	}
-	
+
 	@Test
 	public void testSubirFacturas() {
 		System.out.println(
 				"================================================Test subir facturas================================================");
-		rsh.guardarFactura(factura6);
+		factura6.setId(rsh.guardarFactura(factura6).getId()); // Obtener el id del objeto que devuelve el servidor
+		System.out.println(factura6);
 		facturasBD = rsh.verFacturas();
+		System.out.println(facturasBD.size());
 		assertEquals(facturasBD.size(), 6);
 
 		boolean factura6_found = false;
 
 		for (Factura fa : facturasBD) {
+			System.out.println(fa.equals(factura6));
 			if (fa.equals(factura6)) {
 				factura6_found = true;
 			}
 		}
 		assertTrue(factura6_found);
 	}
-	
+
 	@Test
 	public void testEliminarFactura() {
 		System.out.println(
@@ -211,5 +232,4 @@ public class FacturaResourceTest {
 
 	}
 
-	
 }

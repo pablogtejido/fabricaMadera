@@ -121,9 +121,7 @@ public class Factura {
             return false;
         }
         Factura factura = (Factura) o;
-        return id == factura.id && Objects.equals(empleado, factura.empleado)
-                && Objects.equals(cliente, factura.cliente) && Objects.equals(productos, factura.productos)
-                && Objects.equals(precio, factura.precio) && Objects.equals(fcha_factura, factura.fcha_factura);
+        return id == factura.id;
     }
 
     @Override

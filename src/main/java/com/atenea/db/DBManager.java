@@ -222,17 +222,11 @@ public class DBManager {
             factura.setPrecio(factura.calcularPrecio()); // Acturalizar el precio para minimizar errores.
             pm.makePersistent(factura); // Finalmente guardar la factura.
             tx.commit();
-
             pm.makeTransient(factura);
-
-            Factura ff = new Factura();
-            ff.setCliente(factura.getCliente());
-            ff.setEmpleado(factura.getEmpleado());
-            ff.setFcha_factura(factura.getFcha_factura());
-            ff.setId(factura.getId());
-            ff.setPrecio(factura.getPrecio());
-            ff.setProductos(factura.getProductos());
-            factura = ff;
+            pm.makeTransient(factura.getEmpleado());
+            pm.makeTransient(factura.getCliente());
+            pm.makeTransientAll(factura.getProductos());
+            System.out.println("* Stored: " + factura);
         } catch (Exception ex) {
             System.out.println("$ Error storing an object: " + ex.getMessage());
         } finally {
