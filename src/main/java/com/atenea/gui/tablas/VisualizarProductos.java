@@ -232,18 +232,19 @@ public class VisualizarProductos extends JFrame {
 	public void ProductosJTable() {
 		ProductoRSH rsh = ProductoRSH.getInstance();
 		List<Producto> productos = rsh.verProductos();
-		String[] fila = new String[8];
+		String[] fila = new String[7];
 		System.out.println(productos);
 		
 		for (Producto producto : productos) {
+			
 			fila[0] = String.valueOf(producto.getId());
 			fila[1] = producto.getNombre();
 			fila[2] = String.valueOf(producto.getPrecio());
 			fila[3] = String.valueOf(producto.getPeso());
-			fila[4] = String.valueOf(producto.getCantidad());
-			fila[5] = String.valueOf(producto.getMedida());
-			fila[6] = String.valueOf(producto.getGrosor());
-			//fila[7] = String.valueOf(producto.isAnyadidos());
+			fila[4] = String.valueOf(producto.getMedida());
+			fila[5] = String.valueOf(producto.getGrosor());
+			fila[6] = String.valueOf(producto.isAnyadidos());
+			
 			modelo.addRow(fila);
 			
 			

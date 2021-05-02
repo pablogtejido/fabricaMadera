@@ -20,7 +20,6 @@ public class Producto {
 	private String nombre;
 	private double precio;
 	private double peso;
-	private int cantidad;
 	private double medida;
 	private double grosor;
 	private boolean anyadidos;
@@ -47,14 +46,6 @@ public class Producto {
 
 	public void setPeso(double peso) {
 		this.peso = peso;
-	}
-
-	public int getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
 	}
 
 	public double getMedida() {
@@ -95,17 +86,16 @@ public class Producto {
 
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", peso=" + peso + ", cantidad="
-				+ cantidad + ", medida=" + medida + ", grosor=" + grosor + ", anyadidos=" + anyadidos + "]";
+		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", peso=" + peso + ", medida="
+				+ medida + ", grosor=" + grosor + ", anyadidos=" + anyadidos + "]";
 	}
 
-	public Producto(String nombre, double precio, double peso, int cantidad, double medida, double grosor,
+	public Producto( String nombre, double precio, double peso, double medida, double grosor,
 			boolean anyadidos) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.peso = peso;
-		this.cantidad = cantidad;
 		this.medida = medida;
 		this.grosor = grosor;
 		this.anyadidos = anyadidos;
@@ -120,13 +110,13 @@ public class Producto {
 		}
 		Producto producto = (Producto) o;
 		return Objects.equals(this.id, producto.id) && Objects.equals(nombre, producto.nombre)
-				&& precio == producto.precio && peso == producto.peso && cantidad == producto.cantidad
-				&& medida == producto.medida && grosor == producto.grosor && anyadidos == producto.anyadidos;
+				&& precio == producto.precio && peso == producto.peso && medida == producto.medida 
+				&& grosor == producto.grosor && anyadidos == producto.anyadidos;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(nombre, precio, peso, cantidad, medida, grosor, anyadidos);
+		return Objects.hash(nombre, precio, peso, medida, grosor, anyadidos);
 	}
 
 }

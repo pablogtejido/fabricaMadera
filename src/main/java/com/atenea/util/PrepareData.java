@@ -56,10 +56,10 @@ public class PrepareData {
 		Cliente cliente5 = new Cliente("45548696P", "Luis", "Alonso", "1234");
 		DBManager.getInstance().store(cliente5);*/
 
-		Producto p1 = new Producto("Tablero madera", 12.70, 32, 1, 24, 4, true);
+		Producto p1 = new Producto("Tablero madera", 12.70, 32, 24, 4, true);
 		DBManager.getInstance().store(p1);
 
-		Producto p2 = new Producto("Listón madera", 7.50, 21, 1, 30, 9, false);
+		Producto p2 = new Producto("Listón madera", 7.50, 21, 30, 9, false);
 		DBManager.getInstance().store(p2);
 
 		/*Producto p3 = new Producto("Revestimiento madera", 21.60, 8, 1, 50, 2, true);
@@ -82,9 +82,9 @@ public class PrepareData {
 		
 		List<Producto> lista1 = new ArrayList<Producto>();
 		
-		Producto p1Factura = new Producto("Tablero madera", 12.70, 32, 1, 24, 4, true);
+		Producto p1Factura = new Producto("Tablero madera", 12.70, 32, 24, 4, true);
 
-		Producto p2Factura = new Producto("Listón madera", 7.50, 21, 1, 30, 9, false);
+		Producto p2Factura = new Producto("Listón madera", 7.50, 21, 30, 9, false);
 		
 		lista1.add(p1Factura);
 		lista1.add(p2Factura);

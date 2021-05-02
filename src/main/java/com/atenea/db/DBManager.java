@@ -410,7 +410,6 @@ public class DBManager {
                 if (Objects.equals(producto_a_cambiar.getId(), producto.getId())) {
                     System.out.println("* Updating: " + producto_a_cambiar + "\n* To: " + producto);
                     producto_a_cambiar.setAnyadidos(producto.isAnyadidos());
-                    producto_a_cambiar.setCantidad(producto.getCantidad());
                     producto_a_cambiar.setGrosor(producto.getGrosor());
                     producto_a_cambiar.setMedida(producto.getMedida());
                     producto_a_cambiar.setPeso(producto.getPeso());

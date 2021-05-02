@@ -181,11 +181,11 @@ public class RegistrarProducto extends JFrame{
 		volver.setBounds(10, 554, 80, 31);
 		getContentPane().add(volver);
 		
-		JLabel lblAditivos = new JLabel("Grosor:");
+		JLabel lblAditivos = new JLabel("Añadido:");
 		lblAditivos.setBounds(69, 454, 59, 20);
 		getContentPane().add(lblAditivos);
 		
-		JCheckBox checkBoxAditivos = new JCheckBox("ConfirmarAditivo");
+		JCheckBox checkBoxAditivos = new JCheckBox("Confirmar Añadido");
 		checkBoxAditivos.setBackground(Color.LIGHT_GRAY);
 		checkBoxAditivos.setBounds(171, 453, 152, 23);
 		getContentPane().add(checkBoxAditivos);
