@@ -91,12 +91,12 @@ public class FacturaResourceTest {
 		cliente5 = new Cliente("45548696P", "Luis", "Alonso", "1234");
 		cliente6 = new Cliente("79067812E", "Jorge", "Casas", "1234");
 
-		producto1 = new Producto("Tablero madera", 12.70, 32, 1, 24, 4, true);
-		producto2 = new Producto("Listón madera", 7.50, 21, 1, 30, 9, false);
-		producto3 = new Producto("Revestimiento madera", 21.60, 8, 1, 50, 2, true);
-		producto4 = new Producto("Celosía madera", 40, 2, 1, 220, 80, false);
-		producto5 = new Producto("Mueble madera", 37, 38, 7, 180, 60, true);
-		producto6 = new Producto("Balda madera", 14, 21, 1, 150, 30, false);
+		producto1 = new Producto("Tablero madera", 12.70, 32, 24, 4, true);
+		producto2 = new Producto("Listón madera", 7.50, 21, 30, 9, false);
+		producto3 = new Producto("Revestimiento madera", 21.60, 8, 50, 2, true);
+		producto4 = new Producto("Celosía madera", 40, 2, 220, 80, false);
+		producto5 = new Producto("Mueble madera", 37, 38, 180, 60, true);
+		producto6 = new Producto("Balda madera", 14, 21, 150, 30, false);
 
 		productos = new ArrayList<>();
 

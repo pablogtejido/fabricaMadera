@@ -83,32 +83,6 @@ public class ProductoTest {
     }
 
     /**
-     * Test of getCantidad method, of class Producto.
-     */
-    @Test
-    public void testGetCantidad() {
-        System.out.println("getCantidad");
-        Producto instance = new Producto();
-        instance.setCantidad(0);
-        int expResult = 0;
-        int result = instance.getCantidad();
-        assertEquals(expResult, result);
-
-    }
-
-    /**
-     * Test of setCantidad method, of class Producto.
-     */
-    @Test
-    public void testSetCantidad() {
-        System.out.println("setCantidad");
-        int cantidad = 0;
-        Producto instance = new Producto();
-        instance.setCantidad(cantidad);
-
-    }
-
-    /**
      * Test of getMedida method, of class Producto.
      */
     @Test

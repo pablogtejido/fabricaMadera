@@ -35,7 +35,7 @@ public class FacturaTest {
                 "654321789", EnumPuestoEmpleados.OPERARIO, new Date("12/04/1990 15:30:35"),
                 new Date("08/07/2020 00:00:00"), 1200.50, "1234");
 
-        p1 = new Producto("Tablero madera", 12.70, 32, 1, 24, 4, true);
+        p1 = new Producto("Tablero madera", 12.70, 32, 24, 4, true);
 
         productos = new ArrayList<Producto>();
         productos.add(p1);

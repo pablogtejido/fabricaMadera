@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
+import com.atenea.data.Factura;
 import com.atenea.data.Producto;
 import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
@@ -88,6 +89,7 @@ public class RegistroFactura extends JFrame{
 		
 		//buscarProductos();
 		buscarEmpleados();
+		Object empleado = comboBoxEmpleados.getSelectedItem();
 		
 		
 		JLabel lblCliente = new JLabel("Cliente: ");
@@ -140,15 +142,11 @@ public class RegistroFactura extends JFrame{
 		//CALCULAR PRECIO
 		double precio = 0;
 		
-		for (Producto producto : productos) {
-			precio += producto.getPrecio() * producto.getCantidad();
-		}
-		
 		JLabel lblPrecio = new JLabel("Precio: " + precio + " €");
 		lblPrecio.setBounds(352, 115, 97, 14);
 		contentPane.add(lblPrecio);
 		
-		Date fechaActual = new Date();
+		final Date fechaActual = new Date();
 		
 		JLabel lblFecha = new JLabel("Fecha: " + fechaActual);
 		lblFecha.setBounds(352, 173, 241, 14);
@@ -158,18 +156,29 @@ public class RegistroFactura extends JFrame{
 		btnRegistrar.setBounds(462, 75, 89, 23);
 		contentPane.add(btnRegistrar);
 		
+		
+		
 		btnRegistrar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				/*for (JSpinner spin : spinProductos) { //TODO solucionar el asignar el valor del spinner a la cantidad de producto
-				for (Producto producto : productos) {
+				List<Producto> prodctServ = new ArrayList();
+				int ii = 0;
+				for (JSpinner spin : spinProductos) { //TODO solucionar el asignar el valor del spinner a la cantidad de producto
+				System.out.println(spin.getValue());
+					for (int i = 0; i < (int)spin.getValue(); i++) {
+						prodctServ.add(productos.get(ii));
+						
+					}
+					ii++;
+				}
+				System.out.println(prodctServ);
 				
-					producto.setCantidad((int)spin.getValue()); 	
-					
-				}
-				}
-				System.out.println(productos);*/
+				Empleado empleado = (Empleado) comboBoxEmpleados.getSelectedItem();
+				Cliente cliente = (Cliente) comboBoxClientes.getSelectedItem();
+				
+				Factura factura = new Factura(empleado, cliente, prodctServ, fechaActual);
+				System.out.println(factura);
 			}	
 				
 			
