@@ -169,6 +169,7 @@ public class DBManager {
             // Ver todos los clientes. Si existe usarlo, si no descartarlos y usar el
             // cliente que viene con el propio objeto factura.
             Cliente cl = factura.getCliente(); // Ponemos temporalmente el cliente del objeto factura.
+            boolean cliente_found = false;
             Extent<Cliente> ex_cliente = pm.getExtent(Cliente.class, true);
             Iterator<Cliente> iter_cliente = ex_cliente.iterator();
             while (iter_cliente.hasNext()) {
@@ -176,7 +177,11 @@ public class DBManager {
                 if (cliente_temporal.getDni().equals(cl.getDni())) {
                     LOG.log(Level.INFO, "* Found a client with the same DNI: {0}", cliente_temporal.getDni());
                     cl = cliente_temporal; // Si existe simplemente usamos el que viene de la base de datos.
+                    cliente_found = true;
                 }
+            }
+            if (!cliente_found) {
+                pm.makePersistent(cl);
             }
             factura.setCliente(cl); // Hacer set del cliente
 
@@ -218,6 +223,7 @@ public class DBManager {
                 }
                 if (!found) {
                     p = p_for;
+                    pm.makePersistent(p);
                 }
                 final_productos.add(p);
             }

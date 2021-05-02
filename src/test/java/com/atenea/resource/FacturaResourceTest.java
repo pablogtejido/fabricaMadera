@@ -163,6 +163,7 @@ public class FacturaResourceTest {
 		System.out.println(
 				"================================================Test ver facturas================================================");
 		facturasBD = rsh.verFacturas();
+		System.out.println(facturasBD);
 		assertEquals(facturasBD.size(), 5);
 
 		boolean factura1_found = false;
