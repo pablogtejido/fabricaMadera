@@ -119,9 +119,9 @@ public class Producto {
 			return false;
 		}
 		Producto producto = (Producto) o;
-		return  Objects.equals(nombre, producto.nombre) && precio == producto.precio
-				&& peso == producto.peso && cantidad == producto.cantidad && medida == producto.medida
-				&& grosor == producto.grosor && anyadidos == producto.anyadidos;
+		return Objects.equals(this.id, producto.id) && Objects.equals(nombre, producto.nombre)
+				&& precio == producto.precio && peso == producto.peso && cantidad == producto.cantidad
+				&& medida == producto.medida && grosor == producto.grosor && anyadidos == producto.anyadidos;
 	}
 
 	@Override

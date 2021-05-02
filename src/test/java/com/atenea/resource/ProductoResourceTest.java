@@ -58,11 +58,11 @@ public class ProductoResourceTest {
 		// Store test
 		System.out.println(
 				"================================================Creating data ...================================================");
-		rsh.guardarProducto(producto1);
-		rsh.guardarProducto(producto2);
-		rsh.guardarProducto(producto3);
-		rsh.guardarProducto(producto4);
-		rsh.guardarProducto(producto5);
+		producto1.setId(rsh.guardarProducto(producto1).getId());
+		producto2.setId(rsh.guardarProducto(producto2).getId());
+		producto3.setId(rsh.guardarProducto(producto3).getId());
+		producto4.setId(rsh.guardarProducto(producto4).getId());
+		producto5.setId(rsh.guardarProducto(producto5).getId());
 	}
 
 	@After
@@ -108,7 +108,7 @@ public class ProductoResourceTest {
 	public void testSubirProducto() {
 		System.out.println(
 				"================================================Test subir productos================================================");
-		rsh.guardarProducto(producto6);
+		producto6.setId(rsh.guardarProducto(producto6).getId());
 		productosBD = rsh.verProductos();
 		assertEquals(productosBD.size(), 6);
 
