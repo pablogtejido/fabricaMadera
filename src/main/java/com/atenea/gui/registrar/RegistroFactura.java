@@ -5,13 +5,17 @@ import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -24,6 +28,8 @@ import com.atenea.rsh.EmpleadoRSH;
 import com.atenea.rsh.ProductoRSH;
 
 import javax.swing.JComboBox;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JButton;
 
 public class RegistroFactura extends JFrame{
 
@@ -32,6 +38,8 @@ public class RegistroFactura extends JFrame{
 	private JComboBox<String> comboBoxEmpleados;
 	private ArrayList<JLabel> labelProductos;
 	private JLabel lblProducto;
+	private ArrayList<JSpinner> spinProductos;
+	private JSpinner spinProducto;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -78,7 +86,7 @@ public class RegistroFactura extends JFrame{
 		comboBoxEmpleados.setBounds(116, 111, 194, 22);
 		contentPane.add(comboBoxEmpleados);
 		
-		buscarProductos();
+		//buscarProductos();
 		buscarEmpleados();
 		
 		
@@ -92,12 +100,80 @@ public class RegistroFactura extends JFrame{
 		
 		buscarClientes();
 		
+		//BUSCAR PRODUCTOS
+		ProductoRSH rsh = ProductoRSH.getInstance();
 		
+		final List<Producto> productos = rsh.verProductos();
 		
-		//Los productos se mostrara el listado de todos los productos registrados 
-		//y con un spinner para la cantidad de cada producto
+		int y = 232;
+		labelProductos = new ArrayList<JLabel>();
+		spinProductos = new ArrayList<JSpinner>();
 		
+		for (Producto producto : productos) { //meter los spinners
+			lblProducto = new JLabel("Test");
+			System.out.println(producto.getNombre());
+			lblProducto.setText(producto.getNombre() + " [medida: " + producto.getMedida() + " Grosor: " + 
+			producto.getGrosor() + " Peso: " + producto.getPeso()+"]");
+			lblProducto.setBounds(26, 232, 200, 13);
+			y += 58;
+			labelProductos.add(lblProducto);
+			
+		}
+		JPanel p = new JPanel();
+		p.setBounds(22, 230, 400, 500);
 		
+		for (JLabel j : labelProductos) {
+			spinProducto = new JSpinner();
+			spinProducto.setModel(new SpinnerNumberModel(0, 0, null, 1));
+			
+			int cantidad = spinProducto.getValue().hashCode();
+			System.out.println(cantidad);
+			
+			spinProductos.add(spinProducto);
+			
+			p.add(j);
+			p.add(spinProducto);
+		}
+		contentPane.add(p);
+		
+
+		//CALCULAR PRECIO
+		double precio = 0;
+		
+		for (Producto producto : productos) {
+			precio += producto.getPrecio() * producto.getCantidad();
+		}
+		
+		JLabel lblPrecio = new JLabel("Precio: " + precio + " €");
+		lblPrecio.setBounds(352, 115, 97, 14);
+		contentPane.add(lblPrecio);
+		
+		Date fechaActual = new Date();
+		
+		JLabel lblFecha = new JLabel("Fecha: " + fechaActual);
+		lblFecha.setBounds(352, 173, 241, 14);
+		contentPane.add(lblFecha);
+		
+		JButton btnRegistrar = new JButton("Registrar");
+		btnRegistrar.setBounds(462, 75, 89, 23);
+		contentPane.add(btnRegistrar);
+		
+		btnRegistrar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				/*for (JSpinner spin : spinProductos) { //TODO solucionar el asignar el valor del spinner a la cantidad de producto
+				for (Producto producto : productos) {
+				
+					producto.setCantidad((int)spin.getValue()); 	
+					
+				}
+				}
+				System.out.println(productos);*/
+			}	
+				
+			
+		});
 		
 	}
 	private void buscarEmpleados() {
@@ -124,34 +200,7 @@ public class RegistroFactura extends JFrame{
 	}
 	
 	private void buscarProductos() {
-		ProductoRSH rsh = ProductoRSH.getInstance();
+
 		
-		List<Producto> productos = rsh.verProductos();
-		
-		int y = 232;
-		labelProductos = new ArrayList<JLabel>();
-		
-		for (Producto producto : productos) {
-			lblProducto = new JLabel("Test");
-			System.out.println(producto.getNombre());
-			lblProducto.setText(producto.getNombre());
-			lblProducto.setBounds(26, 232, 200, 13);
-			y += 58;
-			labelProductos.add(lblProducto);
-			/*for (JLabel label : labelProductos) {
-				label.setText(producto.getNombre());
-				label.setBounds(26, y, 200, 13);
-				y += 58;
-				contentPane.add(label);
-			}*/
-		}
-		JPanel p = new JPanel();
-		p.setBounds(22, 230, 100, 500);
-		//p.setLayout(new GridLayout(2,2));
-		for (JLabel j : labelProductos) {
-			System.out.println(2);
-			p.add(j);
-		}
-		contentPane.add(p);
 	}
 }
