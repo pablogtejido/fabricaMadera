@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.atenea.data.Producto;
 import com.atenea.gui.modificar.ModificarProducto;
+import com.atenea.gui.registrar.RegistrarProducto;
 import com.atenea.rsh.ProductoRSH;
 
 import javax.swing.JMenuBar;
@@ -144,7 +145,6 @@ public class VisualizarProductos extends JFrame {
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Precio");
 		modelo.addColumn("Peso");
-		modelo.addColumn("Cantidad");
 		modelo.addColumn("Medida");
 		modelo.addColumn("Grosor");
 		modelo.addColumn("Añadidos");
@@ -161,14 +161,14 @@ public class VisualizarProductos extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Long Id = (Long) modelo.getValueAt(table.getSelectedRow(), 0);
+				String Id = (String) modelo.getValueAt(table.getSelectedRow(), 0);
 				System.out.println("Modificando el producto con Id:" + Id);
 				
 				Producto prod = null;
 				ProductoRSH rsh = ProductoRSH.getInstance();
 				
 				for (Producto producto : rsh.verProductos()) {
-					if (prod.getId().equals(Id)) {
+					if (producto.getId().equals(Long.parseLong(Id))) {
 						prod = producto;
 						
 					}
@@ -189,14 +189,14 @@ public class VisualizarProductos extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Long Id = (Long) modelo.getValueAt(table.getSelectedRow(), 0);
+				String Id = (String) modelo.getValueAt(table.getSelectedRow(), 0);
 				System.out.println("Eliminando el producto con Id:" + Id);
 				
 				Producto prod = null;
 				ProductoRSH rsh = ProductoRSH.getInstance();
 				
 				for (Producto producto : rsh.verProductos()) {
-					if (prod.getId().equals(Id)) {
+					if (producto.getId().equals(Long.parseLong(Id))) {
 						prod = producto;
 						
 					}
@@ -219,7 +219,9 @@ public class VisualizarProductos extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				RegistrarProducto reg = new RegistrarProducto();
+				reg.setVisible(true);
+				setVisible(false);
 			}
 		} );
 		btnAnyadir.setBounds(459, 367, 89, 31);

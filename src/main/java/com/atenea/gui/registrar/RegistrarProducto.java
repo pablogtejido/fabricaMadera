@@ -6,8 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import com.atenea.data.Producto;
+import com.atenea.gui.tablas.VisualizarProductos;
+import com.atenea.rsh.ProductoRSH;
+
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
@@ -112,46 +119,43 @@ public class RegistrarProducto extends JFrame{
 		txtPeso.setColumns(10);
 		txtPeso.setBounds(171, 250, 108, 25);
 		getContentPane().add(txtPeso);
-		
-		
-		//Cantidad
-		JLabel lblCantidad = new JLabel("Cantidad:");
-		lblCantidad.setBounds(69, 305, 71, 20);
-		getContentPane().add(lblCantidad);
-		
-		JComboBox comboBoxCantidad = new JComboBox();
 		DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-		comboBoxCantidad.setModel(modelo);
 		for (int i = 0; i < 100; i++) {
 			modelo.addElement(i);
 			
 		}
-		comboBoxCantidad.setBackground(Color.LIGHT_GRAY);
-		comboBoxCantidad.setBounds(171, 305, 47, 20);
-		getContentPane().add(comboBoxCantidad);
 		
 		
 		//Medida
 		JLabel lblMedida = new JLabel("Medida:");
-		lblMedida.setBounds(69, 359, 71, 20);
+		lblMedida.setBounds(69, 306, 71, 20);
 		getContentPane().add(lblMedida);
 		
 		txtMedida = new JTextField();
 		txtMedida.setColumns(10);
-		txtMedida.setBounds(171, 357, 108, 25);
+		txtMedida.setBounds(171, 304, 108, 25);
 		getContentPane().add(txtMedida);
 		
 		
 		//Grosor
 		txtGrosor = new JTextField();
 		txtGrosor.setColumns(10);
-		txtGrosor.setBounds(171, 409, 108, 25);
+		txtGrosor.setBounds(171, 356, 108, 25);
 		getContentPane().add(txtGrosor);
 		
 		JLabel lblgrosor = new JLabel("Grosor:");
-		lblgrosor.setBounds(69, 411, 59, 20);
+		lblgrosor.setBounds(69, 358, 59, 20);
 		getContentPane().add(lblgrosor);
 		
+		//Añadidos
+		JLabel lblAditivos = new JLabel("Añadido:");
+		lblAditivos.setBounds(69, 404, 59, 20);
+		getContentPane().add(lblAditivos);
+		
+		final JCheckBox checkBoxAditivos = new JCheckBox("Confirmar Añadido");
+		checkBoxAditivos.setBackground(Color.LIGHT_GRAY);
+		checkBoxAditivos.setBounds(171, 403, 152, 23);
+		getContentPane().add(checkBoxAditivos);
 		
 		//Botones
 		JButton cerrar = new JButton("Cerrar");
@@ -173,7 +177,9 @@ public class RegistrarProducto extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//futura tabla de productos¿?
+				VisualizarProductos prods = new VisualizarProductos();
+				prods.setVisible(true);
+				setVisible(false);
 			}
 		} );
 		volver.setForeground(Color.WHITE);
@@ -181,16 +187,31 @@ public class RegistrarProducto extends JFrame{
 		volver.setBounds(10, 554, 80, 31);
 		getContentPane().add(volver);
 		
-		JLabel lblAditivos = new JLabel("Añadido:");
-		lblAditivos.setBounds(69, 454, 59, 20);
-		getContentPane().add(lblAditivos);
-		
-		JCheckBox checkBoxAditivos = new JCheckBox("Confirmar Añadido");
-		checkBoxAditivos.setBackground(Color.LIGHT_GRAY);
-		checkBoxAditivos.setBounds(171, 453, 152, 23);
-		getContentPane().add(checkBoxAditivos);
 		
 		JButton btnAñadir = new JButton("Añadir");
+		btnAñadir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Producto prod = new Producto();
+				prod.setNombre(txtNombre.getText());
+				prod.setPrecio(Double.parseDouble(txtPrecio.getText()));
+				prod.setPeso(Double.parseDouble(txtPeso.getText()));
+				prod.setMedida(Double.parseDouble(txtMedida.getText()));
+				prod.setGrosor(Double.parseDouble(txtGrosor.getText()));
+				prod.setAnyadidos(checkBoxAditivos.isSelected());
+				
+				ProductoRSH.getInstance().guardarProducto(prod);
+				
+				JOptionPane.showMessageDialog(null, "Producto añadido correctamente", "PRODUCTO AÑADIDO", JOptionPane.PLAIN_MESSAGE);
+				
+				VisualizarProductos prods = new VisualizarProductos();
+				prods.setVisible(true);
+				setVisible(false);
+				
+			}
+		});
 		btnAñadir.setForeground(Color.WHITE);
 		btnAñadir.setBackground(new Color(72, 61, 139));
 		btnAñadir.setBounds(237, 495, 141, 36);

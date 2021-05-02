@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import com.atenea.data.Producto;
 import com.atenea.gui.tablas.VisualizarEmpleado;
+import com.atenea.gui.tablas.VisualizarProductos;
 import com.atenea.rsh.ProductoRSH;
 
 import javax.swing.JPanel;
@@ -131,13 +132,14 @@ public class ModificarProducto extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
+				
 				String nombre = txtNombre.getText();
 				double precio = Double.parseDouble(txtPrecio.getText());
 				double peso = Double.parseDouble(txtPeso.getText());
 				double medida = Double.parseDouble(txtMedida.getText());
 				double grosor = Double.parseDouble(txtGrosor.getText());
 				boolean añadido = checkBoxAñadido.isSelected();
-				
 				
 				prod.setNombre(nombre);
 				prod.setPrecio(precio);
@@ -160,8 +162,8 @@ public class ModificarProducto extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				VisualizarEmpleado empleados = new VisualizarEmpleado();
-				empleados.setVisible(true);
+				VisualizarProductos prods = new VisualizarProductos();
+				prods.setVisible(true);
 				setVisible(false);
 			}
 		});
