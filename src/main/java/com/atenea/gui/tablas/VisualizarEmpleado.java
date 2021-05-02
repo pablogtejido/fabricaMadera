@@ -67,12 +67,12 @@ public class VisualizarEmpleado extends JFrame {
 	private void initialize() {
 		this.setTitle("Visualizar Empleados");
 
-		setBounds(100, 100, 1028, 461);
+		setBounds(100, 100, 1137, 461);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		JPanel titulopanel = new JPanel();
-		titulopanel.setBounds(0, 0, 1012, 58);
+		titulopanel.setBounds(0, 0, 1121, 58);
 		titulopanel.setBackground(new Color(72, 61, 139));
 		getContentPane().add(titulopanel);
 		titulopanel.setLayout(null);
@@ -81,15 +81,15 @@ public class VisualizarEmpleado extends JFrame {
 		titulo.setForeground(Color.WHITE);
 		titulo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		titulo.setBounds(31, 11, 980, 36);
+		titulo.setBounds(31, 11, 1090, 36);
 		titulopanel.add(titulo);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 69, 992, 266);
+		scrollPane.setBounds(10, 69, 1101, 266);
 		getContentPane().add(scrollPane);
 
 		JPanel panelBoton = new JPanel();
-		panelBoton.setBounds(388, 346, 247, 43);
+		panelBoton.setBounds(452, 346, 247, 43);
 		getContentPane().add(panelBoton);
 		panelBoton.setLayout(null);
 

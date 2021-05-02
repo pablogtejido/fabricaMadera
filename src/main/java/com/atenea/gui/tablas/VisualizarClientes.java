@@ -56,6 +56,7 @@ public class VisualizarClientes extends JFrame{
 		this.setTitle("Visualizar Clientes");
 		setBounds(100, 100, 827, 461);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		JPanel titulopanel = new JPanel();
