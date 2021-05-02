@@ -61,6 +61,7 @@ public class VisualizarFacturas extends JFrame {
 		this.setTitle("Visualizar Facturas");
 		setBounds(100, 100, 827, 461);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 
 		JPanel titulopanel = new JPanel();

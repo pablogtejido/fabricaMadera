@@ -46,12 +46,12 @@ public class ModificarEmpleado extends JFrame{
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(72, 61, 139));
 		panel.setForeground(new Color(0, 128, 128));
-		panel.setBounds(0, 21, 615, 43);
+		panel.setBounds(0, 0, 615, 43);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JLabel lblcliente = new JLabel("EMPLEADO");
-		lblcliente.setBounds(268, 11, 77, 32);
+		JLabel lblcliente = new JLabel("MODIFICAR EMPLEADO");
+		lblcliente.setBounds(0, 0, 615, 43);
 		lblcliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblcliente.setForeground(SystemColor.text);
 		panel.add(lblcliente);

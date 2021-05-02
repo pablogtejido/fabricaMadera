@@ -18,3 +18,5 @@ log/
 
 # Test class
 src/main/java/com/atenea/testing.java
+/miglayout15-swing.jar
+/miglayout-src.zip

@@ -12,9 +12,15 @@ import javax.swing.JMenu;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+
+import com.atenea.data.Producto;
+import com.atenea.gui.modificar.ModificarProducto;
+import com.atenea.rsh.ProductoRSH;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
@@ -75,18 +81,36 @@ public class VisualizarProductos extends JFrame {
 		menuBar.setBounds(0, 0, 811, 21);
 		getContentPane().add(menuBar);
 		
+		//Menus dentro de MenuBar
 		JMenu menuClientes = new JMenu("Clientes");
 		menuBar.add(menuClientes);
 
 		JMenu menuEmpleados = new JMenu("Empleado");
 		menuBar.add(menuEmpleados);
 
+		JMenu menuFacturas = new JMenu("Facturas");
+		menuBar.add(menuFacturas);
+		
+		//Menu  items
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
 
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
 
+		JMenuItem verFacturas = new JMenuItem("Ver Facturas");
+		menuFacturas.add(verFacturas);
+		
+		verFacturas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VisualizarFacturas window2 = new VisualizarFacturas();
+				window2.setVisible(true);
+				setVisible(false);
+			}
+		});
 		verClientes.addActionListener(new ActionListener() {
 
 			@Override
@@ -137,7 +161,21 @@ public class VisualizarProductos extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				Long Id = (Long) modelo.getValueAt(table.getSelectedRow(), 0);
+				System.out.println("Modificando el producto con Id:" + Id);
 				
+				Producto prod = null;
+				ProductoRSH rsh = ProductoRSH.getInstance();
+				
+				for (Producto producto : rsh.verProductos()) {
+					if (prod.getId().equals(Id)) {
+						prod = producto;
+						
+					}
+				}
+				ModificarProducto mod = new ModificarProducto(prod);
+				mod.setVisible(true);
+				setVisible(false);
 			}
 		});
 		btnModificar.setBounds(360, 367, 89, 31);
@@ -151,9 +189,25 @@ public class VisualizarProductos extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				Long Id = (Long) modelo.getValueAt(table.getSelectedRow(), 0);
+				System.out.println("Eliminando el producto con Id:" + Id);
 				
+				Producto prod = null;
+				ProductoRSH rsh = ProductoRSH.getInstance();
+				
+				for (Producto producto : rsh.verProductos()) {
+					if (prod.getId().equals(Id)) {
+						prod = producto;
+						
+					}
+				}
+				System.out.println("Producto Eliminado");
+				rsh.borrarProducto(prod);
+				modelo.setRowCount(0);
+				ProductosJTable();
 			}
 		});
+		
 		btnEliminar.setBounds(261, 367, 89, 31);
 		btnEliminar.setBackground(new Color(72, 61, 139));
 		getContentPane().add(btnEliminar);
@@ -172,6 +226,31 @@ public class VisualizarProductos extends JFrame {
 		btnAnyadir.setBackground(new Color(72, 61, 139));
 		getContentPane().add(btnAnyadir);
 		
+		ProductosJTable();
 		
+	}
+	public void ProductosJTable() {
+		ProductoRSH rsh = ProductoRSH.getInstance();
+		List<Producto> productos = rsh.verProductos();
+		String[] fila = new String[8];
+		System.out.println(productos);
+		
+		for (Producto producto : productos) {
+			fila[0] = String.valueOf(producto.getId());
+			fila[1] = producto.getNombre();
+			fila[2] = String.valueOf(producto.getPrecio());
+			fila[3] = String.valueOf(producto.getPeso());
+			fila[4] = String.valueOf(producto.getCantidad());
+			fila[5] = String.valueOf(producto.getMedida());
+			fila[6] = String.valueOf(producto.getGrosor());
+			//fila[7] = String.valueOf(producto.isAnyadidos());
+			modelo.addRow(fila);
+			
+			
+		}
+	}
+	
+	public boolean isCellEditable(int row, int column) {
+		return false;
 	}
 }
