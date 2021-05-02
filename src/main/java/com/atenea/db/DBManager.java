@@ -16,10 +16,13 @@ import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DBManager {
     private static DBManager instance = null;
     private PersistenceManagerFactory pmf = null;
+    private final static Logger LOG = Logger.getLogger(DBManager.class.getName());
 
     public static DBManager getInstance() {
         if (instance == null) {
@@ -40,7 +43,7 @@ public class DBManager {
         Empleado empleado = null;
 
         try {
-            System.out.println("Cogiendo Empleado con EMAIL: " + email);
+            LOG.log(Level.INFO, "Cogiendo Empleado con EMAIL: {0}", email);
             tran.begin();
 
             Extent<Empleado> extension = pm.getExtent(Empleado.class, true);
@@ -55,7 +58,7 @@ public class DBManager {
 
             tran.commit();
         } catch (Exception ex) {
-            System.out.println("Error obteniendo empleado: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Error obteniendo empleado: {0}", ex.getStackTrace());
         } finally {
             if (tran != null && tran.isActive()) {
                 tran.rollback();
@@ -79,13 +82,13 @@ public class DBManager {
 
         try {
             tx.begin();
-            System.out.println("* Delete an object: " + object);
+            LOG.log(Level.INFO, "* Delete an object: {0}", object);
 
             pm.deletePersistent(object);
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error deleting an object: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error deleting an object: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -102,11 +105,11 @@ public class DBManager {
 
         try {
             tx.begin();
-            System.out.println("* Storing an object: " + object);
+            LOG.log(Level.INFO, "* Storing an object: {0}", object);
             pm.makePersistent(object);
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error storing an object: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error storing an object: {0}", ex.getStackTrace());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -161,7 +164,7 @@ public class DBManager {
 
         try {
             tx.begin();
-            System.out.println("* Storing an object: " + factura);
+            LOG.log(Level.INFO, "* Storing an object: {0}", factura);
 
             // Ver todos los clientes. Si existe usarlo, si no descartarlos y usar el
             // cliente que viene con el propio objeto factura.
@@ -171,7 +174,7 @@ public class DBManager {
             while (iter_cliente.hasNext()) {
                 Cliente cliente_temporal = (Cliente) iter_cliente.next();
                 if (cliente_temporal.getDni().equals(cl.getDni())) {
-                    System.out.println("* Found a client with the same DNI: " + cliente_temporal.getDni());
+                    LOG.log(Level.INFO, "* Found a client with the same DNI: {0}", cliente_temporal.getDni());
                     cl = cliente_temporal; // Si existe simplemente usamos el que viene de la base de datos.
                 }
             }
@@ -185,7 +188,7 @@ public class DBManager {
             while (iter_empleado.hasNext()) {
                 Empleado empleado_temporal = (Empleado) iter_empleado.next();
                 if (empleado_temporal.getDni().equals(em.getDni())) {
-                    System.out.println("* Found a employee with the same DNI: " + empleado_temporal.getDni());
+                    LOG.log(Level.INFO, "* Found a employee with the same DNI: {0}", empleado_temporal.getDni());
                     em = empleado_temporal; // Si existe simplemente usamos el que viene de la base de datos.
                 }
             }
@@ -226,9 +229,9 @@ public class DBManager {
             pm.makeTransient(factura.getEmpleado());
             pm.makeTransient(factura.getCliente());
             pm.makeTransientAll(factura.getProductos());
-            System.out.println("* Stored: " + factura);
+            LOG.log(Level.INFO, "* Stored: {0}", factura);
         } catch (Exception ex) {
-            System.out.println("$ Error storing an object: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error storing an object: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -287,7 +290,7 @@ public class DBManager {
 
         Empleado empleado = null;
         try {
-            System.out.println("Cogiendo usuario con DNI: " + DNI);
+            LOG.log(Level.INFO, "Cogiendo usuario con DNI: {0}", DNI);
             tran.begin();
 
             Extent<Empleado> extension = pm.getExtent(Empleado.class, true);
@@ -302,7 +305,7 @@ public class DBManager {
 
             tran.commit();
         } catch (Exception ex) {
-            System.out.println("Error obteniendo empleado: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Error obteniendo empleado: {0}", ex.getMessage());
         } finally {
             if (tran != null && tran.isActive()) {
                 tran.rollback();
@@ -327,7 +330,7 @@ public class DBManager {
         Cliente cliente = null;
 
         try {
-            System.out.println("Cogiendo Cliente con DNI: " + dni);
+            LOG.log(Level.INFO, "Cogiendo Cliente con DNI: {0}", dni);
             tran.begin();
 
             Extent<Cliente> extension = pm.getExtent(Cliente.class, true);
@@ -340,7 +343,7 @@ public class DBManager {
 
             tran.commit();
         } catch (Exception ex) {
-            System.out.println("Error obteniendo empleado: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Error obteniendo empleado: {0}", ex.getMessage());
         } finally {
             if (tran != null && tran.isActive()) {
                 tran.rollback();
@@ -364,7 +367,7 @@ public class DBManager {
 
         Producto to_return = null;
         try {
-            System.out.println("Cogiendo producto con id: " + id);
+            LOG.log(Level.INFO, "Cogiendo producto con id: {0}", id);
             tx.begin();
 
             Extent<Producto> e = pm.getExtent(Producto.class, true);
@@ -378,7 +381,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("Error obteniendo empleado: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Error obteniendo empleado: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -408,7 +411,7 @@ public class DBManager {
             while (iter.hasNext()) {
                 Producto producto_a_cambiar = (Producto) iter.next();
                 if (Objects.equals(producto_a_cambiar.getId(), producto.getId())) {
-                    System.out.println("* Updating: " + producto_a_cambiar + "\n* To: " + producto);
+                    LOG.log(Level.INFO, "* Updating: {0}\n* To: {1}", new Object[] { producto_a_cambiar, producto });
                     producto_a_cambiar.setAnyadidos(producto.isAnyadidos());
                     producto_a_cambiar.setGrosor(producto.getGrosor());
                     producto_a_cambiar.setMedida(producto.getMedida());
@@ -418,7 +421,7 @@ public class DBManager {
             }
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error updating: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error updating: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -437,7 +440,7 @@ public class DBManager {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
-            System.out.println("Eliminando producto con id: " + id);
+            LOG.log(Level.INFO, "Eliminando producto con id: {0}", id);
             tx.begin();
 
             Extent<Producto> e = pm.getExtent(Producto.class, true);
@@ -451,7 +454,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("Error obteniendo empleado: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Error obteniendo empleado: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -473,7 +476,7 @@ public class DBManager {
         List<Empleado> empleados = new ArrayList<>();
 
         try {
-            System.out.println("* Querying all users");
+            LOG.info("* Querying all users");
             tx.begin();
 
             Extent<Empleado> empleadoExtent = pm.getExtent(Empleado.class, true);
@@ -485,7 +488,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error querying all users: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error querying all users: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -510,7 +513,7 @@ public class DBManager {
         List<Producto> productos = new ArrayList<>();
 
         try {
-            System.out.println("* Viendo todos productos");
+            LOG.info("* Viendo todos productos");
             tx.begin();
 
             Extent<Producto> productoExtent = pm.getExtent(Producto.class, true);
@@ -522,7 +525,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error viendo todos productos: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error viendo todos productos: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -553,7 +556,7 @@ public class DBManager {
                 Empleado empleado_a_cambiar = (Empleado) iter.next();
                 if (empleado_a_cambiar.getDni() == null ? empleado.getDni() == null
                         : empleado_a_cambiar.getDni().equals(empleado.getDni())) {
-                    System.out.println("* Updating: " + empleado_a_cambiar + "\n* To: " + empleado);
+                    LOG.log(Level.INFO, "* Updating: {0}\n* To: {1}", new Object[] { empleado_a_cambiar, empleado });
                     empleado_a_cambiar.setDireccion(empleado.getDireccion());
                     empleado_a_cambiar.setEmail(empleado.getEmail());
                     empleado_a_cambiar.setFcha_empleado(empleado.getFcha_empleado());
@@ -566,7 +569,7 @@ public class DBManager {
             }
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error updating: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error updating: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -585,7 +588,7 @@ public class DBManager {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
-            System.out.println("Eliminando empleado con id: " + id);
+            LOG.log(Level.INFO, "Eliminando empleado con id: {0}", id);
             tx.begin();
 
             Extent<Empleado> e = pm.getExtent(Empleado.class, true);
@@ -599,7 +602,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("Error obteniendo empleado: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Error obteniendo empleado: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -616,7 +619,7 @@ public class DBManager {
         List<Factura> facturas = new ArrayList<>();
 
         try {
-            System.out.println("* Viendo todos facturas");
+            LOG.info("* Viendo todos facturas");
             tx.begin();
             Extent<Factura> e = pm.getExtent(Factura.class, true);
             Iterator<Factura> iter = e.iterator();
@@ -640,7 +643,7 @@ public class DBManager {
             }
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error viendo todos facturas: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error viendo todos facturas: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -669,7 +672,7 @@ public class DBManager {
             while (iter.hasNext()) {
                 Factura factura_a_cambiar = (Factura) iter.next();
                 if (factura_a_cambiar.getId() == factura.getId()) {
-                    System.out.println("* Updating: " + factura_a_cambiar + "\n* To: " + factura);
+                    LOG.log(Level.INFO, "* Updating: {0}\n* To: {1}", new Object[] { factura_a_cambiar, factura });
                     factura_a_cambiar.setCliente(factura.getCliente());
                     factura_a_cambiar.setEmpleado(factura.getEmpleado());
                     factura_a_cambiar.setFcha_factura(factura.getFcha_factura());
@@ -679,7 +682,7 @@ public class DBManager {
             }
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error updating: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error updating: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -698,7 +701,7 @@ public class DBManager {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
-            System.out.println("Eliminando factura con id: " + id);
+            LOG.log(Level.INFO, "Eliminando factura con id: {0}", id);
             tx.begin();
 
             Extent<Factura> e = pm.getExtent(Factura.class, true);
@@ -712,7 +715,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("Error obteniendo factura: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Error obteniendo factura: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -734,7 +737,7 @@ public class DBManager {
         List<Cliente> clientes = new ArrayList<>();
 
         try {
-            System.out.println("* Viendo todos clientes");
+            LOG.info("* Viendo todos clientes");
             tx.begin();
 
             Extent<Cliente> clienteExtent = pm.getExtent(Cliente.class, true);
@@ -746,7 +749,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error viendo todos clientes: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error viendo todos clientes: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -777,7 +780,7 @@ public class DBManager {
                 Cliente cliente_a_cambiar = (Cliente) iter.next();
                 if (cliente_a_cambiar.getDni() == null ? cliente.getDni() == null
                         : cliente_a_cambiar.getDni().equals(cliente.getDni())) {
-                    System.out.println("* Updating: " + cliente_a_cambiar + "\n* To: " + cliente);
+                    LOG.log(Level.INFO, "* Updating: {0}\n* To: {1}", new Object[] { cliente_a_cambiar, cliente });
                     cliente_a_cambiar.setNombre(cliente.getNombre());
                     cliente_a_cambiar.setApellidos(cliente.getApellidos());
                     cliente_a_cambiar.setContrasena(cliente.getContrasena());
@@ -804,7 +807,7 @@ public class DBManager {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
-            System.out.println("Eliminando cliente con dni: " + dni);
+            LOG.log(Level.INFO, "Eliminando cliente con dni: {0}", dni);
             tx.begin();
 
             Extent<Cliente> e = pm.getExtent(Cliente.class, true);
@@ -818,7 +821,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("Error obteniendo cliente: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Error obteniendo cliente: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -835,7 +838,7 @@ public class DBManager {
         List<Administrador> administradores = new ArrayList<>();
 
         try {
-            System.out.println("* Viendo todos administradores");
+            LOG.info("* Viendo todos administradores");
             tx.begin();
 
             Extent<Administrador> administradorExtent = pm.getExtent(Administrador.class, true);
@@ -847,7 +850,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error viendo todos administradores: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error viendo todos administradores: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -873,7 +876,8 @@ public class DBManager {
             while (iter.hasNext()) {
                 Administrador administrador_a_cambiar = (Administrador) iter.next();
                 if (administrador_a_cambiar.getId() == administadror.getId()) {
-                    System.out.println("* Updating: " + administrador_a_cambiar + "\n* To: " + administadror);
+                    LOG.log(Level.INFO, "* Updating: {0}\n* To: {1}",
+                            new Object[] { administrador_a_cambiar, administadror });
                     administrador_a_cambiar.setContrasena(administadror.getContrasena());
                     administrador_a_cambiar.setNombre(administadror.getNombre());
                     administrador_a_cambiar.setApellido(administadror.getApellido());
@@ -883,7 +887,7 @@ public class DBManager {
             }
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("$ Error updating: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "$ Error updating: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
@@ -897,7 +901,7 @@ public class DBManager {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
-            System.out.println("Eliminando administrador con id: " + id);
+            LOG.log(Level.INFO, "Eliminando administrador con id: {0}", id);
             tx.begin();
 
             Extent<Administrador> e = pm.getExtent(Administrador.class, true);
@@ -911,7 +915,7 @@ public class DBManager {
 
             tx.commit();
         } catch (Exception ex) {
-            System.out.println("Error obteniendo Administrador: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Error obteniendo Administrador: {0}", ex.getMessage());
         } finally {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
