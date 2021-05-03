@@ -89,7 +89,7 @@ public class PrepareData {
 		 * "ainhoa585@gmail.com", "699958457"); DBManager.getInstance().store(a3);
 		 */
 
-		List<Producto> lista1 = new ArrayList<>();
+		/*List<Producto> lista1 = new ArrayList<>();
 
 		Producto p1Factura = new Producto("Tablero madera", 12.70, 32, 24, 4, true);
 
@@ -105,6 +105,6 @@ public class PrepareData {
 		Cliente clienteFactura = new Cliente("58441139Q", "Paquita", "Salas", "1234");
 
 		Factura f1 = new Factura(empleadoFactura, clienteFactura, lista1, new Date("27/10/1974 05:04:00"));
-		DBManager.getInstance().store(f1);
+		DBManager.getInstance().store(f1);*/
 	}
 }
