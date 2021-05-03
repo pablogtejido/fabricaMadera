@@ -71,7 +71,7 @@ public class RegistroClienteTest {
 		cliente.setDni(textField1.getText());
 
 		when(textField2.getText()).thenReturn("Jose");
-		cliente.setApellidos(textField2.getText());
+		cliente.setNombre(textField2.getText());
 
 		when(textField3.getText()).thenReturn("Perez Reberte");
 		cliente.setApellidos(textField3.getText());
