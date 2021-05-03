@@ -63,7 +63,7 @@ public class RegistroClienteTest {
 	@Test
 	public void testGuardarCliente() {
 		System.out.println(
-				"================================================Test guardar clientes================================================");
+				"================================================Test guardar clientes Server================================================");
 
 		Cliente cliente = new Cliente();
 
