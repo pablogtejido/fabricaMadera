@@ -210,16 +210,16 @@ public class DBManager {
 
             Set<Producto> productos = factura.getProductos();
             Set<Producto> final_productos = new HashSet<>();
-            Extent<Producto> ex_producto = pm.getExtent(Producto.class, true); // FIXME: Cannot invoke
-                                                                               // "java.util.Collection.iterator()"
-                                                                               // because "pcs" is null
-            Iterator<Producto> iter = ex_producto.iterator();
+            Extent<Producto> ex_producto = pm.getExtent(Producto.class, true);
+            Iterator<Producto> iter = null;
             Producto p = null;
             for (Producto p_for : productos) {
                 boolean found = false;
+                iter = ex_producto.iterator();
                 while (iter.hasNext()) {
                     Producto p_bd = (Producto) iter.next();
-                    if (p_bd.getId().equals(p_for.getId())) {
+                    if (p_bd.equals(p_for)) {
+                        LOG.log(Level.INFO, "* Found a product with the same ID: {0}", p_bd.getId());
                         found = true;
                         p = p_bd;
                     }
