@@ -10,14 +10,16 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FacturaTest {
     Factura f1;
     Cliente c1;
     Empleado e1;
     Producto p1;
-    List<Producto> productos;
+    Set<Producto> productos;
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -37,7 +39,7 @@ public class FacturaTest {
 
         p1 = new Producto("Tablero madera", 12.70, 32, 24, 4, true);
 
-        productos = new ArrayList<Producto>();
+        productos = new HashSet<>();
         productos.add(p1);
 
         f1 = new Factura(e1, c1, productos, new Date("27/04/2021 20:42:35"));
@@ -138,7 +140,7 @@ public class FacturaTest {
     @Test
     public void testGetProductos() {
         System.out.println("getProductos");
-        List<Producto> result = f1.getProductos();
+        Set<Producto> result = f1.getProductos();
         assertEquals(productos, result);
 
     }

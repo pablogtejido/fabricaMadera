@@ -1,14 +1,16 @@
 package com.atenea.data;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.jdo.annotations.Element;
 import javax.jdo.annotations.ForeignKey;
 import javax.jdo.annotations.ForeignKeyAction;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -19,17 +21,19 @@ public class Factura {
 
     @PrimaryKey
     @Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
-    private long id;
+    private long factura_id;
     @ForeignKey(deleteAction = ForeignKeyAction.NONE)
     private Empleado empleado;
     @ForeignKey(deleteAction = ForeignKeyAction.NONE)
     private Cliente cliente;
-    @ForeignKey(deleteAction = ForeignKeyAction.NONE)
-    private List<Producto> productos;
+    @Persistent(table = "PRODUCTO_FACTURA")
+    @Join(column = "PRODUCTO_ID")
+    @Element(column = "FACTURA_ID")
+    Set<Producto> productos;
     private Double precio;
     private Date fcha_factura;
 
-    public Factura(Empleado empleado, Cliente cliente, List<Producto> productos, Date fcha_factura) {
+    public Factura(Empleado empleado, Cliente cliente, Set<Producto> productos, Date fcha_factura) {
         this.empleado = empleado;
         this.cliente = cliente;
         this.productos = productos;
@@ -40,11 +44,11 @@ public class Factura {
     }
 
     public long getId() {
-        return this.id;
+        return this.factura_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long factura_id) {
+        this.factura_id = factura_id;
     }
 
     public Empleado getEmpleado() {
@@ -63,11 +67,11 @@ public class Factura {
         this.cliente = cliente;
     }
 
-    public List<Producto> getProductos() {
+    public Set<Producto> getProductos() {
         return this.productos;
     }
 
-    public void setProductos(List<Producto> productos) {
+    public void setProductos(Set<Producto> productos) {
         this.productos = productos;
     }
 
@@ -90,8 +94,8 @@ public class Factura {
 
     @Override
     public String toString() {
-        return "Factura {" + " id= " + id + ", empleado= " + empleado + ", cliente= " + cliente + ", productos= "
-                + productos + ", precio= " + precio + ", fcha_factura= " + fcha_factura + "}";
+        return "Factura {" + " id= " + factura_id + ", empleado= " + empleado + ", cliente= " + cliente
+                + ", productos= " + productos + ", precio= " + precio + ", fcha_factura= " + fcha_factura + "}";
     }
 
     public String toStringProductos() {
@@ -121,12 +125,14 @@ public class Factura {
             return false;
         }
         Factura factura = (Factura) o;
-        return id == factura.id;
+        return factura_id == factura.factura_id && Objects.equals(empleado, factura.empleado)
+                && Objects.equals(cliente, factura.cliente) && Objects.equals(productos, factura.productos)
+                && Objects.equals(precio, factura.precio) && Objects.equals(fcha_factura, factura.fcha_factura);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, empleado, cliente, productos, precio, fcha_factura);
+        return Objects.hash(factura_id, empleado, cliente, productos, precio, fcha_factura);
     }
 
 }

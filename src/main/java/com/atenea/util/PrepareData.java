@@ -2,7 +2,9 @@ package com.atenea.util;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.atenea.data.Administrador;
 import com.atenea.data.Cliente;
@@ -19,12 +21,12 @@ public class PrepareData {
 		Empleado empleado1 = new Empleado("68432155O", "Paco Lopez", "Calle Ave del Paraiso, 13, 4Izq",
 				"pacolopez@gmail.com", "654321789", EnumPuestoEmpleados.OPERARIO, new Date("12/04/1990 15:30:35"),
 				new Date("08/07/2020 00:00:00"), 1200.50, "1234");
-		DBManager.getInstance().store(empleado1);
+		// DBManager.getInstance().store(empleado1);
 
 		Empleado empleado2 = new Empleado("35661232P", "Aitor Ruiz Garcia", "Calle Zorroza, 11, 1B",
 				"aitoruiz@gmail.com", "621852478", EnumPuestoEmpleados.DIRECTIVA, new Date("10/01/1970 01:09:07"),
 				new Date("30/06/2000 18:00:35"), 4300, "1234");
-		DBManager.getInstance().store(empleado2);
+		// DBManager.getInstance().store(empleado2);
 
 		/*
 		 * Empleado empleado3 = new Empleado("22396365I", "Pablo Gonzalez Tejido",
@@ -47,7 +49,7 @@ public class PrepareData {
 		 */
 
 		Cliente cliente1 = new Cliente("58441139A", "Juan", "Lopez", "1234");
-		DBManager.getInstance().store(cliente1);
+		// DBManager.getInstance().store(cliente1);
 
 		/*
 		 * Cliente cliente2 = new Cliente("36957841K", "Silvia", "Montejo", "1234");
@@ -64,10 +66,10 @@ public class PrepareData {
 		 */
 
 		Producto p1 = new Producto("Tablero madera", 12.70, 32, 24, 4, true);
-		DBManager.getInstance().store(p1);
+		// DBManager.getInstance().store(p1);
 
 		Producto p2 = new Producto("Listón madera", 7.50, 21, 30, 9, false);
-		DBManager.getInstance().store(p2);
+		// DBManager.getInstance().store(p2);
 
 		/*
 		 * Producto p3 = new Producto("Revestimiento madera", 21.60, 8, 1, 50, 2, true);
@@ -89,7 +91,7 @@ public class PrepareData {
 		 * "ainhoa585@gmail.com", "699958457"); DBManager.getInstance().store(a3);
 		 */
 
-		/*List<Producto> lista1 = new ArrayList<>();
+		Set<Producto> lista1 = new HashSet<>();
 
 		Producto p1Factura = new Producto("Tablero madera", 12.70, 32, 24, 4, true);
 
@@ -105,6 +107,7 @@ public class PrepareData {
 		Cliente clienteFactura = new Cliente("58441139Q", "Paquita", "Salas", "1234");
 
 		Factura f1 = new Factura(empleadoFactura, clienteFactura, lista1, new Date("27/10/1974 05:04:00"));
-		DBManager.getInstance().store(f1);*/
+		DBManager.getInstance().store(f1);
+
 	}
 }

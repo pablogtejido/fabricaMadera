@@ -1,7 +1,7 @@
 package com.atenea.db;
 
 import java.util.ArrayList;
-
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import javax.jdo.Extent;
@@ -16,6 +16,7 @@ import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
 import java.util.Objects;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -207,9 +208,11 @@ public class DBManager {
              * como mejorarla.
              */
 
-            List<Producto> productos = factura.getProductos();
-            List<Producto> final_productos = new ArrayList<>();
-            Extent<Producto> ex_producto = pm.getExtent(Producto.class, true);
+            Set<Producto> productos = factura.getProductos();
+            Set<Producto> final_productos = new HashSet<>();
+            Extent<Producto> ex_producto = pm.getExtent(Producto.class, true); // FIXME: Cannot invoke
+                                                                               // "java.util.Collection.iterator()"
+                                                                               // because "pcs" is null
             Iterator<Producto> iter = ex_producto.iterator();
             Producto p = null;
             for (Producto p_for : productos) {

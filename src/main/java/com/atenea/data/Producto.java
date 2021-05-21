@@ -1,6 +1,7 @@
 package com.atenea.data;
 
 import java.util.Objects;
+import java.util.Set;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
 
@@ -16,13 +17,15 @@ public class Producto {
 
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
-	private Long id;
+	private Long producto_id;
 	private String nombre;
 	private double precio;
 	private double peso;
 	private double medida;
 	private double grosor;
 	private boolean anyadidos;
+	@Persistent(mappedBy = "productos")
+	Set<Factura> facturas;
 
 	public String getNombre() {
 		return nombre;
@@ -73,11 +76,11 @@ public class Producto {
 	}
 
 	public Long getId() {
-		return this.id;
+		return this.producto_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long producto_id) {
+		this.producto_id = producto_id;
 	}
 
 	public Producto() {
@@ -86,12 +89,11 @@ public class Producto {
 
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", peso=" + peso + ", medida="
-				+ medida + ", grosor=" + grosor + ", anyadidos=" + anyadidos + "]";
+		return "Producto [producto_id=" + producto_id + ", nombre=" + nombre + ", precio=" + precio + ", peso=" + peso
+				+ ", medida=" + medida + ", grosor=" + grosor + ", anyadidos=" + anyadidos + "]";
 	}
 
-	public Producto( String nombre, double precio, double peso, double medida, double grosor,
-			boolean anyadidos) {
+	public Producto(String nombre, double precio, double peso, double medida, double grosor, boolean anyadidos) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
@@ -109,14 +111,14 @@ public class Producto {
 			return false;
 		}
 		Producto producto = (Producto) o;
-		return Objects.equals(this.id, producto.id) && Objects.equals(nombre, producto.nombre)
-				&& precio == producto.precio && peso == producto.peso && medida == producto.medida 
+		return Objects.equals(this.producto_id, producto.producto_id) && Objects.equals(nombre, producto.nombre)
+				&& precio == producto.precio && peso == producto.peso && medida == producto.medida
 				&& grosor == producto.grosor && anyadidos == producto.anyadidos;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(nombre, precio, peso, medida, grosor, anyadidos);
+		return Objects.hash(producto_id, nombre, precio, peso, medida, grosor, anyadidos);
 	}
 
 }

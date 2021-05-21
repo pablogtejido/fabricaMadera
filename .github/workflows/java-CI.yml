@@ -24,5 +24,7 @@ jobs:
           sudo /etc/init.d/mysql start
           mysql -uroot -proot < src/main/resources/dataBase.sql
           mvn --batch-mode --update-snapshots compile
+          mvn --batch-mode --update-snapshot verify
+          mvn --batch-mode --update-snapshots datanucleus:schema-create
       - name: Build with Maven including integration tests
         run: mvn --batch-mode --update-snapshots verify -Pintegracion
