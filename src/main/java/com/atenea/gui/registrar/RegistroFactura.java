@@ -14,6 +14,9 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -26,6 +29,7 @@ import com.atenea.data.Factura;
 import com.atenea.data.Producto;
 import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
+import com.atenea.rsh.FacturaRSH;
 import com.atenea.rsh.ProductoRSH;
 
 import javax.swing.JComboBox;
@@ -138,6 +142,45 @@ public class RegistroFactura extends JFrame{
 		}
 		contentPane.add(p);
 		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu menuProductos = new JMenu("Productos");
+		menuBar.add(menuProductos);
+					
+		JMenu menuEmpleados = new JMenu("Empleados");
+		menuBar.add(menuEmpleados);
+		
+		JMenu menuClientes = new JMenu("Clientes");
+		menuBar.add(menuClientes);
+		
+		JMenuItem registrarProducto = new JMenuItem("Registrar Producto");
+		menuProductos.add(registrarProducto);
+		
+		registrarProducto.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				RegistrarProducto window2 = new RegistrarProducto();
+				window2.setVisible(true);
+				//setVisible(false);
+			}
+		});
+		
+		JMenuItem registrarCliente = new JMenuItem("Registrar Cliente");
+		menuClientes.add(registrarCliente);
+		
+		registrarCliente.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				RegistroCliente window2 = new RegistroCliente();
+				window2.setVisible(true);
+				//setVisible(false);
+			}
+		});		
 
 		//CALCULAR PRECIO
 		double precio = 0;
@@ -174,10 +217,8 @@ public class RegistroFactura extends JFrame{
 				}
 				System.out.println(prodctServ);
 				
-				Empleado empleado = (Empleado) comboBoxEmpleados.getSelectedItem();
-				Cliente cliente = (Cliente) comboBoxClientes.getSelectedItem();
-				
-				Factura factura = new Factura(empleado, cliente, prodctServ, fechaActual);
+				Factura factura = new Factura(seleccionComboBoxEmpleado(), seleccionComboBoxCliente(), prodctServ, fechaActual);
+				//FacturaRSH.getInstance().guardarFactura(factura);
 				System.out.println(factura);
 			}	
 				
@@ -191,7 +232,8 @@ public class RegistroFactura extends JFrame{
 		List<Empleado> empleados = rsh.verEmpleados();
 
 		for (Empleado empleado : empleados) {
-			comboBoxEmpleados.addItem(empleado.getNombre());
+			String empleadoString = empleado.getNombre() + " - " + empleado.getDni();
+			comboBoxEmpleados.addItem(empleadoString);
 		}	
 	}
 	
@@ -202,10 +244,48 @@ public class RegistroFactura extends JFrame{
 		
 		
 		for (Cliente cliente : clientes) {
-			String nombreApellidos = cliente.getNombre() + " " + cliente.getApellidos();
-			comboBoxClientes.addItem(nombreApellidos);
+			String clienteString = cliente.getNombre() + " " + cliente.getApellidos() + " - " + cliente.getDni();
+			comboBoxClientes.addItem(clienteString);
 		}
 		
+	}
+	
+	private Empleado seleccionComboBoxEmpleado() {
+		//Obtener el String del combobox y obtener el empleado con los mismos atributos
+		String empleadoNombre = (String) comboBoxEmpleados.getSelectedItem();
+		
+		EmpleadoRSH rshEmpl = EmpleadoRSH.getInstance();
+		
+		List<Empleado> empleados = rshEmpl.verEmpleados();
+		
+		Empleado emp = new Empleado();
+		
+		for (Empleado empleado : empleados) {  
+			if(empleadoNombre.equals(empleado.getNombre() + " - " + empleado.getDni())) {
+				emp = empleado;
+			}
+		}
+		return emp;
+	}
+	
+	private Cliente seleccionComboBoxCliente() {
+		//Obtener el String del combobox y obtener el cliente con los mismos atributos
+
+		String clienteNombre = (String) comboBoxClientes.getSelectedItem();
+		
+		ClienteRSH rshClient = ClienteRSH.getInstance();
+		
+		List<Cliente> clientes = rshClient.verClientes();
+		
+		Cliente cli = new Cliente();
+	
+		for (Cliente cliente : clientes) {
+			if(clienteNombre.equals(cliente.getNombre() + " " + cliente.getApellidos() + " - " + cliente.getDni())) {
+				cli = cliente;
+			}
+		}
+		
+		return cli;
 	}
 	
 	private void buscarProductos() {
