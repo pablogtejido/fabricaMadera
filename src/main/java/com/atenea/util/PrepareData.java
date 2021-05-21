@@ -92,7 +92,8 @@ public class PrepareData {
 		 */
 
 		 Administrador a1 = new Administrador("1234", "Paco", "Salas",
-				  "pacosalas@gmail.com", "682548111"); DBManager.getInstance().store(a1);
+				  "pacosalas@gmail.com", "682548111");
+		 DBManager.getInstance().store(a1);
 				  
 		Set<Producto> lista1 = new HashSet<>();
 
