@@ -3,12 +3,17 @@ package com.atenea.gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.atenea.data.Administrador;
+import com.atenea.data.AdministradorConectado;
 import com.atenea.data.Empleado;
 import com.atenea.data.EmpleadoConectado;
 import com.atenea.db.DBException;
 import com.atenea.db.DBManager;
 import com.atenea.gui.registrar.RegistroEmpleado;
+import com.atenea.gui.registrar.RegistroFactura;
 import com.atenea.gui.tablas.VisualizarFacturas;
+import com.atenea.rsh.AdministradorRSH;
 import com.atenea.rsh.EmpleadoRSH;
 
 import java.awt.SystemColor;
@@ -25,12 +30,14 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
 
 public class LoginEmpleado extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textEmpleado;
 	private JPasswordField contrasenaField;
+	private JCheckBox chckbxAdmin;
 	private final JLabel lblContrasena = new JLabel("Contraseña:");
 
 	/**
@@ -52,7 +59,6 @@ public class LoginEmpleado extends JFrame {
 
 	public LoginEmpleado() {
 		this.setTitle("Iniciar sesión Empleado");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 631, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,6 +72,10 @@ public class LoginEmpleado extends JFrame {
 		panel.setBounds(0, 0, 615, 43);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		chckbxAdmin = new JCheckBox("Admin\r\n");
+		chckbxAdmin.setBounds(107, 182, 97, 23);
+		contentPane.add(chckbxAdmin);
 
 		JLabel login = new JLabel("LOGIN");
 		login.setBounds(268, 11, 77, 32);
@@ -114,7 +124,7 @@ public class LoginEmpleado extends JFrame {
 							if (EmpleadoConectado.getUserEmpleado().isEmpty()) {
 								EmpleadoConectado.getUserEmpleado().add(empleado);
 								setVisible(false);
-								new VisualizarFacturas().setVisible(true);
+								new RegistroFactura().setVisible(true);
 							} else {
 								for (Empleado u : EmpleadoConectado.getUserEmpleado()) {
 									if (empleado.equals(u)) {
@@ -124,12 +134,37 @@ public class LoginEmpleado extends JFrame {
 									} else {
 										EmpleadoConectado.getUserEmpleado().add(empleado);
 										setVisible(false);
-										new VisualizarFacturas().setVisible(true);
+										new RegistroFactura().setVisible(true);
 									}
 								}
 							}
 						}
 					}
+					
+					Administrador adm=null;
+					AdministradorRSH rsh = AdministradorRSH.getInstance();
+					List<Administrador> ad = rsh.verAdministrador();
+					
+					for(Administrador a : ad) {
+						if(chckbxAdmin.isSelected()) {
+							if(textEmpleado.equals(a.getEmail())) {
+									
+								adm=a;
+								
+								if (!Arrays.equals(adm.getContrasena().toCharArray(), contrasenaField.getPassword()))
+									JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+								else {
+									if (AdministradorConectado.getUserAdmin().isEmpty()) {
+										AdministradorConectado.getUserAdmin().add(adm);
+										setVisible(false);
+										RegistroEmpleado emp=new RegistroEmpleado();	
+										emp.setVisible(true);
+							}
+								}
+							}
+							}
+					}
+	
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -147,7 +182,7 @@ public class LoginEmpleado extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				setVisible(false);
 			}
 		});
 
@@ -164,5 +199,7 @@ public class LoginEmpleado extends JFrame {
 		;
 		registrarse.setBounds(10, 219, 103, 31);
 		contentPane.add(registrarse);
+		
+		
 	}
 }

@@ -45,7 +45,6 @@ public class RegistroCliente extends JFrame {
 	public RegistroCliente() {
 
 		setTitle("Registro Cliente");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 631, 375);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -132,7 +131,7 @@ public class RegistroCliente extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				setVisible(false);
 			}
 		});
 

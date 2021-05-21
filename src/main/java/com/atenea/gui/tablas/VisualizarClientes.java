@@ -55,7 +55,6 @@ public class VisualizarClientes extends JFrame{
 	private void initialize() {
 		this.setTitle("Visualizar Clientes");
 		setBounds(100, 100, 827, 461);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		

@@ -29,6 +29,9 @@ import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
+import com.atenea.gui.tablas.VisualizarClientes;
+import com.atenea.gui.tablas.VisualizarEmpleado;
+import com.atenea.gui.tablas.VisualizarProductos;
 import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
 import com.atenea.rsh.FacturaRSH;
@@ -64,7 +67,6 @@ public class RegistroFactura extends JFrame {
 	public RegistroFactura() {
 
 		setTitle("Registro Factura");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 631, 375);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -157,7 +159,7 @@ public class RegistroFactura extends JFrame {
 
 		JMenuItem registrarProducto = new JMenuItem("Registrar Producto");
 		menuProductos.add(registrarProducto);
-
+		
 		registrarProducto.addActionListener(new ActionListener() {
 
 			@Override
@@ -178,6 +180,48 @@ public class RegistroFactura extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				RegistroCliente window2 = new RegistroCliente();
+				window2.setVisible(true);
+				// setVisible(false);
+			}
+		});
+		
+		JMenuItem verProductos = new JMenuItem("Ver Productos");
+		menuProductos.add(verProductos);
+		
+		verProductos.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VisualizarProductos window2 = new VisualizarProductos();
+				window2.setVisible(true);
+				// setVisible(false);
+			}
+		});
+		
+		JMenuItem verClientes = new JMenuItem("Ver Clientes");
+		menuClientes.add(verClientes);
+		
+		verClientes.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VisualizarClientes window2 = new VisualizarClientes();
+				window2.setVisible(true);
+				// setVisible(false);
+			}
+		});
+		
+		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
+		menuEmpleados.add(verEmpleados);
+		
+		verEmpleados.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VisualizarEmpleado window2 = new VisualizarEmpleado();
 				window2.setVisible(true);
 				// setVisible(false);
 			}
@@ -210,7 +254,9 @@ public class RegistroFactura extends JFrame {
 														// de producto
 					System.out.println(spin.getValue());
 					for (int i = 0; i < (int) spin.getValue(); i++) {
+						System.out.println(productos.get(ii));
 						prodctServ.add(productos.get(ii));
+						System.out.println(prodctServ);
 
 					}
 					ii++;
@@ -219,7 +265,7 @@ public class RegistroFactura extends JFrame {
 
 				Factura factura = new Factura(seleccionComboBoxEmpleado(), seleccionComboBoxCliente(), prodctServ,
 						fechaActual);
-				// FacturaRSH.getInstance().guardarFactura(factura);
+				FacturaRSH.getInstance().guardarFactura(factura);
 				System.out.println(factura);
 			}
 

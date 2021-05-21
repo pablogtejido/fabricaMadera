@@ -31,7 +31,6 @@ public class VentanaInicio extends JFrame {
 			public void run() {
 				try {
 					VentanaInicio frame = new VentanaInicio();
-					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -82,22 +81,9 @@ public class VentanaInicio extends JFrame {
 
 		});
 
-		btnCliente = new JButton("Iniciar sesion como cliente");
-		btnCliente.setForeground(Color.WHITE);
-		btnCliente.setFont(new Font("Showcard Gothic", Font.PLAIN, 16));
-		btnCliente.setBackground(new Color(72, 61, 139));
-		btnCliente.setBounds(198, 382, 381, 29);
-		contentPane.add(btnCliente);
-		btnCliente.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				VisualizarClientes cl = new VisualizarClientes();
-				cl.setVisible(true);
 
-			}
 
-		});
 
 		// lblBackground
 		JLabel lblBackground = new JLabel("");

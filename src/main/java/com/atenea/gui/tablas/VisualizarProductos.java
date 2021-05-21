@@ -61,7 +61,6 @@ public class VisualizarProductos extends JFrame {
 	 */
 	private void initialize() {
 		setBounds(100, 100, 827, 461);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		

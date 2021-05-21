@@ -46,7 +46,6 @@ public class ModificarCliente extends JFrame{
 	
 	public ModificarCliente(final Cliente cliente) {
 		setTitle("Modificar Cliente");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 631, 375);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -139,7 +138,7 @@ public class ModificarCliente extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				setVisible(false);
 			}
 		});
 

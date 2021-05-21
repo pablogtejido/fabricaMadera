@@ -59,7 +59,6 @@ public class RegistrarProducto extends JFrame{
 	 */
 	private void initialize() {
 		setBounds(100, 100, 626, 635);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
@@ -162,8 +161,7 @@ public class RegistrarProducto extends JFrame{
 		cerrar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				System.exit(0);
+				setVisible(false);
 			}
 		});
 		cerrar.setForeground(Color.WHITE);

@@ -35,7 +35,6 @@ public class ModificarEmpleado extends JFrame{
 	
 	public ModificarEmpleado(final Empleado empleado) {
 		setTitle("Modificar Empleado");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 631, 575);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -199,7 +198,7 @@ public class ModificarEmpleado extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				setVisible(false);
 			}
 		});
 

@@ -67,7 +67,6 @@ public class VisualizarEmpleado extends JFrame {
 	private void initialize() {
 		this.setTitle("Visualizar Empleados");
 		setBounds(100, 100, 1137, 461);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
 
 		JPanel titulopanel = new JPanel();

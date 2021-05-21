@@ -19,6 +19,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import com.atenea.db.DBManager;
 import com.atenea.gui.LoginEmpleado;
+import com.atenea.gui.tablas.VisualizarEmpleado;
 import com.atenea.rsh.EmpleadoRSH;
 
 import javax.swing.JPasswordField;
@@ -67,7 +68,6 @@ public class RegistroEmpleado extends JFrame {
 	private void initialize() {
 		this.setTitle("Registro Empleado");
 		setBounds(100, 100, 625, 824);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 
@@ -212,6 +212,10 @@ public class RegistroEmpleado extends JFrame {
 					JOptionPane.showMessageDialog(null, "Este Empleado ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
 					System.out.println("ERROR");
 				}
+				
+			VisualizarEmpleado em = new VisualizarEmpleado();
+			setVisible(false);
+			em.setVisible(true);
 
 			}
 		});
@@ -230,7 +234,7 @@ public class RegistroEmpleado extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				setVisible(false);
 			}
 		});
 

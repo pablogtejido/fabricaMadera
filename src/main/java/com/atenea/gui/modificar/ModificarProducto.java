@@ -39,7 +39,6 @@ public class ModificarProducto extends JFrame{
 	 */
 	public ModificarProducto(final Producto prod) {
 		setBounds(100, 100, 631, 580);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
@@ -177,7 +176,7 @@ public class ModificarProducto extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				setVisible(false);
 			}
 		});
 		cerrar.setForeground(Color.WHITE);
