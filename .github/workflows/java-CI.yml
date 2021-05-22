@@ -33,6 +33,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v2
       - name: Get the html
         run: git clone https://github.com/jothepro/doxygen-awesome-css.git
       - name: Execute doxygen
