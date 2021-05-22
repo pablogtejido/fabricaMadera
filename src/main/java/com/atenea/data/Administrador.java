@@ -1,7 +1,6 @@
 package com.atenea.data;
 
 import java.util.Objects;
-
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
@@ -9,25 +8,30 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+
+/**
+*El administrador es quien se va a encargar de hacer las modificaciones necesarias del Empleado; es decir, podrá cambiar
+*los datos. Así mismo, podrá modificar los clientes, las facturas y los productos.
+ */
+
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Administrador {
 
 	@PrimaryKey
-	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
-	private int id;
+	private String dni;
 	private String contrasena;
 	private String nombre;
 	private String apellido;
 	private String email;
 	private String telefono;
 
-	public int getId() {
-		return id;
+	public String getDni() {
+		return dni;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 	public String getContrasena() {
@@ -74,8 +78,9 @@ public class Administrador {
 		super();
 	}
 
-	public Administrador(String contrasena, String nombre, String apellido, String email, String telefono) {
+	public Administrador(String dni, String contrasena, String nombre, String apellido, String email, String telefono) {
 		super();
+		this.dni = dni;
 		this.contrasena = contrasena;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -85,7 +90,7 @@ public class Administrador {
 
 	@Override
 	public String toString() {
-		return "Administrador [id=" + id + ", contrasena=" + contrasena + ", nombre=" + nombre + ", apellido="
+		return "Administrador [dni=" + dni + ", contrasena=" + contrasena + ", nombre=" + nombre + ", apellido="
 				+ apellido + ", email=" + email + ", telefono=" + telefono + "]";
 	}
 
@@ -97,14 +102,14 @@ public class Administrador {
 			return false;
 		}
 		Administrador administrador = (Administrador) o;
-		return id == administrador.id && Objects.equals(contrasena, administrador.contrasena)
+		return dni == administrador.dni && Objects.equals(contrasena, administrador.contrasena)
 				&& Objects.equals(nombre, administrador.nombre) && Objects.equals(apellido, administrador.apellido)
 				&& Objects.equals(email, administrador.email) && Objects.equals(telefono, administrador.telefono);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, contrasena, nombre, apellido, email, telefono);
+		return Objects.hash(dni, contrasena, nombre, apellido, email, telefono);
 	}
 
 }

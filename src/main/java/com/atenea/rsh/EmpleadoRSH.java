@@ -49,10 +49,10 @@ public class EmpleadoRSH {
     }
 
     /**
-     * Hacer una petición PUT al servidor para guardar el empleado.
+     * Hacer una petición PUT al servidor para guardar el empleado
      * 
      * @param Empleado a guardar.
-     * @return <Code>Empleado</Code> Empleado con el dni ya guardado en la DB.
+     * @return <Code>Empleado</Code> Empleado con el dni ya guardado en la DB
      */
     public Empleado guardarEmpleado(Empleado empleado) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
@@ -65,7 +65,7 @@ public class EmpleadoRSH {
      * Modificar el empleado en el servidor
      * 
      * @param <Code>Empleado</Code> Empleado a modificar
-     * @return <Code>Empleado</Code> Empleaco con el dni ya guardado en la BD
+     * @return <Code>Empleado</Code> Empleado con el dni ya guardado en la BD
      */
     public Empleado modificarEmpleado(Empleado empleado) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);

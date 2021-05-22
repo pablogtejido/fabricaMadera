@@ -3,25 +3,19 @@ package com.atenea.gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import com.atenea.data.Administrador;
 import com.atenea.data.AdministradorConectado;
 import com.atenea.data.Empleado;
 import com.atenea.data.EmpleadoConectado;
-import com.atenea.db.DBException;
-import com.atenea.db.DBManager;
 import com.atenea.gui.registrar.RegistroEmpleado;
-import com.atenea.gui.registrar.RegistroFactura;
 import com.atenea.gui.tablas.VisualizarFacturas;
 import com.atenea.rsh.AdministradorRSH;
 import com.atenea.rsh.EmpleadoRSH;
-
 import java.awt.SystemColor;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
@@ -31,6 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
+
 
 public class LoginEmpleado extends JFrame {
 
@@ -59,7 +54,7 @@ public class LoginEmpleado extends JFrame {
 
 	public LoginEmpleado() {
 		this.setTitle("Iniciar sesión Empleado");
-		setBounds(100, 100, 631, 300);
+		setBounds(100, 100, 631, 327);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -83,8 +78,8 @@ public class LoginEmpleado extends JFrame {
 		login.setForeground(SystemColor.text);
 		panel.add(login);
 
-		JLabel lblEmpleado = new JLabel("Email empleado:");
-		lblEmpleado.setBounds(107, 107, 103, 14);
+		JLabel lblEmpleado = new JLabel("Email Empleado/Admin:");
+		lblEmpleado.setBounds(58, 107, 152, 14);
 		contentPane.add(lblEmpleado);
 
 		textEmpleado = new JTextField();
@@ -193,7 +188,7 @@ public class LoginEmpleado extends JFrame {
 		}
 			}
 		});
-		btniniciar.setBounds(253, 188, 103, 37);
+		btniniciar.setBounds(250, 238, 103, 37);
 		contentPane.add(btniniciar);
 		
 
@@ -203,7 +198,7 @@ public class LoginEmpleado extends JFrame {
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.setForeground(Color.WHITE);
 		cerrar.setBackground(new Color(72, 61, 139));
-		cerrar.setBounds(525, 219, 80, 31);
+		cerrar.setBounds(525, 244, 80, 31);
 		contentPane.add(cerrar);
 		cerrar.addActionListener(new ActionListener() {
 
@@ -224,7 +219,7 @@ public class LoginEmpleado extends JFrame {
 		registrarse.setForeground(Color.WHITE);
 		registrarse.setBackground(new Color(72, 61, 139));
 		;
-		registrarse.setBounds(10, 219, 103, 31);
+		registrarse.setBounds(10, 244, 103, 31);
 		contentPane.add(registrarse);
 		
 		

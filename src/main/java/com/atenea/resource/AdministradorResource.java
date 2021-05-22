@@ -40,10 +40,10 @@ public class AdministradorResource {
 	}
 
 	@DELETE
-	@Path("/ids/{administradorId}")
+	@Path("/ids/{administradorDni}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String eliminarAdministrador(@PathParam("administradorId") int id) {
-		DBManager.getInstance().deleteAdministradorById(id);
+	public String eliminarAdministrador(@PathParam("administradorDni") String dni) {
+		DBManager.getInstance().deleteAdministradorByDni(dni);
 		return "Done";
 	}
 

@@ -35,7 +35,7 @@ public class ClienteRSH {
     }
 
     /**
-     * Ver todas los clientes del servidor.
+     * Ver todos los clientes del servidor
      * 
      * @return <Code>List<Cliente></Code> Lista con clientes
      */
@@ -48,10 +48,10 @@ public class ClienteRSH {
     }
 
     /**
-     * Hacer una petición PUT al servidor para guardar el cliente.
+     * Hacer una petición PUT al servidor para guardar el cliente
      * 
-     * @param Cliente a guardar.
-     * @return <Code>Cliente</Code> Cliente con el dni ya guardado en la DB.
+     * @param Cliente a guardar
+     * @return <Code>Cliente</Code> Cliente con el dni ya guardado en la DB
      */
     public Cliente guardarCliente(Cliente cliente) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);

@@ -11,6 +11,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import com.atenea.Main;
 import com.atenea.data.Administrador;
+import com.atenea.data.Empleado;
 import com.atenea.rsh.AdministradorRSH;
 import org.junit.experimental.categories.Category;
 
@@ -39,22 +40,22 @@ public class AdministradorResourceTest {
 		rsh = AdministradorRSH.getInstance();
 
 		// Set Data
-		administrador1 =new Administrador("1234", "Paco", "Salas",
+		administrador1 =new Administrador("45894152P","1234", "Paco", "Salas",
 				  "pacosalas2@gmail.com", "682548111");
 		
-		administrador2 =new Administrador("1234", "Juan", "Lopez",
+		administrador2 =new Administrador("45414754M", "1234", "Juan", "Lopez",
 				  "juanlopez@gmail.com", "669584412");
 		
-		administrador3 =new Administrador("1234", "Aimar", "Gomez",
+		administrador3 =new Administrador("7854125Q","1234", "Aimar", "Gomez",
 				  "aimargomez@gmail.com", "748512300");
 		
-		administrador4 =new Administrador("1234", "Asier", "Muñoz",
+		administrador4 =new Administrador("55236987I","1234", "Asier", "Muñoz",
 				  "asierMuñoz@gmail.com", "695412111");
 		
-		administrador5 =new Administrador("1234", "Carlos", "Suso",
+		administrador5 =new Administrador("1245896W","1234", "Carlos", "Suso",
 				  "carlosuso@gmail.com", "663332211");
 		
-		administrador6 =new Administrador("1234", "Luis", "Gonzalez",
+		administrador6 =new Administrador("2020528Q","1234", "Luis", "Gonzalez",
 				  "luizgonzalez@gmail.com", "665412287");
 
 	}
@@ -69,11 +70,11 @@ public class AdministradorResourceTest {
 		// Store test
 		System.out.println(
 				"================================================Creating data ...================================================");
-		administrador1.setId(rsh.guardarAdministrador(administrador1).getId());
-		administrador2.setId(rsh.guardarAdministrador(administrador2).getId());
-		administrador3.setId(rsh.guardarAdministrador(administrador3).getId());
-		administrador4.setId(rsh.guardarAdministrador(administrador4).getId());
-		administrador5.setId(rsh.guardarAdministrador(administrador5).getId());
+		administrador1.setDni(rsh.guardarAdministrador(administrador1).getDni());
+		administrador2.setDni(rsh.guardarAdministrador(administrador2).getDni());
+		administrador3.setDni(rsh.guardarAdministrador(administrador3).getDni());
+		administrador4.setDni(rsh.guardarAdministrador(administrador4).getDni());
+		administrador5.setDni(rsh.guardarAdministrador(administrador5).getDni());
 		
 	}
 
@@ -120,7 +121,7 @@ public class AdministradorResourceTest {
 	public void testSubirAdministrador() {
 		System.out.println(
 				"================================================Test subir administrador================================================");
-		administrador6.setId(rsh.guardarAdministrador(administrador6).getId());
+		administrador6.setDni(rsh.guardarAdministrador(administrador6).getDni());
 		adminBD = rsh.verAdministrador();
 		assertEquals(adminBD.size(), 6);
 
@@ -134,27 +135,36 @@ public class AdministradorResourceTest {
 		assertTrue(administrador6_found);
 	}
 
-	@Test
-	public void testEliminarAdministrador() {
-		System.out.println(
-				"================================================Test eliminar administrador================================================");
-		adminBD = rsh.verAdministrador();
-		boolean administrador_deleted_found = false;
-		// Obtener un admin aleatorio.
-		Administrador a = adminBD.get((int) Math.floor(Math.random() * 4));
-		// Borramos el admin aleatorio.
-		rsh.borrarAdministrador(a);
-		// Actualizamos los administradores
-		adminBD = rsh.verAdministrador();
-		assertEquals(adminBD.size(), 4);
-		// Buscamos el admin eliminado, si no esta significa que ha sido borrado.
-		for (Administrador adminis : adminBD) {
-			if (a.equals(adminis)) {
-				administrador_deleted_found = true;
-			}
-		}
-		// See the ! at the start.
-		assertTrue(!administrador_deleted_found);
 
-	}
+    @Test
+    public void testEliminarAdministrador() {
+        System.out.println(
+                "================================================Test eliminar administrador================================================");
+        rsh.borrarAdministrador(administrador1);
+        List<Administrador> administradoresBD = rsh.verAdministrador();
+        assertEquals(administradoresBD.size(), 4);
+
+        boolean administrador1_found = false;
+        boolean administrador2_found = false;
+        boolean administrador3_found = false;
+        boolean administrador4_found = false;
+        boolean administrador5_found = false;
+
+        for (Administrador adm : administradoresBD) {
+            if (adm.equals(administrador1)) {
+            	administrador1_found = true;
+            } else if (adm.equals(administrador2)) {
+            	administrador2_found = true;
+            } else if (adm.equals(administrador3)) {
+            	administrador3_found = true;
+            } else if (adm.equals(administrador4)) {
+            	administrador4_found = true;
+            } else if (adm.equals(administrador5)) {
+            	administrador5_found = true;
+            }
+        }
+        // See the ! at the start.
+        assertTrue(!administrador1_found && administrador2_found && administrador3_found && administrador4_found && administrador5_found);
+
+    }
 }

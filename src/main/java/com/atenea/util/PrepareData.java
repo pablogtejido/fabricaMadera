@@ -1,11 +1,8 @@
 package com.atenea.util;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 import com.atenea.data.Administrador;
 import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
@@ -91,7 +88,7 @@ public class PrepareData {
 		 * "ainhoa585@gmail.com", "699958457"); DBManager.getInstance().store(a3);
 		 */
 
-		 Administrador a1 = new Administrador("1234", "Paco", "Salas",
+		 Administrador a1 = new Administrador("45748121ñ","1234", "Paco", "Salas",
 				  "pacosalas@gmail.com", "682548111");
 		 DBManager.getInstance().store(a1);
 				  

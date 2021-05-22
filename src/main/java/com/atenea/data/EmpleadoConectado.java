@@ -7,6 +7,12 @@ public class EmpleadoConectado {
 
 	private static List<Empleado> users = new ArrayList<Empleado>();
 
+	/**
+	 * Get empleados
+     * 
+     * @return lista de clientes
+	 */
+	
 	public static List<Empleado> getUserEmpleado() {
 		return users;
 	}

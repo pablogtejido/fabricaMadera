@@ -1,12 +1,8 @@
 package com.atenea.rsh;
 
 import java.util.List;
-
 import org.glassfish.jersey.client.HttpUrlConnectorProvider;
-
 import com.atenea.data.Administrador;
-import com.atenea.data.Cliente;
-
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
@@ -35,9 +31,9 @@ public class AdministradorRSH {
     }
 
     /**
-     * Ver todas los clientes del servidor.
+     * Ver todos los administradores
      * 
-     * @return <Code>List<Cliente></Code> Lista con clientes
+     * @return <Code>List<Administrador></Code> Lista con administradores
      */
     public List<Administrador> verAdministrador() {
         Invocation.Builder ib = target.request(); // Construir la petición
@@ -48,10 +44,10 @@ public class AdministradorRSH {
     }
 
     /**
-     * Hacer una petición PUT al servidor para guardar el cliente.
+     * Hacer una petición PUT al servidor para guardar el administrador
      * 
-     * @param Cliente a guardar.
-     * @return <Code>Cliente</Code> Cliente con el dni ya guardado en la DB.
+     * @param Administrador a guardar
+     * @return <Code>Administrador</Code> Administrador con el id ya guardado en la DB
      */
     public Administrador guardarAdministrador(Administrador admin) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
@@ -61,10 +57,10 @@ public class AdministradorRSH {
     }
 
     /**
-     * Modificar el cliente en el servidor
+     * Modificar el administrador
      * 
-     * @param <Code>Cliente</Code> Cliente a modificar
-     * @return <Code>Cliente</Code> Cliente con el dni ya guardado en la BD
+     * @param <Code>Administrador</Code> Administrador a modificar
+     * @return <Code>Administrador</Code> Administrador con el id ya guardado en la BD
      */
     public Administrador modificarAdministrador(Administrador admin) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
@@ -75,12 +71,12 @@ public class AdministradorRSH {
     }
 
     /**
-     * Borrar un cliente de la BD
+     * Borrar un Administrador de la BD
      * 
-     * @param <Code>Cliente</Code> Cliente a borrar
+     * @param <Code>Administrador</Code> Administrador a borrar
      */
     public void borrarAdministrador(Administrador admin) {
-        Invocation.Builder ib = target.path("/ids/" + admin.getId()).request();
+        Invocation.Builder ib = target.path("/ids/" + admin.getDni()).request();
         ib.delete();
     }
 }

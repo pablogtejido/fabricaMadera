@@ -1,4 +1,4 @@
-# Fablica de madera
+# Fabrica de madera
 
 ## Como construir el proyecto
 

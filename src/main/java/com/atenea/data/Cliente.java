@@ -1,7 +1,6 @@
 package com.atenea.data;
 
 import java.util.Objects;
-
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;

@@ -884,7 +884,7 @@ public class DBManager {
             Iterator<Administrador> iter = e.iterator();
             while (iter.hasNext()) {
                 Administrador administrador_a_cambiar = (Administrador) iter.next();
-                if (administrador_a_cambiar.getId() == administadror.getId()) {
+                if (administrador_a_cambiar.getDni().equals(administadror.getDni())) {
                     LOG.log(Level.INFO, "* Updating: {0}\n* To: {1}",
                             new Object[] { administrador_a_cambiar, administadror });
                     administrador_a_cambiar.setContrasena(administadror.getContrasena());
@@ -906,18 +906,18 @@ public class DBManager {
         }
     }
 
-    public void deleteAdministradorById(int id) {
+    public void deleteAdministradorByDni(String dni) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
-            LOG.log(Level.INFO, "Eliminando administrador con id: {0}", id);
+            LOG.log(Level.INFO, "Eliminando administrador con dni: {0}", dni);
             tx.begin();
 
             Extent<Administrador> e = pm.getExtent(Administrador.class, true);
             Iterator<Administrador> iter = e.iterator();
             while (iter.hasNext()) {
                 Administrador administrador = (Administrador) iter.next();
-                if (administrador.getId() == id) {
+                if (administrador.getDni().equals(dni)) {
                     pm.deletePersistent(administrador);
                 }
             }

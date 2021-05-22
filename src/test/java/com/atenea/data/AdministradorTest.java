@@ -22,7 +22,7 @@ public class AdministradorTest {
 
 	@Before
 	public void setUp() throws Exception {
-		admin = new Administrador("1234", "Juan", "Lopez", "juanlopez@gmail.com", "658458111");
+		admin = new Administrador("45884411L","1234", "Juan", "Lopez", "juanlopez@gmail.com", "658458111");
 	}
 
 	@After

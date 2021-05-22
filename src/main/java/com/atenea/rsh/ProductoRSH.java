@@ -35,7 +35,7 @@ public class ProductoRSH {
     }
 
     /**
-     * Ver todas las facturas del servidor.
+     * Ver todos los productos del servidor
      * 
      * @return <Code>List<Producto></Code> Lista con productos
      */
@@ -49,10 +49,10 @@ public class ProductoRSH {
     }
 
     /**
-     * Hacer una petición PUT al servidor para guardar un producto.
+     * Hacer una petición PUT al servidor para guardar un producto
      * 
-     * @param <Code>Producto</Code> Producto a guardar.
-     * @return <Code>Producto</Code> Producto con el id ya guardado en la DB.
+     * @param <Code>Producto</Code> Producto a guardar
+     * @return <Code>Producto</Code> Producto con el id ya guardado en la DB
      */
     public Producto guardarProducto(Producto producto) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
@@ -62,10 +62,10 @@ public class ProductoRSH {
     }
 
     /**
-     * Modificar la factura en el servidor
+     * Modificar el producto en el servidor
      * 
-     * @param <Code>Factura</Code> Factura a modificar.
-     * @return <Code>Factura</Code> Factura con el id ya guardado en la DB.
+     * @param <Code>Producto</Code> Producto a modificar
+     * @return <Code>Producto</Code> Producto con el id ya guardado en la DB
      */
     public Producto modificarProducto(Producto producto) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
@@ -75,9 +75,9 @@ public class ProductoRSH {
     }
 
     /**
-     * Borrar una factura de la BD.
+     * Borrar una Producto de la BD
      * 
-     * @param <Code>Factura</Code> Factura a borrar.
+     * @param <Code>Producto</Code> Producto a borrar
      */
     public void borrarProducto(Producto producto) {
         Invocation.Builder ib = target.path("/ids/" + producto.getId()).request();

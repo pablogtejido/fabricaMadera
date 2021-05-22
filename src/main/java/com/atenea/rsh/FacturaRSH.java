@@ -35,7 +35,7 @@ public class FacturaRSH {
     }
 
     /**
-     * Ver todas las facturas del servidor.
+     * Ver todas las facturas del servidor
      * 
      * @return <Code>List<Factura></Code> Lista con facturas
      */
@@ -48,10 +48,10 @@ public class FacturaRSH {
     }
 
     /**
-     * Hacer una petición PUT al servidor para guardar la factura.
+     * Hacer una petición PUT al servidor para guardar la factura
      * 
-     * @param <Code>Factura</Code> Factura a guardar.
-     * @return <Code>Factura</Code> Factura con el id ya guardado en la DB.
+     * @param <Code>Factura</Code> Factura a guardar
+     * @return <Code>Factura</Code> Factura con el id ya guardado en la DB
      */
     public Factura guardarFactura(Factura factura) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
@@ -63,8 +63,8 @@ public class FacturaRSH {
     /**
      * Modificar la factura en el servidor
      * 
-     * @param <Code>Factura</Code> Factura a modificar.
-     * @return <Code>Factura</Code> Factura con el id ya guardado en la DB.
+     * @param <Code>Factura</Code> Factura a modificar
+     * @return <Code>Factura</Code> Factura con el id ya guardado en la DB
      */
     public Factura modificarFactura(Factura factura) {
         Invocation.Builder ib = target.request(MediaType.APPLICATION_JSON);
@@ -75,9 +75,9 @@ public class FacturaRSH {
     }
 
     /**
-     * Borrar una factura de la BD.
+     * Borrar una factura de la BD
      * 
-     * @param <Code>Factura</Code> Factura a borrar.
+     * @param <Code>Factura</Code> Factura a borrar
      */
     public void borrarFactura(Factura factura) {
         Invocation.Builder ib = target.path("/ids/" + factura.getId()).request();
