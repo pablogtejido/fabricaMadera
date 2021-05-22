@@ -25,6 +25,16 @@
 var NAVTREE =
 [
   [ "Fabrica de madera", "index.html", [
+    [ "Fablica de madera", "index.html", [
+      [ "Como construir el proyecto", "index.html#autotoc_md1", [
+        [ "Clonar el repositorio", "index.html#autotoc_md2", null ],
+        [ "Crear esquema y usuario", "index.html#autotoc_md3", null ],
+        [ "Compilar", "index.html#autotoc_md4", null ],
+        [ "Crear las tablas", "index.html#autotoc_md5", null ],
+        [ "Verificar el proyecto", "index.html#autotoc_md6", null ]
+      ] ],
+      [ "Ejecutar el proyecto", "index.html#autotoc_md7", null ]
+    ] ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ]
     ] ],
@@ -46,9 +56,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_administrador_8java.html",
-"classcom_1_1atenea_1_1data_1_1_factura_test.html#ac477d6f1f9aa1d2654238756d2e47ef4",
-"functions_func_d.html"
+"",
+"classcom_1_1atenea_1_1data_1_1_factura_test.html#ab4c622cf8f58a50834580713830bb5b7",
+"functions_func_b.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
