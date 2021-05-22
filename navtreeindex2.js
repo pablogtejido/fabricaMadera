@@ -1,7 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"functions_func_b.html":[1,3,1,1],
-"functions_func_c.html":[1,3,1,2],
 "functions_func_d.html":[1,3,1,3],
 "functions_func_e.html":[1,3,1,4],
 "functions_func_f.html":[1,3,1,5],
@@ -45,5 +43,7 @@ var NAVTREEINDEX2 =
 "namespacecom_1_1atenea_1_1rsh.html":[0,0,1,0,4],
 "namespacecom_1_1atenea_1_1util.html":[0,0,1,0,5],
 "namespaces.html":[0,0],
-"pages.html":[]
+"pages.html":[],
+"":[0,0,1,0],
+"":[0,0,1]
 };
