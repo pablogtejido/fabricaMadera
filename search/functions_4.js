@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['eliminaradministrador_471',['eliminarAdministrador',['../classcom_1_1atenea_1_1resource_1_1_administrador_resource.html#a11468cc5782e183039d134cdc5cab910',1,'com::atenea::resource::AdministradorResource']]],
+  ['eliminaradministrador_471',['eliminarAdministrador',['../classcom_1_1atenea_1_1resource_1_1_administrador_resource.html#aefbf3831722fb806e7ad1ba53e744822',1,'com::atenea::resource::AdministradorResource']]],
   ['eliminarcliente_472',['eliminarCliente',['../classcom_1_1atenea_1_1resource_1_1_cliente_resource.html#af946774aaca6c54c530437898e75395d',1,'com::atenea::resource::ClienteResource']]],
   ['eliminarempleado_473',['eliminarEmpleado',['../classcom_1_1atenea_1_1resource_1_1_empleados_resource.html#a92b807b9daabfc418e7323d9f4b8807e',1,'com::atenea::resource::EmpleadosResource']]],
   ['eliminarfactura_474',['eliminarFactura',['../classcom_1_1atenea_1_1resource_1_1_factura_resource.html#a2ef5b05307f1d85e1dbd202354c671b2',1,'com::atenea::resource::FacturaResource']]],
