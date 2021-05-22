@@ -6,16 +6,18 @@ import java.util.List;
 public class AdministradorConectado {
 	private static List<Administrador> users = new ArrayList<Administrador>();
 
-	/**
-	 * Get administradores
+	 /** Get administradores
      * 
      * @return lista de administradores
 	 */
+
 	public static List<Administrador> getUserAdmin() {
 		return users;
 	}
 	/**
-	 * Insertar administradores
+	 * Insertar administradores a la lista
+	 * 
+	 * @param ad 
 	 * 
 	 */
 	public static void addUserAdmin(Administrador ad) {

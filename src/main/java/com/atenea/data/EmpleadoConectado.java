@@ -10,14 +10,20 @@ public class EmpleadoConectado {
 	/**
 	 * Get empleados
      * 
-     * @return lista de clientes
+     * @return lista de empleados
 	 */
-	
+
 	public static List<Empleado> getUserEmpleado() {
 		return users;
 	}
 
-	public static void addUserEmpleado(Empleado u) {
-		users.add(u);
+	/**
+	 * Insertar empleados a la lista
+	 * 
+	 * @param e 
+	 */
+	
+	public static void addUserEmpleado(Empleado e) {
+		users.add(e);
 	}
 }

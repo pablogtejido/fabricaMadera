@@ -11,6 +11,12 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+/**
+ * Cada producto tendrá asociado un id, un nombre, un precio
+ * un peso, una medida, un grosor, una opcion de tener añadidos y una lista de facturas 
+ * 
+ */
+
 @PersistenceCapable(detachable = "true")
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Producto {

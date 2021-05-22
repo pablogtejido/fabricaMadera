@@ -1,6 +1,13 @@
 package com.atenea.data;
 
 import java.util.Objects;
+
+
+/**
+ * Cada cliente será identificado por su dni. Además, se almacenan su nombre, apellidos y contraseña
+ * 
+ */
+
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;

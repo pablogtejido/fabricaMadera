@@ -1,5 +1,6 @@
 package com.atenea.db;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -37,6 +38,18 @@ public class DBManager {
         pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
     }
 
+
+	/**
+    * Obtener empleado en base a su email 
+    * 
+    * @param email 
+    * 
+    * @throws DBException
+    * 
+    * @return empleado
+    * 
+    */
+    
     public Empleado getEmpleadoPorEmail(String email) throws DBException {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tran = pm.currentTransaction();
@@ -98,6 +111,14 @@ public class DBManager {
             pm.close();
         }
     }
+    
+	/**
+     * Almacenar un objeto en la base de datos
+     * 
+     * @param object 
+     * 
+     * 
+     */
 
     public void storeObjectInDB(Object object) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -253,7 +274,7 @@ public class DBManager {
     /**
      * Guardar un administrador en la DB
      * 
-     * @param factura
+     * @param admin
      */
 
     public void store(Administrador admin) {
@@ -272,7 +293,7 @@ public class DBManager {
     /**
      * Borrar un producto de la DB
      * 
-     * @param cliente
+     * @param producto
      */
     public void delete(Producto producto) {
         DBManager.getInstance().deleteObjectFromDB(producto);
@@ -291,8 +312,10 @@ public class DBManager {
      * Obtener un empleado en base a su dni
      * 
      * @param dni
-     * @return
+     * 
+     * @return empleado
      */
+    
     public Empleado getEmpleado(String DNI) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tran = pm.currentTransaction();
@@ -329,8 +352,12 @@ public class DBManager {
     /**
      * Obtener un cliente en base a su dni
      * 
+     * @throws DBException
+     * 
      * @param dni
-     * @return
+     * 
+     * @return cliente
+     * 
      */
     public Cliente getCliente(String dni) throws DBException {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -368,7 +395,8 @@ public class DBManager {
      * Obtener un producto en base a su id
      * 
      * @param id
-     * @return
+     * 
+     * @return producto
      */
     public Producto getProducto(long id) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -549,7 +577,7 @@ public class DBManager {
     /**
      * Actualizar un empleado existente
      * 
-     * @param producto
+     * @param empleado
      */
     public void updateEmpleado(Empleado empleado) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -619,6 +647,12 @@ public class DBManager {
             pm.close();
         }
     }
+    
+    /**
+     * Get facturas de la BD
+     * 
+     * @return lista de facturas
+     */
 
     public List<Factura> getFacturas() {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -666,7 +700,7 @@ public class DBManager {
     /**
      * Actualizar una factura existente
      * 
-     * @param producto
+     * @param factura
      */
     public void updateFactura(Factura factura) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -838,6 +872,12 @@ public class DBManager {
             pm.close();
         }
     }
+    
+    /**
+     * Get administradores de la DB
+     * 
+     * @return lista de administradores
+     */
 
     public List<Administrador> getAdministrador() {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -871,6 +911,12 @@ public class DBManager {
         return administradores;
 
     }
+    
+    /**
+     * Actualizar un administrador existente
+     * 
+     * @param administrador
+     */
 
     public void updateAdministrador(Administrador administadror) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -905,6 +951,12 @@ public class DBManager {
             pm.close();
         }
     }
+    
+    /**
+     * Borra un administrador en base a su id de la DB
+     * 
+     * @param id
+     */
 
     public void deleteAdministradorByDni(String dni) {
         PersistenceManager pm = pmf.getPersistenceManager();

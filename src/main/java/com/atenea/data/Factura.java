@@ -15,6 +15,13 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+/**
+ * Cada factura tendrá asociado un id, un empleado por el cual ha sido generada, un cliente
+ * una lista de productos, un precio y una fecha de facturación 
+ * 
+ */
+
+
 @PersistenceCapable(detachable = "true")
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Factura {
