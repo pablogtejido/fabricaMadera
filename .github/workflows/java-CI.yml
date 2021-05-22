@@ -28,3 +28,17 @@ jobs:
           mvn --batch-mode --update-snapshots datanucleus:schema-create
       - name: Build with Maven including integration tests
         run: mvn --batch-mode --update-snapshots verify -Pintegracion
+
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get the html
+        run: git clone https://github.com/jothepro/doxygen-awesome-css.git
+      - name: Execute doxygen
+        uses: mattnotmitt/doxygen-action@v1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
