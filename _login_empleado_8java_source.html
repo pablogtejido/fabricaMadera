@@ -115,217 +115,213 @@ $(document).ready(function(){initNavTree('_login_empleado_8java_source.html','')
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">import</span> java.awt.event.ActionEvent;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">import</span> javax.swing.JCheckBox;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">   31</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">LoginEmpleado</a> <span class="keyword">extends</span> JFrame {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">private</span> JPanel contentPane;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">private</span> JTextField textEmpleado;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">private</span> JPasswordField contrasenaField;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">private</span> JCheckBox chckbxAdmin;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> JLabel lblContrasena = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Contraseña:&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">   37</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">LoginEmpleado</a> <span class="keyword">extends</span> JFrame {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab1d2b109408f72aa688c2a3a3ca1fb17">   43</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab1d2b109408f72aa688c2a3a3ca1fb17">main</a>(String[] args) {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        EventQueue.invokeLater(<span class="keyword">new</span> Runnable() {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> run() {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">LoginEmpleado</a> frame = <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab62b08b897f27cda4cd2859b6eb156d0">LoginEmpleado</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    frame.setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                } <span class="keywordflow">catch</span> (Exception e) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    e.printStackTrace();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        });</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab62b08b897f27cda4cd2859b6eb156d0">   56</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab62b08b897f27cda4cd2859b6eb156d0">LoginEmpleado</a>() {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        this.setTitle(<span class="stringliteral">&quot;Iniciar sesión Empleado&quot;</span>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        setBounds(100, 100, 631, 327);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        contentPane = <span class="keyword">new</span> JPanel();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        contentPane.setBorder(<span class="keyword">new</span> EmptyBorder(5, 5, 5, 5));</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        setContentPane(contentPane);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        contentPane.setLayout(<span class="keyword">null</span>);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        setLocationRelativeTo(<span class="keyword">null</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        JPanel panel = <span class="keyword">new</span> JPanel();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        panel.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        panel.setForeground(<span class="keyword">new</span> Color(0, 128, 128));</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        panel.setBounds(0, 0, 615, 43);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        contentPane.add(panel);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        panel.setLayout(<span class="keyword">null</span>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        chckbxAdmin = <span class="keyword">new</span> JCheckBox(<span class="stringliteral">&quot;Admin\r\n&quot;</span>);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        chckbxAdmin.setBounds(107, 182, 97, 23);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        contentPane.add(chckbxAdmin);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        JLabel login = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;LOGIN&quot;</span>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        login.setBounds(268, 11, 77, 32);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        login.setHorizontalAlignment(SwingConstants.CENTER);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        login.setForeground(SystemColor.text);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        panel.add(login);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">private</span> JPanel contentPane;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">private</span> JTextField textEmpleado;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">private</span> JPasswordField contrasenaField;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">private</span> JCheckBox chckbxAdmin;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">private</span> <span class="keyword">final</span> JLabel lblContrasena = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Contraseña:&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab1d2b109408f72aa688c2a3a3ca1fb17">   49</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab1d2b109408f72aa688c2a3a3ca1fb17">main</a>(String[] args) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        EventQueue.invokeLater(<span class="keyword">new</span> Runnable() {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> run() {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">LoginEmpleado</a> frame = <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab62b08b897f27cda4cd2859b6eb156d0">LoginEmpleado</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    frame.setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                } <span class="keywordflow">catch</span> (Exception e) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    e.printStackTrace();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        });</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab62b08b897f27cda4cd2859b6eb156d0">   62</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab62b08b897f27cda4cd2859b6eb156d0">LoginEmpleado</a>() {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        this.setTitle(<span class="stringliteral">&quot;Iniciar sesión Empleado&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        setBounds(100, 100, 631, 327);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        contentPane = <span class="keyword">new</span> JPanel();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        contentPane.setBorder(<span class="keyword">new</span> EmptyBorder(5, 5, 5, 5));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        setContentPane(contentPane);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        contentPane.setLayout(<span class="keyword">null</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        setLocationRelativeTo(<span class="keyword">null</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        JPanel panel = <span class="keyword">new</span> JPanel();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        panel.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        panel.setForeground(<span class="keyword">new</span> Color(0, 128, 128));</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        panel.setBounds(0, 0, 615, 43);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        contentPane.add(panel);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        panel.setLayout(<span class="keyword">null</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        chckbxAdmin = <span class="keyword">new</span> JCheckBox(<span class="stringliteral">&quot;Admin\r\n&quot;</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        chckbxAdmin.setBounds(107, 182, 97, 23);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        contentPane.add(chckbxAdmin);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        JLabel lblEmpleado = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Email Empleado/Admin:&quot;</span>);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        lblEmpleado.setBounds(58, 107, 152, 14);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        contentPane.add(lblEmpleado);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        textEmpleado = <span class="keyword">new</span> JTextField();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        textEmpleado.setBounds(220, 104, 197, 20);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        contentPane.add(textEmpleado);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        textEmpleado.setColumns(10);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        contrasenaField = <span class="keyword">new</span> JPasswordField();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        contrasenaField.setBounds(220, 149, 197, 20);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        contentPane.add(contrasenaField);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        lblContrasena.setBounds(107, 144, 72, 31);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        contentPane.add(lblContrasena);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        JLabel login = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;LOGIN&quot;</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        login.setBounds(268, 11, 77, 32);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        login.setHorizontalAlignment(SwingConstants.CENTER);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        login.setForeground(SystemColor.text);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        panel.add(login);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        JLabel lblEmpleado = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Email Empleado/Admin:&quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        lblEmpleado.setBounds(58, 107, 152, 14);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        contentPane.add(lblEmpleado);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        textEmpleado = <span class="keyword">new</span> JTextField();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        textEmpleado.setBounds(220, 104, 197, 20);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        contentPane.add(textEmpleado);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        textEmpleado.setColumns(10);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        JButton btniniciar = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Iniciar&quot;</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        btniniciar.setForeground(<span class="keyword">new</span> Color(255, 255, 255));</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        btniniciar.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        btniniciar.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span>(chckbxAdmin.isSelected()) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    <a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html">Administrador</a> administrador = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    <span class="keywordtype">boolean</span> found = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                    List&lt;Administrador&gt; listadoAdministrador = <a class="code" href="classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html">AdministradorRSH</a>.<a class="code" href="classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html#ab4188fa6385a72b8dc75c9b4e51576f4">getInstance</a>().<a class="code" href="classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html#a3724199ad5438323f55da6b1c17b8407">verAdministrador</a>();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    <span class="keywordflow">for</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html">Administrador</a> ad : listadoAdministrador) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        <span class="keywordflow">if</span>(ad.getEmail().equals(textEmpleado.getText())) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                            System.out.println(ad);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                            administrador = ad;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                            found = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                        }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    <span class="keywordflow">if</span> (!found)</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                        JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Administrador no encontrado&quot;</span>);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                        <span class="keywordflow">if</span> (!Arrays.equals(administrador.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html#a1a6be3a55345a0a12115b465cc19b424">getContrasena</a>().toCharArray(), contrasenaField.getPassword()))</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                            JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Contraseña incorrecta&quot;</span>);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                        <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                            <span class="keywordflow">if</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html">AdministradorConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">getUserAdmin</a>().isEmpty()) {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                                <a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html">AdministradorConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">getUserAdmin</a>().add(administrador);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                setVisible(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html">VisualizarAdministrador</a>().setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                <span class="keywordflow">for</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html">Administrador</a> u : <a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html">AdministradorConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">getUserAdmin</a>()) {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                    <span class="keywordflow">if</span> (administrador.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html#afa395db5140383ec460ee14384770807">equals</a>(u)) {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                        JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Este administrador ya esta conectado&quot;</span>);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                        textEmpleado.setText(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                        contrasenaField.setText(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                        <a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html">AdministradorConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">getUserAdmin</a>().add(administrador);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                        setVisible(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                        <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html">VisualizarAdministrador</a>().setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                                    }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                            }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                        }</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                } <span class="keywordflow">catch</span> (Exception e1) {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                    e1.printStackTrace();</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                }</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }<span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html">Empleado</a> empleado = <span class="keyword">null</span>;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keywordtype">boolean</span> found = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                List&lt;Empleado&gt; listadoEmpleado = <a class="code" href="classcom_1_1atenea_1_1rsh_1_1_empleado_r_s_h.html">EmpleadoRSH</a>.<a class="code" href="classcom_1_1atenea_1_1rsh_1_1_empleado_r_s_h.html#aa9cf6d407554ecd5d86d932ee7d49a40">getInstance</a>().<a class="code" href="classcom_1_1atenea_1_1rsh_1_1_empleado_r_s_h.html#aade23cceef1d20fef27d16b1ce075c6f">verEmpleados</a>();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="keywordflow">for</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html">Empleado</a> emp : listadoEmpleado) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                    <span class="keywordflow">if</span> (emp.getEmail().equals(textEmpleado.getText())) {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                        System.out.println(emp);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                        empleado = emp;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                        found = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                }</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keywordflow">if</span> (!found)</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                    JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Empleado no encontrado&quot;</span>);</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    <span class="keywordflow">if</span> (!Arrays.equals(empleado.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html#aa2bb443ca82adf6ce84f2934e3ad5932">getContrasena</a>().toCharArray(), contrasenaField.getPassword()))</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                        JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Contraseña incorrecta&quot;</span>);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html">EmpleadoConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html#a8ac75e1de6e6a6eded4bba3e0213c7c5">getUserEmpleado</a>().isEmpty()) {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                            <a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html">EmpleadoConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html#a8ac75e1de6e6a6eded4bba3e0213c7c5">getUserEmpleado</a>().add(empleado);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                            setVisible(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                            <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html">VisualizarFacturas</a>().setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                            <span class="keywordflow">for</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html">Empleado</a> u : <a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html">EmpleadoConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html#a8ac75e1de6e6a6eded4bba3e0213c7c5">getUserEmpleado</a>()) {</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                <span class="keywordflow">if</span> (empleado.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html#a7cf46de39cf13163ed736f2964dca00b">equals</a>(u)) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                    JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Este empleado ya esta conectado&quot;</span>);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                    textEmpleado.setText(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                    contrasenaField.setText(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                    <a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html">EmpleadoConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html#a8ac75e1de6e6a6eded4bba3e0213c7c5">getUserEmpleado</a>().add(empleado);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                    setVisible(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                    <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html">VisualizarFacturas</a>().setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                            }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                    }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            } <span class="keywordflow">catch</span> (Exception e1) {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                e1.printStackTrace();</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        }</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            }</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        });</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        btniniciar.setBounds(250, 238, 103, 37);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        contentPane.add(btniniciar);</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        btniniciar.setBounds(253, 188, 103, 37);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        contentPane.add(btniniciar);</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        JButton cerrar = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Cerrar&quot;</span>);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        cerrar.setForeground(Color.WHITE);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        cerrar.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        cerrar.setBounds(525, 244, 80, 31);</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        contentPane.add(cerrar);</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        cerrar.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            @Override</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                setVisible(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        });</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        JButton registrarse = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Registrarse&quot;</span>);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        registrarse.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent arg0) {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <a class="code" href="classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_empleado.html">RegistroEmpleado</a> rg = <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_empleado.html">RegistroEmpleado</a>();</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                rg.setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                setVisible(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            }</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        });</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        registrarse.setForeground(Color.WHITE);</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        registrarse.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        ;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        registrarse.setBounds(10, 244, 103, 31);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        contentPane.add(registrarse);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        contrasenaField = <span class="keyword">new</span> JPasswordField();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        contrasenaField.setBounds(220, 149, 197, 20);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        contentPane.add(contrasenaField);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        lblContrasena.setBounds(107, 144, 72, 31);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        contentPane.add(lblContrasena);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        JButton btniniciar = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Iniciar&quot;</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        btniniciar.setForeground(<span class="keyword">new</span> Color(255, 255, 255));</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        btniniciar.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        btniniciar.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">if</span> (chckbxAdmin.isSelected()) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                        <a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html">Administrador</a> administrador = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        <span class="keywordtype">boolean</span> found = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                        List&lt;Administrador&gt; listadoAdministrador = <a class="code" href="classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html">AdministradorRSH</a>.<a class="code" href="classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html#ab4188fa6385a72b8dc75c9b4e51576f4">getInstance</a>().<a class="code" href="classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html#a3724199ad5438323f55da6b1c17b8407">verAdministrador</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        <span class="keywordflow">for</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html">Administrador</a> ad : listadoAdministrador) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                            <span class="keywordflow">if</span> (ad.getEmail().equals(textEmpleado.getText())) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                System.out.println(ad);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                administrador = ad;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                found = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                            }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                        <span class="keywordflow">if</span> (!found)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                            JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Administrador no encontrado&quot;</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                            <span class="keywordflow">if</span> (!Arrays.equals(administrador.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html#a1a6be3a55345a0a12115b465cc19b424">getContrasena</a>().toCharArray(),</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                    contrasenaField.getPassword()))</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Contraseña incorrecta&quot;</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                            <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html">AdministradorConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">getUserAdmin</a>().isEmpty()) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                    <a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html">AdministradorConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">getUserAdmin</a>().add(administrador);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                    setVisible(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                    <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html">VisualizarAdministrador</a>().setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                    <span class="keywordflow">for</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html">Administrador</a> u : <a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html">AdministradorConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">getUserAdmin</a>()) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                        <span class="keywordflow">if</span> (administrador.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html#afa395db5140383ec460ee14384770807">equals</a>(u)) {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                                            JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Este administrador ya esta conectado&quot;</span>);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                            textEmpleado.setText(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                            contrasenaField.setText(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                                            <a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html">AdministradorConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">getUserAdmin</a>().add(administrador);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                                            setVisible(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                            <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html">VisualizarAdministrador</a>().setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                    }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                            }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    } <span class="keywordflow">catch</span> (Exception e1) {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        e1.printStackTrace();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                        <a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html">Empleado</a> empleado = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                        <span class="keywordtype">boolean</span> found = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                        List&lt;Empleado&gt; listadoEmpleado = <a class="code" href="classcom_1_1atenea_1_1rsh_1_1_empleado_r_s_h.html">EmpleadoRSH</a>.<a class="code" href="classcom_1_1atenea_1_1rsh_1_1_empleado_r_s_h.html#aa9cf6d407554ecd5d86d932ee7d49a40">getInstance</a>().<a class="code" href="classcom_1_1atenea_1_1rsh_1_1_empleado_r_s_h.html#aade23cceef1d20fef27d16b1ce075c6f">verEmpleados</a>();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        <span class="keywordflow">for</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html">Empleado</a> emp : listadoEmpleado) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                            <span class="keywordflow">if</span> (emp.getEmail().equals(textEmpleado.getText())) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                System.out.println(emp);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                                empleado = emp;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                found = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                            }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        <span class="keywordflow">if</span> (!found)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                            JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Empleado no encontrado&quot;</span>);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                            <span class="keywordflow">if</span> (!Arrays.equals(empleado.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html#aa2bb443ca82adf6ce84f2934e3ad5932">getContrasena</a>().toCharArray(), contrasenaField.getPassword()))</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Contraseña incorrecta&quot;</span>);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                            <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html">EmpleadoConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html#a8ac75e1de6e6a6eded4bba3e0213c7c5">getUserEmpleado</a>().isEmpty()) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                    <a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html">EmpleadoConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html#a8ac75e1de6e6a6eded4bba3e0213c7c5">getUserEmpleado</a>().add(empleado);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                    setVisible(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                    <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html">VisualizarFacturas</a>().setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                    <span class="keywordflow">for</span> (<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html">Empleado</a> u : <a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html">EmpleadoConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html#a8ac75e1de6e6a6eded4bba3e0213c7c5">getUserEmpleado</a>()) {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                        <span class="keywordflow">if</span> (empleado.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html#a7cf46de39cf13163ed736f2964dca00b">equals</a>(u)) {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                            JOptionPane.showMessageDialog(<span class="keyword">null</span>, <span class="stringliteral">&quot;Este empleado ya esta conectado&quot;</span>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                            textEmpleado.setText(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                                            contrasenaField.setText(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                            <a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html">EmpleadoConectado</a>.<a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html#a8ac75e1de6e6a6eded4bba3e0213c7c5">getUserEmpleado</a>().add(empleado);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                            setVisible(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                            <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html">VisualizarFacturas</a>().setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                        }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                            }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    } <span class="keywordflow">catch</span> (Exception e1) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                        e1.printStackTrace();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        });</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        btniniciar.setBounds(250, 238, 103, 37);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        contentPane.add(btniniciar);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        btniniciar.setBounds(253, 188, 103, 37);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        contentPane.add(btniniciar);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        JButton cerrar = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Cerrar&quot;</span>);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        cerrar.setForeground(Color.WHITE);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        cerrar.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        cerrar.setBounds(525, 244, 80, 31);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        contentPane.add(cerrar);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        cerrar.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            @Override</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                setVisible(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        });</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        JButton registrarse = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Registrarse&quot;</span>);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        registrarse.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent arg0) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <a class="code" href="classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_empleado.html">RegistroEmpleado</a> rg = <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_empleado.html">RegistroEmpleado</a>();</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                rg.setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                setVisible(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        });</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        registrarse.setForeground(Color.WHITE);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        registrarse.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        ;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        registrarse.setBounds(10, 244, 103, 31);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        contentPane.add(registrarse);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_administrador_conectado_html"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html">com.atenea.data.AdministradorConectado</a></div><div class="ttdef"><b>Definition:</b> <a href="_administrador_conectado_8java_source.html#l00006">AdministradorConectado.java:6</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_administrador_conectado_html_ad1f98d4aad6e1b072212c448e7040e1e"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">com.atenea.data.AdministradorConectado.getUserAdmin</a></div><div class="ttdeci">static List&lt; Administrador &gt; getUserAdmin()</div><div class="ttdef"><b>Definition:</b> <a href="_administrador_conectado_8java_source.html#l00014">AdministradorConectado.java:14</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_administrador_html"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_administrador.html">com.atenea.data.Administrador</a></div><div class="ttdef"><b>Definition:</b> <a href="_administrador_8java_source.html#l00019">Administrador.java:19</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_administrador_html_a1a6be3a55345a0a12115b465cc19b424"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_administrador.html#a1a6be3a55345a0a12115b465cc19b424">com.atenea.data.Administrador.getContrasena</a></div><div class="ttdeci">String getContrasena()</div><div class="ttdef"><b>Definition:</b> <a href="_administrador_8java_source.html#l00037">Administrador.java:37</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_administrador_html_afa395db5140383ec460ee14384770807"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_administrador.html#afa395db5140383ec460ee14384770807">com.atenea.data.Administrador.equals</a></div><div class="ttdeci">boolean equals(Object o)</div><div class="ttdef"><b>Definition:</b> <a href="_administrador_8java_source.html#l00098">Administrador.java:98</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_administrador_conectado_html_ad1f98d4aad6e1b072212c448e7040e1e"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_administrador_conectado.html#ad1f98d4aad6e1b072212c448e7040e1e">com.atenea.data.AdministradorConectado.getUserAdmin</a></div><div class="ttdeci">static List&lt; Administrador &gt; getUserAdmin()</div><div class="ttdef"><b>Definition:</b> <a href="_administrador_conectado_8java_source.html#l00015">AdministradorConectado.java:15</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_administrador_html"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_administrador.html">com.atenea.data.Administrador</a></div><div class="ttdef"><b>Definition:</b> <a href="_administrador_8java_source.html#l00016">Administrador.java:16</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_administrador_html_a1a6be3a55345a0a12115b465cc19b424"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_administrador.html#a1a6be3a55345a0a12115b465cc19b424">com.atenea.data.Administrador.getContrasena</a></div><div class="ttdeci">String getContrasena()</div><div class="ttdef"><b>Definition:</b> <a href="_administrador_8java_source.html#l00034">Administrador.java:34</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_administrador_html_afa395db5140383ec460ee14384770807"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_administrador.html#afa395db5140383ec460ee14384770807">com.atenea.data.Administrador.equals</a></div><div class="ttdeci">boolean equals(Object o)</div><div class="ttdef"><b>Definition:</b> <a href="_administrador_8java_source.html#l00095">Administrador.java:95</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_empleado_conectado_html"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html">com.atenea.data.EmpleadoConectado</a></div><div class="ttdef"><b>Definition:</b> <a href="_empleado_conectado_8java_source.html#l00006">EmpleadoConectado.java:6</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_empleado_conectado_html_a8ac75e1de6e6a6eded4bba3e0213c7c5"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_empleado_conectado.html#a8ac75e1de6e6a6eded4bba3e0213c7c5">com.atenea.data.EmpleadoConectado.getUserEmpleado</a></div><div class="ttdeci">static List&lt; Empleado &gt; getUserEmpleado()</div><div class="ttdef"><b>Definition:</b> <a href="_empleado_conectado_8java_source.html#l00016">EmpleadoConectado.java:16</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_empleado_html"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_empleado.html">com.atenea.data.Empleado</a></div><div class="ttdef"><b>Definition:</b> <a href="_empleado_8java_source.html#l00013">Empleado.java:13</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_empleado_html_a7cf46de39cf13163ed736f2964dca00b"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_empleado.html#a7cf46de39cf13163ed736f2964dca00b">com.atenea.data.Empleado.equals</a></div><div class="ttdeci">boolean equals(Object o)</div><div class="ttdef"><b>Definition:</b> <a href="_empleado_8java_source.html#l00135">Empleado.java:135</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_empleado_html_aa2bb443ca82adf6ce84f2934e3ad5932"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_empleado.html#aa2bb443ca82adf6ce84f2934e3ad5932">com.atenea.data.Empleado.getContrasena</a></div><div class="ttdeci">String getContrasena()</div><div class="ttdef"><b>Definition:</b> <a href="_empleado_8java_source.html#l00119">Empleado.java:119</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1_login_empleado_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">com.atenea.gui.LoginEmpleado</a></div><div class="ttdef"><b>Definition:</b> <a href="_login_empleado_8java_source.html#l00031">LoginEmpleado.java:31</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1_login_empleado_html_ab1d2b109408f72aa688c2a3a3ca1fb17"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab1d2b109408f72aa688c2a3a3ca1fb17">com.atenea.gui.LoginEmpleado.main</a></div><div class="ttdeci">static void main(String[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_login_empleado_8java_source.html#l00043">LoginEmpleado.java:43</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1_login_empleado_html_ab62b08b897f27cda4cd2859b6eb156d0"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab62b08b897f27cda4cd2859b6eb156d0">com.atenea.gui.LoginEmpleado.LoginEmpleado</a></div><div class="ttdeci">LoginEmpleado()</div><div class="ttdef"><b>Definition:</b> <a href="_login_empleado_8java_source.html#l00056">LoginEmpleado.java:56</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1registrar_1_1_registro_empleado_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_empleado.html">com.atenea.gui.registrar.RegistroEmpleado</a></div><div class="ttdef"><b>Definition:</b> <a href="_registro_empleado_8java_source.html#l00030">RegistroEmpleado.java:30</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html">com.atenea.gui.tablas.VisualizarAdministrador</a></div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_administrador_8java_source.html#l00030">VisualizarAdministrador.java:30</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html">com.atenea.gui.tablas.VisualizarFacturas</a></div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_facturas_8java_source.html#l00033">VisualizarFacturas.java:33</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_empleado_html"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_empleado.html">com.atenea.data.Empleado</a></div><div class="ttdef"><b>Definition:</b> <a href="_empleado_8java_source.html#l00019">Empleado.java:19</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_empleado_html_a7cf46de39cf13163ed736f2964dca00b"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_empleado.html#a7cf46de39cf13163ed736f2964dca00b">com.atenea.data.Empleado.equals</a></div><div class="ttdeci">boolean equals(Object o)</div><div class="ttdef"><b>Definition:</b> <a href="_empleado_8java_source.html#l00141">Empleado.java:141</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1data_1_1_empleado_html_aa2bb443ca82adf6ce84f2934e3ad5932"><div class="ttname"><a href="classcom_1_1atenea_1_1data_1_1_empleado.html#aa2bb443ca82adf6ce84f2934e3ad5932">com.atenea.data.Empleado.getContrasena</a></div><div class="ttdeci">String getContrasena()</div><div class="ttdef"><b>Definition:</b> <a href="_empleado_8java_source.html#l00125">Empleado.java:125</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1_login_empleado_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">com.atenea.gui.LoginEmpleado</a></div><div class="ttdef"><b>Definition:</b> <a href="_login_empleado_8java_source.html#l00037">LoginEmpleado.java:37</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1_login_empleado_html_ab1d2b109408f72aa688c2a3a3ca1fb17"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab1d2b109408f72aa688c2a3a3ca1fb17">com.atenea.gui.LoginEmpleado.main</a></div><div class="ttdeci">static void main(String[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_login_empleado_8java_source.html#l00049">LoginEmpleado.java:49</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1_login_empleado_html_ab62b08b897f27cda4cd2859b6eb156d0"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html#ab62b08b897f27cda4cd2859b6eb156d0">com.atenea.gui.LoginEmpleado.LoginEmpleado</a></div><div class="ttdeci">LoginEmpleado()</div><div class="ttdef"><b>Definition:</b> <a href="_login_empleado_8java_source.html#l00062">LoginEmpleado.java:62</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1registrar_1_1_registro_empleado_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_empleado.html">com.atenea.gui.registrar.RegistroEmpleado</a></div><div class="ttdef"><b>Definition:</b> <a href="_registro_empleado_8java_source.html#l00029">RegistroEmpleado.java:29</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html">com.atenea.gui.tablas.VisualizarAdministrador</a></div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_administrador_8java_source.html#l00028">VisualizarAdministrador.java:28</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html">com.atenea.gui.tablas.VisualizarFacturas</a></div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_facturas_8java_source.html#l00030">VisualizarFacturas.java:30</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1rsh_1_1_administrador_r_s_h_html"><div class="ttname"><a href="classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html">com.atenea.rsh.AdministradorRSH</a></div><div class="ttdef"><b>Definition:</b> <a href="_administrador_r_s_h_8java_source.html#l00015">AdministradorRSH.java:15</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1rsh_1_1_administrador_r_s_h_html_a3724199ad5438323f55da6b1c17b8407"><div class="ttname"><a href="classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html#a3724199ad5438323f55da6b1c17b8407">com.atenea.rsh.AdministradorRSH.verAdministrador</a></div><div class="ttdeci">List&lt; Administrador &gt; verAdministrador()</div><div class="ttdef"><b>Definition:</b> <a href="_administrador_r_s_h_8java_source.html#l00038">AdministradorRSH.java:38</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1rsh_1_1_administrador_r_s_h_html_ab4188fa6385a72b8dc75c9b4e51576f4"><div class="ttname"><a href="classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html#ab4188fa6385a72b8dc75c9b4e51576f4">com.atenea.rsh.AdministradorRSH.getInstance</a></div><div class="ttdeci">static AdministradorRSH getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="_administrador_r_s_h_8java_source.html#l00020">AdministradorRSH.java:20</a></div></div>
