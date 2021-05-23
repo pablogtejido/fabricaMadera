@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.atenea.data.Cliente;
 import com.atenea.data.Factura;
+import com.atenea.gui.registrar.RegistrarProducto;
 import com.atenea.gui.registrar.RegistroCliente;
 import com.atenea.gui.registrar.RegistroFactura;
 import com.atenea.rsh.ClienteRSH;
@@ -129,14 +130,18 @@ public class VisualizarFacturas extends JFrame {
 
 		JMenu menuEmpleados = new JMenu("Empleado");
 		menuBar.add(menuEmpleados);
+		
+		JMenu menuProductos = new JMenu("Producto");
+		menuBar.add(menuProductos);
 
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
-		JMenuItem registrarClientes = new JMenuItem("Registrar Clientes");
-		menuClientes.add(registrarClientes);
-
+	
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
+		
+		JMenuItem verProductos = new JMenuItem("Ver Producto");
+		menuProductos.add(verProductos);
 
 		verClientes.addActionListener(new ActionListener() {
 
@@ -148,16 +153,6 @@ public class VisualizarFacturas extends JFrame {
 			}
 		});
 
-		registrarClientes.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				RegistroCliente window2 = new RegistroCliente();
-				window2.setVisible(true);
-			}
-		});
-		
 		verEmpleados.addActionListener(new ActionListener() {
 
 			@Override
@@ -165,9 +160,21 @@ public class VisualizarFacturas extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarEmpleado window2 = new VisualizarEmpleado();
 				window2.setVisible(true);
-				setVisible(false);
 			}
 		});
+		
+		
+		
+		verProductos.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VisualizarProductos window2 = new VisualizarProductos();
+				window2.setVisible(true);
+			}
+		});
+		
 
 		
 		btnModificar.addActionListener(new ActionListener() {

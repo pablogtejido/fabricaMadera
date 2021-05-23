@@ -60,6 +60,7 @@ public class VisualizarProductos extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		setTitle("Visualizar Productos");
 		setBounds(100, 100, 827, 461);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
@@ -177,7 +178,7 @@ public class VisualizarProductos extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnModificar.setBounds(360, 367, 89, 31);
+		btnModificar.setBounds(325, 367, 89, 31);
 		btnModificar.setBackground(new Color(72, 61, 139));
 		getContentPane().add(btnModificar);
 		
@@ -207,11 +208,11 @@ public class VisualizarProductos extends JFrame {
 			}
 		});
 		
-		btnEliminar.setBounds(261, 367, 89, 31);
+		btnEliminar.setBounds(226, 367, 89, 31);
 		btnEliminar.setBackground(new Color(72, 61, 139));
 		getContentPane().add(btnEliminar);
 		
-		JButton btnAnyadir = new JButton("Añadir");
+		JButton btnAnyadir = new JButton("Registrar Productos");
 		btnAnyadir.setForeground(Color.WHITE);
 		btnAnyadir.addActionListener(new ActionListener() {
 			
@@ -223,7 +224,7 @@ public class VisualizarProductos extends JFrame {
 				setVisible(false);
 			}
 		} );
-		btnAnyadir.setBounds(459, 367, 89, 31);
+		btnAnyadir.setBounds(424, 367, 161, 31);
 		btnAnyadir.setBackground(new Color(72, 61, 139));
 		getContentPane().add(btnAnyadir);
 		

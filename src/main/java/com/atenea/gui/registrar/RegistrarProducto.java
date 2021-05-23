@@ -58,6 +58,7 @@ public class RegistrarProducto extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		setTitle("Registro Producto");
 		setBounds(100, 100, 626, 635);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);

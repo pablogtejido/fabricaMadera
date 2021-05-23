@@ -63,11 +63,11 @@ public class VentanaInicio extends JFrame {
 		contentPane.setLayout(null);
 
 		// JButton para Iniciar SesiÃ³n
-		JButton btnLogInEmpleado = new JButton("Iniciar sesion como empleado");
+		JButton btnLogInEmpleado = new JButton("Iniciar sesion como empleado o administrador");
 		btnLogInEmpleado.setForeground(Color.WHITE);
 		btnLogInEmpleado.setFont(new Font("Showcard Gothic", Font.PLAIN, 16));
 		btnLogInEmpleado.setBackground(new Color(72, 61, 139));
-		btnLogInEmpleado.setBounds(198, 266, 381, 29);
+		btnLogInEmpleado.setBounds(130, 265, 490, 29);
 		contentPane.add(btnLogInEmpleado);
 
 		btnLogInEmpleado.addActionListener(new ActionListener() {

@@ -121,15 +121,17 @@ public class VisualizarClientes extends JFrame{
 		JMenu menuEmpleados = new JMenu("Empleados");
 		menuBar.add(menuEmpleados);
 		
+		JMenu menuProductos = new JMenu("Producto");
+		menuBar.add(menuProductos);
+		
 		JMenuItem verFacturas = new JMenuItem("Ver Facturas");
 		menuFacturas.add(verFacturas);
-		
-		JMenuItem registrarFacturas = new JMenuItem("Registrar Facturas");
-		menuFacturas.add(registrarFacturas);
 		
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
 		
+		JMenuItem verProductos = new JMenuItem("Ver Producto");
+		menuProductos.add(verProductos);
 		
 		verFacturas.addActionListener(new ActionListener() {
 
@@ -143,17 +145,6 @@ public class VisualizarClientes extends JFrame{
 		});
 		
 		
-		registrarFacturas.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				RegistroFactura window2 = new RegistroFactura();
-				window2.setVisible(true);
-				
-			}
-		});
-		
 		verEmpleados.addActionListener(new ActionListener() {
 
 			@Override
@@ -165,8 +156,17 @@ public class VisualizarClientes extends JFrame{
 			}
 		});
 		
+		verProductos.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VisualizarProductos window2 = new VisualizarProductos();
+				window2.setVisible(true);
+			}
+		});
 		
+				
 		
 		btnModificar.addActionListener(new ActionListener() {
 

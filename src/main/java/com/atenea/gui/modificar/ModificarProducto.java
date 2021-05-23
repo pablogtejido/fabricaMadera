@@ -40,6 +40,7 @@ public class ModificarProducto extends JFrame{
 	
 	
 	public ModificarProducto(final Producto prod) {
+		setTitle("Modificar Producto");
 		setBounds(100, 100, 631, 580);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
