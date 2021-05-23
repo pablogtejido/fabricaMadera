@@ -12,6 +12,8 @@ import javax.swing.table.DefaultTableModel;
 
 import com.atenea.data.Cliente;
 import com.atenea.data.Factura;
+import com.atenea.gui.registrar.RegistroCliente;
+import com.atenea.gui.registrar.RegistroFactura;
 import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.FacturaRSH;
 
@@ -81,21 +83,28 @@ public class VisualizarFacturas extends JFrame {
 		getContentPane().add(scrollPane);
 
 		JPanel panelBoton = new JPanel();
-		panelBoton.setBounds(270, 346, 247, 43);
+		panelBoton.setBounds(205, 346, 412, 43);
 		getContentPane().add(panelBoton);
 		panelBoton.setLayout(null);
 
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setForeground(Color.WHITE);
 		btnModificar.setBackground(new Color(72, 61, 139));
-		btnModificar.setBounds(37, 11, 95, 23);
+		btnModificar.setBounds(36, 11, 95, 23);
 		panelBoton.add(btnModificar);
 
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnEliminar.setForeground(Color.WHITE);
 		btnEliminar.setBackground(new Color(72, 61, 139));
-		btnEliminar.setBounds(142, 11, 95, 23);
+		btnEliminar.setBounds(143, 11, 84, 23);
 		panelBoton.add(btnEliminar);
+		
+		JButton btnAnyadir = new JButton("Registrar facturas");
+		btnAnyadir.setBounds(237, 11, 146, 23);
+		panelBoton.add(btnAnyadir);
+		btnAnyadir.setForeground(Color.WHITE);
+		btnAnyadir.setBackground(new Color(72, 61, 139));
 
 		table = new JTable();
 		modelo = new DefaultTableModel();
@@ -123,6 +132,8 @@ public class VisualizarFacturas extends JFrame {
 
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
+		JMenuItem registrarClientes = new JMenuItem("Registrar Clientes");
+		menuClientes.add(registrarClientes);
 
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
@@ -134,10 +145,19 @@ public class VisualizarFacturas extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarClientes window2 = new VisualizarClientes();
 				window2.setVisible(true);
-				setVisible(false);
 			}
 		});
 
+		registrarClientes.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				RegistroCliente window2 = new RegistroCliente();
+				window2.setVisible(true);
+			}
+		});
+		
 		verEmpleados.addActionListener(new ActionListener() {
 
 			@Override
@@ -149,6 +169,7 @@ public class VisualizarFacturas extends JFrame {
 			}
 		});
 
+		
 		btnModificar.addActionListener(new ActionListener() {
 
 			@Override
@@ -199,6 +220,17 @@ public class VisualizarFacturas extends JFrame {
 			}
 
 		});
+		
+		
+		btnAnyadir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				new RegistroFactura().setVisible(true);
+			
+			}	
+		});
+		
 		FacturasJTable();
 	}
 

@@ -37,6 +37,8 @@ public class ModificarProducto extends JFrame{
 	/**
 	 * Create the application.
 	 */
+	
+	
 	public ModificarProducto(final Producto prod) {
 		setBounds(100, 100, 631, 580);
 		setLocationRelativeTo(null);

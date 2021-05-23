@@ -8,6 +8,7 @@ import com.atenea.data.AdministradorConectado;
 import com.atenea.data.Empleado;
 import com.atenea.data.EmpleadoConectado;
 import com.atenea.gui.registrar.RegistroEmpleado;
+import com.atenea.gui.tablas.VisualizarAdministrador;
 import com.atenea.gui.tablas.VisualizarFacturas;
 import com.atenea.rsh.AdministradorRSH;
 import com.atenea.rsh.EmpleadoRSH;
@@ -121,7 +122,7 @@ public class LoginEmpleado extends JFrame {
 							if (AdministradorConectado.getUserAdmin().isEmpty()) {
 								AdministradorConectado.getUserAdmin().add(administrador);
 								setVisible(false);
-								new VisualizarFacturas().setVisible(true);
+								new VisualizarAdministrador().setVisible(true);
 							} else {
 								for (Administrador u : AdministradorConectado.getUserAdmin()) {
 									if (administrador.equals(u)) {
@@ -131,7 +132,7 @@ public class LoginEmpleado extends JFrame {
 									} else {
 										AdministradorConectado.getUserAdmin().add(administrador);
 										setVisible(false);
-										new VisualizarFacturas().setVisible(true);
+										new VisualizarAdministrador().setVisible(true);
 									}
 								}
 							}

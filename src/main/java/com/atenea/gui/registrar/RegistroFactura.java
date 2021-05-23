@@ -65,6 +65,10 @@ public class RegistroFactura extends JFrame {
 	}
 
 	public RegistroFactura() {
+		initialize();
+	}
+	
+	private void initialize() {
 
 		setTitle("Registro Factura");
 		setBounds(100, 100, 631, 375);

@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import com.atenea.data.Cliente;
 import com.atenea.gui.modificar.ModificarCliente;
 import com.atenea.gui.registrar.RegistroCliente;
+import com.atenea.gui.registrar.RegistroFactura;
 import com.atenea.rsh.ClienteRSH;
 
 public class VisualizarClientes extends JFrame{
@@ -87,21 +88,29 @@ public class VisualizarClientes extends JFrame{
 		scrollPane.setViewportView(table);
 		
 		JPanel panelBoton = new JPanel();
-		panelBoton.setBounds(270, 346, 247, 43);
+		panelBoton.setBounds(200, 346, 403, 43);
 		getContentPane().add(panelBoton);
 		panelBoton.setLayout(null);
 		
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setForeground(Color.WHITE);
 		btnModificar.setBackground(new Color(72, 61, 139));
-		btnModificar.setBounds(37, 11, 95, 23);
+		btnModificar.setBounds(36, 11, 95, 23);
 		panelBoton.add(btnModificar);
-		
+
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnEliminar.setForeground(Color.WHITE);
 		btnEliminar.setBackground(new Color(72, 61, 139));
-		btnEliminar.setBounds(142, 11, 95, 23);
+		btnEliminar.setBounds(143, 11, 84, 23);
 		panelBoton.add(btnEliminar);
+		
+		JButton btnAnyadir = new JButton("Registrar clientes");
+		btnAnyadir.setBounds(237, 11, 146, 23);
+		panelBoton.add(btnAnyadir);
+		btnAnyadir.setForeground(Color.WHITE);
+		btnAnyadir.setBackground(new Color(72, 61, 139));
+
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -112,17 +121,15 @@ public class VisualizarClientes extends JFrame{
 		JMenu menuEmpleados = new JMenu("Empleados");
 		menuBar.add(menuEmpleados);
 		
-		JMenu menuClientes = new JMenu("Clientes");
-		menuBar.add(menuClientes);
-		
 		JMenuItem verFacturas = new JMenuItem("Ver Facturas");
 		menuFacturas.add(verFacturas);
+		
+		JMenuItem registrarFacturas = new JMenuItem("Registrar Facturas");
+		menuFacturas.add(registrarFacturas);
 		
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
 		
-		JMenuItem registrarCliente = new JMenuItem("Registrar Cliente");
-		menuClientes.add(registrarCliente);	
 		
 		verFacturas.addActionListener(new ActionListener() {
 
@@ -131,7 +138,19 @@ public class VisualizarClientes extends JFrame{
 				// TODO Auto-generated method stub
 				VisualizarFacturas window2 = new VisualizarFacturas();
 				window2.setVisible(true);
-				setVisible(false);
+				
+			}
+		});
+		
+		
+		registrarFacturas.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				RegistroFactura window2 = new RegistroFactura();
+				window2.setVisible(true);
+				
 			}
 		});
 		
@@ -142,20 +161,11 @@ public class VisualizarClientes extends JFrame{
 				// TODO Auto-generated method stub
 				VisualizarEmpleado window2 = new VisualizarEmpleado();
 				window2.setVisible(true);
-				setVisible(false);
+
 			}
 		});
 		
-		registrarCliente.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				RegistroCliente window2 = new RegistroCliente();
-				window2.setVisible(true);
-				setVisible(false);
-			}
-		});
 		
 		
 		btnModificar.addActionListener(new ActionListener() {
@@ -201,6 +211,17 @@ public class VisualizarClientes extends JFrame{
 			}
 			
 		});
+		
+		
+		btnAnyadir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				new RegistroCliente().setVisible(true);
+			
+			}	
+		});
+		
 		ClientesJTable();
 
 	}

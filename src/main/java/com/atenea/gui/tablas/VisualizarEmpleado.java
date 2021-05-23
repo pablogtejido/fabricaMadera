@@ -15,6 +15,9 @@ import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
 import com.atenea.gui.modificar.ModificarCliente;
 import com.atenea.gui.modificar.ModificarEmpleado;
+import com.atenea.gui.registrar.RegistroCliente;
+import com.atenea.gui.registrar.RegistroEmpleado;
+import com.atenea.gui.registrar.RegistroFactura;
 import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
 import com.atenea.rsh.FacturaRSH;
@@ -87,21 +90,23 @@ public class VisualizarEmpleado extends JFrame {
 		getContentPane().add(scrollPane);
 
 		JPanel panelBoton = new JPanel();
-		panelBoton.setBounds(452, 346, 247, 43);
+		panelBoton.setBounds(454, 346, 454, 43);
 		getContentPane().add(panelBoton);
 		panelBoton.setLayout(null);
 
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setForeground(Color.WHITE);
 		btnModificar.setBackground(new Color(72, 61, 139));
-		btnModificar.setBounds(37, 11, 95, 23);
+		btnModificar.setBounds(36, 11, 95, 23);
 		panelBoton.add(btnModificar);
 
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnEliminar.setForeground(Color.WHITE);
 		btnEliminar.setBackground(new Color(72, 61, 139));
-		btnEliminar.setBounds(142, 11, 95, 23);
+		btnEliminar.setBounds(143, 11, 84, 23);
 		panelBoton.add(btnEliminar);
+		
 
 		table = new JTable();
 		modelo = new DefaultTableModel();
@@ -131,10 +136,16 @@ public class VisualizarEmpleado extends JFrame {
 		menuBar.add(menuClientes);
 		
 		JMenuItem verFacturas = new JMenuItem("Ver Facturas");
-		menuFacturas.add(verFacturas);//TODO
+		menuFacturas.add(verFacturas);
+		
+		JMenuItem registrarFactura = new JMenuItem("Registrar Facturas");
+		menuFacturas.add(registrarFactura);
 
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
+		
+		JMenuItem registroCliente = new JMenuItem("Registrar Clientes");
+		menuClientes.add(registroCliente);
 		
 		verFacturas.addActionListener(new ActionListener() {
 
@@ -143,7 +154,16 @@ public class VisualizarEmpleado extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarFacturas window2 = new VisualizarFacturas();
 				window2.setVisible(true);
-				setVisible(false);
+			}
+		});
+		
+		registrarFactura.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				RegistroFactura window2 = new RegistroFactura();
+				window2.setVisible(true);
 			}
 		});
 		
@@ -153,9 +173,18 @@ public class VisualizarEmpleado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				VisualizarClientes window2 = new VisualizarClientes();
 				window2.setVisible(true);
-				setVisible(false);
 			}
 		});
+		
+		registroCliente.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				RegistroCliente window2 = new RegistroCliente();
+				window2.setVisible(true);
+			}
+		});
+
 
 		
 		btnModificar.addActionListener(new ActionListener() {
@@ -201,6 +230,9 @@ public class VisualizarEmpleado extends JFrame {
 			}
 
 		});
+		
+	
+				
 		EmpleadosJTable();
 	}
 

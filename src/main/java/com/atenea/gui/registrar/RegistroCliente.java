@@ -42,7 +42,11 @@ public class RegistroCliente extends JFrame {
 		});
 	}
 
+	
 	public RegistroCliente() {
+		initialize();
+	}
+	private void initialize() {
 
 		setTitle("Registro Cliente");
 		setBounds(100, 100, 631, 375);
@@ -143,7 +147,7 @@ public class RegistroCliente extends JFrame {
 				String dni = textFieldDNI.getText();
 				String nombre = textFieldNombre.getText();
 				String apellidos = textFieldApellidos.getText();
-				String contrasena = passwordField.getText(); // FIXME: Hay que arreglar esto.
+				String contrasena = passwordField.getText(); 
 				
 				Cliente cliente = new Cliente(dni, nombre, apellidos, contrasena);
 
