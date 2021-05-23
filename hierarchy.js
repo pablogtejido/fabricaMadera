@@ -53,6 +53,7 @@ var hierarchy =
       [ "com.atenea.gui.registrar.RegistroCliente", "classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_cliente.html", null ],
       [ "com.atenea.gui.registrar.RegistroEmpleado", "classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_empleado.html", null ],
       [ "com.atenea.gui.registrar.RegistroFactura", "classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_factura.html", null ],
+      [ "com.atenea.gui.tablas.VisualizarAdministrador", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html", null ],
       [ "com.atenea.gui.tablas.VisualizarClientes", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_clientes.html", null ],
       [ "com.atenea.gui.tablas.VisualizarEmpleado", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_empleado.html", null ],
       [ "com.atenea.gui.tablas.VisualizarFacturas", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html", null ],

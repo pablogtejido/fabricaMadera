@@ -1,5 +1,8 @@
 var dir_67c1bd14f0b6a5eb6ed0b310e9751011 =
 [
+    [ "VisualizarAdministrador.java", "_visualizar_administrador_8java.html", [
+      [ "VisualizarAdministrador", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador" ]
+    ] ],
     [ "VisualizarClientes.java", "_visualizar_clientes_8java.html", [
       [ "VisualizarClientes", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_clientes.html", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_clientes" ]
     ] ],

@@ -14,5 +14,6 @@ var searchData=
   ['administradorrsh_11',['AdministradorRSH',['../classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html#ac1d3543fc26659e5572829ac3fe7237c',1,'com.atenea.rsh.AdministradorRSH.AdministradorRSH()'],['../classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html',1,'com.atenea.rsh.AdministradorRSH']]],
   ['administradorrsh_2ejava_12',['AdministradorRSH.java',['../_administrador_r_s_h_8java.html',1,'']]],
   ['administradortest_13',['AdministradorTest',['../classcom_1_1atenea_1_1data_1_1_administrador_test.html',1,'com::atenea::data']]],
-  ['administradortest_2ejava_14',['AdministradorTest.java',['../_administrador_test_8java.html',1,'']]]
+  ['administradortest_2ejava_14',['AdministradorTest.java',['../_administrador_test_8java.html',1,'']]],
+  ['adminjtable_15',['AdminJTable',['../classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html#ae91c267c0e744b7eadae2e8b45b97e4c',1,'com::atenea::gui::tablas::VisualizarAdministrador']]]
 ];

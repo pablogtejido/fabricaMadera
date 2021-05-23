@@ -43,6 +43,7 @@ var annotated_dup =
             [ "RegistroClienteTest", "classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_cliente_test.html", "classcom_1_1atenea_1_1gui_1_1registrar_1_1_registro_cliente_test" ]
           ] ],
           [ "tablas", "namespacecom_1_1atenea_1_1gui_1_1tablas.html", [
+            [ "VisualizarAdministrador", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador.html", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_administrador" ],
             [ "VisualizarClientes", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_clientes.html", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_clientes" ],
             [ "VisualizarEmpleado", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_empleado.html", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_empleado" ],
             [ "VisualizarFacturas", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html", "classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas" ],
