@@ -9,8 +9,8 @@ public class EmpleadoConectado {
 
 	/**
 	 * Get empleados
-     * 
-     * @return lista de empleados
+	 * 
+	 * @return lista de empleados
 	 */
 
 	public static List<Empleado> getUserEmpleado() {
@@ -20,9 +20,9 @@ public class EmpleadoConectado {
 	/**
 	 * Insertar empleados a la lista
 	 * 
-	 * @param e 
+	 * @param e
 	 */
-	
+
 	public static void addUserEmpleado(Empleado e) {
 		users.add(e);
 	}

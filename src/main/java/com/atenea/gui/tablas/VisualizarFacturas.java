@@ -2,33 +2,30 @@ package com.atenea.gui.tablas;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-
-import com.atenea.data.Cliente;
 import com.atenea.data.Factura;
-import com.atenea.gui.registrar.RegistrarProducto;
-import com.atenea.gui.registrar.RegistroCliente;
 import com.atenea.gui.registrar.RegistroFactura;
-import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.FacturaRSH;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
-
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+/**
+ * Ventana para visualizar todas las facturas que hay almacenadas en la base de
+ * datos
+ */
 
 public class VisualizarFacturas extends JFrame {
 	private JTable table;
@@ -100,7 +97,7 @@ public class VisualizarFacturas extends JFrame {
 		btnEliminar.setBackground(new Color(72, 61, 139));
 		btnEliminar.setBounds(143, 11, 84, 23);
 		panelBoton.add(btnEliminar);
-		
+
 		JButton btnAnyadir = new JButton("Registrar facturas");
 		btnAnyadir.setBounds(237, 11, 146, 23);
 		panelBoton.add(btnAnyadir);
@@ -130,16 +127,16 @@ public class VisualizarFacturas extends JFrame {
 
 		JMenu menuEmpleados = new JMenu("Empleado");
 		menuBar.add(menuEmpleados);
-		
+
 		JMenu menuProductos = new JMenu("Producto");
 		menuBar.add(menuProductos);
 
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
-	
+
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
-		
+
 		JMenuItem verProductos = new JMenuItem("Ver Producto");
 		menuProductos.add(verProductos);
 
@@ -162,9 +159,7 @@ public class VisualizarFacturas extends JFrame {
 				window2.setVisible(true);
 			}
 		});
-		
-		
-		
+
 		verProductos.addActionListener(new ActionListener() {
 
 			@Override
@@ -174,9 +169,7 @@ public class VisualizarFacturas extends JFrame {
 				window2.setVisible(true);
 			}
 		});
-		
 
-		
 		btnModificar.addActionListener(new ActionListener() {
 
 			@Override
@@ -196,12 +189,11 @@ public class VisualizarFacturas extends JFrame {
 				// frameModificar.setVisible(true);
 				// setVisible(false);
 
+				// TODO crear ventana de modificar facturas
+				// ModificarFactura frameModificar = new ModificarFactura(fa);
+				// frameModificar.setVisible(true);
+				// setVisible(false);
 
-				//TODO crear ventana de modificar facturas
-				//ModificarFactura frameModificar = new ModificarFactura(fa);
-				//frameModificar.setVisible(true);
-				//setVisible(false);
-			
 			}
 
 		});
@@ -227,17 +219,16 @@ public class VisualizarFacturas extends JFrame {
 			}
 
 		});
-		
-		
+
 		btnAnyadir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
+
 				new RegistroFactura().setVisible(true);
-			
-			}	
+
+			}
 		});
-		
+
 		FacturasJTable();
 	}
 

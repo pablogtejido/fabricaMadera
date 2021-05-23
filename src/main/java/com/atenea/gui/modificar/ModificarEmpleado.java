@@ -14,13 +14,11 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import com.atenea.data.Empleado;
 import com.atenea.data.EnumPuestoEmpleados;
-import com.atenea.gui.tablas.VisualizarClientes;
 import com.atenea.gui.tablas.VisualizarEmpleado;
-import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
 
-public class ModificarEmpleado extends JFrame{
-	
+public class ModificarEmpleado extends JFrame {
+
 	private JPanel contentPane;
 	private JTextField textFieldDNI;
 	private JTextField textFieldNombre;
@@ -32,7 +30,15 @@ public class ModificarEmpleado extends JFrame{
 	private JTextField textFieldPuesto;
 	private JTextField textFieldNacimiento;
 	private JTextField textFieldFechaEmpleado;
-	
+
+	/**
+	 * Launch the application.
+	 */
+
+	/**
+	 * Create the application.
+	 */
+
 	public ModificarEmpleado(final Empleado empleado) {
 		setTitle("Modificar Empleado");
 		setBounds(100, 100, 631, 575);
@@ -41,7 +47,7 @@ public class ModificarEmpleado extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(72, 61, 139));
 		panel.setForeground(new Color(0, 128, 128));
@@ -58,7 +64,7 @@ public class ModificarEmpleado extends JFrame{
 		JLabel lblDNI = new JLabel("DNI:");
 		lblDNI.setBounds(193, 95, 57, 13);
 		contentPane.add(lblDNI);
-		
+
 		textFieldDNI = new JTextField();
 		textFieldDNI.setBounds(323, 90, 150, 19);
 		contentPane.add(textFieldDNI);
@@ -88,8 +94,7 @@ public class ModificarEmpleado extends JFrame{
 
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setBounds(193, 185, 76, 14);
-		contentPane.add(lblEmail);		
-		
+		contentPane.add(lblEmail);
 
 		JButton volver = new JButton("Volver");
 		volver.setForeground(Color.WHITE);
@@ -118,30 +123,30 @@ public class ModificarEmpleado extends JFrame{
 		cerrar.setBackground(new Color(72, 61, 139));
 		cerrar.setBounds(517, 501, 80, 31);
 		contentPane.add(cerrar);
-		
+
 		textFieldEmail = new JTextField();
 		textFieldEmail.setText((String) null);
 		textFieldEmail.setColumns(10);
 		textFieldEmail.setBounds(323, 180, 150, 19);
 		contentPane.add(textFieldEmail);
 		textFieldEmail.setText(empleado.getEmail());
-		
+
 		JLabel lblSueldo = new JLabel("Sueldo:");
 		lblSueldo.setBounds(193, 359, 76, 14);
 		contentPane.add(lblSueldo);
-		
+
 		JLabel lblPuesto = new JLabel("Puesto:");
 		lblPuesto.setBounds(193, 245, 57, 13);
 		contentPane.add(lblPuesto);
-		
+
 		JLabel lblTelefono = new JLabel("Telefono:");
 		lblTelefono.setBounds(193, 216, 57, 13);
 		contentPane.add(lblTelefono);
-		
+
 		JLabel lblContrasena = new JLabel("Contraseña:");
 		lblContrasena.setBounds(193, 388, 76, 14);
 		contentPane.add(lblContrasena);
-		
+
 		textFieldSueldo = new JTextField();
 		textFieldSueldo.setText((String) null);
 		textFieldSueldo.setColumns(10);
@@ -149,35 +154,34 @@ public class ModificarEmpleado extends JFrame{
 		contentPane.add(textFieldSueldo);
 		Double sueldo = empleado.getSueldo();
 		textFieldSueldo.setText(sueldo.toString());
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(323, 388, 150, 20);
 		contentPane.add(passwordField);
 		passwordField.setText(empleado.getContrasena());
-		
+
 		textFieldTelefono = new JTextField();
 		textFieldTelefono.setText((String) null);
 		textFieldTelefono.setColumns(10);
 		textFieldTelefono.setBounds(323, 210, 150, 19);
 		contentPane.add(textFieldTelefono);
 		textFieldTelefono.setText(empleado.getTelefono());
-		
+
 		textFieldPuesto = new JTextField();
 		textFieldPuesto.setText((String) null);
 		textFieldPuesto.setColumns(10);
 		textFieldPuesto.setBounds(323, 239, 150, 19);
 		contentPane.add(textFieldPuesto);
 		textFieldPuesto.setText(String.valueOf(empleado.getPuesto()));
-		
+
 		JLabel lblFechaNacimiento = new JLabel("Fecha de nacimiento:");
 		lblFechaNacimiento.setBounds(193, 280, 120, 14);
 		contentPane.add(lblFechaNacimiento);
-		
-		
+
 		JLabel lblFechaEmpleado = new JLabel("Fecha de empleado:");
 		lblFechaEmpleado.setBounds(193, 318, 120, 14);
 		contentPane.add(lblFechaEmpleado);
-		
+
 		textFieldNacimiento = new JTextField();
 		textFieldNacimiento.setText((String) null);
 		textFieldNacimiento.setEditable(false);
@@ -185,7 +189,7 @@ public class ModificarEmpleado extends JFrame{
 		textFieldNacimiento.setBounds(323, 277, 274, 19);
 		contentPane.add(textFieldNacimiento);
 		textFieldNacimiento.setText(String.valueOf(empleado.getFcha_empleado()));
-		
+
 		textFieldFechaEmpleado = new JTextField();
 		textFieldFechaEmpleado.setText((String) null);
 		textFieldFechaEmpleado.setEditable(false);
@@ -193,7 +197,7 @@ public class ModificarEmpleado extends JFrame{
 		textFieldFechaEmpleado.setBounds(323, 315, 274, 19);
 		contentPane.add(textFieldFechaEmpleado);
 		textFieldFechaEmpleado.setText(String.valueOf(empleado.getFcha_nacimiento()));
-		
+
 		cerrar.addActionListener(new ActionListener() {
 
 			@Override
@@ -214,7 +218,7 @@ public class ModificarEmpleado extends JFrame{
 				EnumPuestoEmpleados puesto = EnumPuestoEmpleados.valueOf(textFieldPuesto.getText());
 				double sueldo = Double.parseDouble(textFieldSueldo.getText());
 				String contrasena = passwordField.getText();
-				
+
 				empleado.setNombre(nombre);
 				empleado.setDireccion(direccion);
 				empleado.setEmail(email);
@@ -222,7 +226,7 @@ public class ModificarEmpleado extends JFrame{
 				empleado.setPuesto(puesto);
 				empleado.setSueldo(sueldo);
 				empleado.setContrasena(contrasena);
-				
+
 				EmpleadoRSH.getInstance().modificarEmpleado(empleado);
 				System.out.println(empleado);
 

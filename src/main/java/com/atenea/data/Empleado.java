@@ -8,6 +8,12 @@ import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 
+/**
+ * Cada empleado podrá visualizar y añadir clientes, productos y facturas. Sin
+ * embargo, no podrá registrar empleados (eso solo podrá hacerlo el
+ * administrador)
+ */
+
 @PersistenceCapable
 @Inheritance(strategy = InheritanceStrategy.NEW_TABLE)
 public class Empleado {

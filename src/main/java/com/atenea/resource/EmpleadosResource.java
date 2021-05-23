@@ -16,12 +16,28 @@ import jakarta.ws.rs.core.MediaType;
 @Path("empleado")
 public class EmpleadosResource {
 
+	/**
+	 * Obtener empleados de la base de datos
+	 * 
+	 * @return lista de empleados
+	 * 
+	 */
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Empleado> getEmpleados() {
 		List<Empleado> empleados = DBManager.getInstance().getEmpleados();
 		return empleados;
 	}
+
+	/**
+	 * Modificar un empleado de la base de datos
+	 * 
+	 * @param empleado
+	 * 
+	 * @return empleado
+	 * 
+	 */
 
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -31,6 +47,15 @@ public class EmpleadosResource {
 		return empleado;
 	}
 
+	/**
+	 * Almacenar un empleado de la base de datos
+	 * 
+	 * @param empleado
+	 * 
+	 * @return empleado
+	 * 
+	 */
+
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -38,6 +63,15 @@ public class EmpleadosResource {
 		DBManager.getInstance().store(empleado);
 		return empleado;
 	}
+
+	/**
+	 * Eliminar un empleado de la base de datos
+	 * 
+	 * @param id
+	 * 
+	 * @return "Done"
+	 * 
+	 */
 
 	@DELETE
 	@Path("/ids/{empleadoId}")

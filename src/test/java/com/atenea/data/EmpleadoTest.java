@@ -1,18 +1,16 @@
 package com.atenea.data;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import java.util.Date;
-
-import com.atenea.data.Empleado;
-import com.atenea.data.EnumPuestoEmpleados;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+
+/**
+ * Test of Empleado class
+ */
 
 public class EmpleadoTest {
 
@@ -61,9 +59,9 @@ public class EmpleadoTest {
 
     }
 
-    /**
-     * Test of getNombre method, of class Empleado.
-     */
+	/**
+	 * Test of getNombre method, of class Empleado.
+	 */
     @Test
     public void testGetNombre() {
         System.out.println("getNombre");

@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,37 +12,26 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
 import com.atenea.data.Cliente;
 import com.atenea.gui.tablas.VisualizarClientes;
 import com.atenea.rsh.ClienteRSH;
 
-public class ModificarCliente extends JFrame{
-	
+public class ModificarCliente extends JFrame {
+
 	private JPanel contentPane;
 	private JTextField textFieldDNI;
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellidos;
 	private JPasswordField passwordField;
-	/*private static Cliente clienteMain;
-	
 
-	
-	public static void main(String[] args) {
-		
+	/**
+	 * Launch the application.
+	 */
 
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ModificarCliente window = new ModificarCliente(clienteMain);
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-	
+	/**
+	 * Create the application.
+	 */
+
 	public ModificarCliente(final Cliente cliente) {
 		setTitle("Modificar Cliente");
 		setBounds(100, 100, 631, 375);
@@ -52,7 +40,7 @@ public class ModificarCliente extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(72, 61, 139));
 		panel.setForeground(new Color(0, 128, 128));
@@ -69,7 +57,7 @@ public class ModificarCliente extends JFrame{
 		JLabel lblDNI = new JLabel("DNI:");
 		lblDNI.setBounds(208, 85, 57, 13);
 		contentPane.add(lblDNI);
-		
+
 		textFieldDNI = new JTextField();
 		textFieldDNI.setBounds(285, 82, 96, 19);
 		contentPane.add(textFieldDNI);
@@ -105,7 +93,6 @@ public class ModificarCliente extends JFrame{
 		passwordField.setBounds(285, 172, 96, 20);
 		contentPane.add(passwordField);
 		passwordField.setText(cliente.getContrasena());
-		
 
 		JButton volver = new JButton("Volver");
 		volver.setForeground(Color.WHITE);
@@ -150,11 +137,11 @@ public class ModificarCliente extends JFrame{
 				String nombre = textFieldNombre.getText();
 				String apellidos = textFieldApellidos.getText();
 				String contrasena = passwordField.getText(); // FIXME: Hay que arreglar esto.
-				
+
 				cliente.setNombre(nombre);
 				cliente.setApellidos(apellidos);
 				cliente.setContrasena(contrasena);
-				
+
 				ClienteRSH.getInstance().modificarCliente(cliente);
 				System.out.println(cliente);
 

@@ -1,6 +1,5 @@
 package com.atenea.data;
 
-
 /** An enum type
  * 	Enum de los puestos posibles de cada empleado
  * 
@@ -8,8 +7,7 @@ package com.atenea.data;
 
 /**< Directiva 1 */
 /**< Legal 2 */
-/**< Operario 3 */
-
+/** < Operario 3 */
 
 public enum EnumPuestoEmpleados {
 

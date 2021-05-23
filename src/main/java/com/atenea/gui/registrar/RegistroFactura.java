@@ -1,19 +1,15 @@
 package com.atenea.gui.registrar;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.EventQueue;
-import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -21,10 +17,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
 import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
@@ -36,10 +30,13 @@ import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
 import com.atenea.rsh.FacturaRSH;
 import com.atenea.rsh.ProductoRSH;
-
 import javax.swing.JComboBox;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
+
+/**
+ * Ventana para registrar una nueva factura en la base de datos
+ */
 
 public class RegistroFactura extends JFrame {
 
@@ -50,6 +47,10 @@ public class RegistroFactura extends JFrame {
 	private JLabel lblProducto;
 	private ArrayList<JSpinner> spinProductos;
 	private JSpinner spinProducto;
+
+	/**
+	 * Launch the application.
+	 */
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -64,10 +65,18 @@ public class RegistroFactura extends JFrame {
 		});
 	}
 
+	/**
+	 * Create the application.
+	 */
+
 	public RegistroFactura() {
 		initialize();
 	}
-	
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+
 	private void initialize() {
 
 		setTitle("Registro Factura");
@@ -163,7 +172,7 @@ public class RegistroFactura extends JFrame {
 
 		JMenuItem registrarProducto = new JMenuItem("Registrar Producto");
 		menuProductos.add(registrarProducto);
-		
+
 		registrarProducto.addActionListener(new ActionListener() {
 
 			@Override
@@ -188,10 +197,10 @@ public class RegistroFactura extends JFrame {
 				// setVisible(false);
 			}
 		});
-		
+
 		JMenuItem verProductos = new JMenuItem("Ver Productos");
 		menuProductos.add(verProductos);
-		
+
 		verProductos.addActionListener(new ActionListener() {
 
 			@Override
@@ -202,10 +211,10 @@ public class RegistroFactura extends JFrame {
 				// setVisible(false);
 			}
 		});
-		
+
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
-		
+
 		verClientes.addActionListener(new ActionListener() {
 
 			@Override
@@ -216,10 +225,10 @@ public class RegistroFactura extends JFrame {
 				// setVisible(false);
 			}
 		});
-		
+
 		JMenuItem verEmpleados = new JMenuItem("Ver Empleados");
 		menuEmpleados.add(verEmpleados);
-		
+
 		verEmpleados.addActionListener(new ActionListener() {
 
 			@Override

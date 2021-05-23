@@ -11,6 +11,10 @@ import com.atenea.data.Factura;
 import com.atenea.data.Producto;
 import com.atenea.db.DBManager;
 
+/**
+ * Programa para la inserción de datos en la base de datos
+ */
+
 public class PrepareData {
 
 	public static void main(String[] args) {
@@ -88,10 +92,9 @@ public class PrepareData {
 		 * "ainhoa585@gmail.com", "699958457"); DBManager.getInstance().store(a3);
 		 */
 
-		 Administrador a1 = new Administrador("45748121ñ","1234", "Paco", "Salas",
-				  "pacosalas@gmail.com", "682548111");
-		 DBManager.getInstance().store(a1);
-				  
+		Administrador a1 = new Administrador("45748121ñ", "1234", "Paco", "Salas", "pacosalas@gmail.com", "682548111");
+		DBManager.getInstance().store(a1);
+
 		Set<Producto> lista1 = new HashSet<>();
 
 		Producto p1Factura = new Producto("Tablero madera", 12.70, 32, 24, 4, true);

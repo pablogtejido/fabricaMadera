@@ -1,27 +1,26 @@
 package com.atenea.gui.registrar;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Font;
 import javax.swing.SwingConstants;
-
 import com.atenea.data.Producto;
 import com.atenea.gui.tablas.VisualizarProductos;
 import com.atenea.rsh.ProductoRSH;
-
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.DefaultComboBoxModel;
+
+/**
+ * Ventana para registrar un nuevo producto en la base de datos
+ */
 
 public class RegistrarProducto extends JFrame{
 	private JTextField txtId;

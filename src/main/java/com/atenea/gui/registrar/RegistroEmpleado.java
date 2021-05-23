@@ -9,23 +9,22 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import com.atenea.data.Empleado;
 import com.atenea.data.EnumPuestoEmpleados;
-import com.atenea.db.DBException;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
-import com.atenea.db.DBManager;
 import com.atenea.gui.LoginEmpleado;
 import com.atenea.gui.tablas.VisualizarEmpleado;
 import com.atenea.rsh.EmpleadoRSH;
-
 import javax.swing.JPasswordField;
-
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JComboBox;
+
+/**
+ * Ventana para registrar un nuevo empleado en la base de datos
+ */
 
 public class RegistroEmpleado extends JFrame {
 	private JTextField direcciontxt;
@@ -212,10 +211,10 @@ public class RegistroEmpleado extends JFrame {
 					JOptionPane.showMessageDialog(null, "Este Empleado ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
 					System.out.println("ERROR");
 				}
-				
-			VisualizarEmpleado em = new VisualizarEmpleado();
-			setVisible(false);
-			em.setVisible(true);
+
+				VisualizarEmpleado em = new VisualizarEmpleado();
+				setVisible(false);
+				em.setVisible(true);
 
 			}
 		});

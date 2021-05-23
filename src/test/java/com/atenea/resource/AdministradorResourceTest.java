@@ -40,23 +40,18 @@ public class AdministradorResourceTest {
 		rsh = AdministradorRSH.getInstance();
 
 		// Set Data
-		administrador1 =new Administrador("45894152P","1234", "Paco", "Salas",
-				  "pacosalas2@gmail.com", "682548111");
-		
-		administrador2 =new Administrador("45414754M", "1234", "Juan", "Lopez",
-				  "juanlopez@gmail.com", "669584412");
-		
-		administrador3 =new Administrador("7854125Q","1234", "Aimar", "Gomez",
-				  "aimargomez@gmail.com", "748512300");
-		
-		administrador4 =new Administrador("55236987I","1234", "Asier", "Muñoz",
-				  "asierMuñoz@gmail.com", "695412111");
-		
-		administrador5 =new Administrador("1245896W","1234", "Carlos", "Suso",
-				  "carlosuso@gmail.com", "663332211");
-		
-		administrador6 =new Administrador("2020528Q","1234", "Luis", "Gonzalez",
-				  "luizgonzalez@gmail.com", "665412287");
+		administrador1 = new Administrador("45894152P", "1234", "Paco", "Salas", "pacosalas2@gmail.com", "682548111");
+
+		administrador2 = new Administrador("45414754M", "1234", "Juan", "Lopez", "juanlopez@gmail.com", "669584412");
+
+		administrador3 = new Administrador("7854125Q", "1234", "Aimar", "Gomez", "aimargomez@gmail.com", "748512300");
+
+		administrador4 = new Administrador("55236987I", "1234", "Asier", "Muñoz", "asierMuñoz@gmail.com", "695412111");
+
+		administrador5 = new Administrador("1245896W", "1234", "Carlos", "Suso", "carlosuso@gmail.com", "663332211");
+
+		administrador6 = new Administrador("2020528Q", "1234", "Luis", "Gonzalez", "luizgonzalez@gmail.com",
+				"665412287");
 
 	}
 
@@ -75,7 +70,7 @@ public class AdministradorResourceTest {
 		administrador3.setDni(rsh.guardarAdministrador(administrador3).getDni());
 		administrador4.setDni(rsh.guardarAdministrador(administrador4).getDni());
 		administrador5.setDni(rsh.guardarAdministrador(administrador5).getDni());
-		
+
 	}
 
 	@After
@@ -114,7 +109,8 @@ public class AdministradorResourceTest {
 				administrador5_found = true;
 			}
 		}
-		assertTrue(administrador1_found && administrador2_found && administrador3_found && administrador4_found && administrador5_found);
+		assertTrue(administrador1_found && administrador2_found && administrador3_found && administrador4_found
+				&& administrador5_found);
 	}
 
 	@Test
@@ -135,36 +131,36 @@ public class AdministradorResourceTest {
 		assertTrue(administrador6_found);
 	}
 
+	@Test
+	public void testEliminarAdministrador() {
+		System.out.println(
+				"================================================Test eliminar administrador================================================");
+		rsh.borrarAdministrador(administrador1);
+		List<Administrador> administradoresBD = rsh.verAdministrador();
+		assertEquals(administradoresBD.size(), 4);
 
-    @Test
-    public void testEliminarAdministrador() {
-        System.out.println(
-                "================================================Test eliminar administrador================================================");
-        rsh.borrarAdministrador(administrador1);
-        List<Administrador> administradoresBD = rsh.verAdministrador();
-        assertEquals(administradoresBD.size(), 4);
+		boolean administrador1_found = false;
+		boolean administrador2_found = false;
+		boolean administrador3_found = false;
+		boolean administrador4_found = false;
+		boolean administrador5_found = false;
 
-        boolean administrador1_found = false;
-        boolean administrador2_found = false;
-        boolean administrador3_found = false;
-        boolean administrador4_found = false;
-        boolean administrador5_found = false;
+		for (Administrador adm : administradoresBD) {
+			if (adm.equals(administrador1)) {
+				administrador1_found = true;
+			} else if (adm.equals(administrador2)) {
+				administrador2_found = true;
+			} else if (adm.equals(administrador3)) {
+				administrador3_found = true;
+			} else if (adm.equals(administrador4)) {
+				administrador4_found = true;
+			} else if (adm.equals(administrador5)) {
+				administrador5_found = true;
+			}
+		}
+		// See the ! at the start.
+		assertTrue(!administrador1_found && administrador2_found && administrador3_found && administrador4_found
+				&& administrador5_found);
 
-        for (Administrador adm : administradoresBD) {
-            if (adm.equals(administrador1)) {
-            	administrador1_found = true;
-            } else if (adm.equals(administrador2)) {
-            	administrador2_found = true;
-            } else if (adm.equals(administrador3)) {
-            	administrador3_found = true;
-            } else if (adm.equals(administrador4)) {
-            	administrador4_found = true;
-            } else if (adm.equals(administrador5)) {
-            	administrador5_found = true;
-            }
-        }
-        // See the ! at the start.
-        assertTrue(!administrador1_found && administrador2_found && administrador3_found && administrador4_found && administrador5_found);
-
-    }
+	}
 }

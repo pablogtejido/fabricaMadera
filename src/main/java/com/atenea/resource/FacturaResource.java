@@ -18,34 +18,68 @@ import jakarta.ws.rs.core.MediaType;
 @Path("factura")
 public class FacturaResource {
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Factura> getFactura() {
-        return DBManager.getInstance().getFacturas();
-    }
+	/**
+	 * Obtener facturas de la base de datos
+	 * 
+	 * @return lista de facturas
+	 * 
+	 */
 
-    @PATCH
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Factura modificarFactura(Factura factura) {
-        DBManager.getInstance().updateFactura(factura);
-        return factura;
-    }
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Factura> getFactura() {
+		return DBManager.getInstance().getFacturas();
+	}
 
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Factura crearFactura(Factura factura) {
-        DBManager.getInstance().store(factura);
-        return factura;
-    }
+	/**
+	 * Modificar una factura de la base de datos
+	 * 
+	 * @param factura
+	 * 
+	 * @return factura
+	 * 
+	 **/
 
-    @DELETE
-    @Path("/ids/{facturaId}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String eliminarFactura(@PathParam("facturaId") long id) {
-        DBManager.getInstance().deleteFacturaById(id);
-        return "Done";
-    }
+	@PATCH
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Factura modificarFactura(Factura factura) {
+		DBManager.getInstance().updateFactura(factura);
+		return factura;
+	}
+
+	/**
+	 * Almacenar una factura de la base de datos
+	 * 
+	 * @param factura
+	 * 
+	 * @return factura
+	 * 
+	 */
+
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Factura crearFactura(Factura factura) {
+		DBManager.getInstance().store(factura);
+		return factura;
+	}
+
+	/**
+	 * Eliminar una factura de la base de datos
+	 * 
+	 * @param id
+	 * 
+	 * @return "Done"
+	 * 
+	 */
+
+	@DELETE
+	@Path("/ids/{facturaId}")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String eliminarFactura(@PathParam("facturaId") long id) {
+		DBManager.getInstance().deleteFacturaById(id);
+		return "Done";
+	}
 
 }

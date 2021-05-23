@@ -2,38 +2,29 @@ package com.atenea.gui.tablas;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
-
-import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
-import com.atenea.data.Factura;
-import com.atenea.gui.modificar.ModificarCliente;
 import com.atenea.gui.modificar.ModificarEmpleado;
-import com.atenea.gui.registrar.RegistroCliente;
-import com.atenea.gui.registrar.RegistroEmpleado;
-import com.atenea.gui.registrar.RegistroFactura;
-import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
-import com.atenea.rsh.FacturaRSH;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+/**
+ * Ventana para visualizar todos los empleados que hay almacenados en la base de
+ * datos
+ */
 
 public class VisualizarEmpleado extends JFrame {
 	private JTable table;
@@ -60,8 +51,8 @@ public class VisualizarEmpleado extends JFrame {
 	 */
 	public VisualizarEmpleado() {
 		initialize();
-		//System.out.println();
-		//System.out.println(calcularTiempoEmpresa());
+		// System.out.println();
+		// System.out.println(calcularTiempoEmpresa());
 	}
 
 	/**
@@ -106,7 +97,6 @@ public class VisualizarEmpleado extends JFrame {
 		btnEliminar.setBackground(new Color(72, 61, 139));
 		btnEliminar.setBounds(143, 11, 84, 23);
 		panelBoton.add(btnEliminar);
-		
 
 		table = new JTable();
 		modelo = new DefaultTableModel();
@@ -134,20 +124,19 @@ public class VisualizarEmpleado extends JFrame {
 
 		JMenu menuClientes = new JMenu("Clientes");
 		menuBar.add(menuClientes);
-		
+
 		JMenu menuProductos = new JMenu("Producto");
 		menuBar.add(menuProductos);
-				
+
 		JMenuItem verFacturas = new JMenuItem("Ver Facturas");
 		menuFacturas.add(verFacturas);
 
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
-		
+
 		JMenuItem verProductos = new JMenuItem("Ver Producto");
 		menuProductos.add(verProductos);
 
-		
 		verFacturas.addActionListener(new ActionListener() {
 
 			@Override
@@ -157,8 +146,7 @@ public class VisualizarEmpleado extends JFrame {
 				window2.setVisible(true);
 			}
 		});
-		
-		
+
 		verClientes.addActionListener(new ActionListener() {
 
 			@Override
@@ -167,7 +155,7 @@ public class VisualizarEmpleado extends JFrame {
 				window2.setVisible(true);
 			}
 		});
-		
+
 		verProductos.addActionListener(new ActionListener() {
 
 			@Override
@@ -177,13 +165,12 @@ public class VisualizarEmpleado extends JFrame {
 				window2.setVisible(true);
 			}
 		});
-			
-		
+
 		btnModificar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				String dni = (String) modelo.getValueAt(table.getSelectedRow(), 0);
 				System.out.println(dni);
 				Empleado empl = null;
@@ -196,9 +183,9 @@ public class VisualizarEmpleado extends JFrame {
 				}
 				ModificarEmpleado frameModificar = new ModificarEmpleado(empl);
 				frameModificar.setVisible(true);
-			
+
 			}
-			
+
 		});
 
 		btnEliminar.addActionListener(new ActionListener() {
@@ -221,9 +208,7 @@ public class VisualizarEmpleado extends JFrame {
 			}
 
 		});
-		
-	
-				
+
 		EmpleadosJTable();
 	}
 
@@ -232,49 +217,42 @@ public class VisualizarEmpleado extends JFrame {
 		List<Empleado> empleados = rsh.verEmpleados();
 		String[] fila = new String[9];
 		System.out.println(empleados);
-	
+
 		for (Empleado empl : empleados) {
-			
+
 			fila[0] = empl.getDni();
 			fila[1] = empl.getNombre();
 			fila[2] = empl.getDireccion();
 			fila[3] = empl.getEmail();
 			fila[4] = empl.getTelefono();
 			fila[5] = String.valueOf(empl.getPuesto());
-			fila[6] = String.valueOf(empl.getFcha_nacimiento()); 
+			fila[6] = String.valueOf(empl.getFcha_nacimiento());
 			fila[7] = String.valueOf(empl.getFcha_empleado());
 			fila[8] = String.valueOf(empl.getSueldo());
-			
 
-			
-			//TODO meter campo tiempo en empresa calculado
-			
+			// TODO meter campo tiempo en empresa calculado
+
 			modelo.addRow(fila);
 
 		}
 	}
-	//TODO no se que falla
-	/*public String calcularTiempoEmpresa() {
-		Date actual = new Date();
-		Date inicio = new Date("28/02/2020 01:09:07");
-		String texto;
-		
-		int mesesRest = inicio.getMonth() - actual.getMonth() ;
-		
-		int anyos = mesesRest / 12;
-		int meses = mesesRest % 12;
-		
-		if(anyos < 1) {
-			texto = meses + " meses.";
-		} else if (meses < 1 && anyos < 1){
-			texto = "Unos pocos dias";
-		} else {
-			texto = anyos + " años, " + meses + " meses.";;
-		}
-		 
-		return texto;
-		
-	}*/
+	// TODO no se que falla
+	/*
+	 * public String calcularTiempoEmpresa() { Date actual = new Date(); Date inicio
+	 * = new Date("28/02/2020 01:09:07"); String texto;
+	 * 
+	 * int mesesRest = inicio.getMonth() - actual.getMonth() ;
+	 * 
+	 * int anyos = mesesRest / 12; int meses = mesesRest % 12;
+	 * 
+	 * if(anyos < 1) { texto = meses + " meses."; } else if (meses < 1 && anyos <
+	 * 1){ texto = "Unos pocos dias"; } else { texto = anyos + " años, " + meses +
+	 * " meses.";; }
+	 * 
+	 * return texto;
+	 * 
+	 * }
+	 */
 
 	public boolean isCellEditable(int row, int column) {
 		return false;

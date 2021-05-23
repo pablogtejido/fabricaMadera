@@ -8,6 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * Test of Administrador class
+ */
+
 public class AdministradorTest {
 
 	Administrador admin;
@@ -22,13 +26,16 @@ public class AdministradorTest {
 
 	@Before
 	public void setUp() throws Exception {
-		admin = new Administrador("45884411L","1234", "Juan", "Lopez", "juanlopez@gmail.com", "658458111");
+		admin = new Administrador("45884411L", "1234", "Juan", "Lopez", "juanlopez@gmail.com", "658458111");
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test of getNombre method, of class Administrador
+	 */
 	@Test
 	public void testGetNombre() {
 		System.out.println("getNombre");
@@ -39,6 +46,10 @@ public class AdministradorTest {
 
 	}
 
+	/**
+	 * Test of setNombre method, of class Administrador
+	 */
+
 	@Test
 	public void testSetNombre() {
 		System.out.println("setNombre");
@@ -46,6 +57,10 @@ public class AdministradorTest {
 		admin.setNombre(nombre);
 
 	}
+
+	/**
+	 * Test of getApellido method, of class Administrador
+	 */
 
 	@Test
 	public void testGetApellido() {
@@ -57,6 +72,10 @@ public class AdministradorTest {
 
 	}
 
+	/**
+	 * Test of setApellido method, of class Administrador
+	 */
+
 	@Test
 	public void testSetApellido() {
 		System.out.println("setApellido");
@@ -64,7 +83,11 @@ public class AdministradorTest {
 		admin.setApellido(apellido);
 
 	}
-	
+
+	/**
+	 * Test of getEmail method, of class Administrador
+	 */
+
 	@Test
 	public void testGetEmail() {
 		System.out.println("getEmail");
@@ -75,6 +98,10 @@ public class AdministradorTest {
 
 	}
 
+	/**
+	 * Test of setEmail method, of class Administrador
+	 */
+
 	@Test
 	public void testSetEmail() {
 		System.out.println("setEmail");
@@ -82,7 +109,11 @@ public class AdministradorTest {
 		admin.setEmail(email);
 
 	}
-	
+
+	/**
+	 * Test of getTelefono method, of class Administrador
+	 */
+
 	@Test
 	public void testGetTelefono() {
 		System.out.println("getTelefono");
@@ -93,6 +124,10 @@ public class AdministradorTest {
 
 	}
 
+	/**
+	 * Test of setTelefono method, of class Administrador
+	 */
+
 	@Test
 	public void testSetTelefono() {
 		System.out.println("setTelefono");
@@ -100,6 +135,5 @@ public class AdministradorTest {
 		admin.setEmail(telefono);
 
 	}
-
 
 }

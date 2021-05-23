@@ -12,8 +12,8 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 /**
- * Cada producto tendrá asociado un id, un nombre, un precio
- * un peso, una medida, un grosor, una opcion de tener añadidos y una lista de facturas 
+ * Cada producto tendrá asociado un id, un nombre, un precio un peso, una
+ * medida, un grosor, una opcion de tener añadidos y una lista de facturas
  * 
  */
 

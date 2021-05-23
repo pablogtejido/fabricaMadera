@@ -1,17 +1,14 @@
 package com.atenea.data;
 
 import java.util.Objects;
-import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-
 /**
-*El administrador es quien se va a encargar de hacer las modificaciones necesarias del Empleado; es decir, podrá cambiar
-*los datos. Así mismo, podrá modificar los clientes, las facturas y los productos.
+ * El administrador es quien se va a encargar de hacer las modificaciones
+ * necesarias del empleado; es decir, podrá modificar sus datos
  */
 
 @PersistenceCapable

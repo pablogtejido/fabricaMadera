@@ -7,16 +7,16 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import com.atenea.gui.tablas.VisualizarClientes;
-
 import javax.swing.JButton;
 
+/**
+ * Ventana de inicio donde los administradores y empleados accederan a iniciar
+ * sesión tan solo pulsando un boton
+ */
 public class VentanaInicio extends JFrame {
 
 	private JPanel contentPane;
@@ -80,10 +80,6 @@ public class VentanaInicio extends JFrame {
 			}
 
 		});
-
-
-
-
 
 		// lblBackground
 		JLabel lblBackground = new JLabel("");

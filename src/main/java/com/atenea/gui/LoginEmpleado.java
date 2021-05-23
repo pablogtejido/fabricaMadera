@@ -27,6 +27,12 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 
+/**
+ * Desde esta ventana podrán iniciar sesión tanto los empleados, como los
+ * administradores. Si es un administrador quien quiere iniciar sesión deberá
+ * seleccionar el checkbox para así indicar que accede al sistema como
+ * administrador y no como empleado
+ */
 
 public class LoginEmpleado extends JFrame {
 
@@ -68,7 +74,7 @@ public class LoginEmpleado extends JFrame {
 		panel.setBounds(0, 0, 615, 43);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+
 		chckbxAdmin = new JCheckBox("Admin\r\n");
 		chckbxAdmin.setBounds(107, 182, 97, 23);
 		contentPane.add(chckbxAdmin);
@@ -99,103 +105,101 @@ public class LoginEmpleado extends JFrame {
 		btniniciar.setBackground(new Color(72, 61, 139));
 		btniniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-		if(chckbxAdmin.isSelected()) {
-				try {
-					Administrador administrador = null;
-					boolean found = false;
-					List<Administrador> listadoAdministrador = AdministradorRSH.getInstance().verAdministrador();
-					for (Administrador ad : listadoAdministrador) {
-						if(ad.getEmail().equals(textEmpleado.getText())) {
-							System.out.println(ad);
-							administrador = ad;
-							found = true;
-						}
-					}
 
-					if (!found)
-						JOptionPane.showMessageDialog(null, "Administrador no encontrado");
-					else {
-						if (!Arrays.equals(administrador.getContrasena().toCharArray(), contrasenaField.getPassword()))
-							JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+				if (chckbxAdmin.isSelected()) {
+					try {
+						Administrador administrador = null;
+						boolean found = false;
+						List<Administrador> listadoAdministrador = AdministradorRSH.getInstance().verAdministrador();
+						for (Administrador ad : listadoAdministrador) {
+							if (ad.getEmail().equals(textEmpleado.getText())) {
+								System.out.println(ad);
+								administrador = ad;
+								found = true;
+							}
+						}
+
+						if (!found)
+							JOptionPane.showMessageDialog(null, "Administrador no encontrado");
 						else {
-							if (AdministradorConectado.getUserAdmin().isEmpty()) {
-								AdministradorConectado.getUserAdmin().add(administrador);
-								setVisible(false);
-								new VisualizarAdministrador().setVisible(true);
-							} else {
-								for (Administrador u : AdministradorConectado.getUserAdmin()) {
-									if (administrador.equals(u)) {
-										JOptionPane.showMessageDialog(null, "Este administrador ya esta conectado");
-										textEmpleado.setText("");
-										contrasenaField.setText("");
-									} else {
-										AdministradorConectado.getUserAdmin().add(administrador);
-										setVisible(false);
-										new VisualizarAdministrador().setVisible(true);
+							if (!Arrays.equals(administrador.getContrasena().toCharArray(),
+									contrasenaField.getPassword()))
+								JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+							else {
+								if (AdministradorConectado.getUserAdmin().isEmpty()) {
+									AdministradorConectado.getUserAdmin().add(administrador);
+									setVisible(false);
+									new VisualizarAdministrador().setVisible(true);
+								} else {
+									for (Administrador u : AdministradorConectado.getUserAdmin()) {
+										if (administrador.equals(u)) {
+											JOptionPane.showMessageDialog(null, "Este administrador ya esta conectado");
+											textEmpleado.setText("");
+											contrasenaField.setText("");
+										} else {
+											AdministradorConectado.getUserAdmin().add(administrador);
+											setVisible(false);
+											new VisualizarAdministrador().setVisible(true);
+										}
 									}
 								}
 							}
 						}
+					} catch (Exception e1) {
+						e1.printStackTrace();
 					}
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				
-		}else {
-			try {
-				Empleado empleado = null;
-				boolean found = false;
-				List<Empleado> listadoEmpleado = EmpleadoRSH.getInstance().verEmpleados();
-				for (Empleado emp : listadoEmpleado) {
-					if (emp.getEmail().equals(textEmpleado.getText())) {
-						System.out.println(emp);
-						empleado = emp;
-						found = true;
-					}
-				}
 
-				if (!found)
-					JOptionPane.showMessageDialog(null, "Empleado no encontrado");
-				else {
-					if (!Arrays.equals(empleado.getContrasena().toCharArray(), contrasenaField.getPassword()))
-						JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
-					else {
-						if (EmpleadoConectado.getUserEmpleado().isEmpty()) {
-							EmpleadoConectado.getUserEmpleado().add(empleado);
-							setVisible(false);
-							new VisualizarFacturas().setVisible(true);
-						} else {
-							for (Empleado u : EmpleadoConectado.getUserEmpleado()) {
-								if (empleado.equals(u)) {
-									JOptionPane.showMessageDialog(null, "Este empleado ya esta conectado");
-									textEmpleado.setText("");
-									contrasenaField.setText("");
-								} else {
+				} else {
+					try {
+						Empleado empleado = null;
+						boolean found = false;
+						List<Empleado> listadoEmpleado = EmpleadoRSH.getInstance().verEmpleados();
+						for (Empleado emp : listadoEmpleado) {
+							if (emp.getEmail().equals(textEmpleado.getText())) {
+								System.out.println(emp);
+								empleado = emp;
+								found = true;
+							}
+						}
+
+						if (!found)
+							JOptionPane.showMessageDialog(null, "Empleado no encontrado");
+						else {
+							if (!Arrays.equals(empleado.getContrasena().toCharArray(), contrasenaField.getPassword()))
+								JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+							else {
+								if (EmpleadoConectado.getUserEmpleado().isEmpty()) {
 									EmpleadoConectado.getUserEmpleado().add(empleado);
 									setVisible(false);
 									new VisualizarFacturas().setVisible(true);
+								} else {
+									for (Empleado u : EmpleadoConectado.getUserEmpleado()) {
+										if (empleado.equals(u)) {
+											JOptionPane.showMessageDialog(null, "Este empleado ya esta conectado");
+											textEmpleado.setText("");
+											contrasenaField.setText("");
+										} else {
+											EmpleadoConectado.getUserEmpleado().add(empleado);
+											setVisible(false);
+											new VisualizarFacturas().setVisible(true);
+										}
+									}
 								}
 							}
 						}
+					} catch (Exception e1) {
+						e1.printStackTrace();
 					}
+
 				}
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-			
-			
-			
-		}
 			}
 		});
 		btniniciar.setBounds(250, 238, 103, 37);
 		contentPane.add(btniniciar);
-		
 
 		btniniciar.setBounds(253, 188, 103, 37);
 		contentPane.add(btniniciar);
-	
+
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.setForeground(Color.WHITE);
 		cerrar.setBackground(new Color(72, 61, 139));
@@ -222,7 +226,6 @@ public class LoginEmpleado extends JFrame {
 		;
 		registrarse.setBounds(10, 244, 103, 31);
 		contentPane.add(registrarse);
-		
-		
+
 	}
 }

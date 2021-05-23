@@ -18,12 +18,28 @@ import jakarta.ws.rs.core.MediaType;
 @Path("cliente")
 public class ClienteResource {
 
+	/**
+	 * Obtener clientes de la base de datos
+	 * 
+	 * @return lista de clientes
+	 * 
+	 */
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Cliente> getClientes() {
 		List<Cliente> clientes = DBManager.getInstance().getClientes();
 		return clientes;
 	}
+
+	/**
+	 * Modificar un cliente de la base de datos
+	 * 
+	 * @param cliente
+	 * 
+	 * @return cliente
+	 * 
+	 */
 
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -33,6 +49,15 @@ public class ClienteResource {
 		return cliente;
 	}
 
+	/**
+	 * Almacenar un cliente de la base de datos
+	 * 
+	 * @param cliente
+	 * 
+	 * @return cliente
+	 * 
+	 */
+
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -40,6 +65,15 @@ public class ClienteResource {
 		DBManager.getInstance().store(cliente);
 		return cliente;
 	}
+
+	/**
+	 * Eliminar un cliente de la base de datos
+	 * 
+	 * @param dni
+	 * 
+	 * @return "Done deleteCliente"
+	 * 
+	 */
 
 	@DELETE
 	@Path("/ids/{clienteDni}")

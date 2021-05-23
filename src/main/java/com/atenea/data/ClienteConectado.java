@@ -8,20 +8,19 @@ public class ClienteConectado {
 
 	/**
 	 * Get clientes
-     * 
-     * @return lista de clientes
+	 * 
+	 * @return lista de clientes
 	 */
-	
+
 	public static List<Cliente> getUserCliente() {
 		return users;
 	}
-	
+
 	/**
 	 * Insertar clientes a la lista
 	 * 
-	 *@param c
+	 * @param c
 	 */
-
 
 	public static void addUserCliente(Cliente c) {
 		users.add(c);

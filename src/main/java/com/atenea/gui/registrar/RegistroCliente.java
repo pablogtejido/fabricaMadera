@@ -21,6 +21,9 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
+/**
+ * Ventana para registrar un nuevo cliente en la base de datos
+ */
 public class RegistroCliente extends JFrame {
 
 	private JPanel contentPane;
@@ -28,6 +31,10 @@ public class RegistroCliente extends JFrame {
 	private JTextField textFieldNombre;
 	private JTextField textFieldApellidos;
 	private JPasswordField passwordField;
+
+	/**
+	 * Launch the application.
+	 */
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,10 +49,17 @@ public class RegistroCliente extends JFrame {
 		});
 	}
 
-	
+	/**
+	 * Create the application.
+	 */
+
 	public RegistroCliente() {
 		initialize();
 	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
 	private void initialize() {
 
 		setTitle("Registro Cliente");
@@ -147,8 +161,8 @@ public class RegistroCliente extends JFrame {
 				String dni = textFieldDNI.getText();
 				String nombre = textFieldNombre.getText();
 				String apellidos = textFieldApellidos.getText();
-				String contrasena = passwordField.getText(); 
-				
+				String contrasena = passwordField.getText();
+
 				Cliente cliente = new Cliente(dni, nombre, apellidos, contrasena);
 
 				ClienteRSH.getInstance().guardarCliente(cliente);

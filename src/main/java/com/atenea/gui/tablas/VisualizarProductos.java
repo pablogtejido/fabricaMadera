@@ -1,4 +1,3 @@
-
 package com.atenea.gui.tablas;
 
 import java.awt.EventQueue;
@@ -28,10 +27,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 
+/**
+ * Ventana para visualizar todos los productos que hay almacenados en la base de
+ * datos
+ */
+
 public class VisualizarProductos extends JFrame {
 	private JTable table;
 	private DefaultTableModel modelo;
-
 
 	/**
 	 * Launch the application.
@@ -64,25 +67,25 @@ public class VisualizarProductos extends JFrame {
 		setBounds(100, 100, 827, 461);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
-		
+
 		JPanel titulopanel = new JPanel();
 		titulopanel.setLayout(null);
 		titulopanel.setBackground(new Color(72, 61, 139));
 		titulopanel.setBounds(0, 21, 811, 58);
 		getContentPane().add(titulopanel);
-		
+
 		JLabel titulo = new JLabel("PRODUCTOS");
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		titulo.setForeground(Color.WHITE);
 		titulo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		titulo.setBounds(0, 11, 811, 36);
 		titulopanel.add(titulo);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 811, 21);
 		getContentPane().add(menuBar);
-		
-		//Menus dentro de MenuBar
+
+		// Menus dentro de MenuBar
 		JMenu menuClientes = new JMenu("Clientes");
 		menuBar.add(menuClientes);
 
@@ -91,8 +94,8 @@ public class VisualizarProductos extends JFrame {
 
 		JMenu menuFacturas = new JMenu("Facturas");
 		menuBar.add(menuFacturas);
-		
-		//Menu  items
+
+		// Menu items
 		JMenuItem verClientes = new JMenuItem("Ver Clientes");
 		menuClientes.add(verClientes);
 
@@ -101,7 +104,7 @@ public class VisualizarProductos extends JFrame {
 
 		JMenuItem verFacturas = new JMenuItem("Ver Facturas");
 		menuFacturas.add(verFacturas);
-		
+
 		verFacturas.addActionListener(new ActionListener() {
 
 			@Override
@@ -133,14 +136,14 @@ public class VisualizarProductos extends JFrame {
 				setVisible(false);
 			}
 		});
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(30, 90, 751, 266);
 		getContentPane().add(scrollPane);
-		
+
 		table = new JTable();
 		modelo = new DefaultTableModel();
-		
+
 		modelo.addColumn("Id");
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Precio");
@@ -149,28 +152,27 @@ public class VisualizarProductos extends JFrame {
 		modelo.addColumn("Grosor");
 		modelo.addColumn("Añadidos");
 		table.getTableHeader().setReorderingAllowed(false);
-		
+
 		table.setModel(modelo);
 		scrollPane.setViewportView(table);
-		
-		
+
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setForeground(Color.WHITE);
 		btnModificar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				String Id = (String) modelo.getValueAt(table.getSelectedRow(), 0);
 				System.out.println("Modificando el producto con Id:" + Id);
-				
+
 				Producto prod = null;
 				ProductoRSH rsh = ProductoRSH.getInstance();
-				
+
 				for (Producto producto : rsh.verProductos()) {
 					if (producto.getId().equals(Long.parseLong(Id))) {
 						prod = producto;
-						
+
 					}
 				}
 				ModificarProducto mod = new ModificarProducto(prod);
@@ -181,24 +183,24 @@ public class VisualizarProductos extends JFrame {
 		btnModificar.setBounds(325, 367, 89, 31);
 		btnModificar.setBackground(new Color(72, 61, 139));
 		getContentPane().add(btnModificar);
-		
+
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setForeground(Color.WHITE);
 		btnEliminar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				String Id = (String) modelo.getValueAt(table.getSelectedRow(), 0);
 				System.out.println("Eliminando el producto con Id:" + Id);
-				
+
 				Producto prod = null;
 				ProductoRSH rsh = ProductoRSH.getInstance();
-				
+
 				for (Producto producto : rsh.verProductos()) {
 					if (producto.getId().equals(Long.parseLong(Id))) {
 						prod = producto;
-						
+
 					}
 				}
 				System.out.println("Producto Eliminado");
@@ -207,15 +209,15 @@ public class VisualizarProductos extends JFrame {
 				ProductosJTable();
 			}
 		});
-		
+
 		btnEliminar.setBounds(226, 367, 89, 31);
 		btnEliminar.setBackground(new Color(72, 61, 139));
 		getContentPane().add(btnEliminar);
-		
+
 		JButton btnAnyadir = new JButton("Registrar Productos");
 		btnAnyadir.setForeground(Color.WHITE);
 		btnAnyadir.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -223,22 +225,23 @@ public class VisualizarProductos extends JFrame {
 				reg.setVisible(true);
 				setVisible(false);
 			}
-		} );
+		});
 		btnAnyadir.setBounds(424, 367, 161, 31);
 		btnAnyadir.setBackground(new Color(72, 61, 139));
 		getContentPane().add(btnAnyadir);
-		
+
 		ProductosJTable();
-		
+
 	}
+
 	public void ProductosJTable() {
 		ProductoRSH rsh = ProductoRSH.getInstance();
 		List<Producto> productos = rsh.verProductos();
 		String[] fila = new String[7];
 		System.out.println(productos);
-		
+
 		for (Producto producto : productos) {
-			
+
 			fila[0] = String.valueOf(producto.getId());
 			fila[1] = producto.getNombre();
 			fila[2] = String.valueOf(producto.getPrecio());
@@ -246,13 +249,12 @@ public class VisualizarProductos extends JFrame {
 			fila[4] = String.valueOf(producto.getMedida());
 			fila[5] = String.valueOf(producto.getGrosor());
 			fila[6] = String.valueOf(producto.isAnyadidos());
-			
+
 			modelo.addRow(fila);
-			
-			
+
 		}
 	}
-	
+
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}
