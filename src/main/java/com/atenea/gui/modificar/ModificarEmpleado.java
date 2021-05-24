@@ -232,6 +232,7 @@ public class ModificarEmpleado extends JFrame {
 				
 				setVisible(false);
 				new VisualizarEmpleado().setVisible(true);
+				
 			}
 
 		});
