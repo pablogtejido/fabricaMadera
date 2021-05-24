@@ -81,7 +81,7 @@ public class AdministradorResourcePerformanceTest {
 	public void testSubirEmpleadosPerformance() {
 		/**
 		 * Crear un administrador de prueba para la bd. El primary key es el DNI. Por eso se
-		 * hace un UUID aleatorio en lugar del DNI.
+		 * hace un UUID aleatorio en lugar del DNI .
 		 */
 
 		String DNI = UUID.randomUUID().toString();
