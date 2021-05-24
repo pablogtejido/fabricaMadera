@@ -84,8 +84,10 @@ var NAVTREEINDEX0 =
 "_producto_r_s_h_8java_source.html":[4,0,0,0,0,0,0,4,4],
 "_producto_resource_8java.html":[4,0,0,0,0,0,0,3,4],
 "_producto_resource_8java_source.html":[4,0,0,0,0,0,0,3,4],
-"_producto_resource_test_8java.html":[4,0,0,1,0,1,0,2,6],
-"_producto_resource_test_8java_source.html":[4,0,0,1,0,1,0,2,6],
+"_producto_resource_performance_test_8java.html":[4,0,0,1,0,1,0,2,6],
+"_producto_resource_performance_test_8java_source.html":[4,0,0,1,0,1,0,2,6],
+"_producto_resource_test_8java.html":[4,0,0,1,0,1,0,2,7],
+"_producto_resource_test_8java_source.html":[4,0,0,1,0,1,0,2,7],
 "_producto_test_8java.html":[4,0,0,1,0,1,0,0,5],
 "_producto_test_8java_source.html":[4,0,0,1,0,1,0,0,5],
 "_registrar_cliente_test_unitario_8java.html":[4,0,0,1,0,1,0,1,1,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "classcom_1_1atenea_1_1data_1_1_factura.html#aef73d4f9b05b5be7765e426619160d49":[3,0,1,0,0,7,5],
 "classcom_1_1atenea_1_1data_1_1_factura.html#aeffab67d9bdf0e9ae1d93d763333f57e":[3,0,1,0,0,7,14],
 "classcom_1_1atenea_1_1data_1_1_factura_test.html":[3,0,1,0,0,13],
-"classcom_1_1atenea_1_1data_1_1_factura_test.html#a044c8ab6c0b617381a0e9032c0004b40":[3,0,1,0,0,13,6],
-"classcom_1_1atenea_1_1data_1_1_factura_test.html#a1bddb80a0587126980aeb7d6e7d1be67":[3,0,1,0,0,13,2],
-"classcom_1_1atenea_1_1data_1_1_factura_test.html#a29d8b3f4d87cf5bb54d26711a00bef7c":[3,0,1,0,0,13,11]
+"classcom_1_1atenea_1_1data_1_1_factura_test.html#a044c8ab6c0b617381a0e9032c0004b40":[3,0,1,0,0,13,6]
 };

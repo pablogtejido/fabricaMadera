@@ -11,5 +11,6 @@ var namespacecom_1_1atenea_1_1resource =
     [ "ClienteResourceTest", "classcom_1_1atenea_1_1resource_1_1_cliente_resource_test.html", "classcom_1_1atenea_1_1resource_1_1_cliente_resource_test" ],
     [ "EmpleadoResourcePerformanceTest", "classcom_1_1atenea_1_1resource_1_1_empleado_resource_performance_test.html", "classcom_1_1atenea_1_1resource_1_1_empleado_resource_performance_test" ],
     [ "EmpleadoResourceTest", "classcom_1_1atenea_1_1resource_1_1_empleado_resource_test.html", "classcom_1_1atenea_1_1resource_1_1_empleado_resource_test" ],
+    [ "ProductoResourcePerformanceTest", "classcom_1_1atenea_1_1resource_1_1_producto_resource_performance_test.html", "classcom_1_1atenea_1_1resource_1_1_producto_resource_performance_test" ],
     [ "ProductoResourceTest", "classcom_1_1atenea_1_1resource_1_1_producto_resource_test.html", "classcom_1_1atenea_1_1resource_1_1_producto_resource_test" ]
 ];

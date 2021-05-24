@@ -779,11 +779,11 @@ $(document).ready(function(){initNavTree('_d_b_manager_8java_source.html',''); i
 <div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;            Iterator&lt;Cliente&gt; iter = e.iterator();</div>
 <div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;            <span class="keywordflow">while</span> (iter.hasNext()) {</div>
 <div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                <a class="code" href="classcom_1_1atenea_1_1data_1_1_cliente.html">Cliente</a> cliente = (<a class="code" href="classcom_1_1atenea_1_1data_1_1_cliente.html">Cliente</a>) iter.next();</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;                <span class="keywordflow">if</span> (cliente.<a class="code" href="classcom_1_1atenea_1_1data_1_1_cliente.html#a01037d55762911c0e826ee31317383ff">getDni</a>() == <span class="keyword">null</span> ? dni == null : cliente.<a class="code" href="classcom_1_1atenea_1_1data_1_1_cliente.html#a01037d55762911c0e826ee31317383ff">getDni</a>().equals(dni)) {</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                    pm.deletePersistent(cliente);</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;                }</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;            }</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160; </div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;                System.out.println(cliente);</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                <span class="keywordflow">if</span> (cliente.<a class="code" href="classcom_1_1atenea_1_1data_1_1_cliente.html#a01037d55762911c0e826ee31317383ff">getDni</a>() == <span class="keyword">null</span> ? dni == null : cliente.<a class="code" href="classcom_1_1atenea_1_1data_1_1_cliente.html#a01037d55762911c0e826ee31317383ff">getDni</a>().equals(dni)) {</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;                    pm.deletePersistent(cliente);</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;                }</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;            }</div>
 <div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;            tx.commit();</div>
 <div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;        } <span class="keywordflow">catch</span> (Exception ex) {</div>
 <div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;            LOG.log(Level.SEVERE, <span class="stringliteral">&quot;Error obteniendo cliente: {0}&quot;</span>, ex.getMessage());</div>

@@ -18,6 +18,9 @@ var dir_3f9edc8c4cbfa153d46c9711b79dc4a6 =
     [ "EmpleadoResourceTest.java", "_empleado_resource_test_8java.html", [
       [ "EmpleadoResourceTest", "classcom_1_1atenea_1_1resource_1_1_empleado_resource_test.html", "classcom_1_1atenea_1_1resource_1_1_empleado_resource_test" ]
     ] ],
+    [ "ProductoResourcePerformanceTest.java", "_producto_resource_performance_test_8java.html", [
+      [ "ProductoResourcePerformanceTest", "classcom_1_1atenea_1_1resource_1_1_producto_resource_performance_test.html", "classcom_1_1atenea_1_1resource_1_1_producto_resource_performance_test" ]
+    ] ],
     [ "ProductoResourceTest.java", "_producto_resource_test_8java.html", [
       [ "ProductoResourceTest", "classcom_1_1atenea_1_1resource_1_1_producto_resource_test.html", "classcom_1_1atenea_1_1resource_1_1_producto_resource_test" ]
     ] ]

@@ -110,9 +110,9 @@ $(document).ready(function(){initNavTree('_factura_8java_source.html',''); initR
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    @PrimaryKey</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    @Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = <span class="stringliteral">&quot;true&quot;</span>)</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">long</span> factura_id;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    @ForeignKey(deleteAction = ForeignKeyAction.NONE)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    @ForeignKey(deleteAction = ForeignKeyAction.NULL, updateAction = ForeignKeyAction.CASCADE)</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span> <a class="code" href="classcom_1_1atenea_1_1data_1_1_empleado.html">Empleado</a> empleado;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    @ForeignKey(deleteAction = ForeignKeyAction.NONE)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    @ForeignKey(deleteAction = ForeignKeyAction.NULL, updateAction = ForeignKeyAction.CASCADE)</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">private</span> <a class="code" href="classcom_1_1atenea_1_1data_1_1_cliente.html">Cliente</a> cliente;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    @Persistent(table = <span class="stringliteral">&quot;PRODUCTO_FACTURA&quot;</span>)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    @Join(column = <span class="stringliteral">&quot;PRODUCTO_ID&quot;</span>)</div>

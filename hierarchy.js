@@ -37,6 +37,7 @@ var hierarchy =
     [ "com.atenea.util.PrepareData", "classcom_1_1atenea_1_1util_1_1_prepare_data.html", null ],
     [ "com.atenea.data.Producto", "classcom_1_1atenea_1_1data_1_1_producto.html", null ],
     [ "com.atenea.resource.ProductoResource", "classcom_1_1atenea_1_1resource_1_1_producto_resource.html", null ],
+    [ "com.atenea.resource.ProductoResourcePerformanceTest", "classcom_1_1atenea_1_1resource_1_1_producto_resource_performance_test.html", null ],
     [ "com.atenea.resource.ProductoResourceTest", "classcom_1_1atenea_1_1resource_1_1_producto_resource_test.html", null ],
     [ "com.atenea.rsh.ProductoRSH", "classcom_1_1atenea_1_1rsh_1_1_producto_r_s_h.html", null ],
     [ "com.atenea.data.ProductoTest", "classcom_1_1atenea_1_1data_1_1_producto_test.html", null ],
