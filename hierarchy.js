@@ -3,6 +3,7 @@ var hierarchy =
     [ "com.atenea.data.Administrador", "classcom_1_1atenea_1_1data_1_1_administrador.html", null ],
     [ "com.atenea.data.AdministradorConectado", "classcom_1_1atenea_1_1data_1_1_administrador_conectado.html", null ],
     [ "com.atenea.resource.AdministradorResource", "classcom_1_1atenea_1_1resource_1_1_administrador_resource.html", null ],
+    [ "com.atenea.resource.AdministradorResourcePerformanceTest", "classcom_1_1atenea_1_1resource_1_1_administrador_resource_performance_test.html", null ],
     [ "com.atenea.resource.AdministradorResourceTest", "classcom_1_1atenea_1_1resource_1_1_administrador_resource_test.html", null ],
     [ "com.atenea.rsh.AdministradorRSH", "classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html", null ],
     [ "com.atenea.data.AdministradorTest", "classcom_1_1atenea_1_1data_1_1_administrador_test.html", null ],

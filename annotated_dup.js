@@ -59,6 +59,7 @@ var annotated_dup =
           [ "EmpleadosResource", "classcom_1_1atenea_1_1resource_1_1_empleados_resource.html", "classcom_1_1atenea_1_1resource_1_1_empleados_resource" ],
           [ "FacturaResource", "classcom_1_1atenea_1_1resource_1_1_factura_resource.html", "classcom_1_1atenea_1_1resource_1_1_factura_resource" ],
           [ "ProductoResource", "classcom_1_1atenea_1_1resource_1_1_producto_resource.html", "classcom_1_1atenea_1_1resource_1_1_producto_resource" ],
+          [ "AdministradorResourcePerformanceTest", "classcom_1_1atenea_1_1resource_1_1_administrador_resource_performance_test.html", "classcom_1_1atenea_1_1resource_1_1_administrador_resource_performance_test" ],
           [ "AdministradorResourceTest", "classcom_1_1atenea_1_1resource_1_1_administrador_resource_test.html", "classcom_1_1atenea_1_1resource_1_1_administrador_resource_test" ],
           [ "ClienteResourcePerformanceTest", "classcom_1_1atenea_1_1resource_1_1_cliente_resource_performance_test.html", "classcom_1_1atenea_1_1resource_1_1_cliente_resource_performance_test" ],
           [ "ClienteResourceTest", "classcom_1_1atenea_1_1resource_1_1_cliente_resource_test.html", "classcom_1_1atenea_1_1resource_1_1_cliente_resource_test" ],
