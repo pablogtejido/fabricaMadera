@@ -61,7 +61,8 @@ public class VisualizarAdministrador extends JFrame {
 		setBounds(100, 100, 827, 461);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
-
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		JPanel titulopanel = new JPanel();
 		titulopanel.setBounds(0, 0, 811, 58);
 		titulopanel.setBackground(new Color(72, 61, 139));

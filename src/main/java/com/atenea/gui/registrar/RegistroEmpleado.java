@@ -69,6 +69,7 @@ public class RegistroEmpleado extends JFrame {
 		setBounds(100, 100, 625, 824);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		JPanel titulopanel = new JPanel();
 		titulopanel.setBounds(0, 0, 609, 58);

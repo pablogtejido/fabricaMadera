@@ -61,6 +61,7 @@ public class RegistrarProducto extends JFrame{
 		setBounds(100, 100, 626, 635);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		JPanel titulopanel = new JPanel();
 		titulopanel.setLayout(null);

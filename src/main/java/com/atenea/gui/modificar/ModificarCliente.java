@@ -40,6 +40,7 @@ public class ModificarCliente extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(72, 61, 139));

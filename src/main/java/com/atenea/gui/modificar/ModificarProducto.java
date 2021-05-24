@@ -36,6 +36,7 @@ public class ModificarProducto extends JFrame {
 		setBounds(100, 100, 631, 580);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);

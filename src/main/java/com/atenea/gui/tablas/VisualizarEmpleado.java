@@ -63,6 +63,7 @@ public class VisualizarEmpleado extends JFrame {
 		setBounds(100, 100, 1137, 461);
 		getContentPane().setLayout(null);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		JPanel titulopanel = new JPanel();
 		titulopanel.setBounds(0, 0, 1121, 58);

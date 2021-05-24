@@ -67,6 +67,7 @@ public class VisualizarProductos extends JFrame {
 		setBounds(100, 100, 827, 461);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		JPanel titulopanel = new JPanel();
 		titulopanel.setLayout(null);

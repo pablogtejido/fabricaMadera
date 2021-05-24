@@ -61,6 +61,7 @@ public class VentanaInicio extends JFrame {
 		contentPane.setBackground(new Color(135, 206, 250));
 		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		// JButton para Iniciar SesiÃ³n
 		JButton btnLogInEmpleado = new JButton("Iniciar sesion como empleado o administrador");
