@@ -1,19 +1,23 @@
 package com.atenea.resource;
 
-import categories.IntegrationTest;
-import static org.junit.Assert.*;
-import java.util.List;
 import org.glassfish.grizzly.http.server.HttpServer;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import com.atenea.Main;
 import com.atenea.data.Administrador;
-import com.atenea.data.Empleado;
-import com.atenea.rsh.AdministradorRSH;
+
 import org.junit.experimental.categories.Category;
+
+import categories.IntegrationTest;
+import com.atenea.rsh.AdministradorRSH;
+import java.util.List;
 
 @Category(IntegrationTest.class)
 public class AdministradorResourceTest {
@@ -26,12 +30,6 @@ public class AdministradorResourceTest {
 	private static Administrador administrador4;
 	private static Administrador administrador5;
 	private static Administrador administrador6;
-
-	private List<Administrador> adminBD;
-
-	public AdministradorResourceTest() {
-
-	}
 
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -65,11 +63,12 @@ public class AdministradorResourceTest {
 		// Store test
 		System.out.println(
 				"================================================Creating data ...================================================");
-		administrador1.setDni(rsh.guardarAdministrador(administrador1).getDni());
-		administrador2.setDni(rsh.guardarAdministrador(administrador2).getDni());
-		administrador3.setDni(rsh.guardarAdministrador(administrador3).getDni());
-		administrador4.setDni(rsh.guardarAdministrador(administrador4).getDni());
-		administrador5.setDni(rsh.guardarAdministrador(administrador5).getDni());
+		rsh.guardarAdministrador(administrador1);
+		rsh.guardarAdministrador(administrador2);
+		rsh.guardarAdministrador(administrador3);
+		rsh.guardarAdministrador(administrador4);
+		rsh.guardarAdministrador(administrador5);
+		
 
 	}
 
@@ -77,7 +76,7 @@ public class AdministradorResourceTest {
 	public void Clean() {
 		System.out.println(
 				"================================================Cleaning data ...================================================");
-		adminBD = rsh.verAdministrador();
+		List<Administrador> adminBD = rsh.verAdministrador();
 		for (Administrador ad : adminBD) {
 			rsh.borrarAdministrador(ad);
 		}
@@ -87,7 +86,7 @@ public class AdministradorResourceTest {
 	public void testVerAdministrador() {
 		System.out.println(
 				"================================================Test ver administrador================================================");
-		adminBD = rsh.verAdministrador();
+		List<Administrador> adminBD = rsh.verAdministrador();
 		assertEquals(adminBD.size(), 5);
 
 		boolean administrador1_found = false;
@@ -117,14 +116,14 @@ public class AdministradorResourceTest {
 	public void testSubirAdministrador() {
 		System.out.println(
 				"================================================Test subir administrador================================================");
-		administrador6.setDni(rsh.guardarAdministrador(administrador6).getDni());
-		adminBD = rsh.verAdministrador();
+		rsh.guardarAdministrador(administrador6);
+		List<Administrador> adminBD = rsh.verAdministrador();
 		assertEquals(adminBD.size(), 6);
 
 		boolean administrador6_found = false;
 
 		for (Administrador ad : adminBD) {
-			if (ad.equals(administrador6_found)) {
+			if (ad.equals(administrador6)) {
 				administrador6_found = true;
 			}
 		}

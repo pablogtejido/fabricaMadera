@@ -59,7 +59,7 @@ public class AdministradorResource {
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Administrador crearAdministrador(Administrador admin) {
 		DBManager.getInstance().store(admin);
 		return admin;
@@ -75,10 +75,10 @@ public class AdministradorResource {
 	 */
 
 	@DELETE
-	@Path("/ids/{administradorDni}")
+	@Path("/ids/{administradorId}")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String eliminarAdministrador(@PathParam("administradorDni") String dni) {
-		DBManager.getInstance().deleteAdministradorByDni(dni);
+	public String eliminarAdministrador(@PathParam("administradorId") String id) {
+		DBManager.getInstance().deleteAdministradorById(id);
 		return "Done";
 	}
 

@@ -99,7 +99,7 @@ public class Administrador {
 			return false;
 		}
 		Administrador administrador = (Administrador) o;
-		return dni == administrador.dni && Objects.equals(contrasena, administrador.contrasena)
+		return Objects.equals(dni, administrador.dni) && Objects.equals(contrasena, administrador.contrasena)
 				&& Objects.equals(nombre, administrador.nombre) && Objects.equals(apellido, administrador.apellido)
 				&& Objects.equals(email, administrador.email) && Objects.equals(telefono, administrador.telefono);
 	}

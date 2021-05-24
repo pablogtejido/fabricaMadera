@@ -956,18 +956,18 @@ public class DBManager {
 	 * @param id
 	 */
 
-	public void deleteAdministradorByDni(String dni) {
+	public void deleteAdministradorById(String id) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
-			LOG.log(Level.INFO, "Eliminando administrador con dni: {0}", dni);
+			LOG.log(Level.INFO, "Eliminando administrador con id: {0}", id);
 			tx.begin();
 
-			Extent<Administrador> e = pm.getExtent(Administrador.class, true);
-			Iterator<Administrador> iter = e.iterator();
+			Extent<Administrador> a = pm.getExtent(Administrador.class, true);
+			Iterator<Administrador> iter = a.iterator();
 			while (iter.hasNext()) {
 				Administrador administrador = (Administrador) iter.next();
-				if (administrador.getDni().equals(dni)) {
+				if (administrador.getDni().equals(id)) {
 					pm.deletePersistent(administrador);
 				}
 			}
