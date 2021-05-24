@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['windowheight_677',['windowHeight',['../classcom_1_1atenea_1_1gui_1_1_screen_size.html#a1d419f237278d3fe87e931eb530e76d8',1,'com::atenea::gui::ScreenSize']]],
-  ['windowwidth_678',['windowWidth',['../classcom_1_1atenea_1_1gui_1_1_screen_size.html#afa0de5239aa92d4e8ec3567c597f7524',1,'com::atenea::gui::ScreenSize']]]
+  ['windowheight_679',['windowHeight',['../classcom_1_1atenea_1_1gui_1_1_screen_size.html#a1d419f237278d3fe87e931eb530e76d8',1,'com::atenea::gui::ScreenSize']]],
+  ['windowwidth_680',['windowWidth',['../classcom_1_1atenea_1_1gui_1_1_screen_size.html#afa0de5239aa92d4e8ec3567c597f7524',1,'com::atenea::gui::ScreenSize']]]
 ];

@@ -11,5 +11,6 @@ var namespaces_dup =
         [ "util", "namespacecom_1_1atenea_1_1util.html", "namespacecom_1_1atenea_1_1util" ],
         [ "Main", "classcom_1_1atenea_1_1_main.html", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "objects", "namespaceobjects.html", null ]
 ];
