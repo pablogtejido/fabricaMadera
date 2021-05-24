@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
@@ -57,7 +58,6 @@ public class ModificarFactura extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		JPanel panel = new JPanel();
@@ -167,39 +167,55 @@ public class ModificarFactura extends JFrame {
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setForeground(Color.WHITE);
 		btnModificar.setBackground(new Color(72, 61, 139));
-		btnModificar.setBounds(475, 111, 89, 23);
+		btnModificar.setBounds(352, 196, 89, 23);
 		contentPane.add(btnModificar);
 
+		/**
+		 * Recoger todos los elementos de la ventana relacioandos a la factura
+		 * Elimina la factura que recibe la ventana 
+		 * Genera una nueva factura con los datos actualizados
+		 */
 		btnModificar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Set<Producto> prodctServ = new HashSet<>();
 				int ii = 0;
-				for (JSpinner spin : spinProductos) { // TODO solucionar el asignar el valor del spinner a la cantidad
-														// de producto
+				Double totalPrecio = 0.0;
+				for (JSpinner spin : spinProductos) { 
 					System.out.println(spin.getValue());
 					for (int i = 0; i < (int) spin.getValue(); i++) {
 						prodctServ.add(productos.get(ii));
+						totalPrecio += productos.get(ii).getPrecio();
 
 					}
 					ii++;
 				}
 				System.out.println(prodctServ);
+				
+				String empleadoNombre = (String) comboBoxEmpleados.getSelectedItem();
+				String clienteNombre = (String) comboBoxClientes.getSelectedItem();
 
-				Factura factura_new = new Factura(seleccionComboBoxEmpleado(), seleccionComboBoxCliente(), prodctServ,
+				Factura factura_new = new Factura(seleccionComboBoxEmpleado(empleadoNombre), seleccionComboBoxCliente(clienteNombre), prodctServ,
 						fechaActual);
 
-				FacturaRSH rs = FacturaRSH.getInstance();
-				for (Factura f : rs.verFacturas()) {
-					if (f.getId() == factura.getId()) {
-						rs.borrarFactura(f);
+				//Mostrar panel para confirmar cambio y mostrrar nuevo precio
+				int seleccion = JOptionPane.showOptionDialog(null, "¿Deseas modificar la factura? \nNuevo precio: " + totalPrecio + " €", "PRECIO FACTURA MODIFICADA", 
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Aceptar", "Cancelar"}, "Aceptar");
+				
+				if(seleccion == 0) {
+					FacturaRSH rs = FacturaRSH.getInstance();
+					for (Factura f : rs.verFacturas()) {
+						if (f.getId() == factura.getId()) {
+							rs.borrarFactura(f);
+						}
 					}
+					rs.guardarFactura(factura_new);
+					System.out.println(factura_new);
+					new VisualizarFacturas().setVisible(true);
+					setVisible(false);
 				}
-				rs.guardarFactura(factura_new);
-				System.out.println(factura_new);
-				new VisualizarFacturas().setVisible(true);
-				setVisible(false);
+				
 			}
 
 		});
@@ -207,7 +223,7 @@ public class ModificarFactura extends JFrame {
 		JButton volver = new JButton("Volver");
 		volver.setForeground(Color.WHITE);
 		volver.setBackground(new Color(72, 61, 139));
-		volver.setBounds(475, 198, 80, 31);
+		volver.setBounds(451, 196, 89, 23);
 		contentPane.add(volver);
 		volver.addActionListener(new ActionListener() {
 
@@ -219,9 +235,16 @@ public class ModificarFactura extends JFrame {
 				setVisible(false);
 			}
 		});
+		
+		setLocationRelativeTo(null);
 
 	}
-
+	
+	/**
+	 * @param Factura a modificar
+	 * Genera un String por cada Empleado para poder introducirlo en un comboBox
+	 * Introduce el empleado de la factura en el comboBox, como el elemento seleccionado
+	 */
 	private void buscarEmpleados(Factura factura) {
 		EmpleadoRSH rsh = EmpleadoRSH.getInstance();
 
@@ -239,7 +262,12 @@ public class ModificarFactura extends JFrame {
 		}
 		
 	}
-
+	
+	/**
+	 * @param Factura a modificar
+	 * Genera un String por cada Cliente para poder introducirlo en un comboBox
+	 * Introduce el empleado de la factura en el comboBox, como el elemento seleccionado
+	 */
 	private void buscarClientes(Factura factura) {
 		ClienteRSH rsh = ClienteRSH.getInstance();
 
@@ -257,11 +285,12 @@ public class ModificarFactura extends JFrame {
 		}
 
 	}
-
-	private Empleado seleccionComboBoxEmpleado() {
-		// Obtener el String del combobox y obtener el empleado con los mismos atributos
-		String empleadoNombre = (String) comboBoxEmpleados.getSelectedItem();
-
+	
+	/**
+	 * @param String item del comboBox de Empleado
+	 * @return <Code>Empleado</Code> Convierte el item, String, del comboBox del empleado en un Empleado
+	 */
+	private Empleado seleccionComboBoxEmpleado(String empleadoNombre) {
 		EmpleadoRSH rsh = EmpleadoRSH.getInstance();
 
 		List<Empleado> empleados = rsh.verEmpleados();
@@ -276,11 +305,11 @@ public class ModificarFactura extends JFrame {
 		return emp;
 	}
 
-	private Cliente seleccionComboBoxCliente() {
-		// Obtener el String del combobox y obtener el cliente con los mismos atributos
-
-		String clienteNombre = (String) comboBoxClientes.getSelectedItem();
-
+	/**
+	 * @param String item del comboBox de Cliente
+	 * @return <Code>Cliente</Code> Convierte el item, String, del comboBox del empleado en un Cliente
+	 */
+	private Cliente seleccionComboBoxCliente(String clienteNombre) {
 		ClienteRSH rsh = ClienteRSH.getInstance();
 
 		List<Cliente> clientes = rsh.verClientes();

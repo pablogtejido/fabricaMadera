@@ -39,7 +39,6 @@ import javax.swing.JButton;
 /**
  * Ventana para registrar una nueva factura en la base de datos
  */
-
 public class RegistroFactura extends JFrame {
 
 	private JPanel contentPane;
@@ -53,7 +52,6 @@ public class RegistroFactura extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -70,7 +68,6 @@ public class RegistroFactura extends JFrame {
 	/**
 	 * Create the application.
 	 */
-
 	public RegistroFactura() {
 		initialize();
 	}
@@ -78,18 +75,18 @@ public class RegistroFactura extends JFrame {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-
 	private void initialize() {
 
+		//Propiedades de la ventana
 		setTitle("Registro Factura");
 		setBounds(100, 100, 631, 375);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+		//Panel del titulo
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(72, 61, 139));
 		panel.setForeground(new Color(0, 128, 128));
@@ -97,21 +94,24 @@ public class RegistroFactura extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
+		//Label del titulo de la ventana
 		JLabel lblfactura = new JLabel("FACTURA");
 		lblfactura.setBounds(268, 11, 77, 32);
 		lblfactura.setHorizontalAlignment(SwingConstants.CENTER);
 		lblfactura.setForeground(SystemColor.text);
 		panel.add(lblfactura);
 
+		//Label del empleado
 		JLabel lblEmpleado = new JLabel("Empleado: ");
 		lblEmpleado.setBounds(26, 116, 80, 13);
 		contentPane.add(lblEmpleado);
 
-		comboBoxEmpleados = new JComboBox(); // Pasar el empleado que se ha registrado
+		//ComboBox en el que se mete el listado de empleados
+		comboBoxEmpleados = new JComboBox(); 
 		comboBoxEmpleados.setBounds(116, 111, 194, 22);
 		contentPane.add(comboBoxEmpleados);
 
-		// buscarProductos();
+		
 		buscarEmpleados();
 		Object empleado = comboBoxEmpleados.getSelectedItem();
 
@@ -135,7 +135,7 @@ public class RegistroFactura extends JFrame {
 		spinProductos = new ArrayList<JSpinner>();
 		
 		int i = 0;
-		int jProd = 2;
+		int jProd = 2; 
 
 		for (Producto producto : productos) { // meter los spinners
 			lblProducto = new JLabel("Test");
@@ -146,7 +146,7 @@ public class RegistroFactura extends JFrame {
 			labelProductos.add(lblProducto);
 			
 			i++;
-			
+			//Aumentar la ventana si hay mas de 3 productos
 			if(i >3 ) {
 				jProd++;
 				int yProd = 25 * jProd;
@@ -194,7 +194,7 @@ public class RegistroFactura extends JFrame {
 				// TODO Auto-generated method stub
 				RegistrarProducto window2 = new RegistrarProducto();
 				window2.setVisible(true);
-				// setVisible(false);
+				setVisible(false);
 			}
 		});
 
@@ -208,7 +208,7 @@ public class RegistroFactura extends JFrame {
 				// TODO Auto-generated method stub
 				RegistroCliente window2 = new RegistroCliente();
 				window2.setVisible(true);
-				// setVisible(false);
+				setVisible(false);
 			}
 		});
 
@@ -222,7 +222,7 @@ public class RegistroFactura extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarProductos window2 = new VisualizarProductos();
 				window2.setVisible(true);
-				// setVisible(false);
+				setVisible(false);
 			}
 		});
 
@@ -236,7 +236,7 @@ public class RegistroFactura extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarClientes window2 = new VisualizarClientes();
 				window2.setVisible(true);
-				// setVisible(false);
+				setVisible(false);
 			}
 		});
 
@@ -254,13 +254,6 @@ public class RegistroFactura extends JFrame {
 			}
 		});
 
-		// CALCULAR PRECIO
-		double precio = 0;
-
-		JLabel lblPrecio = new JLabel("Precio: " + precio + " €");
-		lblPrecio.setBounds(352, 173, 97, 14);
-		contentPane.add(lblPrecio);
-
 		final Date fechaActual = new Date();
 
 		JLabel lblFecha = new JLabel("Fecha: " + fechaActual);
@@ -270,7 +263,7 @@ public class RegistroFactura extends JFrame {
 		JButton btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setForeground(Color.WHITE);
 		btnRegistrar.setBackground(new Color(72, 61, 139));
-		btnRegistrar.setBounds(352, 196, 89, 23);
+		btnRegistrar.setBounds(348, 169, 89, 23);
 		contentPane.add(btnRegistrar);
 
 		btnRegistrar.addActionListener(new ActionListener() {
@@ -279,11 +272,12 @@ public class RegistroFactura extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Set<Producto> prodctServ = new HashSet<>();
 				int ii = 0;
-				for (JSpinner spin : spinProductos) { // TODO solucionar el asignar el valor del spinner a la cantidad
-														// de producto
+				Double totalPrecio = 0.0;
+				for (JSpinner spin : spinProductos) { 
 					System.out.println(spin.getValue());
 					for (int i = 0; i < (int) spin.getValue(); i++) {
 						System.out.println(productos.get(ii));
+						totalPrecio += productos.get(ii).getPrecio();
 						prodctServ.add(productos.get(ii));
 						System.out.println(prodctServ);
 
@@ -291,17 +285,28 @@ public class RegistroFactura extends JFrame {
 					ii++;
 				}
 				System.out.println(prodctServ);
-
-				Factura factura = new Factura(seleccionComboBoxEmpleado(), seleccionComboBoxCliente(), prodctServ,
-						fechaActual);
-				FacturaRSH.getInstance().guardarFactura(factura);
-				System.out.println(factura);
 				
-				JOptionPane.showMessageDialog(null, "Factura guardada correctamente", "FACTURA GUARDADA", JOptionPane.PLAIN_MESSAGE);
-				VisualizarFacturas facts = new VisualizarFacturas();
-				facts.setVisible(true);
-				setVisible(false);
+				String empleadoNombre = (String) comboBoxEmpleados.getSelectedItem();
+				String clienteNombre = (String) comboBoxClientes.getSelectedItem();
+
+				Factura factura = new Factura(seleccionComboBoxEmpleado(empleadoNombre), seleccionComboBoxCliente(clienteNombre), prodctServ,
+						fechaActual);
+				
+				
+				int seleccion = JOptionPane.showOptionDialog(null, "¿Deseas guardar la factura? \nPrecio: " + totalPrecio + " €", "PRECIO FACTURA", 
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[] {"Aceptar", "Cancelar"}, "Aceptar");
+				
+				if(seleccion == 0) {
+					FacturaRSH.getInstance().guardarFactura(factura);
+					System.out.println(factura);
+					VisualizarFacturas facts = new VisualizarFacturas();
+					facts.setVisible(true);
+					setVisible(false);
+				}
+				
+				
 			}
+			
 
 		});
 		
@@ -318,11 +323,16 @@ public class RegistroFactura extends JFrame {
 		} );
 		btnVolver.setForeground(Color.WHITE);
 		btnVolver.setBackground(new Color(72, 61, 139));
-		btnVolver.setBounds(451, 196, 89, 23);
+		btnVolver.setBounds(447, 169, 89, 23);
 		getContentPane().add(btnVolver);
+		
+		setLocationRelativeTo(null);
 
 	}
 
+	/**
+	 * Genera un String por cada Empleado para poder introducirlo en un comboBox
+	 */
 	private void buscarEmpleados() {
 		EmpleadoRSH rsh = EmpleadoRSH.getInstance();
 
@@ -333,7 +343,10 @@ public class RegistroFactura extends JFrame {
 			comboBoxEmpleados.addItem(empleadoString);
 		}
 	}
-
+	
+	/**
+	 * Genera un String por cada Cliente para poder introducirlo en un comboBox
+	 */
 	private void buscarClientes() {
 		ClienteRSH rsh = ClienteRSH.getInstance();
 
@@ -346,9 +359,11 @@ public class RegistroFactura extends JFrame {
 
 	}
 
-	private Empleado seleccionComboBoxEmpleado() {
-		// Obtener el String del combobox y obtener el empleado con los mismos atributos
-		String empleadoNombre = (String) comboBoxEmpleados.getSelectedItem();
+	/**
+	 * @param String item del comboBox de Empleado
+	 * @return <Code>Empleado</Code> Convierte el item, String, del comboBox del empleado en un Empleado
+	 */
+	private Empleado seleccionComboBoxEmpleado(String empleadoNombre) {
 
 		EmpleadoRSH rshEmpl = EmpleadoRSH.getInstance();
 
@@ -363,11 +378,13 @@ public class RegistroFactura extends JFrame {
 		}
 		return emp;
 	}
-
-	private Cliente seleccionComboBoxCliente() {
+	
+	/**
+	 * @param String item del comboBox de Cliente
+	 * @return <Code>Cliente</Code> Convierte el item, String, del comboBox del empleado en un Cliente
+	 */
+	private Cliente seleccionComboBoxCliente(String clienteNombre) {
 		// Obtener el String del combobox y obtener el cliente con los mismos atributos
-
-		String clienteNombre = (String) comboBoxClientes.getSelectedItem();
 
 		ClienteRSH rshClient = ClienteRSH.getInstance();
 
@@ -384,7 +401,4 @@ public class RegistroFactura extends JFrame {
 		return cli;
 	}
 
-	private void buscarProductos() {
-
-	}
 }

@@ -27,7 +27,6 @@ import javax.swing.JTable;
  * Ventana para visualizar todas las facturas que hay almacenadas en la base de
  * datos
  */
-
 public class VisualizarFacturas extends JFrame {
 	private JTable table;
 	private DefaultTableModel modelo;
