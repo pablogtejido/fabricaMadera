@@ -144,6 +144,10 @@ public class ModificarCliente extends JFrame {
 
 				ClienteRSH.getInstance().modificarCliente(cliente);
 				System.out.println(cliente);
+				
+				setVisible(false);
+				VisualizarClientes clientes = new VisualizarClientes();
+				clientes.setVisible(true);
 
 			}
 

@@ -148,6 +148,8 @@ public class VisualizarFacturas extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarClientes window2 = new VisualizarClientes();
 				window2.setVisible(true);
+				setVisible(false);
+
 			}
 		});
 
@@ -158,6 +160,8 @@ public class VisualizarFacturas extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarEmpleado window2 = new VisualizarEmpleado();
 				window2.setVisible(true);
+				setVisible(false);
+
 			}
 		});
 
@@ -168,6 +172,8 @@ public class VisualizarFacturas extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarProductos window2 = new VisualizarProductos();
 				window2.setVisible(true);
+				setVisible(false);
+
 			}
 		});
 

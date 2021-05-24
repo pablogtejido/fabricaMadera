@@ -62,6 +62,7 @@ public class VisualizarEmpleado extends JFrame {
 		this.setTitle("Visualizar Empleados");
 		setBounds(100, 100, 1137, 461);
 		getContentPane().setLayout(null);
+		setLocationRelativeTo(null);
 
 		JPanel titulopanel = new JPanel();
 		titulopanel.setBounds(0, 0, 1121, 58);
@@ -144,6 +145,8 @@ public class VisualizarEmpleado extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarFacturas window2 = new VisualizarFacturas();
 				window2.setVisible(true);
+				setVisible(false);
+
 			}
 		});
 
@@ -153,6 +156,8 @@ public class VisualizarEmpleado extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				VisualizarClientes window2 = new VisualizarClientes();
 				window2.setVisible(true);
+				setVisible(false);
+
 			}
 		});
 
@@ -163,6 +168,8 @@ public class VisualizarEmpleado extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarProductos window2 = new VisualizarProductos();
 				window2.setVisible(true);
+				setVisible(false);
+
 			}
 		});
 
@@ -236,23 +243,7 @@ public class VisualizarEmpleado extends JFrame {
 
 		}
 	}
-	// TODO no se que falla
-	/*
-	 * public String calcularTiempoEmpresa() { Date actual = new Date(); Date inicio
-	 * = new Date("28/02/2020 01:09:07"); String texto;
-	 * 
-	 * int mesesRest = inicio.getMonth() - actual.getMonth() ;
-	 * 
-	 * int anyos = mesesRest / 12; int meses = mesesRest % 12;
-	 * 
-	 * if(anyos < 1) { texto = meses + " meses."; } else if (meses < 1 && anyos <
-	 * 1){ texto = "Unos pocos dias"; } else { texto = anyos + " años, " + meses +
-	 * " meses.";; }
-	 * 
-	 * return texto;
-	 * 
-	 * }
-	 */
+	
 
 	public boolean isCellEditable(int row, int column) {
 		return false;

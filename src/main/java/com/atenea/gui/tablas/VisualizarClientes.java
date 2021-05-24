@@ -145,6 +145,7 @@ public class VisualizarClientes extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarFacturas window2 = new VisualizarFacturas();
 				window2.setVisible(true);
+				setVisible(false);
 
 			}
 		});
@@ -156,6 +157,8 @@ public class VisualizarClientes extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarEmpleado window2 = new VisualizarEmpleado();
 				window2.setVisible(true);
+				setVisible(false);
+
 
 			}
 		});
@@ -167,6 +170,8 @@ public class VisualizarClientes extends JFrame {
 				// TODO Auto-generated method stub
 				VisualizarProductos window2 = new VisualizarProductos();
 				window2.setVisible(true);
+				setVisible(false);
+
 			}
 		});
 
@@ -219,6 +224,7 @@ public class VisualizarClientes extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				new RegistroCliente().setVisible(true);
+				setVisible(false);
 
 			}
 		});
@@ -243,7 +249,6 @@ public class VisualizarClientes extends JFrame {
 		}
 
 	}
-
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}

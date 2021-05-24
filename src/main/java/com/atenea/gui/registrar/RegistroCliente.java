@@ -166,6 +166,9 @@ public class RegistroCliente extends JFrame {
 				Cliente cliente = new Cliente(dni, nombre, apellidos, contrasena);
 
 				ClienteRSH.getInstance().guardarCliente(cliente);
+				
+				new VisualizarClientes().setVisible(true);
+				setVisible(false);
 
 			}
 

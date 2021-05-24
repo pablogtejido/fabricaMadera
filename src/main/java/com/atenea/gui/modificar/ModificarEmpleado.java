@@ -229,7 +229,9 @@ public class ModificarEmpleado extends JFrame {
 
 				EmpleadoRSH.getInstance().modificarEmpleado(empleado);
 				System.out.println(empleado);
-
+				
+				setVisible(false);
+				new VisualizarEmpleado().setVisible(true);
 			}
 
 		});
