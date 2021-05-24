@@ -23,6 +23,7 @@ import com.atenea.data.Cliente;
 import com.atenea.data.Empleado;
 import com.atenea.data.Factura;
 import com.atenea.data.Producto;
+import com.atenea.gui.tablas.VisualizarEmpleado;
 import com.atenea.gui.tablas.VisualizarFacturas;
 import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
@@ -80,7 +81,7 @@ public class ModificarFactura extends JFrame {
 		comboBoxEmpleados.setBounds(116, 111, 194, 22);
 		contentPane.add(comboBoxEmpleados);
 
-		buscarEmpleados();
+		buscarEmpleados(factura);
 
 		JLabel lblCliente = new JLabel("Cliente: ");
 		lblCliente.setBounds(26, 174, 57, 13);
@@ -90,14 +91,15 @@ public class ModificarFactura extends JFrame {
 		comboBoxClientes.setBounds(116, 169, 194, 22);
 		contentPane.add(comboBoxClientes);
 
-		buscarClientes();
+		buscarClientes(factura);
 
 		// BUSCAR PRODUCTOS
 		ProductoRSH rsh = ProductoRSH.getInstance();
 
 		final List<Producto> productos = rsh.verProductos();
 
-		int y = 232;
+		int i = 0;
+		int jProd = 2;
 		labelProductos = new ArrayList<>();
 		spinProductos = new ArrayList<>();
 
@@ -107,8 +109,15 @@ public class ModificarFactura extends JFrame {
 			lblProducto.setText(producto.getNombre() + " [medida: " + producto.getMedida() + " Grosor: "
 					+ producto.getGrosor() + " Peso: " + producto.getPeso() + "]");
 			lblProducto.setBounds(26, 232, 200, 13);
-			y += 58;
 			labelProductos.add(lblProducto);
+			
+			i++;
+			
+			if(i >3 ) {
+				jProd++;
+				int yProd = 25 * jProd;
+				setBounds(100, 100 , 631, 375+ yProd);
+			}
 
 		}
 
@@ -124,12 +133,12 @@ public class ModificarFactura extends JFrame {
 			boolean found = false;
 			for (Producto pr : productos_facturas) {
 				if (pr.equals(productos.get(index))) {
-					spinProducto.setModel(new SpinnerNumberModel(1, 0, null, 1));
+					spinProducto.setModel(new SpinnerNumberModel(1, 0, 1, 1));
 					found = true;
 				}
 			}
 			if (!found) {
-				spinProducto.setModel(new SpinnerNumberModel(0, 0, null, 1));
+				spinProducto.setModel(new SpinnerNumberModel(0, 0, 1, 1));
 			}
 			int cantidad = spinProducto.getValue().hashCode();
 			System.out.println(cantidad);
@@ -156,7 +165,9 @@ public class ModificarFactura extends JFrame {
 		contentPane.add(lblFecha);
 
 		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(462, 75, 89, 23);
+		btnModificar.setForeground(Color.WHITE);
+		btnModificar.setBackground(new Color(72, 61, 139));
+		btnModificar.setBounds(475, 111, 89, 23);
 		contentPane.add(btnModificar);
 
 		btnModificar.addActionListener(new ActionListener() {
@@ -192,28 +203,57 @@ public class ModificarFactura extends JFrame {
 			}
 
 		});
+		
+		JButton volver = new JButton("Volver");
+		volver.setForeground(Color.WHITE);
+		volver.setBackground(new Color(72, 61, 139));
+		volver.setBounds(475, 198, 80, 31);
+		contentPane.add(volver);
+		volver.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VisualizarFacturas facts = new VisualizarFacturas();
+				facts.setVisible(true);
+				setVisible(false);
+			}
+		});
 
 	}
 
-	private void buscarEmpleados() {
+	private void buscarEmpleados(Factura factura) {
 		EmpleadoRSH rsh = EmpleadoRSH.getInstance();
 
 		List<Empleado> empleados = rsh.verEmpleados();
+		
+		Empleado emplFact = factura.getEmpleado();
 
 		for (Empleado empleado : empleados) {
 			String empleadoString = empleado.getNombre() + " - " + empleado.getDni();
 			comboBoxEmpleados.addItem(empleadoString);
+			
+			if(empleado.getDni().equals(emplFact.getDni())) {
+				comboBoxEmpleados.setSelectedItem(empleadoString);
+			}
 		}
+		
 	}
 
-	private void buscarClientes() {
+	private void buscarClientes(Factura factura) {
 		ClienteRSH rsh = ClienteRSH.getInstance();
 
 		List<Cliente> clientes = rsh.verClientes();
+		
+		Cliente cliFact = factura.getCliente();
 
 		for (Cliente cliente : clientes) {
 			String clienteString = cliente.getNombre() + " " + cliente.getApellidos() + " - " + cliente.getDni();
 			comboBoxClientes.addItem(clienteString);
+			
+			if(cliente.getDni().equals(cliFact.getDni())) {
+				comboBoxClientes.setSelectedItem(clienteString);
+			}
 		}
 
 	}

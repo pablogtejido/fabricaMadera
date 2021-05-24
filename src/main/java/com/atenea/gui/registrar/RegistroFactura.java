@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SwingConstants;
@@ -25,6 +26,7 @@ import com.atenea.data.Factura;
 import com.atenea.data.Producto;
 import com.atenea.gui.tablas.VisualizarClientes;
 import com.atenea.gui.tablas.VisualizarEmpleado;
+import com.atenea.gui.tablas.VisualizarFacturas;
 import com.atenea.gui.tablas.VisualizarProductos;
 import com.atenea.rsh.ClienteRSH;
 import com.atenea.rsh.EmpleadoRSH;
@@ -127,10 +129,13 @@ public class RegistroFactura extends JFrame {
 		ProductoRSH rsh = ProductoRSH.getInstance();
 
 		final List<Producto> productos = rsh.verProductos();
+		
 
-		int y = 232;
 		labelProductos = new ArrayList<JLabel>();
 		spinProductos = new ArrayList<JSpinner>();
+		
+		int i = 0;
+		int jProd = 2;
 
 		for (Producto producto : productos) { // meter los spinners
 			lblProducto = new JLabel("Test");
@@ -138,16 +143,24 @@ public class RegistroFactura extends JFrame {
 			lblProducto.setText(producto.getNombre() + " [medida: " + producto.getMedida() + " Grosor: "
 					+ producto.getGrosor() + " Peso: " + producto.getPeso() + "]");
 			lblProducto.setBounds(26, 232, 200, 13);
-			y += 58;
 			labelProductos.add(lblProducto);
+			
+			i++;
+			
+			if(i >3 ) {
+				jProd++;
+				int yProd = 25 * jProd;
+				setBounds(100, 100 , 631, 375+ yProd);
+			}
 
 		}
+		
 		JPanel p = new JPanel();
 		p.setBounds(22, 230, 400, 500);
 
 		for (JLabel j : labelProductos) {
 			spinProducto = new JSpinner();
-			spinProducto.setModel(new SpinnerNumberModel(0, 0, null, 1));
+			spinProducto.setModel(new SpinnerNumberModel(0, 0, 1, 1));
 
 			int cantidad = spinProducto.getValue().hashCode();
 			System.out.println(cantidad);
@@ -245,17 +258,19 @@ public class RegistroFactura extends JFrame {
 		double precio = 0;
 
 		JLabel lblPrecio = new JLabel("Precio: " + precio + " €");
-		lblPrecio.setBounds(352, 115, 97, 14);
+		lblPrecio.setBounds(352, 173, 97, 14);
 		contentPane.add(lblPrecio);
 
 		final Date fechaActual = new Date();
 
 		JLabel lblFecha = new JLabel("Fecha: " + fechaActual);
-		lblFecha.setBounds(352, 173, 241, 14);
+		lblFecha.setBounds(348, 115, 241, 14);
 		contentPane.add(lblFecha);
 
 		JButton btnRegistrar = new JButton("Registrar");
-		btnRegistrar.setBounds(462, 75, 89, 23);
+		btnRegistrar.setForeground(Color.WHITE);
+		btnRegistrar.setBackground(new Color(72, 61, 139));
+		btnRegistrar.setBounds(352, 196, 89, 23);
 		contentPane.add(btnRegistrar);
 
 		btnRegistrar.addActionListener(new ActionListener() {
@@ -281,9 +296,30 @@ public class RegistroFactura extends JFrame {
 						fechaActual);
 				FacturaRSH.getInstance().guardarFactura(factura);
 				System.out.println(factura);
+				
+				JOptionPane.showMessageDialog(null, "Factura guardada correctamente", "FACTURA GUARDADA", JOptionPane.PLAIN_MESSAGE);
+				VisualizarFacturas facts = new VisualizarFacturas();
+				facts.setVisible(true);
+				setVisible(false);
 			}
 
 		});
+		
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				VisualizarFacturas facts = new VisualizarFacturas();
+				facts.setVisible(true);
+				setVisible(false);
+			}
+		} );
+		btnVolver.setForeground(Color.WHITE);
+		btnVolver.setBackground(new Color(72, 61, 139));
+		btnVolver.setBounds(451, 196, 89, 23);
+		getContentPane().add(btnVolver);
 
 	}
 

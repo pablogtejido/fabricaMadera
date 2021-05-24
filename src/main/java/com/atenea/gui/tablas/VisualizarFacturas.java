@@ -235,6 +235,7 @@ public class VisualizarFacturas extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				new RegistroFactura().setVisible(true);
+				setVisible(false);
 
 			}
 		});
