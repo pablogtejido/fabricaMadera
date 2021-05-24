@@ -12,15 +12,18 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import com.atenea.data.Cliente;
+import com.atenea.data.Factura;
 import com.atenea.gui.modificar.ModificarCliente;
 import com.atenea.gui.registrar.RegistroCliente;
 import com.atenea.rsh.ClienteRSH;
+import com.atenea.rsh.FacturaRSH;
 
 /**
  * Ventana para visualizar todos los clientes que hay almacenados en la base de
@@ -160,7 +163,6 @@ public class VisualizarClientes extends JFrame {
 				window2.setVisible(true);
 				setVisible(false);
 
-
 			}
 		});
 
@@ -212,10 +214,23 @@ public class VisualizarClientes extends JFrame {
 						cl = c;
 					}
 				}
-				System.out.println("Borrando Cliente");
-				rs.borrarCliente(cl);
-				modelo.setRowCount(0);
-				ClientesJTable();
+				boolean conflict = false;
+				FacturaRSH rsf = FacturaRSH.getInstance();
+				for (Factura f : rsf.verFacturas()) {
+					if (f.getCliente().equals(cl)) {
+						conflict = true;
+					}
+				}
+				if (conflict) {
+					JOptionPane.showMessageDialog(null,
+							"Este cliente tiene una factura asociada. Borrala antes de continuar.",
+							"Conflicto con cliente", JOptionPane.ERROR_MESSAGE);
+				} else {
+					System.out.println("Borrando Cliente");
+					rs.borrarCliente(cl);
+					modelo.setRowCount(0);
+					ClientesJTable();
+				}
 			}
 
 		});
@@ -250,6 +265,7 @@ public class VisualizarClientes extends JFrame {
 		}
 
 	}
+
 	public boolean isCellEditable(int row, int column) {
 		return false;
 	}

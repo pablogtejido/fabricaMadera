@@ -856,11 +856,11 @@ public class DBManager {
 			Iterator<Cliente> iter = e.iterator();
 			while (iter.hasNext()) {
 				Cliente cliente = (Cliente) iter.next();
+				System.out.println(cliente);
 				if (cliente.getDni() == null ? dni == null : cliente.getDni().equals(dni)) {
 					pm.deletePersistent(cliente);
 				}
 			}
-
 			tx.commit();
 		} catch (Exception ex) {
 			LOG.log(Level.SEVERE, "Error obteniendo cliente: {0}", ex.getMessage());

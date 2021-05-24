@@ -28,9 +28,9 @@ public class Factura {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT, primaryKey = "true")
 	private long factura_id;
-	@ForeignKey(deleteAction = ForeignKeyAction.NONE)
+	@ForeignKey(deleteAction = ForeignKeyAction.NULL, updateAction = ForeignKeyAction.CASCADE)
 	private Empleado empleado;
-	@ForeignKey(deleteAction = ForeignKeyAction.NONE)
+	@ForeignKey(deleteAction = ForeignKeyAction.NULL, updateAction = ForeignKeyAction.CASCADE)
 	private Cliente cliente;
 	@Persistent(table = "PRODUCTO_FACTURA")
 	@Join(column = "PRODUCTO_ID")
