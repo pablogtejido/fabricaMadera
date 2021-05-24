@@ -1,3 +1,6 @@
+/**
+ * @package objects
+ */
 package com.atenea.data;
 
 import java.util.Objects;
@@ -21,37 +24,72 @@ public class Cliente {
 	private String apellidos;
 	private String contrasena;
 
+	/**
+	 * Constructor vacio de la clase Cliente
+	 */
 	public Cliente() {
 	}
 
+	/**
+	 * Devuelve el string dni
+	 * @return String con el dni del cliente
+	 */
 	public String getDni() {
 		return dni;
 	}
-
+	
+	/**
+	 * Permite cambiar el dni del cliente
+	 * @param dni String con el nuevo dni de cliente
+	 */
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
 
+	/**
+	 * Devuelve el string nombre
+	 * @return String con el nombre del cliente
+	 */
 	public String getNombre() {
 		return nombre;
 	}
-
+	
+	/**
+	 * Permite cambiar el nombre del cliente
+	 * @param nombre String con el nuevo nombre de cliente
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Devuelve el string apellidos
+	 * @return String con los apellidos del cliente
+	 */
 	public String getApellidos() {
 		return apellidos;
 	}
-
+	
+	/**
+	 * Permite cambiar los apellidos del cliente
+	 * @param apellidos String con los nuevos apellidos de cliente
+	 */
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
+	/**
+	 * Devuelve el string contraseña
+	 * @return String con la contraseña del cliente
+	 */
 	public String getContrasena() {
 		return contrasena;
 	}
 
+	/**
+	 * Permite cambiar la contrasena del cliente
+	 * @param contrasena String con la nueva contrasena de cliente
+	 */
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
@@ -62,6 +100,14 @@ public class Cliente {
 				+ "]";
 	}
 
+	
+	/**
+	 * Constructor de la clase Cliente
+	 * @param dni STRING para el dni del cliente
+	 * @param nombre STRING para el nombre del cliente
+	 * @param apellido STRING para el apellido del cliente
+	 * @param contrasena STRING para el contrasena del cliente
+	 */
 	public Cliente(String dni, String nombre, String apellidos, String contrasena) {
 		super();
 		this.dni = dni;

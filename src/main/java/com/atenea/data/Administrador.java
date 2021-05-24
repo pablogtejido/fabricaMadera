@@ -1,3 +1,6 @@
+/**
+ * @package objects
+ */
 package com.atenea.data;
 
 import java.util.Objects;
@@ -23,6 +26,10 @@ public class Administrador {
 	private String email;
 	private String telefono;
 
+	/**
+	 * Devuelve el string dni
+	 * @return String con el dni del cliente
+	 */
 	public String getDni() {
 		return dni;
 	}
@@ -31,6 +38,10 @@ public class Administrador {
 		this.dni = dni;
 	}
 
+	/**
+	 * Devuelve el string contrasena
+	 * @return String con el contrasena del cliente
+	 */
 	public String getContrasena() {
 		return contrasena;
 	}
@@ -39,6 +50,10 @@ public class Administrador {
 		this.contrasena = contrasena;
 	}
 
+	/**
+	 * Devuelve el string nombre
+	 * @return String con el nombre del cliente
+	 */
 	public String getNombre() {
 		return nombre;
 	}
@@ -47,6 +62,10 @@ public class Administrador {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Devuelve el string apellido
+	 * @return String con el apellido del cliente
+	 */
 	public String getApellido() {
 		return apellido;
 	}
@@ -55,6 +74,10 @@ public class Administrador {
 		this.apellido = apellido;
 	}
 
+	/**
+	 * Devuelve el string email
+	 * @return String con el email del cliente
+	 */
 	public String getEmail() {
 		return email;
 	}
@@ -63,6 +86,10 @@ public class Administrador {
 		this.email = email;
 	}
 
+	/**
+	 * Devuelve el string telefono
+	 * @return String con el telefono del cliente
+	 */
 	public String getTelefono() {
 		return telefono;
 	}
@@ -71,10 +98,23 @@ public class Administrador {
 		this.telefono = telefono;
 	}
 
+	/**
+	 * Constructor vacio de la clase Cliente
+	 */
 	public Administrador() {
 		super();
 	}
 
+	
+	/**
+	 * Constructor de la clase Administrador
+	 * @param dni STRING para el dni del administrador
+	 * @param contrasena STRING para la contrasena del administrador
+	 * @param nombre STRING para el nombre del administrador
+	 * @param apellido STRING para el apellido del administrador
+	 * @param email STRING para el email del administrador
+	 * @param telefono STRING para el telefono del administrador
+	 */
 	public Administrador(String dni, String contrasena, String nombre, String apellido, String email, String telefono) {
 		super();
 		this.dni = dni;
@@ -84,6 +124,7 @@ public class Administrador {
 		this.email = email;
 		this.telefono = telefono;
 	}
+	
 
 	@Override
 	public String toString() {
