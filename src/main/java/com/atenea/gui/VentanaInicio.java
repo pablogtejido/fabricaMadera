@@ -76,6 +76,7 @@ public class VentanaInicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				LoginEmpleado em = new LoginEmpleado();
 				em.setVisible(true);
+				frame.setVisible(false);
 
 			}
 

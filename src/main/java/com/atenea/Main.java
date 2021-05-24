@@ -61,7 +61,7 @@ public class Main {
 				@Override
 				public void run() {
 					try {
-						new VentanaInicio().setVisible(true);
+						new VentanaInicio();
 					} catch (Exception e) {
 					}
 				}
