@@ -9,14 +9,18 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import com.atenea.data.Empleado;
+import com.atenea.data.Factura;
 import com.atenea.gui.modificar.ModificarEmpleado;
 import com.atenea.rsh.EmpleadoRSH;
+import com.atenea.rsh.FacturaRSH;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -210,10 +214,23 @@ public class VisualizarEmpleado extends JFrame {
 						eml = em;
 					}
 				}
-				System.out.println("Borrando Empleado");
-				rs.borrarEmpleado(eml);
-				modelo.setRowCount(0);
-				EmpleadosJTable();
+				boolean conflict = false;
+				FacturaRSH rsf = FacturaRSH.getInstance();
+				for (Factura f : rsf.verFacturas()) {
+					if (f.getEmpleado().equals(eml)) {
+						conflict = true;
+					}
+				}
+				if (conflict) {
+					JOptionPane.showMessageDialog(null,
+							"Este cliente tiene una factura asociada. Borrala antes de continuar.",
+							"Conflicto con cliente", JOptionPane.ERROR_MESSAGE);
+				} else {
+					System.out.println("Borrando Empleado");
+					rs.borrarEmpleado(eml);
+					modelo.setRowCount(0);
+					EmpleadosJTable();
+				}
 			}
 
 		});
@@ -245,7 +262,6 @@ public class VisualizarEmpleado extends JFrame {
 
 		}
 	}
-	
 
 	public boolean isCellEditable(int row, int column) {
 		return false;
