@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('_administrador_8java_source.html','');
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html">Administrador</a> administrador = (<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html">Administrador</a>) o;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> dni == administrador.dni &amp;&amp; Objects.equals(contrasena, administrador.contrasena)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> Objects.<a class="code" href="classcom_1_1atenea_1_1data_1_1_administrador.html#afa395db5140383ec460ee14384770807">equals</a>(dni, administrador.dni) &amp;&amp; Objects.equals(contrasena, administrador.contrasena)</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                &amp;&amp; Objects.equals(nombre, administrador.nombre) &amp;&amp; Objects.equals(apellido, administrador.apellido)</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                &amp;&amp; Objects.equals(email, administrador.email) &amp;&amp; Objects.equals(telefono, administrador.telefono);</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>

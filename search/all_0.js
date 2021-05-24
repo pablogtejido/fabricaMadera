@@ -9,7 +9,7 @@ var searchData=
   ['administradorconectado_2ejava_6',['AdministradorConectado.java',['../_administrador_conectado_8java.html',1,'']]],
   ['administradorresource_7',['AdministradorResource',['../classcom_1_1atenea_1_1resource_1_1_administrador_resource.html',1,'com::atenea::resource']]],
   ['administradorresource_2ejava_8',['AdministradorResource.java',['../_administrador_resource_8java.html',1,'']]],
-  ['administradorresourcetest_9',['AdministradorResourceTest',['../classcom_1_1atenea_1_1resource_1_1_administrador_resource_test.html#aaf661bcdb5b0a989dbd1d445fe566089',1,'com.atenea.resource.AdministradorResourceTest.AdministradorResourceTest()'],['../classcom_1_1atenea_1_1resource_1_1_administrador_resource_test.html',1,'com.atenea.resource.AdministradorResourceTest']]],
+  ['administradorresourcetest_9',['AdministradorResourceTest',['../classcom_1_1atenea_1_1resource_1_1_administrador_resource_test.html',1,'com::atenea::resource']]],
   ['administradorresourcetest_2ejava_10',['AdministradorResourceTest.java',['../_administrador_resource_test_8java.html',1,'']]],
   ['administradorrsh_11',['AdministradorRSH',['../classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html#ac1d3543fc26659e5572829ac3fe7237c',1,'com.atenea.rsh.AdministradorRSH.AdministradorRSH()'],['../classcom_1_1atenea_1_1rsh_1_1_administrador_r_s_h.html',1,'com.atenea.rsh.AdministradorRSH']]],
   ['administradorrsh_2ejava_12',['AdministradorRSH.java',['../_administrador_r_s_h_8java.html',1,'']]],

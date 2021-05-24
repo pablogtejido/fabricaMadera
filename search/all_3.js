@@ -5,7 +5,7 @@ var searchData=
   ['dbmanager_58',['DBManager',['../classcom_1_1atenea_1_1db_1_1_d_b_manager.html',1,'com::atenea::db']]],
   ['dbmanager_2ejava_59',['DBManager.java',['../_d_b_manager_8java.html',1,'']]],
   ['delete_60',['delete',['../classcom_1_1atenea_1_1db_1_1_d_b_manager.html#a3259711b9a27ecb3cd1a33d2de84f916',1,'com.atenea.db.DBManager.delete(Empleado empleado)'],['../classcom_1_1atenea_1_1db_1_1_d_b_manager.html#a5d1d0337c220118e4e43c3942066f516',1,'com.atenea.db.DBManager.delete(Producto producto)'],['../classcom_1_1atenea_1_1db_1_1_d_b_manager.html#a33f295e7b57f0444539cb47959f657a0',1,'com.atenea.db.DBManager.delete(Cliente cliente)']]],
-  ['deleteadministradorbydni_61',['deleteAdministradorByDni',['../classcom_1_1atenea_1_1db_1_1_d_b_manager.html#a5b8b3c62937ff0c874a14ecf713deced',1,'com::atenea::db::DBManager']]],
+  ['deleteadministradorbyid_61',['deleteAdministradorById',['../classcom_1_1atenea_1_1db_1_1_d_b_manager.html#a30bf7c1c3098279b8ba474e7de9bb6a4',1,'com::atenea::db::DBManager']]],
   ['deleteclientebydni_62',['deleteClienteByDNI',['../classcom_1_1atenea_1_1db_1_1_d_b_manager.html#a785e0eb5c5c1f6529d78f07c12de69f8',1,'com::atenea::db::DBManager']]],
   ['deleteempleadobyid_63',['deleteEmpleadoById',['../classcom_1_1atenea_1_1db_1_1_d_b_manager.html#af8e78c9a0f7a295c2b0f16411f4afca2',1,'com::atenea::db::DBManager']]],
   ['deletefacturabyid_64',['deleteFacturaById',['../classcom_1_1atenea_1_1db_1_1_d_b_manager.html#ac935e8887ab8d5db16c7a0b0bdad9bad',1,'com::atenea::db::DBManager']]],
