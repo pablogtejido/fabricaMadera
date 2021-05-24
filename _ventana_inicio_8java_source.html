@@ -138,37 +138,38 @@ $(document).ready(function(){initNavTree('_ventana_inicio_8java_source.html','')
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        contentPane.setBackground(<span class="keyword">new</span> Color(135, 206, 250));</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        frame.setContentPane(contentPane);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        contentPane.setLayout(<span class="keyword">null</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// JButton para Iniciar SesiÃ³n</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        JButton btnLogInEmpleado = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Iniciar sesion como empleado o administrador&quot;</span>);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        btnLogInEmpleado.setForeground(Color.WHITE);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        btnLogInEmpleado.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Showcard Gothic&quot;</span>, Font.PLAIN, 16));</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        btnLogInEmpleado.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        btnLogInEmpleado.setBounds(130, 265, 490, 29);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        contentPane.add(btnLogInEmpleado);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        btnLogInEmpleado.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            @Override</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">LoginEmpleado</a> em = <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">LoginEmpleado</a>();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                em.setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                frame.setVisible(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        });</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">// lblBackground</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        JLabel lblBackground = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        Image imgBackground = <span class="keyword">new</span> ImageIcon(<span class="stringliteral">&quot;images/madera.jpeg&quot;</span>).getImage();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        ImageIcon imgBackgroundScaled = <span class="keyword">new</span> ImageIcon(imgBackground.getScaledInstance(775, 440, Image.SCALE_SMOOTH));</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        lblBackground.setIcon(imgBackgroundScaled);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        lblBackground.setBounds(0, 0, 775, 440);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        contentPane.add(lblBackground);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        setDefaultCloseOperation(EXIT_ON_CLOSE);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="comment">// JButton para Iniciar SesiÃ³n</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        JButton btnLogInEmpleado = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;Iniciar sesion como empleado o administrador&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        btnLogInEmpleado.setForeground(Color.WHITE);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        btnLogInEmpleado.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Showcard Gothic&quot;</span>, Font.PLAIN, 16));</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        btnLogInEmpleado.setBackground(<span class="keyword">new</span> Color(72, 61, 139));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        btnLogInEmpleado.setBounds(130, 265, 490, 29);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        contentPane.add(btnLogInEmpleado);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        btnLogInEmpleado.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            @Override</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">LoginEmpleado</a> em = <span class="keyword">new</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">LoginEmpleado</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                em.setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                frame.setVisible(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        });</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// lblBackground</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        JLabel lblBackground = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        Image imgBackground = <span class="keyword">new</span> ImageIcon(<span class="stringliteral">&quot;images/madera.jpeg&quot;</span>).getImage();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        ImageIcon imgBackgroundScaled = <span class="keyword">new</span> ImageIcon(imgBackground.getScaledInstance(775, 440, Image.SCALE_SMOOTH));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        lblBackground.setIcon(imgBackgroundScaled);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        lblBackground.setBounds(0, 0, 775, 440);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        contentPane.add(lblBackground);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1_login_empleado_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1_login_empleado.html">com.atenea.gui.LoginEmpleado</a></div><div class="ttdef"><b>Definition:</b> <a href="_login_empleado_8java_source.html#l00037">LoginEmpleado.java:37</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1_screen_size_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1_screen_size.html">com.atenea.gui.ScreenSize</a></div><div class="ttdef"><b>Definition:</b> <a href="_screen_size_8java_source.html#l00006">ScreenSize.java:6</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1_screen_size_html_a530a70bc96e19562e35acb73015b8a9f"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1_screen_size.html#a530a70bc96e19562e35acb73015b8a9f">com.atenea.gui.ScreenSize.getXcoordinate</a></div><div class="ttdeci">static int getXcoordinate(int i)</div><div class="ttdef"><b>Definition:</b> <a href="_screen_size_8java_source.html#l00046">ScreenSize.java:46</a></div></div>
