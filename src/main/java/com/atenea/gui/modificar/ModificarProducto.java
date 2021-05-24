@@ -126,7 +126,7 @@ public class ModificarProducto extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-
+				
 				String nombre = txtNombre.getText();
 				double precio = Double.parseDouble(txtPrecio.getText());
 				double peso = Double.parseDouble(txtPeso.getText());
@@ -134,6 +134,8 @@ public class ModificarProducto extends JFrame {
 				double grosor = Double.parseDouble(txtGrosor.getText());
 				boolean añadido = checkBoxAñadido.isSelected();
 
+				System.out.println(prod);
+				
 				prod.setNombre(nombre);
 				prod.setPrecio(precio);
 				prod.setPeso(peso);
@@ -142,6 +144,8 @@ public class ModificarProducto extends JFrame {
 				prod.setAnyadidos(añadido);
 
 				ProductoRSH.getInstance().modificarProducto(prod);
+				System.out.println("Modificado");
+				System.out.println(prod);
 			}
 		});
 		btnModificar.setForeground(Color.WHITE);

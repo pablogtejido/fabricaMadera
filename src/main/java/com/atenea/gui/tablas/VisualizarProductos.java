@@ -170,7 +170,7 @@ public class VisualizarProductos extends JFrame {
 				ProductoRSH rsh = ProductoRSH.getInstance();
 
 				for (Producto producto : rsh.verProductos()) {
-					if (producto.getId().equals(Long.parseLong(Id))) {
+					if (producto.getId() == Long.parseLong(Id)) {
 						prod = producto;
 
 					}

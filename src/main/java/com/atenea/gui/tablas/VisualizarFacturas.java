@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import com.atenea.data.Factura;
+import com.atenea.gui.modificar.ModificarFactura;
 import com.atenea.gui.registrar.RegistroFactura;
 import com.atenea.rsh.FacturaRSH;
 import java.awt.Font;
@@ -113,8 +114,8 @@ public class VisualizarFacturas extends JFrame {
 		modelo.addColumn("Apellido Cliente");
 		modelo.addColumn("Nombre Empleado");
 		// modelo.addColumn("Productos");
-		// modelo.addColumn("Precio");
 		modelo.addColumn("Fecha");
+		modelo.addColumn("Precio");
 		table.getTableHeader().setReorderingAllowed(false);
 
 		scrollPane.setViewportView(table);
@@ -175,19 +176,21 @@ public class VisualizarFacturas extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				Long id = (Long) modelo.getValueAt(table.getSelectedRow(), 0);
-				System.out.println(id);
+				String id = (String) modelo.getValueAt(table.getSelectedRow(), 0);
+				System.out.println("Modificando la factura con Id:" + id);
+				
 				Factura fa = null;
 				FacturaRSH rs = FacturaRSH.getInstance();
+				
 				for (Factura f : rs.verFacturas()) {
-					if (f.getId() == id) {
+					if (f.getId() == Long.parseLong(id)) {
 						System.out.println(f);
 						fa = f;
 					}
 				}
-				// ModificarFactura frameModificar = new ModificarFactura(fa);
-				// frameModificar.setVisible(true);
-				// setVisible(false);
+				ModificarFactura frameModificar = new ModificarFactura(fa);
+				frameModificar.setVisible(true);
+				setVisible(false);
 
 				// TODO crear ventana de modificar facturas
 				// ModificarFactura frameModificar = new ModificarFactura(fa);
@@ -235,7 +238,7 @@ public class VisualizarFacturas extends JFrame {
 	private void FacturasJTable() {
 		FacturaRSH rsh = FacturaRSH.getInstance();
 		List<Factura> facturas = rsh.verFacturas();
-		String[] fila = new String[6];
+		String[] fila = new String[7];
 		System.out.println(facturas);
 
 		for (Factura factura : facturas) {
@@ -246,11 +249,9 @@ public class VisualizarFacturas extends JFrame {
 			fila[2] = factura.getCliente().getApellidos();
 			fila[3] = factura.getEmpleado().getNombre();
 			// fila[4] = factura.toStringProductos();
-			// Double precio = factura.getPrecio();
-			// fila[5] = precio.toString();
 			Date fecha = factura.getFcha_factura();
 			fila[4] = fecha.toString(); // cambiar a 6
-
+			fila[5] = factura.getPrecio().toString();
 			modelo.addRow(fila);
 
 		}

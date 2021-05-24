@@ -447,6 +447,7 @@ public class DBManager {
 				Producto producto_a_cambiar = (Producto) iter.next();
 				if (Objects.equals(producto_a_cambiar.getId(), producto.getId())) {
 					LOG.log(Level.INFO, "* Updating: {0}\n* To: {1}", new Object[] { producto_a_cambiar, producto });
+					producto_a_cambiar.setNombre(producto.getNombre());
 					producto_a_cambiar.setAnyadidos(producto.isAnyadidos());
 					producto_a_cambiar.setGrosor(producto.getGrosor());
 					producto_a_cambiar.setMedida(producto.getMedida());
