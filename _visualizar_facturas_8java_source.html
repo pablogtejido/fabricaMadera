@@ -309,44 +309,45 @@ $(document).ready(function(){initNavTree('_visualizar_facturas_8java_source.html
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="keyword">new</span> RegistroFactura().setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            }</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        });</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        FacturasJTable();</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> FacturasJTable() {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        FacturaRSH rsh = FacturaRSH.getInstance();</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        List&lt;Factura&gt; facturas = rsh.verFacturas();</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        String[] fila = <span class="keyword">new</span> String[7];</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        System.out.println(facturas);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">for</span> (Factura factura : facturas) {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordtype">long</span> <span class="keywordtype">id</span> = factura.getId();</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            fila[0] = String.valueOf(<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            fila[1] = factura.getCliente().getNombre();</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            fila[2] = factura.getCliente().getApellidos();</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            fila[3] = factura.getEmpleado().getNombre();</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="comment">// fila[4] = factura.toStringProductos();</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            Date fecha = factura.getFcha_factura();</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            fila[4] = fecha.toString(); <span class="comment">// cambiar a 6</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            fila[5] = factura.getPrecio().toString();</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            modelo.addRow(fila);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html#ac9b223a2a6a22b7aff712b7b8c363182">  267</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">boolean</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html#ac9b223a2a6a22b7aff712b7b8c363182">isCellEditable</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> column) {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;}</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                setVisible(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        });</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        FacturasJTable();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">void</span> FacturasJTable() {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        FacturaRSH rsh = FacturaRSH.getInstance();</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        List&lt;Factura&gt; facturas = rsh.verFacturas();</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        String[] fila = <span class="keyword">new</span> String[7];</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        System.out.println(facturas);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">for</span> (Factura factura : facturas) {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordtype">long</span> <span class="keywordtype">id</span> = factura.getId();</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            fila[0] = String.valueOf(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            fila[1] = factura.getCliente().getNombre();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            fila[2] = factura.getCliente().getApellidos();</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            fila[3] = factura.getEmpleado().getNombre();</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="comment">// fila[4] = factura.toStringProductos();</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            Date fecha = factura.getFcha_factura();</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            fila[4] = fecha.toString(); <span class="comment">// cambiar a 6</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            fila[5] = factura.getPrecio().toString();</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            modelo.addRow(fila);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html#ac9b223a2a6a22b7aff712b7b8c363182">  268</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">boolean</span> <a class="code" href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html#ac9b223a2a6a22b7aff712b7b8c363182">isCellEditable</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> column) {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_clientes_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_clientes.html">com.atenea.gui.tablas.VisualizarClientes</a></div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_clientes_8java_source.html#l00033">VisualizarClientes.java:33</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas_html"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html">com.atenea.gui.tablas.VisualizarFacturas</a></div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_facturas_8java_source.html#l00031">VisualizarFacturas.java:31</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas_html_a455350a8d816a3a0fbaed199702b8d77"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html#a455350a8d816a3a0fbaed199702b8d77">com.atenea.gui.tablas.VisualizarFacturas.main</a></div><div class="ttdeci">static void main(String[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_facturas_8java_source.html#l00038">VisualizarFacturas.java:38</a></div></div>
 <div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas_html_a5ff340e87ff4598b0d18426f2f4bef87"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html#a5ff340e87ff4598b0d18426f2f4bef87">com.atenea.gui.tablas.VisualizarFacturas.VisualizarFacturas</a></div><div class="ttdeci">VisualizarFacturas()</div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_facturas_8java_source.html#l00054">VisualizarFacturas.java:54</a></div></div>
-<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas_html_ac9b223a2a6a22b7aff712b7b8c363182"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html#ac9b223a2a6a22b7aff712b7b8c363182">com.atenea.gui.tablas.VisualizarFacturas.isCellEditable</a></div><div class="ttdeci">boolean isCellEditable(int row, int column)</div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_facturas_8java_source.html#l00267">VisualizarFacturas.java:267</a></div></div>
+<div class="ttc" id="aclasscom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas_html_ac9b223a2a6a22b7aff712b7b8c363182"><div class="ttname"><a href="classcom_1_1atenea_1_1gui_1_1tablas_1_1_visualizar_facturas.html#ac9b223a2a6a22b7aff712b7b8c363182">com.atenea.gui.tablas.VisualizarFacturas.isCellEditable</a></div><div class="ttdeci">boolean isCellEditable(int row, int column)</div><div class="ttdef"><b>Definition:</b> <a href="_visualizar_facturas_8java_source.html#l00268">VisualizarFacturas.java:268</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
