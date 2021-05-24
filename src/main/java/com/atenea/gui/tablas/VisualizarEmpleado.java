@@ -191,6 +191,7 @@ public class VisualizarEmpleado extends JFrame {
 				}
 				ModificarEmpleado frameModificar = new ModificarEmpleado(empl);
 				frameModificar.setVisible(true);
+				setVisible(false);
 
 			}
 
