@@ -1,7 +1,5 @@
 var NAVTREEINDEX0 =
 {
-"":[2,0,1],
-"":[2,0,1,0],
 "_administrador_8java.html":[4,0,0,0,0,0,0,0,0],
 "_administrador_8java_source.html":[4,0,0,0,0,0,0,0,0],
 "_administrador_conectado_8java.html":[4,0,0,0,0,0,0,0,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX0 =
 "classcom_1_1atenea_1_1data_1_1_factura_test.html":[3,0,1,0,0,13],
 "classcom_1_1atenea_1_1data_1_1_factura_test.html#a044c8ab6c0b617381a0e9032c0004b40":[3,0,1,0,0,13,6],
 "classcom_1_1atenea_1_1data_1_1_factura_test.html#a1bddb80a0587126980aeb7d6e7d1be67":[3,0,1,0,0,13,2],
-"classcom_1_1atenea_1_1data_1_1_factura_test.html#a29d8b3f4d87cf5bb54d26711a00bef7c":[3,0,1,0,0,13,11]
+"classcom_1_1atenea_1_1data_1_1_factura_test.html#a29d8b3f4d87cf5bb54d26711a00bef7c":[3,0,1,0,0,13,11],
+"classcom_1_1atenea_1_1data_1_1_factura_test.html#a2c840b0a968ed958f7889f13fc53671e":[3,0,1,0,0,13,9],
+"classcom_1_1atenea_1_1data_1_1_factura_test.html#a375e4c55078664a2e229caafbc924c43":[3,0,1,0,0,13,12]
 };
